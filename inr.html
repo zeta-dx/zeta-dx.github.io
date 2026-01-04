@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>INR Calculator – International Normalized Ratio | PathCal</title>
+
+  <meta name="description" content="INR Calculator using PT, MNPT and ISI with interpretation, therapeutic ranges and educational explanation." />
+
+  <style>
+    body {
+      background-image: url('bg.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      max-width: 75%;
+      margin: 20px auto;
+      padding: 40px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    nav {
+      background: #fff;
+      max-width: 75%;
+      margin: 20px auto;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #1a73e8;
+      font-weight: bold;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      width: 80%;
+      margin: 30px auto 0;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    .section {
+      max-width: 75%;
+      margin: 60px auto;
+      padding: 40px 60px;
+      color: white;
+      text-align: justify;
+    }
+
+    .white-section {
+      background: white;
+      color: black;
+      border-radius: 10px;
+      padding: 40px;
+    }
+
+    .calculator {
+      background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      border-radius: 10px;
+      max-width: 60%;
+      margin: auto;
+      padding: 30px 35px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-top: 18px;
+      font-weight: 500;
+    }
+
+    input {
+      margin-top: 6px;
+      padding: 10px 12px;
+      width: 100%;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background: #1a73e8;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .result {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #fafafa;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <img src="pathcal.png" alt="PathCal Logo" style="height:60px;">
+  <h1>PathCal</h1>
+  <h2>International Normalized Ratio (INR)</h2>
+</header>
+
+<nav>
+  <a href="./index.html">Home</a>
+  <a href="./acr.html">ACR</a>
+  <a href="./pcr.html">PCR</a>
+  <a href="./inr.html">INR</a>
+  <a href="./esr.html">ESR</a>
+  <a href="./privacy_policy.html">Privacy</a>
+  <a href="./contact.html">Contact</a>
+</nav>
+
+<section class="hero">
+  <h1>INR Calculator</h1>
+  <p>
+    Calculate International Normalized Ratio (INR) using
+    Prothrombin Time (PT), Mean Normal PT (MNPT) and ISI.
+  </p>
+</section>
+
+<section class="section">
+  <div class="calculator">
+
+    <h2>INR Calculation</h2>
+
+    <label for="pt">Patient's PT (seconds):<br></label>
+	<input type="number" id="pt" placeholder="Enter PT value" step="0.1" required>
+	
+	<label for="mnpt"><br>Mean Normal PT (seconds):<br></label>
+	<input type="number" id="mnpt" placeholder="Enter MNPT value" step="0.1" required>
+	
+	<label for="isi"><br>ISI Value:<br></label>
+	<input type="number" id="isi" placeholder="Enter ISI value" step="0.01" required>
+	
+	<button onclick="calculateINR()">Calculate INR</button>
+	<div class="result" id="inrResult" style="display: none;"></div>
+	<div class="calculation" id="inrCalculationDetails" style="display: none;"></div>
+	
+	<div class="inr-reference">
+		<h4>INR Reference Values:</h4>
+		<ul>
+			<li>Normal: 0.8-1.2</li>
+			<li>Therapeutic range (warfarin): 2.0-3.0</li>
+			<li>High risk patients: 2.5-3.5</li>
+		</ul>
+	</div>
+
+  </div>
+</section>
+
+<section class="section white-section">
+  <h3>About International Normalized Ratio (INR)</h3>
+  <p>The International Normalized Ratio (INR) is a standardized way of measuring how long it takes your blood to clot. It is commonly used to monitor patients on blood-thinning medications such as warfarin, ensuring the blood does not clot too quickly or too slowly.</p>
+
+  <h4>Normal and Abnormal Values</h4>
+  <p>For healthy individuals not on anticoagulants, the normal INR is usually around 1.0. For patients on blood thinners, the therapeutic INR range depends on the condition but often falls between 2.0 and 3.0.</p>
+
+  <h4>Interpreting INR Results</h4>
+  <p>
+	- <strong>INR ~1.0:</strong> Normal clotting in people not on anticoagulants.<br>
+	- <strong>INR 2.0-3.0:</strong> Typical therapeutic range for many conditions like atrial fibrillation or deep vein thrombosis.<br>
+	- <strong>INR &gt;3.0:</strong> Increased risk of bleeding — dose adjustment and careful monitoring required.
+  </p>
+
+  <h4>Example Calculation</h4>
+  <p>If a patient’s prothrombin time (PT) test shows a clotting time of 30 seconds and the control PT time is 12 seconds with an ISI of 1.0, the INR is calculated as:</p>
+  <p><em>INR = (Patient PT / Control PT) ^ ISI = (30 / 12) ^ 1.0 = 2.5</em></p>
+  <p>This value falls within the typical therapeutic range.</p>
+
+  <h4>Limitations and Notes</h4>
+  <p>
+	- INR is primarily used to monitor patients on vitamin K antagonists (like warfarin).<br>
+	- Different labs may have slight variations in ISI values; the INR standardizes results across labs.<br>
+	- Certain conditions and medications can affect INR results.<br>
+	- Always follow your healthcare provider’s guidance on managing INR and medication doses.
+  </p>
+
+  <p><em>Disclaimer: This calculator is for educational purposes only and does not replace professional medical advice.</em></p>
+</section>
+
+<footer>
+  PathCal © 2025 — For Educational Use Only
+</footer>
+
+<script>
+function calculateINR() {
+	let pt = parseFloat(document.getElementById("pt").value);
+	let mnpt = parseFloat(document.getElementById("mnpt").value);
+	let isi = parseFloat(document.getElementById("isi").value);
+	
+	if (isNaN(pt) || isNaN(mnpt) || isNaN(isi) || pt <= 0 || mnpt <= 0 || isi <= 0) {
+		document.getElementById("inrResult").innerHTML = "Please enter valid positive values.";
+		document.getElementById("inrResult").style.display = "block";
+		document.getElementById("inrCalculationDetails").innerHTML = "";
+		document.getElementById("inrCalculationDetails").style.display = "none";
+		return;
+	}
+	
+	// Calculate INR: INR = (Patient's PT / Mean Normal PT) ^ ISI
+	let inr = Math.pow(pt / mnpt, isi).toFixed(2);
+	
+	// Determine interpretation
+	let interpretation = "";
+	let color = "black";
+	
+	if (inr < 0.8) {
+		interpretation = "Below normal range";
+		color = "blue";
+	} else if (inr >= 0.8 && inr <= 1.2) {
+		interpretation = "Normal range";
+		color = "green";
+	} else if (inr > 1.2 && inr < 2.0) {
+		interpretation = "Elevated, subtherapeutic";
+		color = "orange";
+	} else if (inr >= 2.0 && inr <= 3.0) {
+		interpretation = "Therapeutic range (warfarin)";
+		color = "#f2db07";
+	} else if (inr > 3.0 && inr <= 3.5) {
+		interpretation = "Therapeutic for high-risk patients";
+		color = "orange";
+	} else {
+		interpretation = "High risk of bleeding";
+		color = "red";
+	}
+	
+	document.getElementById("inrResult").innerHTML = `<strong style="color: ${color};">INR:</strong> ${inr} <br> <strong style="color: ${color};">${interpretation}</strong>`;
+	document.getElementById("inrResult").style.display = "block";
+	
+	let calculationDetails = `Patient's PT: ${pt} seconds<br>
+							  Mean Normal PT: ${mnpt} seconds<br>
+							  ISI Value: ${isi}<br>
+							  INR = (Patient's PT / Mean Normal PT) ^ ISI <br>
+							  INR = (${pt} / ${mnpt}) ^ ${isi} <br>
+							  INR = ${(pt / mnpt).toFixed(3)} ^ ${isi} <br>
+							  INR = ${inr}`;
+	
+	document.getElementById("inrCalculationDetails").innerHTML = `<strong>Calculation:</strong><br>${calculationDetails}`;
+	document.getElementById("inrCalculationDetails").style.display = "block";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ESR Calculator – Erythrocyte Sedimentation Rate | PathCal</title>
+
+  <meta name="description" content="ESR Calculator with temperature correction to 18°C using Manley's nomogram, Westergren method explanation, normal ranges and interpretation." />
+
+  <style>
+    body {
+      background-image: url('bg.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      max-width: 75%;
+      margin: 20px auto;
+      padding: 40px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    nav {
+      background: #fff;
+      max-width: 75%;
+      margin: 20px auto;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #1a73e8;
+      font-weight: bold;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      width: 80%;
+      margin: 30px auto 0;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    .section {
+      max-width: 75%;
+      margin: 60px auto;
+      padding: 40px 60px;
+      color: white;
+      text-align: justify;
+    }
+
+    .white-section {
+      background: white;
+      color: black;
+      border-radius: 10px;
+      padding: 40px;
+    }
+
+    .calculator {
+      background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      border-radius: 10px;
+      max-width: 60%;
+      margin: auto;
+      padding: 30px 35px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-top: 18px;
+      font-weight: 500;
+    }
+
+    input {
+      margin-top: 6px;
+      padding: 10px 12px;
+      width: 100%;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background: #1a73e8;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .result {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #fafafa;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <img src="pathcal.png" alt="PathCal Logo" style="height:60px;">
+  <h1>PathCal</h1>
+  <h2>Erythrocyte Sedimentation Rate (ESR)</h2>
+</header>
+
+<nav>
+  <a href="./index.html">Home</a>
+  <a href="./acr.html">ACR</a>
+  <a href="./pcr.html">PCR</a>
+  <a href="./inr.html">INR</a>
+  <a href="./esr.html">ESR</a>
+  <a href="./privacy_policy.html">Privacy</a>
+  <a href="./contact.html">Contact</a>
+</nav>
+
+<section class="hero">
+  <h1>ESR Calculator</h1>
+  <p>
+    Calculate and correct Erythrocyte Sedimentation Rate (ESR)
+    to standard 18 °C using Manley’s nomogram principle.
+  </p>
+</section>
+
+<section class="section">
+  <div class="calculator">
+
+     <h2>ESR Correction at 18°C</h2>
+      
+	  <label for="esrValue">Observed ESR (mm/hr):</label>
+	  <input type="number" id="esrValue" placeholder="Enter ESR value" required>
+
+	  <label for="tempValue">Measurement Temperature (°C):</label>
+	  <input type="number" id="tempValue" placeholder="Enter temperature" required>
+
+	  <button onclick="calculateESR()">Correct ESR at 18°C</button>
+
+	  <div class="result" id="esrResult" style="display: none;"></div>
+	  <div class="calculation" id="esrCalculationDetails" style="display: none;"></div>
+	  
+	  <div class="esr-reference">
+		  <h4>Reference: Manley's Nomogram</h4>
+  </div>
+</section>
+
+<section class="section white-section">
+	<h3>About Erythrocyte Sedimentation Rate (ESR)</h3>
+	<p>The Erythrocyte Sedimentation Rate (ESR) is a blood test that measures how quickly red blood cells (erythrocytes) settle at the bottom of a test tube in one hour. It is a nonspecific marker of inflammation and can help detect conditions such as infections, autoimmune diseases, and cancers.</p>
+	  
+	<h4>The Westergren Method</h4>
+	<p>The most commonly used technique to measure ESR is the <strong>Westergren method</strong>. In this method, anticoagulated blood is placed in a vertical tube (Westergren tube) and the rate at which red blood cells fall is measured in millimeters per hour (mm/hr). The longer the red cells take to settle, the lower the ESR, and vice versa.</p>
+
+	<h4>18-Degree Nomogram Compensation</h4>
+	<p>The Westergren method results are temperature-sensitive. The <em>18-degree Celsius compensation nomogram</em> is often used to adjust ESR values measured at temperatures other than 18°C to standardize results. This ensures accurate interpretation regardless of lab environment temperature.</p>
+
+	<h4>Normal and Abnormal Values</h4>
+	<p>ESR normal values vary by age and sex:</p>
+	<ul>
+	<li>Men under 50 years: 0-15 mm/hr</li>
+	<li>Men over 50 years: 0-20 mm/hr</li>
+	<li>Women under 50 years: 0-20 mm/hr</li>
+	<li>Women over 50 years: 0-30 mm/hr</li>
+	</ul>
+	<p>Higher values may indicate inflammation, infection, or other disease states.</p>
+
+	<h4>Interpreting ESR Results</h4>
+	<p>
+	- <strong>Low ESR:</strong> Usually not clinically significant but may be seen in certain conditions like polycythemia.<br>
+	- <strong>High ESR:</strong> Suggests inflammation but is nonspecific. Further tests may be needed to find the cause.<br>
+	- ESR is a useful marker to monitor disease progression or response to treatment.
+	</p>
+
+	<h4>Example Calculation</h4>
+	<p>If an ESR is measured at 25 mm/hr at 25°C, the 18-degree compensation nomogram can be used to adjust this value to standard conditions. (You may use the nomogram or formulas provided by your lab for exact compensation.)</p>
+
+	<h4>Limitations and Notes</h4>
+	<p>
+	- ESR is a nonspecific test and should not be used alone for diagnosis.<br>
+	- Factors like anemia, pregnancy, and medications can affect ESR.<br>
+	- Always interpret ESR results in clinical context.<br>
+	- Use alongside other inflammatory markers like CRP for better accuracy.
+	</p>
+
+	<p><em>Disclaimer: This calculator is for educational purposes only and does not replace professional medical advice.</em></p>
+</section>
+
+<footer>
+  PathCal © 2025 — For Educational Use Only
+</footer>
+
+<script>
+function calculateESR() {
+	let esr = parseFloat(document.getElementById("esrValue").value);
+	let temp = parseFloat(document.getElementById("tempValue").value);
+
+	if (isNaN(esr) || isNaN(temp)) {
+		document.getElementById("esrResult").innerHTML = "Please enter valid values.";
+		document.getElementById("esrResult").style.display = "block";
+		document.getElementById("esrCalculationDetails").innerHTML = "";
+		document.getElementById("esrCalculationDetails").style.display = "none";
+		return;
+	}
+
+	// Manley nomogram correction factor
+	const k = 0.024;
+	let esr18 = esr * (1 + k * (temp - 18));
+	esr18 = esr18.toFixed(0); // round to 3 decimals
+
+	document.getElementById("esrResult").innerHTML = `<strong>Corrected ESR @ 18°C: </strong> ${esr18} mm/hr`;
+	document.getElementById("esrResult").style.display = "block";
+
+	/*let calculationDetails = `Observed ESR: ${esr} mm/h<br>
+							  Measurement Temp: ${temp} °C<br>
+							  Correction factor k: ${k}<br>
+							  ESR corrected to 18°C = ESR_obs * (1 + k*(T - 18))<br>
+							  ESR = ${esr} * (1 + ${k}*(${temp} - 18)) = ${esr18} mm/h`;
+
+	document.getElementById("esrCalculationDetails").innerHTML = `<strong>Calculation:</strong><br>${calculationDetails}`;
+	document.getElementById("esrCalculationDetails").style.display = "block";*/
+}
+</script>
+
+</body>
+</html>

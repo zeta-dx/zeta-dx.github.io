@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>PCR Calculator – Protein Creatinine Ratio | PathCal</title>
+
+  <meta name="description" content="PCR Calculator to calculate Urine Protein to Creatinine Ratio with interpretation, examples and educational explanation." />
+
+  <style>
+    body {
+      background-image: url('bg.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      max-width: 75%;
+      margin: 20px auto;
+      padding: 40px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    nav {
+      background: #fff;
+      max-width: 75%;
+      margin: 20px auto;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #1a73e8;
+      font-weight: bold;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      width: 80%;
+      margin: 30px auto 0;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    .section {
+      max-width: 75%;
+      margin: 30px auto;
+      padding: 40px 60px;
+      color: white;
+      text-align: justify;
+    }
+
+    .white-section {
+      background: white;
+      color: black;
+      border-radius: 10px;
+      padding: 40px;
+    }
+
+    .calculator {
+      background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      border-radius: 10px;
+      max-width: 50%;
+      margin: auto;
+      padding: 35px 45px;
+      text-align: left;
+    }
+
+    input, select {
+      margin: 10px 0;
+      padding: 10px 12px;
+      width: 100%;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background: #1a73e8;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .result {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #fafafa;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <img src="pathcal.png" alt="PathCal Logo" style="height:60px;">
+  <h1>PathCal</h1>
+  <h2>Protein Creatinine Ratio (PCR)</h2>
+</header>
+
+<nav>
+  <a href="./index.html">Home</a>
+  <a href="./acr.html">ACR</a>
+  <a href="./pcr.html">PCR</a>
+  <a href="./inr.html">INR</a>
+  <a href="./esr.html">ESR</a>
+  <a href="./privacy_policy.html">Privacy</a>
+  <a href="./contact.html">Contact</a>
+</nav>
+
+<section class="hero">
+  <h1>PCR Calculator</h1>
+  <p>
+    Calculate and interpret Urine Protein to Creatinine Ratio (PCR) to assess
+    the degree of proteinuria and kidney disease severity.
+  </p>
+</section>
+
+<section class="section">
+  <div class="calculator">
+	
+	<label for="protein">Urine Protein:<br></label>
+	<input type="number" id="protein" placeholder="Enter protein value" required>
+	
+	<label for="proteinUnit"><br>Protein Unit:<br></label>
+	<select id="proteinUnit">
+		<option value="g/L" selected>g/L</option>
+		<option value="mg/L">mg/L</option>
+	</select>
+	
+	<label for="creatininePCR"><br>Urine Creatinine:</label>
+	<input type="number" id="creatininePCR" placeholder="Enter creatinine value" required>
+	
+	<label for="unitPCR">Creatinine Unit:</label>
+	<select id="unitPCR">
+		<option value="mmol/L" selected>mmol/L</option>
+		<option value="mg/dL">mg/dL</option>
+	</select>
+	
+	<button onclick="calculatePCR()">Calculate PCR</button>
+	<div class="result" id="pcrResult" style="display: none;"></div>
+	<div class="calculation" id="pcrCalculationDetails" style="display: none;"></div>
+
+  </div>
+</section>
+
+<section class="section white-section">
+  <h3>About Urine Protein to Creatinine Ratio (PCR)</h3>
+  <p>The Urine Protein to Creatinine Ratio (PCR) is a test used to estimate the amount of protein excreted in the urine, which helps assess kidney function and detect kidney damage.</p>
+
+  <h4>Normal and Abnormal Values</h4>
+  <p>Normal PCR values are typically less than 0.2 mg/mg (or less than 200 mg/g). Values above this range suggest abnormal protein loss in the urine (proteinuria).</p>
+  <p>Higher PCR values can indicate kidney disease, infection, or other medical conditions affecting the kidneys.</p>
+  <h4>Interpreting PCR Results</h4>
+  <p>
+	- <strong>Normal PCR:</strong> Less than 0.2 mg/mg – suggests normal kidney function.<br>
+	- <strong>Mild proteinuria:</strong> 0.2 to 0.5 mg/mg – may indicate early kidney damage.<br>
+	- <strong>Significant proteinuria:</strong> Above 0.5 mg/mg – often indicates kidney disease requiring further evaluation.
+  </p>
+  <h4>Example Calculation</h4>
+  <p>If your urine protein is 150 mg/dL and urine creatinine is 100 mg/dL, your PCR is calculated as 1.5 (150/100), which indicates significant proteinuria.</p>
+
+  <h4>Limitations and Notes</h4>
+  <p>
+	- PCR is a convenient alternative to 24-hour urine protein collection but may be influenced by factors like hydration status.<br>
+	- Results should be interpreted alongside clinical findings and other tests.<br>
+	- Consult your healthcare provider for accurate diagnosis and treatment.
+  </p>
+
+  <p><em>Disclaimer: This calculator is for educational purposes only and does not replace professional medical advice.</em></p>
+</section>
+
+<footer>
+  PathCal © 2025 — For Educational Use Only
+</footer>
+
+<script>
+function calculatePCR() {
+	let protein = parseFloat(document.getElementById("protein").value);
+	let proteinUnit = document.getElementById("proteinUnit").value;
+	let creatinine = parseFloat(document.getElementById("creatininePCR").value);
+	let unit = document.getElementById("unitPCR").value;
+	
+	if (isNaN(protein) || isNaN(creatinine) || creatinine <= 0) {
+		document.getElementById("pcrResult").innerHTML = "Please enter valid values.";
+		document.getElementById("pcrResult").style.display = "block";
+		document.getElementById("pcrCalculationDetails").innerHTML = "";
+		document.getElementById("pcrCalculationDetails").style.display = "none";
+		return;
+	}
+	
+	let originalProtein = protein;
+	let originalCreatinine = creatinine;
+	
+	if (proteinUnit === "g/L") { 
+		protein = (protein * 1000).toFixed(3); // Convert g/L to mg/L
+	} else {
+		protein = protein.toFixed(3);
+	}
+	
+	if (unit === "mg/dL") { 
+		creatinine = (creatinine * 10).toFixed(3); // Convert mg/dL to mg/L
+	} else if (unit === "mmol/L") { 
+		creatinine = (creatinine * 113.12).toFixed(3); // Convert mmol/L to mg/L
+	} else {
+		creatinine = creatinine.toFixed(3);
+	}
+	
+	let pcr = (protein / creatinine).toFixed(2);
+	if (pcr < 0.20) {
+		classification = "Normal";
+		color = "green";
+	} else if (pcr >= 0.2 && pcr <= 1.0) {
+		classification = "Low Proteinuria";
+		color = "#f2db07";
+	} else if (pcr >= 1.0 && pcr <= 5.0) {
+		classification = "Moderate Proteinuria";
+		color = "orange";
+	} else {
+		classification = "Nephrosis";
+		color = "red";
+	}
+	
+	document.getElementById("pcrResult").innerHTML = `<strong style="color: ${color};">PCR:</strong> ${pcr} <br> <strong style="color: ${color};">${classification}</strong>`;
+	document.getElementById("pcrResult").style.display = "block";
+	
+	let calculationDetails = `Protein: ${originalProtein} ${proteinUnit} -> ${protein} mg/L<br>
+							  Creatinine: ${originalCreatinine} ${unit} -> ${creatinine} mg/L<br>
+							  PCR = Protein (mg/L) / Creatinine (mg/L) <br>
+							  PCR = ${protein} / ${creatinine} <br>
+							  PCR = ${pcr}`;
+	
+	document.getElementById("pcrCalculationDetails").innerHTML = `<strong>Calculation:</strong><br>${calculationDetails}`;
+	document.getElementById("pcrCalculationDetails").style.display = "block";
+}
+</script>
+
+</body>
+</html>
