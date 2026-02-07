@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1137049263274228"
+     crossorigin="anonymous"></script>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Diagnostic Calculators for ACR, PCR, INR, ESR with detailed lab test explanations and educational medical guides." />
+	<meta name="keywords" content="ACR calculator, PCR calculator, INR calculator, ESR calculator, lab calculators, medical calculators, kidney test interpretation, blood test explanation
+		urine test, urine analysis, urine strips, kidney health, pathology" />
+  <title>Zeta Dx - Calculators & more</title>
+  <style>
+	:root {
+	  --brand-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+	  --brand-shadow: 0 2px 8px rgba(0,0,0,0.12);
+	}
+
+	body {
+	  background-image: url('bg.png');
+	  background-size: cover;
+	  background-repeat: no-repeat;
+	  background-position: center;
+	  background-attachment: fixed;
+	  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+	  margin: 0;
+	  padding: 0;
+	}
+
+	/* ================= HEADER ================= */
+
+	.top-header {
+	  position: sticky;
+	  top: 0;
+	  z-index: 1000;
+
+	  background: white;
+	  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+	}
+
+	/* Top row layout */
+	.header-main {
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: center;
+	  padding: 14px 10px;
+	}
+
+	/* Navigation row */
+	.header-nav {
+	  max-width: 100%;
+	  margin: 10px auto;
+	  padding: 14px 30px;
+	  background: var(--brand-gradient);
+	  display: flex;
+	  justify-content: space-around;
+	  align-items: center;
+
+	  box-shadow: var(--brand-shadow);
+	  border-radius: 1px;
+	}
+
+	.header-nav a {
+	  text-decoration: none;
+	  color: #fff;
+	  font-size: 16px;
+	}
+	
+	.header-left {
+	  display: flex;
+	  align-items: center;
+	  gap: 15px;
+	}
+
+	.header-left img {
+	  height: 80px;
+	}
+
+	.title-block h1 {
+	  margin: 0;
+	  font-size: 2rem;
+	}
+
+	.header-right {
+	  text-align: right;
+	}
+
+	.header-right h2 {
+	  margin: 0;
+	  font-size: 1.5rem;
+	  font-weight: 600;
+	}
+
+	.header-right p {
+	  margin: 4px 0 0;
+	  font-size: 0.85rem;
+	  color: #666;
+	}
+	.dropdown {
+	  position: relative;
+	}
+
+	/* Button */
+	.dropbtn {
+	  background: none;
+	  border: none;
+	  cursor: pointer;
+	  font-size: 16px;
+	  color:white;
+	}
+
+	/* Dropdown menu */
+	.dropdown-content {
+	  display: none;
+	  position: absolute;
+	  font: system-ui;
+	  top: 100%;
+	  left: 0;
+	  background: var(--brand-gradient);
+	  min-width: 140px;
+	  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+	  z-index: 9999;
+	}
+
+	.dropdown-content a {
+	  display: block;
+	  padding: 10px 14px;
+	  white-space: nowrap;
+	}
+
+	/* Show on hover */
+	.dropdown:hover .dropdown-content {
+	  display: block;
+	}
+
+	/* ================= NAV ================= */
+
+	nav {
+	  background: #fff;
+	  max-width: 65%;
+	  margin: 10px auto;
+	  padding: 14px 30px;
+
+	  display: flex;
+	  justify-content: space-around;
+	  align-items: center;
+
+	  box-shadow: var(--brand-shadow);
+	  border-radius: 12px;
+	}
+
+	nav a {
+	  text-decoration: none;
+	  color: #000;
+	  font-weight: 600;
+	}
+
+	/* ================= HERO ================= */
+
+	.hero {
+	  background: var(--brand-gradient);
+	  width: 80%;
+	  margin: 20px auto;
+	  padding: 30px 25px;
+	  text-align: center;
+	  color: white;
+	  border-radius: 14px;
+	  box-shadow: var(--brand-shadow);
+	}
+
+	.hero h1 {
+	  font-size: 2rem;
+	  margin-bottom: 10px;
+	}
+
+	/* ================= SECTIONS ================= */
+
+	.section {
+	  padding: 40px 20px;
+	  text-align: center;
+	}
+
+	.section-title {
+	  background: var(--brand-gradient);
+	  color: white;
+	  padding: 16px 30px;
+	  border-radius: 12px;
+	  width: fit-content;
+	  margin: 0 auto 30px;
+	  box-shadow: var(--brand-shadow);
+	}
+
+	/* ================= CARDS ================= */
+
+	.cards {
+	  width: 60%;
+	  margin: 0 auto;
+	  display: grid;
+	  grid-template-columns: repeat(2, minmax(250px, 1fr));
+	  gap: 20px;
+	}
+
+	.card {
+	  background: var(--brand-gradient);
+	  border-radius: 14px;
+	  padding: 24px;
+	  color: white;
+	  box-shadow: var(--brand-shadow);
+	  transition: transform 0.2s ease, box-shadow 0.2s ease;
+	}
+
+	.card:hover {
+	  transform: translateY(-4px);
+	  box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+	}
+
+	.card h3 {
+	  margin-top: 0;
+	  font-size: 1.15rem;
+	}
+
+	.card p {
+	  font-size: 0.95rem;
+	  line-height: 1.5;
+	}
+
+	/* ================= FOOTER ================= */
+
+	footer {
+	  max-width: 100%;
+	  margin: 40px auto 0;
+	  padding: 20px;
+	  background: white;
+	  border-radius: 8px;
+	  box-shadow: var(--brand-shadow);
+	  text-align: center;
+	}
+
+	footer ul {
+	  list-style: none;
+	  padding: 0;
+	  display: flex;
+	  justify-content: center;
+	  gap: 40px;
+	  margin: 0;
+	}
+
+	footer ul li a {
+	  color: #1a73e8;
+	  font-weight: 500;
+	  text-decoration: none;
+	}
+
+	footer ul li a:hover {
+	  text-decoration: underline;
+	}
+
+	footer p {
+	  margin-top: 12px;
+	  font-size: 0.85rem;
+	  color: #555;
+	}
+
+	/* ================= MOBILE ================= */
+
+	@media (max-width: 700px) {
+	  nav {
+		max-width: 90%;
+		flex-direction: column;
+		gap: 10px;
+	  }
+
+	  .cards {
+		width: 90%;
+		grid-template-columns: 1fr;
+	  }
+
+	  .header-right {
+		display: none;
+	  }
+	}
+</style>
+
+</head>
+<body>
+<header class="top-header">
+  
+  <!-- Top row -->
+  <div class="header-main">
+    <div class="header-left">
+      <img src="zeta_dx.webp" alt="Zeta Dx Logo">
+      <div class="title-block">
+        <h1>Zeta Dx</h1>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <h2>Calculate. Interpret. Understand.</h2>
+      <p>For educational purposes only</p>
+    </div>
+  </div>
+
+  <!-- Navigation row -->
+  <nav class="header-nav">
+  <a href="./index.html">Home</a>
+  <a href="./contact.html">About Us</a>
+  <a href="./privacy_policy.html">Privacy Policy</a>
+  <a href="./disclaimer.html">Terms & Conditions</a>
+
+  <div class="dropdown">
+    <button class="dropbtn">Tools ▾</button>
+    <div class="dropdown-content">
+      <a href="./acr.html">ACR</a>
+      <a href="./pcr.html">PCR</a>
+      <a href="./inr.html">INR</a>
+      <a href="./esr.html">ESR</a>
+    </div>
+  </div>
+</nav>
+
+
+</header>
+
+
+
+
+  <!--<header style="max-width: 80%; margin: 10px auto; padding: 10px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; overflow: hidden;">
+	<img src="zeta_dx.webp" alt="Logo" style="height: 150px; margin-bottom: 5px;">
+    <h1>Zeta Dx</h1>
+	<h2>Calculators & Lab Understanding Hub</h2>
+	<p>
+      Calculators and detailed explanations to help you make understand of ACR, PCR, INR, ESR and more.
+      <br><br>For Educational purposes only
+    </p>
+  </header>-->
+
+  
+<main>
+
+  <section class="section">
+	<!-- <h2>Understand Your Lab Results With Simple Tools</h2> -->
+    <h2 style="background: linear-gradient(270deg, #0f2027, #203a43, #2c5364); border-radius: 10px;  padding: 20px; color: white; 
+		box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 57%; margin: 20px auto;">Our Tools</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Albumin-Creatinine Ratio</h3>
+        <p>Albumin-Creatinine Ratio calculator with interpretation and normal ranges.</p>
+        <a href="./acr.html" style="color: white;">Calculate ACR →</a>
+      </div>
+      <div class="card">
+        <h3>Protein-Creatinine Ratio</h3>
+        <p>Protein-Creatinine Ratio calculator and complete result explanation.</p>
+        <a href="./pcr.html" style="color: white;">Calculate PCR →</a>
+      </div>
+      <div class="card">
+        <h3>International Normalized Ratio</h3>
+        <p>Calculate International Normalized Ratio from PT results, calculation tool and interpretation guide.</p>
+        <a href="./inr.html" style="color: white">Calculate INR →</a>
+      </div>
+      <div class="card">
+        <h3>ESR Compensation</h3>
+        <p>Compensate ESR values at 18&deg C according to Manely's Nomogram </p>
+        <a href="./esr.html" style="color: white">Compensate ESR →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: white; color:black; align-items: center; width: 55%;  margin: 10px auto; border-radius: 10px; font-size: 20px";>
+    <h2>Studies & Articles</h2>
+    <p>Explore detailed guides on lab tests, interpretation tips, and common questions</p>
+    <ul style="list-style: none;">
+      <li style="margin-bottom: 12px;"><a href="https://www.kidney.org/kidney-topics/know-your-kidney-numbers-two-simple-tests">Understanding Kidney Function – Why it matters ?</a></li>
+      <li style="margin-bottom: 12px;"><a href="https://cdn.who.int/media/docs/default-source/biologicals/blood-products/document-migration/trs_979_annex_6.pdf?sfvrsn=5c960b91_3">Importance of INR & WHO Guidelines</a></li>
+      <li style="margin-bottom: 12px;"><a href="https://www.icsh.org/review-of-the-measurement-of-the-erythocyte-sedimentation-rate">ICSH Recommendations & Review on ESR</a></li>
+    </ul>
+  </section>
+</main>
+
+ <footer>
+  <ul>
+	<li><a href="./privacy_policy.html">Privacy Policy</a></li>
+	<li><a href="./disclaimer.html">Terms & Conditions</a></li>
+	<li><a href="./contact.html">About Us</a></li>
+  </ul>
+<p><br>Zeta Dx &copy; 2025, Developed by: M. K.</p>
+</footer>
+<style>
+	  footer {
+		max-width: 100%;
+		height: auto;
+		margin: 40px auto 0;
+		padding: 20px;
+		background: white;
+		border-radius: 8px;
+		box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+		overflow: hidden;
+	  }
+
+	  footer ul {
+		list-style: none;
+		padding: 0;
+		display: flex;
+		gap: 40px;
+		justify-content: center;
+		margin: 0;
+	  }
+
+	  footer ul li a {
+		color: blue;
+		text-decoration: none;
+		font-size: 16px;
+		font-style: bold;
+	  }
+
+	  footer ul li a:hover {
+		text-decoration: underline;
+	  }
+	footer p {
+		margin: 0;
+		text-align: center;
+		line-height: 1.4;
+	}
+</style>
+
+<script>
+function toggleMenu() {
+  document.querySelector('nav').classList.toggle('open');
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
