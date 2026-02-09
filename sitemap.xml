@@ -1,34 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset 
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xsi:schemaLocation="
-    http://www.sitemaps.org/schemas/sitemap/0.9 
-    http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://monishk0807.github.io/</loc>
+    <loc>https://zeta-dx.github.io/</loc>
   </url>
+
   <url>
-    <loc>https://monishk0807.github.io/acr.html</loc>
+    <loc>https://zeta-dx.github.io/index.html</loc>
   </url>
+
   <url>
-    <loc>https://monishk0807.github.io/pcr.html</loc>
+    <loc>https://zeta-dx.github.io/acr.html</loc>
   </url>
+
   <url>
-    <loc>https://monishk0807.github.io/inr.html</loc>
+    <loc>https://zeta-dx.github.io/pcr.html</loc>
   </url>
+
   <url>
-    <loc>https://monishk0807.github.io/esr.html</loc>
+    <loc>https://zeta-dx.github.io/inr.html</loc>
   </url>
+
   <url>
-    <loc>https://monishk0807.github.io/privacy_policy.html</loc>
+    <loc>https://zeta-dx.github.io/esr.html</loc>
   </url>
+
   <url>
-    <loc>https://monishk0807.github.io/disclaimer.html</loc>
+    <loc>https://zeta-dx.github.io/privacy_policy.html</loc>
   </url>
+
   <url>
-    <loc>https://monishk0807.github.io/contact.html</loc>
+    <loc>https://zeta-dx.github.io/disclaimer.html</loc>
+  </url>
+
+  <url>
+    <loc>https://zeta-dx.github.io/contact.html</loc>
   </url>
 
 </urlset>

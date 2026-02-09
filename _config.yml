@@ -1,9 +1,0 @@
-include:
-  - sitemap.xml
-
-# Force proper MIME types
-defaults:
-  - scope:
-      path: "sitemap.xml"
-    values:
-      layout: none

@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://monishk0807.github.io/sitemap-xml.xml
-
+Sitemap: https://zeta-dx.github.io/sitemap.xml
 
