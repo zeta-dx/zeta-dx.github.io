@@ -300,46 +300,94 @@
 
 </header>
 
-
 <section class="hero">
-  <h2>ESR Calculator</h2>
+  <h2>ESR Correction Calculator</h2>
   <p>
-    Calculate and correct Erythrocyte Sedimentation Rate (ESR)
-    to standard 18 °C using Manley’s nomogram principle.
+    Instantly calculate temperature-corrected ESR (18°C standard) 
+    and hematocrit-adjusted ESR using Manley’s nomogram 
+    and Fabry’s correction formula.
   </p>
 </section>
 
 <section class="section">
   <div class="calculator">
 
-     <h2>ESR Correction at 18°C</h2>
-      
-	  <label for="esrValue">Observed ESR (mm/hr):</label>
-	  <input type="number" id="esrValue" placeholder="Enter ESR value" required>
+    <!-- ============================= -->
+    <!-- 1️⃣ Temperature Correction -->
+    <!-- ============================= -->
 
-	  <label for="tempValue">Measurement Temperature (°C):</label>
-	  <input type="number" id="tempValue" placeholder="Enter temperature" required>
+    <h2>ESR Correction at 18°C</h2>
 
-	  <button onclick="calculateESR()">Correct ESR at 18°C</button>
+    <label for="esrValue">Observed ESR (mm/hr):</label>
+    <input type="number" id="esrValue" placeholder="Enter ESR value" required>
 
-	  <div class="result" id="esrResult" style="display: none;"></div>
-	  <div class="calculation" id="esrCalculationDetails" style="display: none;"></div>
-	  
-	  <div class="esr-reference">
-		  <h4>Reference: Manley's Nomogram</h4>
+    <label for="tempValue">Measurement Temperature (°C):</label>
+    <input type="number" id="tempValue" placeholder="Enter temperature" required>
+
+    <button onclick="calculateESR()">Correct ESR at 18°C</button>
+
+    <div class="result" id="esrResult" style="display:none;"></div>
+    <div class="calculation" id="esrCalculationDetails" style="display:none;"></div>
+
+    <div class="esr-reference">
+      <h4>Reference: Manley's Nomogram</h4>
+    </div>
+
+    <!-- ======= Divider Line ======= -->
+    <hr style="margin: 30px 0; border: 1px solid #ddd;">
+
+    <!-- ============================= -->
+    <!-- 2️⃣ HCT Correction Section -->
+    <!-- ============================= -->
+
+    <h3>ESR Correction for Low HCT</h3>
+
+    <label for="esrHCTValue">Observed ESR (mm/hr):</label>
+    <input type="number" id="esrHCTValue" placeholder="Enter ESR value">
+
+    <label for="hctValue">HCT % (Only below 40%):</label>
+    <input type="number" id="hctValue" placeholder="Enter HCT (%)">
+
+    <button onclick="calculateHCTCorrection()">Correct ESR for HCT</button>
+
+    <div id="hctResult" style="display:none; margin-top:10px;"></div>
+
+    <div class="esr-reference">
+      <h4>Reference: Fabry's Formula</h4>
+    </div>
+
   </div>
 </section>
 
 <section class="section white-section">
-	<h3>About Erythrocyte Sedimentation Rate (ESR)</h3>
+	<h3>Erythrocyte Sedimentation Rate (ESR)</h3>
 	<p>The Erythrocyte Sedimentation Rate (ESR) is a blood test that measures how quickly red blood cells (erythrocytes) settle at the bottom of a test tube in one hour. It is a nonspecific marker of inflammation and can help detect conditions such as infections, autoimmune diseases, and cancers.</p>
-	  
+		
 	<h4>The Westergren Method</h4>
 	<p>The most commonly used technique to measure ESR is the <strong>Westergren method</strong>. In this method, anticoagulated blood is placed in a vertical tube (Westergren tube) and the rate at which red blood cells fall is measured in millimeters per hour (mm/hr). The longer the red cells take to settle, the lower the ESR, and vice versa.</p>
 
 	<h4>18-Degree Nomogram Compensation</h4>
 	<p>The Westergren method results are temperature-sensitive. The <em>18-degree Celsius compensation nomogram</em> is often used to adjust ESR values measured at temperatures other than 18°C to standardize results. This ensures accurate interpretation regardless of lab environment temperature.</p>
+	
+	<h4>Example Calculation</h4>
+	<p>If an ESR is measured at 25 mm/hr at 25°C, the 18-degree compensation nomogram can be used to adjust this value to standard conditions. (You may use the nomogram or formulas provided by your lab for exact compensation.)</p>
+	
+	<hr style="margin: 30px 0; border: 1px solid #ddd;">
+	<h4>ESR Correction for Low HCT – Fabry’s Formula</h4>
+	<p>The erythrocyte sedimentation rate (ESR) is influenced by hematocrit levels. In cases of low hematocrit (anemia), ESR values may appear falsely elevated due to reduced red cell mass. <em>Fabry’s formula</em> is commonly used to adjust ESR values when the HCT is below normal, helping standardize interpretation and improve clinical accuracy.</p>
 
+	<h4>Example Calculation</h4>
+	<p>If an ESR is measured at 40 mm/hr in a patient with an HCT of 30%, Fabry’s formula can be applied as follows:</p>
+
+	<p><strong>Corrected ESR = Observed ESR × (15 / (55 − HCT))</strong></p>
+
+	<p>Corrected ESR = 40 × (15 / (55 − 30))<br>
+	= 40 × (15 / 25)<br>
+	= 40 × 0.6<br>
+	= 24 mm/hr</p>
+
+	<p>This correction helps provide a more accurate ESR value by accounting for the effect of reduced hematocrit.</p>
+	<hr style="margin: 30px 0; border: 1px solid #ddd;">
 	<h4>Normal and Abnormal Values</h4>
 	<p>ESR normal values vary by age and sex:</p>
 	<ul>
@@ -356,9 +404,6 @@
 	- <strong>High ESR:</strong> Suggests inflammation but is nonspecific. Further tests may be needed to find the cause.<br>
 	- ESR is a useful marker to monitor disease progression or response to treatment.
 	</p>
-
-	<h4>Example Calculation</h4>
-	<p>If an ESR is measured at 25 mm/hr at 25°C, the 18-degree compensation nomogram can be used to adjust this value to standard conditions. (You may use the nomogram or formulas provided by your lab for exact compensation.)</p>
 
 	<h4>Limitations and Notes</h4>
 	<p>
@@ -407,10 +452,29 @@ function calculateESR() {
 	document.getElementById("esrCalculationDetails").style.display = "block";*/
 }
 </script>
+<script>
+function calculateHCTCorrection() {
+	let esrHCT = parseFloat(document.getElementById("esrHCTValue").value);
+	let hct = parseFloat(document.getElementById("hctValue").value);
+
+	if (isNaN(esrHCT) || isNaN(hct) || hct <= 0 || hct >= 55) {
+		document.getElementById("hctResult").innerHTML =
+			"Please enter valid ESR and HCT values (HCT must be 1–54%).";
+		document.getElementById("hctResult").style.display = "block";
+		return;
+	}
+
+	// Fabry Formula: ESR × (15 / (55 - HCT))
+	let correctedESR = esrHCT * (15 / (55 - hct));
+	correctedESR = Math.round(correctedESR);
+
+	document.getElementById("hctResult").innerHTML =
+		`<strong>HCT Corrected ESR:</strong> ${correctedESR} mm/hr`;
+
+	document.getElementById("hctResult").style.display = "block";
+}
+</script>
 
 </body>
 </html>
-
-
-
 
