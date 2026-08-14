@@ -1,0 +1,2608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+    content="Zeta Dx Laboratory Unit Converters. Convert common laboratory values between different units for educational and informational purposes.">
+
+  <meta name="keywords"
+    content="laboratory unit converter, medical unit converter, creatinine converter, glucose converter, urea converter, BUN converter, bilirubin converter, cholesterol converter, laboratory calculations">
+
+  <link rel="canonical"
+    href="https://zeta-dx.github.io/convertors.html">
+
+  <title>Zeta Dx - Laboratory Unit Converters</title>
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+
+  <!-- Google AdSense -->
+
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1137049263274228"
+    crossorigin="anonymous">
+  </script>
+
+
+  <!-- Open Graph -->
+
+  <meta property="og:title"
+    content="Zeta Dx – Laboratory Unit Converters">
+
+  <meta property="og:description"
+    content="Convert laboratory values between commonly used units.">
+
+  <meta property="og:type"
+    content="website">
+
+  <meta property="og:url"
+    content="https://zeta-dx.github.io/convertors.html">
+
+  <meta property="og:image"
+    content="https://zeta-dx.github.io/zeta_dx.webp">
+
+
+  <style>
+
+    :root {
+
+      --brand-gradient:
+        linear-gradient(
+          135deg,
+          #0f2027,
+          #203a43,
+          #2c5364
+        );
+
+      --brand-shadow:
+        0 2px 8px rgba(0,0,0,0.12);
+
+    }
+
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    body {
+
+      background-image: url('bg.png');
+
+      background-size: cover;
+
+      background-repeat: no-repeat;
+
+      background-position: center;
+
+      background-attachment: fixed;
+
+      font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+      margin: 0;
+
+      padding: 0;
+
+    }
+
+
+    /* ==================================================
+       HEADER
+       ================================================== */
+    .parameter-info {
+
+        background: white;
+
+        margin-top: 25px;
+
+        padding: 30px;
+
+        border-radius: 14px;
+
+        box-shadow: var(--brand-shadow);
+
+        }
+
+
+        .parameter-info h3 {
+
+        margin-top: 0;
+
+        margin-bottom: 15px;
+
+        font-size: 1.5rem;
+
+        color: #203a43;
+
+        }
+
+
+        .parameter-info > p {
+
+        line-height: 1.6;
+        text-align: justify;
+        color: #444;
+
+        }
+
+
+        .info-grid {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 15px;
+
+        margin-top: 20px;
+
+        }
+
+
+        .info-item {
+
+        background: #f5f7f8;
+
+        padding: 18px;
+
+        border-radius: 10px;
+
+        }
+
+
+        .info-item h4 {
+
+        margin-top: 0;
+
+        margin-bottom: 8px;
+
+        color: #203a43;
+
+        }
+
+
+        .info-item p {
+
+        margin: 0;
+
+        color: #555;
+        text-align: justify;
+        line-height: 1.5;
+
+        }
+
+
+        .info-note {
+
+        margin-top: 20px;
+
+        padding: 15px;
+
+        background: #f8f8f8;
+
+        border-left: 4px solid #2c5364;
+
+        color: #555;
+        text-align: justify;
+        line-height: 1.5;
+
+        }
+
+
+        @media (max-width: 700px) {
+
+        .info-grid {
+
+            grid-template-columns: 1fr;
+
+        }
+
+        }
+
+    .top-header {
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 1000;
+
+      background: white;
+
+      box-shadow:
+        0 2px 10px rgba(0,0,0,0.1);
+
+    }
+
+
+    .header-main {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      padding: 14px 10px;
+
+    }
+
+
+    .header-left {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 15px;
+
+    }
+
+
+    .header-left img {
+
+      height: 80px;
+
+    }
+
+
+    .title-block h1 {
+
+      margin: 0;
+
+      font-size: 2rem;
+
+    }
+
+
+    .header-right {
+
+      text-align: right;
+
+    }
+
+
+    .header-right h2 {
+
+      margin: 0;
+
+      font-size: 1.5rem;
+
+      font-weight: 600;
+
+    }
+
+
+    .header-right p {
+
+      margin: 4px 0 0;
+
+      font-size: 0.85rem;
+
+      color: #666;
+
+    }
+
+
+    /* ==================================================
+       NAVIGATION
+       ================================================== */
+
+
+    .header-nav {
+
+      max-width: 100%;
+
+      margin: 10px auto;
+
+      padding: 14px 30px;
+
+      background: var(--brand-gradient);
+
+      display: flex;
+
+      justify-content: space-around;
+
+      align-items: center;
+
+      box-shadow: var(--brand-shadow);
+
+    }
+
+
+    .header-nav > a {
+
+      text-decoration: none;
+
+      color: white;
+
+      font-size: 16px;
+
+    }
+
+
+    .dropdown {
+
+      position: relative;
+
+    }
+
+
+    .dropbtn {
+
+      background: none;
+
+      border: none;
+
+      cursor: pointer;
+
+      font-size: 16px;
+
+      color: white;
+
+    }
+
+
+    .dropdown-content {
+
+      display: none;
+
+      position: absolute;
+
+      top: 100%;
+
+      left: 0;
+
+      background: var(--brand-gradient);
+
+      min-width: 180px;
+
+      box-shadow:
+        0 6px 12px rgba(0,0,0,0.2);
+
+      z-index: 9999;
+
+    }
+
+
+    .dropdown-content a {
+
+      display: block;
+
+      padding: 10px 14px;
+
+      color: white;
+
+      text-decoration: none;
+
+      white-space: nowrap;
+
+    }
+
+
+    .dropdown-content a:hover {
+
+      background:
+        rgba(255,255,255,0.12);
+
+    }
+
+
+    .dropdown:hover .dropdown-content {
+
+      display: block;
+
+    }
+
+
+    /* ==================================================
+       MAIN CONTAINER
+       ================================================== */
+
+
+    .page-container {
+
+      width: 85%;
+
+      max-width: 1100px;
+
+      margin: 30px auto;
+
+    }
+
+
+    /* ==================================================
+       PAGE TITLE
+       ================================================== */
+
+
+    .page-title {
+
+      background: var(--brand-gradient);
+
+      color: white;
+
+      padding: 25px;
+
+      border-radius: 14px;
+
+      text-align: center;
+
+      box-shadow: var(--brand-shadow);
+
+    }
+
+
+    .page-title h2 {
+
+      margin: 0 0 8px;
+
+      font-size: 2rem;
+
+    }
+
+
+    .page-title p {
+
+      margin: 0;
+
+      font-size: 1rem;
+
+    }
+
+
+    /* ==================================================
+       CONVERTER BOX
+       ================================================== */
+
+
+    .converter-box {
+
+      background: white;
+
+      margin-top: 25px;
+
+      padding: 30px;
+
+      border-radius: 14px;
+
+      box-shadow: var(--brand-shadow);
+
+    }
+
+
+    .converter-box h3 {
+
+      text-align: center;
+
+      margin-top: 0;
+
+      margin-bottom: 25px;
+
+    }
+
+
+    /* ==================================================
+       FORM
+       ================================================== */
+
+
+    .form-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 20px;
+
+    }
+
+
+    .form-group {
+
+      display: flex;
+
+      flex-direction: column;
+
+    }
+
+
+    .form-group label {
+
+      font-weight: 600;
+
+      margin-bottom: 7px;
+
+    }
+
+
+    .form-group input,
+    .form-group select {
+
+      width: 100%;
+
+      padding: 12px;
+
+      border: 1px solid #ccc;
+
+      border-radius: 8px;
+
+      font-size: 16px;
+
+      background: white;
+
+    }
+
+
+    .form-group input:focus,
+    .form-group select:focus {
+
+      outline: none;
+
+      border-color: #2c5364;
+
+      box-shadow:
+        0 0 0 2px
+        rgba(44,83,100,0.15);
+
+    }
+
+
+    /* ==================================================
+       SWAP
+       ================================================== */
+
+
+    .swap-container {
+
+      display: flex;
+
+      justify-content: center;
+
+      margin: 15px 0;
+
+    }
+
+
+    .swap-button {
+
+      width: 44px;
+
+      height: 44px;
+
+      border: none;
+
+      border-radius: 50%;
+
+      background: var(--brand-gradient);
+
+      color: white;
+
+      font-size: 21px;
+
+      cursor: pointer;
+
+      transition:
+        transform 0.25s ease;
+
+    }
+
+
+    .swap-button:hover {
+
+      transform: rotate(180deg);
+
+    }
+
+
+    /* ==================================================
+       BUTTONS
+       ================================================== */
+
+
+    .button-row {
+
+      display: flex;
+
+      gap: 12px;
+
+      margin-top: 20px;
+
+    }
+
+
+    .convert-button,
+    .clear-button {
+
+      flex: 1;
+
+      padding: 14px;
+
+      border: none;
+
+      border-radius: 8px;
+
+      font-size: 17px;
+
+      font-weight: 600;
+
+      cursor: pointer;
+
+    }
+
+
+    .convert-button {
+
+      background: var(--brand-gradient);
+
+      color: white;
+
+    }
+
+
+    .clear-button {
+
+      background: #e9ecef;
+
+      color: #333;
+
+    }
+
+
+    .convert-button:hover,
+    .clear-button:hover {
+
+      opacity: 0.9;
+
+    }
+
+
+    /* ==================================================
+       RESULT
+       ================================================== */
+
+
+    .result {
+
+      margin-top: 25px;
+
+      padding: 25px;
+
+      background: #f5f7f8;
+
+      border-radius: 10px;
+
+      text-align: center;
+
+      font-size: 1.35rem;
+
+      font-weight: 600;
+
+      min-height: 35px;
+
+      word-break: break-word;
+
+    }
+
+
+    .result-sub {
+
+      margin-top: 8px;
+
+      font-size: 0.85rem;
+
+      color: #666;
+
+      font-weight: normal;
+
+    }
+
+
+    /* ==================================================
+       EDUCATIONAL NOTE
+       ================================================== */
+
+
+    .conversion-note {
+
+      margin-top: 20px;
+
+      padding: 15px;
+
+      background: #f8f8f8;
+
+      border-left: 4px solid #2c5364;
+
+      font-size: 0.9rem;
+      text-align: justify;
+      color: #555;
+
+      line-height: 1.5;
+
+    }
+
+
+    /* ==================================================
+       AVAILABLE CONVERTERS
+       ================================================== */
+
+
+    .available-section {
+
+      background: white;
+
+      margin-top: 25px;
+
+      padding: 30px;
+
+      border-radius: 14px;
+
+      box-shadow: var(--brand-shadow);
+
+    }
+
+
+    .available-section > h3 {
+
+      text-align: center;
+
+      margin-top: 0;
+
+      margin-bottom: 30px;
+
+    }
+
+
+    .category-title {
+
+      background: var(--brand-gradient);
+
+      color: white;
+
+      padding: 10px 15px;
+
+      border-radius: 8px;
+
+      margin-top: 25px;
+
+      margin-bottom: 15px;
+
+      font-size: 1rem;
+
+    }
+
+
+    .category-title:first-of-type {
+
+      margin-top: 0;
+
+    }
+
+
+    .converter-list {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 15px;
+
+    }
+
+
+    .converter-item {
+
+      background: var(--brand-gradient);
+
+      color: white;
+
+      padding: 18px;
+
+      border-radius: 10px;
+
+      cursor: pointer;
+
+      text-align: center;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+    }
+
+
+    .converter-item:hover {
+
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 5px 15px
+        rgba(0,0,0,0.2);
+
+    }
+
+
+    .converter-item h4 {
+
+      margin: 0 0 7px;
+
+      font-size: 1rem;
+
+    }
+
+
+    .converter-item p {
+
+      margin: 0;
+
+      font-size: 0.82rem;
+
+      opacity: 0.9;
+
+    }
+
+
+    /* ==================================================
+       FOOTER
+       ================================================== */
+
+
+    footer {
+
+      max-width: 100%;
+
+      margin: 40px auto 0;
+
+      padding: 20px;
+
+      background: white;
+
+      border-radius: 8px;
+
+      box-shadow: var(--brand-shadow);
+
+      text-align: center;
+
+    }
+
+
+    footer ul {
+
+      list-style: none;
+
+      padding: 0;
+
+      display: flex;
+
+      justify-content: center;
+
+      gap: 40px;
+
+      margin: 0;
+
+    }
+
+
+    footer ul li a {
+
+      color: #1a73e8;
+
+      font-weight: 500;
+
+      text-decoration: none;
+
+    }
+
+
+    footer ul li a:hover {
+
+      text-decoration: underline;
+
+    }
+
+
+    footer p {
+
+      margin-top: 12px;
+
+      font-size: 0.85rem;
+
+      color: #555;
+
+    }
+
+
+    /* ==================================================
+       MOBILE
+       ================================================== */
+
+
+    @media (max-width: 700px) {
+
+
+      .header-main {
+
+        padding: 10px;
+
+      }
+
+
+      .header-left img {
+
+        height: 60px;
+
+      }
+
+
+      .title-block h1 {
+
+        font-size: 1.5rem;
+
+      }
+
+
+      .header-right {
+
+        display: none;
+
+      }
+
+
+      .header-nav {
+
+        flex-wrap: wrap;
+
+        gap: 15px;
+
+        padding: 12px;
+
+      }
+
+
+      .page-container {
+
+        width: 94%;
+
+      }
+
+
+      .form-grid {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .button-row {
+
+        flex-direction: column;
+
+      }
+
+
+      .converter-list {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      footer ul {
+
+        flex-direction: column;
+
+        gap: 12px;
+
+      }
+
+    }
+
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     HEADER
+     ================================================== -->
+
+
+<header class="top-header">
+
+
+  <div class="header-main">
+
+
+    <div class="header-left">
+
+      <img
+        src="zeta_dx.webp"
+        alt="Zeta Dx Logo">
+
+      <div class="title-block">
+
+        <h1>Zeta Dx</h1>
+
+      </div>
+
+    </div>
+
+
+    <div class="header-right">
+
+      <h2>
+        Calculate. Interpret. Understand.
+      </h2>
+
+      <p>
+        For educational purposes only
+      </p>
+
+    </div>
+
+
+  </div>
+
+
+  <!-- Navigation -->
+
+
+  <nav class="header-nav">
+
+
+    <a href="./index.html">
+      Home
+    </a>
+
+
+    <a href="./contact.html">
+      About Us
+    </a>
+
+
+    <a href="./privacy_policy.html">
+      Privacy Policy
+    </a>
+
+
+    <a href="./disclaimer.html">
+      Terms & Conditions
+    </a>
+
+
+    <div class="dropdown">
+
+      <button class="dropbtn">
+        Tools ▾
+      </button>
+
+
+      <div class="dropdown-content">
+
+        <a href="./acr.html">
+          ACR
+        </a>
+
+        <a href="./pcr.html">
+          PCR
+        </a>
+
+        <a href="./inr.html">
+          INR
+        </a>
+
+        <a href="./esr.html">
+          ESR
+        </a>
+
+        <a href="./convertors.html">
+          Unit Converters
+        </a>
+
+      </div>
+
+    </div>
+
+
+  </nav>
+
+
+</header>
+
+
+
+<!-- ==================================================
+     MAIN
+     ================================================== -->
+
+
+<main>
+
+
+  <div class="page-container">
+
+
+    <!-- PAGE TITLE -->
+
+
+    <section class="page-title">
+
+      <h2>
+        Laboratory Unit Converters
+      </h2>
+
+      <p>
+        Convert laboratory values between commonly used units.
+      </p>
+
+    </section>
+    <section class="parameter-info" id="parameterInfo">
+
+  <h3 id="infoTitle">
+    About This Parameter
+  </h3>
+
+  <p id="infoDescription">
+    Select a parameter to view information about it.
+  </p>
+
+  <div class="info-grid">
+
+    <div class="info-item">
+
+      <h4>What is it used for?</h4>
+
+      <p id="infoUsedFor">
+        —
+      </p>
+
+    </div>
+
+
+    <div class="info-item">
+
+      <h4>Common Units</h4>
+
+      <p id="infoUnits">
+        —
+      </p>
+
+    </div>
+
+
+    <div class="info-item">
+
+      <h4>Related Tests</h4>
+
+      <p id="infoRelated">
+        —
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="info-note">
+
+    <strong>Educational Note:</strong>
+
+    <span id="infoNote">
+      —
+    </span>
+
+  </div>
+
+</section>
+
+
+
+    <!-- ==================================================
+         CONVERTER
+         ================================================== -->
+
+
+    <section class="converter-box">
+
+
+      <h3>
+        Convert Laboratory Value
+      </h3>
+
+
+      <div class="form-grid">
+
+
+        <!-- PARAMETER -->
+
+
+        <div class="form-group">
+
+          <label for="testType">
+            Parameter
+          </label>
+
+          <select id="testType">
+
+          </select>
+
+        </div>
+
+
+        <!-- VALUE -->
+
+
+        <div class="form-group">
+
+          <label for="value">
+            Value
+          </label>
+
+          <input
+            type="number"
+            id="value"
+            placeholder="Enter value"
+            step="any">
+
+        </div>
+
+
+        <!-- FROM UNIT -->
+
+
+        <div class="form-group">
+
+          <label for="fromUnit">
+            From Unit
+          </label>
+
+          <select id="fromUnit">
+
+          </select>
+
+        </div>
+
+
+        <!-- TO UNIT -->
+
+
+        <div class="form-group">
+
+          <label for="toUnit">
+            To Unit
+          </label>
+
+          <select id="toUnit">
+
+          </select>
+
+        </div>
+
+
+      </div>
+
+
+      <!-- SWAP -->
+
+
+      <div class="swap-container">
+
+        <button
+          class="swap-button"
+          onclick="swapUnits()"
+          title="Swap units">
+
+          ⇄
+
+        </button>
+
+      </div>
+
+
+      <!-- BUTTONS -->
+
+
+      <div class="button-row">
+
+
+        <button
+          class="convert-button"
+          onclick="convertValue()">
+
+          Convert
+
+        </button>
+
+
+        <button
+          class="clear-button"
+          onclick="clearConverter()">
+
+          Clear
+
+        </button>
+
+
+      </div>
+
+
+      <!-- RESULT -->
+
+
+      <div
+        class="result"
+        id="result">
+
+        Enter a value and select the units.
+
+      </div>
+
+
+      <!-- NOTE -->
+
+
+      <div class="conversion-note">
+
+        <strong>Educational Use Only:</strong>
+
+        These converters are provided for educational and
+        informational purposes only. They are not intended
+        to replace laboratory-specific reporting,
+        validated analytical methods, clinical reference
+        ranges, or professional medical advice.
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- ==================================================
+         AVAILABLE CONVERTERS
+         ================================================== -->
+
+
+    <section class="available-section">
+
+
+      <h3>
+        Available Laboratory Converters
+      </h3>
+
+
+      <!-- BIOCHEMISTRY -->
+
+
+      <h4 class="category-title">
+        Biochemistry
+      </h4>
+
+
+      <div
+        class="converter-list"
+        id="biochemistryList">
+      </div>
+
+
+
+      <!-- ELECTROLYTES -->
+
+
+      <h4 class="category-title">
+        Electrolytes
+      </h4>
+
+
+      <div
+        class="converter-list"
+        id="electrolytesList">
+      </div>
+
+
+
+      <!-- HEMATOLOGY -->
+
+
+      <h4 class="category-title">
+        Hematology
+      </h4>
+
+
+      <div
+        class="converter-list"
+        id="hematologyList">
+      </div>
+
+
+
+      <!-- URINE -->
+
+
+      <h4 class="category-title">
+        Urine
+      </h4>
+
+
+      <div
+        class="converter-list"
+        id="urineList">
+      </div>
+
+
+    </section>
+
+
+  </div>
+
+
+</main>
+
+
+
+<!-- ==================================================
+     FOOTER
+     ================================================== -->
+
+
+<footer>
+
+
+  <ul>
+
+    <li>
+      <a href="./privacy_policy.html">
+        Privacy Policy
+      </a>
+    </li>
+
+
+    <li>
+      <a href="./disclaimer.html">
+        Terms & Conditions
+      </a>
+    </li>
+
+
+    <li>
+      <a href="./contact.html">
+        About Us
+      </a>
+    </li>
+
+  </ul>
+
+
+  <p>
+
+    <br>
+
+    Zeta Dx &copy; 2025,
+    Developed by: M. K.
+
+  </p>
+
+
+</footer>
+
+
+
+<script>
+
+
+/* ==================================================
+   CONVERSION DATABASE
+
+   Formula:
+
+   Result =
+   Value × From Factor ÷ To Factor
+
+   Every unit is represented relative to a
+   common base unit.
+   ================================================== */
+
+let parameterInfo = {};
+async function loadParameterInfo() {
+
+  try {
+
+    const response =
+      await fetch("./parameter-info.json");
+
+    if (!response.ok) {
+
+      throw new Error(
+        "Unable to load parameter information."
+      );
+
+    }
+
+    parameterInfo =
+      await response.json();
+
+    updateParameterInfo();
+
+  }
+
+  catch (error) {
+
+    console.error(
+      "Parameter information error:",
+      error
+    );
+
+  }
+
+}
+
+function updateParameterInfo() {
+
+  const key =
+    testType.value;
+
+  const info =
+    parameterInfo[key];
+
+  if (!info) {
+
+    document.getElementById(
+      "infoTitle"
+    ).textContent =
+      "About This Parameter";
+
+    document.getElementById(
+      "infoDescription"
+    ).textContent =
+      "Information is not available for this parameter.";
+
+    return;
+
+  }
+
+
+  document.getElementById(
+    "infoTitle"
+  ).textContent =
+    "About " + info.name;
+
+
+  document.getElementById(
+    "infoDescription"
+  ).textContent =
+    info.description;
+
+
+  document.getElementById(
+    "infoUsedFor"
+  ).textContent =
+    info.usedFor;
+
+
+  document.getElementById(
+    "infoUnits"
+  ).textContent =
+    info.commonUnits.join(" • ");
+
+
+  document.getElementById(
+    "infoRelated"
+  ).textContent =
+    info.relatedTests.join(" • ");
+
+
+  document.getElementById(
+    "infoNote"
+  ).textContent =
+    info.educationalNote;
+
+}
+
+const converters = {
+
+
+  /* ==================================================
+     BIOCHEMISTRY
+     ================================================== */
+
+
+  creatinine: {
+
+    name: "Serum Creatinine",
+
+    category: "Biochemistry",
+
+    units: {
+
+      "mg/dL": 1,
+
+      "µmol/L": 1 / 88.4
+
+    }
+
+  },
+
+
+  glucose: {
+
+    name: "Glucose",
+
+    category: "Biochemistry",
+
+    units: {
+
+      "mg/dL": 1,
+
+      "mmol/L": 18.0182
+
+    }
+
+  },
+
+
+  urea: {
+
+    name: "Urea",
+
+    category: "Biochemistry",
+
+    units: {
+
+      "mg/dL": 1,
+
+      "mmol/L": 6.006
+
+    }
+
+  },
+
+
+  bun: {
+
+    name: "BUN",
+
+    category: "Biochemistry",
+
+    units: {
+
+      "mg/dL": 1,
+
+      "mmol/L": 2.8018
+
+    }
+
+  },
+
+
+  uric_acid: {
+
+    name: "Uric Acid",
+
+    category: "Biochemistry",
+
+    units: {
+
+      "mg/dL": 1,
+
+      "µmol/L": 59.48
+
+    }
+
+  },
+
+
+  total_bilirubin: {
+
+    name: "Total Bilirubin",
+
+    category: "Biochemistry",
+
+    units: {
+
+      "mg/dL": 1,
+
+      "µmol/L": 17.104
+
+    }
+
+  },
+
+
+  direct_bilirubin: {
+
+    name: "Direct Bilirubin",
+
+    category: "Biochemistry",
+
+    units: {
+
+      "mg/dL": 1,
+
+      "µmol/L": 17.104
+
+    }
+
+  },
+
+
+  cholesterol: {
+
+    name: "Total Cholesterol",
+
+    category: "Biochemistry",
+
+    units: {
+
+      "mg/dL": 1,
+
+      "mmol/L": 38.67
+
+    }
+
+  },
+
+
+  hdl: {
+
+    name: "HDL Cholesterol",
+
+    category: "Biochemistry",
+
+    units: {
+
+      "mg/dL": 1,
+
+      "mmol/L": 38.67
+
+    }
+
+  },
+
+
+  ldl: {
+
+    name: "LDL Cholesterol",
+
+    category: "Biochemistry",
+
+    units: {
+
+      "mg/dL": 1,
+
+      "mmol/L": 38.67
+
+    }
+
+  },
+
+
+  triglycerides: {
+
+    name: "Triglycerides",
+
+    category: "Biochemistry",
+
+    units: {
+
+      "mg/dL": 1,
+
+      "mmol/L": 88.57
+
+    }
+
+  },
+
+
+  total_protein: {
+
+    name: "Total Protein",
+
+    category: "Biochemistry",
+
+    units: {
+    "g/dL": 1,
+    "g/L": 10,
+    "mg/dL": 1000,
+    "mg/L": 10000
+    }
+
+  },
+
+
+  albumin: {
+
+    name: "Albumin",
+
+    category: "Biochemistry",
+
+    units: {
+    "mg/L": 1,
+    "mg/dL": 100,
+    "g/L": 0.001,
+    "g/dL": 0.0001
+    }
+
+  },
+
+
+  calcium: {
+
+    name: "Calcium",
+
+    category: "Biochemistry",
+
+    units: {
+
+      "mg/dL": 1,
+
+      "mmol/L": 4.008
+
+    }
+
+  },
+
+
+  magnesium: {
+
+    name: "Magnesium",
+
+    category: "Biochemistry",
+
+    units: {
+
+      "mg/dL": 1,
+
+      "mmol/L": 2.431
+
+    }
+
+  },
+
+
+  phosphate: {
+
+    name: "Phosphate",
+
+    category: "Biochemistry",
+
+    units: {
+
+      "mg/dL": 1,
+
+      "mmol/L": 3.098
+
+    }
+
+  },
+
+
+  iron: {
+
+    name: "Iron",
+
+    category: "Biochemistry",
+
+    units: {
+
+      "µg/dL": 1,
+
+      "µmol/L": 5.585
+
+    }
+
+  },
+
+
+  /* ==================================================
+     ELECTROLYTES
+     ================================================== */
+
+
+  sodium: {
+
+    name: "Sodium",
+
+    category: "Electrolytes",
+
+    units: {
+
+      "mmol/L": 1,
+
+      "mEq/L": 1
+
+    }
+
+  },
+
+
+  potassium: {
+
+    name: "Potassium",
+
+    category: "Electrolytes",
+
+    units: {
+
+      "mmol/L": 1,
+
+      "mEq/L": 1
+
+    }
+
+  },
+
+
+  chloride: {
+
+    name: "Chloride",
+
+    category: "Electrolytes",
+
+    units: {
+
+      "mmol/L": 1,
+
+      "mEq/L": 1
+
+    }
+
+  },
+
+
+  /* ==================================================
+     HEMATOLOGY
+     ================================================== */
+
+
+  hemoglobin: {
+
+    name: "Hemoglobin",
+
+    category: "Hematology",
+
+    units: {
+
+      "g/dL": 1,
+
+      "g/L": 0.1
+
+    }
+
+  },
+
+
+  hematocrit: {
+
+    name: "Hematocrit",
+
+    category: "Hematology",
+
+    units: {
+
+      "%": 1,
+
+      "L/L": 100
+
+    }
+
+  },
+
+
+  rbc: {
+
+    name: "RBC Count",
+
+    category: "Hematology",
+
+    units: {
+
+      "10⁶/µL": 1,
+
+      "10¹²/L": 1
+
+    }
+
+  },
+
+
+  wbc: {
+
+    name: "WBC Count",
+
+    category: "Hematology",
+
+    units: {
+
+      "10³/µL": 1,
+
+      "10⁹/L": 1
+
+    }
+
+  },
+
+
+  platelets: {
+
+    name: "Platelet Count",
+
+    category: "Hematology",
+
+    units: {
+
+      "10³/µL": 1,
+
+      "10⁹/L": 1
+
+    }
+
+  },
+
+
+  /* ==================================================
+     URINE
+     ================================================== */
+
+
+  urine_albumin: {
+
+    name: "Urine Albumin",
+
+    category: "Urine",
+
+    units: {
+
+      "mg/L": 1,
+
+      "mg/dL": 100,
+
+      "g/L": 0.001,
+
+      "g/dL": 0.1
+
+    }
+
+  },
+
+
+  urine_protein: {
+
+    name: "Urine Protein",
+
+    category: "Urine",
+
+    units: {
+
+      "mg/L": 1,
+
+      "mg/dL": 100,
+
+      "g/L": 0.001,
+
+      "g/dL": 0.1
+
+    }
+
+  },
+
+
+  urine_creatinine: {
+
+    name: "Urine Creatinine",
+
+    category: "Urine",
+
+    units: {
+    "mg/dL": 1,
+    "g/L": 0.1,
+    "mmol/L": 0.0884
+    }
+
+  }
+
+};
+
+
+
+/* ==================================================
+   ELEMENTS
+   ================================================== */
+
+
+const testType =
+  document.getElementById("testType");
+
+
+const valueInput =
+  document.getElementById("value");
+
+
+const fromUnit =
+  document.getElementById("fromUnit");
+
+
+const toUnit =
+  document.getElementById("toUnit");
+
+
+const result =
+  document.getElementById("result");
+
+
+
+/* ==================================================
+   LOAD PARAMETERS
+   ================================================== */
+
+
+function loadParameters() {
+
+
+  testType.innerHTML = "";
+
+
+  const categories = {};
+
+
+  Object.keys(converters).forEach(function(key) {
+
+
+    const converter =
+      converters[key];
+
+
+    if (!categories[converter.category]) {
+
+      categories[converter.category] =
+        document.createElement("optgroup");
+
+      categories[converter.category].label =
+        converter.category;
+
+      testType.appendChild(
+        categories[converter.category]
+      );
+
+    }
+
+
+    const option =
+      document.createElement("option");
+
+
+    option.value = key;
+
+
+    option.textContent =
+      converter.name;
+
+
+    categories[converter.category]
+      .appendChild(option);
+
+  });
+
+
+  updateUnits();
+
+}
+
+
+
+/* ==================================================
+   UPDATE UNITS
+   ================================================== */
+
+
+function updateUnits() {
+
+
+  const selected =
+    converters[testType.value];
+
+
+  fromUnit.innerHTML = "";
+
+  toUnit.innerHTML = "";
+
+
+  const units =
+    Object.keys(selected.units);
+
+
+  units.forEach(function(unit) {
+
+
+    const fromOption =
+      document.createElement("option");
+
+
+    fromOption.value =
+      unit;
+
+
+    fromOption.textContent =
+      unit;
+
+
+    fromUnit.appendChild(
+      fromOption
+    );
+
+
+    const toOption =
+      document.createElement("option");
+
+
+    toOption.value =
+      unit;
+
+
+    toOption.textContent =
+      unit;
+
+
+    toUnit.appendChild(
+      toOption
+    );
+
+  });
+
+
+  if (units.length > 1) {
+
+    toUnit.selectedIndex = 1;
+
+  }
+
+
+  result.innerHTML =
+    "Enter a value and select the units.";
+
+}
+
+
+
+/* ==================================================
+   CONVERT VALUE
+   ================================================== */
+
+
+function convertValue() {
+
+
+  const input =
+    parseFloat(
+      valueInput.value
+    );
+
+
+  if (isNaN(input)) {
+
+    result.innerHTML =
+      "Please enter a valid numerical value.";
+
+    return;
+
+  }
+
+
+  const selected =
+    converters[testType.value];
+
+
+  const from =
+    fromUnit.value;
+
+
+  const to =
+    toUnit.value;
+
+
+  if (from === to) {
+
+    result.innerHTML =
+
+      formatNumber(input)
+      + " "
+      + from
+      + " = "
+      + formatNumber(input)
+      + " "
+      + to;
+
+    return;
+
+  }
+
+
+  const fromFactor =
+    selected.units[from];
+
+
+  const toFactor =
+    selected.units[to];
+
+
+  const convertedValue =
+    input *
+    fromFactor /
+    toFactor;
+
+
+  result.innerHTML =
+
+    formatNumber(input)
+    + " "
+    + from
+    + " = "
+    + formatNumber(convertedValue)
+    + " "
+    + to;
+
+}
+
+
+
+/* ==================================================
+   NUMBER FORMAT
+   ================================================== */
+
+
+function formatNumber(number) {
+
+
+  if (number === 0) {
+
+    return "0";
+
+  }
+
+
+  if (
+    Math.abs(number) >= 0.000001 &&
+    Math.abs(number) < 1000000
+  ) {
+
+    return number.toLocaleString(
+      undefined,
+      {
+        maximumFractionDigits: 6
+      }
+    );
+
+  }
+
+
+  return number.toExponential(6);
+
+}
+
+
+
+/* ==================================================
+   SWAP UNITS
+   ================================================== */
+
+
+function swapUnits() {
+
+
+  const temp =
+    fromUnit.value;
+
+
+  fromUnit.value =
+    toUnit.value;
+
+
+  toUnit.value =
+    temp;
+
+
+  if (
+    valueInput.value !== ""
+  ) {
+
+    convertValue();
+
+  }
+
+}
+
+
+
+/* ==================================================
+   CLEAR
+   ================================================== */
+
+
+function clearConverter() {
+
+
+  valueInput.value = "";
+
+
+  result.innerHTML =
+    "Enter a value and select the units.";
+
+}
+
+
+
+/* ==================================================
+   CREATE QUICK CONVERTER CARDS
+   ================================================== */
+
+
+function createConverterCards() {
+
+
+  const lists = {
+
+    "Biochemistry":
+      document.getElementById(
+        "biochemistryList"
+      ),
+
+    "Electrolytes":
+      document.getElementById(
+        "electrolytesList"
+      ),
+
+    "Hematology":
+      document.getElementById(
+        "hematologyList"
+      ),
+
+    "Urine":
+      document.getElementById(
+        "urineList"
+      )
+
+  };
+
+
+  Object.keys(converters)
+    .forEach(function(key) {
+
+
+      const converter =
+        converters[key];
+
+
+      const card =
+        document.createElement("div");
+
+
+      card.className =
+        "converter-item";
+
+
+      const units =
+        Object.keys(
+          converter.units
+        );
+
+
+      card.innerHTML =
+
+        "<h4>"
+        + converter.name
+        + "</h4>"
+
+        +
+
+        "<p>"
+        + units.join(" ↔ ")
+        + "</p>";
+
+
+      card.onclick =
+        function() {
+
+
+          testType.value =
+            key;
+
+
+          updateUnits();
+
+
+          document
+            .querySelector(
+              ".converter-box"
+            )
+            .scrollIntoView({
+              behavior: "smooth"
+            });
+
+        };
+
+
+      if (
+        lists[converter.category]
+      ) {
+
+        lists[
+          converter.category
+        ].appendChild(card);
+
+      }
+
+    });
+
+}
+
+
+
+/* ==================================================
+   EVENTS
+   ================================================== */
+
+
+testType.addEventListener(
+  "change",
+  function() {
+
+    updateUnits();
+
+    updateParameterInfo();
+
+  }
+);
+
+
+valueInput.addEventListener(
+  "keydown",
+  function(event) {
+
+
+    if (
+      event.key === "Enter"
+    ) {
+
+      convertValue();
+
+    }
+
+  }
+);
+
+
+
+/* ==================================================
+   INITIALIZE
+   ================================================== */
+
+
+loadParameters();
+createConverterCards();
+loadParameterInfo();
+
+
+</script>
+
+
+</body>
+
+</html>
