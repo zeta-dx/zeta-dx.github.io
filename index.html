@@ -159,6 +159,136 @@
 	  display: block;
 	}
 
+	/* ================= INTRODUCTION ================= */
+
+	.intro-section {
+
+	width: 70%;
+
+	margin: 10px auto 30px;
+
+	padding: 35px 40px;
+
+	background: white;
+
+	border-radius: 14px;
+
+	box-shadow: var(--brand-shadow);
+
+	}
+
+
+	.intro-content {
+
+	max-width: 950px;
+
+	margin: 0 auto;
+
+	}
+
+
+	.intro-content h2 {
+
+	margin-top: 0;
+
+	margin-bottom: 20px;
+
+	color: #203a43;
+
+	font-size: 1.8rem;
+
+	text-align: center;
+
+	}
+
+
+	.intro-content p {
+
+	color: #444;
+
+	font-size: 1rem;
+
+	line-height: 1.7;
+
+	text-align: justify;
+
+	margin-bottom: 16px;
+
+	}
+
+
+	.intro-highlight {
+
+	display: flex;
+
+	flex-direction: column;
+
+	align-items: center;
+
+	gap: 5px;
+
+	margin: 25px 0;
+
+	padding: 18px;
+
+	background: var(--brand-gradient);
+
+	color: white;
+
+	border-radius: 10px;
+
+	text-align: center;
+
+	}
+
+
+	.intro-highlight strong {
+
+	font-size: 1.2rem;
+
+	}
+
+
+	.intro-highlight span {
+
+	font-size: 0.9rem;
+
+	opacity: 0.9;
+
+	}
+
+
+	.intro-disclaimer {
+
+	font-size: 0.85rem !important;
+
+	color: #666 !important;
+
+	margin-bottom: 0 !important;
+
+	}
+
+
+	/* ================= MOBILE ================= */
+
+	@media (max-width: 700px) {
+
+	.intro-section {
+
+		width: 90%;
+
+		padding: 25px 20px;
+
+	}
+
+	.intro-content p {
+
+		text-align: left;
+
+	}
+
+	}
+
 	/* ================= NAV ================= */
 
 	nav {
@@ -352,7 +482,59 @@
 </header>
   
 <main>
+	<section class="intro-section">
 
+		<div class="intro-content">
+
+			<h2>Welcome to Zeta Dx</h2>
+
+			<p>
+			Zeta Dx is an educational platform designed to make
+			laboratory medicine and diagnostic parameters easier
+			to understand. The website provides simple calculators,
+			unit converters, reference information, and educational
+			explanations for commonly encountered laboratory tests.
+			</p>
+
+			<p>
+			From calculating ACR, PCR, INR, ESR corrections and eGFR
+			to understanding HbA1c, estimated average glucose,
+			creatinine, cystatin C and other laboratory parameters,
+			Zeta Dx brings commonly used information together in
+			one place.
+			</p>
+
+			<p>
+			Our goal is to present technical and clinical concepts
+			in a clear and accessible way while retaining the
+			scientific principles behind the calculations.
+			Wherever possible, the information is based on
+			established clinical guidelines, published literature
+			and recognized laboratory references.
+			</p>
+
+			<div class="intro-highlight">
+
+			<strong>
+				Calculate. Interpret. Understand.
+			</strong>
+
+			<span>
+				Simple tools for understanding laboratory results.
+			</span>
+
+			</div>
+
+			<p class="intro-disclaimer">
+			Zeta Dx is intended for educational and informational
+			purposes only. The calculators and information provided
+			on this website are not intended to diagnose, treat,
+			or replace professional medical advice.
+			</p>
+
+		</div>
+
+	</section>
   <section class="section">
 	<!-- <h2>Understand Your Lab Results With Simple Tools</h2> -->
     <h2 style="background: linear-gradient(270deg, #0f2027, #203a43, #2c5364); border-radius: 10px;  padding: 20px; color: white; 
