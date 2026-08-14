@@ -1,0 +1,3316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+        content="Zeta Dx eGFR Calculator using the 2021 CKD-EPI race-free equations. Calculate eGFR using serum creatinine and cystatin C and learn about kidney function, albuminuria and CKD classification.">
+
+  <meta name="keywords"
+        content="eGFR calculator, CKD-EPI 2021, creatinine eGFR, cystatin C eGFR, kidney function calculator, GFR calculator, ACR, albuminuria, CKD">
+
+  <link rel="canonical"
+        href="https://zeta-dx.github.io/egfr.html">
+
+  <title>Zeta Dx - eGFR Calculator</title>
+
+  <link rel="icon"
+        href="favicon.ico"
+        type="image/x-icon">
+
+
+  <!-- Google AdSense -->
+
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1137049263274228"
+    crossorigin="anonymous">
+  </script>
+
+
+  <!-- Open Graph -->
+
+  <meta property="og:title"
+        content="Zeta Dx – eGFR Calculator">
+
+  <meta property="og:description"
+        content="Calculate estimated glomerular filtration rate using race-free CKD-EPI equations and learn about creatinine, cystatin C and albuminuria.">
+
+  <meta property="og:type"
+        content="website">
+
+  <meta property="og:url"
+        content="https://zeta-dx.github.io/egfr.html">
+
+  <meta property="og:image"
+        content="https://zeta-dx.github.io/zeta_dx.webp">
+
+
+<style>
+
+/* =====================================================
+   ROOT
+   ===================================================== */
+
+:root {
+
+  --brand-gradient:
+    linear-gradient(
+      135deg,
+      #0f2027,
+      #203a43,
+      #2c5364
+    );
+
+  --brand-shadow:
+    0 2px 8px rgba(0,0,0,0.12);
+
+}
+
+
+/* =====================================================
+   GLOBAL
+   ===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+
+  background-image: url('bg.png');
+
+  background-size: cover;
+
+  background-repeat: no-repeat;
+
+  background-position: center;
+
+  background-attachment: fixed;
+
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
+  margin: 0;
+
+  padding: 0;
+
+  color: #222;
+
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.top-header {
+
+  position: sticky;
+
+  top: 0;
+
+  z-index: 1000;
+
+  background: white;
+
+  box-shadow:
+    0 2px 10px rgba(0,0,0,0.1);
+
+}
+
+
+.header-main {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 14px 10px;
+
+}
+
+
+.header-left {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+}
+
+
+.header-left img {
+
+  height: 80px;
+
+}
+
+
+.title-block h1 {
+
+  margin: 0;
+
+  font-size: 2rem;
+
+}
+
+
+.header-right {
+
+  text-align: right;
+
+}
+
+
+.header-right h2 {
+
+  margin: 0;
+
+  font-size: 1.5rem;
+
+  font-weight: 600;
+
+}
+
+
+.header-right p {
+
+  margin: 4px 0 0;
+
+  font-size: 0.85rem;
+
+  color: #666;
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
+
+.header-nav {
+
+  max-width: 100%;
+
+  margin: 10px auto;
+
+  padding: 14px 30px;
+
+  background: var(--brand-gradient);
+
+  display: flex;
+
+  justify-content: space-around;
+
+  align-items: center;
+
+  box-shadow: var(--brand-shadow);
+
+}
+
+
+.header-nav > a {
+
+  text-decoration: none;
+
+  color: white;
+
+  font-size: 16px;
+
+}
+
+
+.dropdown {
+
+  position: relative;
+
+}
+
+
+.dropbtn {
+
+  background: none;
+
+  border: none;
+
+  cursor: pointer;
+
+  font-size: 16px;
+
+  color: white;
+
+}
+
+
+.dropdown-content {
+
+  display: none;
+
+  position: absolute;
+
+  top: 100%;
+
+  left: 0;
+
+  background: var(--brand-gradient);
+
+  min-width: 180px;
+
+  box-shadow:
+    0 6px 12px rgba(0,0,0,0.2);
+
+  z-index: 9999;
+
+}
+
+
+.dropdown-content a {
+
+  display: block;
+
+  padding: 10px 14px;
+
+  color: white;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+}
+
+
+.dropdown-content a:hover {
+
+  background:
+    rgba(255,255,255,0.12);
+
+}
+
+
+.dropdown:hover .dropdown-content {
+
+  display: block;
+
+}
+
+
+/* =====================================================
+   MAIN
+   ===================================================== */
+
+.page-container {
+
+  width: 85%;
+
+  max-width: 1100px;
+
+  margin: 30px auto;
+
+}
+
+
+/* =====================================================
+   PAGE TITLE
+   ===================================================== */
+
+.page-title {
+
+  background: var(--brand-gradient);
+
+  color: white;
+
+  padding: 28px;
+
+  border-radius: 14px;
+
+  text-align: center;
+
+  box-shadow: var(--brand-shadow);
+
+}
+
+
+.page-title h2 {
+
+  margin: 0 0 8px;
+
+  font-size: 2rem;
+
+}
+
+
+.page-title p {
+
+  margin: 0;
+
+  font-size: 1rem;
+
+}
+
+
+/* =====================================================
+   CALCULATOR
+   ===================================================== */
+
+.calculator-box {
+
+  background: white;
+
+  margin-top: 25px;
+
+  padding: 30px;
+
+  border-radius: 14px;
+
+  box-shadow: var(--brand-shadow);
+
+}
+
+
+.calculator-box h3 {
+
+  margin-top: 0;
+
+  text-align: center;
+
+  margin-bottom: 25px;
+
+}
+
+
+.form-grid {
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 20px;
+
+}
+
+
+.form-group {
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+
+
+.form-group label {
+
+  font-weight: 600;
+
+  margin-bottom: 7px;
+
+}
+
+
+.form-group input,
+.form-group select {
+
+  width: 100%;
+
+  padding: 12px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 8px;
+
+  font-size: 16px;
+
+  background: white;
+
+}
+
+
+.form-group input:focus,
+.form-group select:focus {
+
+  outline: none;
+
+  border-color: #2c5364;
+
+  box-shadow:
+    0 0 0 2px rgba(44,83,100,0.15);
+
+}
+
+
+.full-width {
+
+  grid-column: 1 / -1;
+
+}
+
+
+/* =====================================================
+   OPTIONAL SECTION
+   ===================================================== */
+
+.optional-section {
+
+  margin-top: 25px;
+
+  padding: 20px;
+
+  background: #f5f7f8;
+
+  border-radius: 10px;
+
+}
+
+
+.optional-section h4 {
+
+  margin-top: 0;
+
+  color: #203a43;
+
+}
+
+
+.optional-section p {
+
+  font-size: 0.9rem;
+
+  color: #555;
+
+  line-height: 1.5;
+
+}
+
+
+/* =====================================================
+   BUTTONS
+   ===================================================== */
+
+.button-row {
+
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 25px;
+
+}
+
+
+.calculate-button,
+.clear-button {
+
+  flex: 1;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  font-size: 17px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+}
+
+
+.calculate-button {
+
+  background: var(--brand-gradient);
+
+  color: white;
+
+}
+
+
+.clear-button {
+
+  background: #e9ecef;
+
+  color: #333;
+
+}
+
+
+.calculate-button:hover,
+.clear-button:hover {
+
+  opacity: 0.9;
+
+}
+
+
+/* =====================================================
+   RESULTS
+   ===================================================== */
+
+.results-box {
+
+  display: none;
+
+  background: white;
+
+  margin-top: 25px;
+
+  padding: 30px;
+
+  border-radius: 14px;
+
+  box-shadow: var(--brand-shadow);
+
+}
+
+
+.results-box h3 {
+
+  text-align: center;
+
+  margin-top: 0;
+
+}
+
+
+.result-grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 15px;
+
+}
+
+
+.result-card {
+
+  background: var(--brand-gradient);
+
+  color: white;
+
+  padding: 20px;
+
+  border-radius: 10px;
+
+  text-align: center;
+
+}
+
+
+.result-card h4 {
+
+  margin-top: 0;
+
+  font-size: 0.95rem;
+
+  line-height: 1.4;
+
+}
+
+
+.result-value {
+
+  font-size: 1.9rem;
+
+  font-weight: 700;
+
+}
+
+
+.result-unit {
+
+  font-size: 0.8rem;
+
+  opacity: 0.9;
+
+}
+
+
+.result-description {
+
+  margin-top: 8px;
+
+  font-size: 0.8rem;
+
+  opacity: 0.9;
+
+}
+
+
+/* =====================================================
+   CLASSIFICATION
+   ===================================================== */
+
+.classification-box {
+
+  margin-top: 25px;
+
+  padding: 25px;
+
+  background: #f5f7f8;
+
+  border-radius: 10px;
+
+}
+
+
+.classification-box h4 {
+
+  margin-top: 0;
+
+  color: #203a43;
+
+}
+
+
+.classification-grid {
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 15px;
+
+}
+
+
+.classification-card {
+
+  background: white;
+
+  padding: 18px;
+
+  border-radius: 10px;
+
+  border-left: 4px solid #2c5364;
+
+}
+
+
+.classification-card strong {
+
+  display: block;
+
+  font-size: 1.1rem;
+
+  color: #203a43;
+
+  margin-bottom: 5px;
+
+}
+
+
+.classification-card span {
+
+  color: #555;
+
+}
+
+
+/* =====================================================
+   CKD STATUS
+   ===================================================== */
+
+.ckd-status {
+
+  margin-top: 20px;
+
+  padding: 18px;
+
+  background: white;
+
+  border-radius: 10px;
+
+  border-left: 4px solid #203a43;
+
+}
+
+
+.ckd-status h4 {
+
+  margin-top: 0;
+
+  color: #203a43;
+
+}
+
+
+.ckd-status p {
+
+  margin-bottom: 0;
+
+  line-height: 1.6;
+
+}
+
+
+/* =====================================================
+   INFORMATION
+   ===================================================== */
+
+.info-section {
+
+  background: white;
+
+  margin-top: 25px;
+
+  padding: 30px;
+
+  border-radius: 14px;
+
+  box-shadow: var(--brand-shadow);
+
+}
+
+
+.info-section h2 {
+
+  margin-top: 0;
+
+  color: #203a43;
+
+}
+
+
+.info-section h3 {
+
+  color: #203a43;
+
+  margin-top: 28px;
+
+}
+
+
+.info-section p {
+
+  line-height: 1.7;
+
+  text-align: justify;
+
+  color: #444;
+
+}
+
+
+.info-section ul {
+
+  line-height: 1.7;
+
+  color: #444;
+
+}
+
+
+.info-section li {
+
+  margin-bottom: 7px;
+
+}
+
+
+.info-note {
+
+  margin-top: 20px;
+
+  padding: 16px;
+
+  background: #f5f7f8;
+
+  border-left: 4px solid #2c5364;
+
+  line-height: 1.6;
+
+  color: #555;
+
+}
+
+
+/* =====================================================
+   EQUATIONS
+   ===================================================== */
+
+.equation {
+
+  background: #f5f7f8;
+
+  padding: 20px;
+
+  border-radius: 10px;
+
+  overflow-x: auto;
+
+  margin: 15px 0;
+
+  text-align: center;
+
+  font-family:
+    "Times New Roman",
+    serif;
+
+  font-size: 1.1rem;
+
+}
+
+
+/* =====================================================
+   TABLE
+   ===================================================== */
+
+.category-table {
+
+  width: 100%;
+
+  border-collapse: collapse;
+
+  margin-top: 15px;
+
+}
+
+
+.category-table th,
+.category-table td {
+
+  border: 1px solid #ddd;
+
+  padding: 12px;
+
+  text-align: left;
+
+}
+
+
+.category-table th {
+
+  background: var(--brand-gradient);
+
+  color: white;
+
+}
+
+
+.category-table tr:nth-child(even) {
+
+  background: #f7f7f7;
+
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+footer {
+
+  max-width: 100%;
+
+  margin: 40px auto 0;
+
+  padding: 20px;
+
+  background: white;
+
+  border-radius: 8px;
+
+  box-shadow: var(--brand-shadow);
+
+  text-align: center;
+
+}
+
+
+footer ul {
+
+  list-style: none;
+
+  padding: 0;
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 40px;
+
+  margin: 0;
+
+}
+
+
+footer ul li a {
+
+  color: #1a73e8;
+
+  font-weight: 500;
+
+  text-decoration: none;
+
+}
+
+
+footer ul li a:hover {
+
+  text-decoration: underline;
+
+}
+
+
+footer p {
+
+  margin-top: 12px;
+
+  font-size: 0.85rem;
+
+  color: #555;
+
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 700px) {
+
+  .header-left img {
+    height: 60px;
+  }
+
+  .title-block h1 {
+    font-size: 1.5rem;
+  }
+
+  .header-right {
+    display: none;
+  }
+
+  .header-nav {
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 12px;
+  }
+
+  .page-container {
+    width: 94%;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full-width {
+    grid-column: auto;
+  }
+
+  .button-row {
+    flex-direction: column;
+  }
+
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .classification-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-table {
+    font-size: 0.85rem;
+  }
+
+  footer ul {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="top-header">
+
+
+  <div class="header-main">
+
+
+    <div class="header-left">
+
+      <img
+        src="zeta_dx.webp"
+        alt="Zeta Dx Logo">
+
+      <div class="title-block">
+
+        <h1>Zeta Dx</h1>
+
+      </div>
+
+    </div>
+
+
+    <div class="header-right">
+
+      <h2>
+        Calculate. Interpret. Understand.
+      </h2>
+
+      <p>
+        For educational purposes only
+      </p>
+
+    </div>
+
+
+  </div>
+
+
+  <nav class="header-nav">
+
+
+    <a href="./index.html">
+      Home
+    </a>
+
+
+    <a href="./contact.html">
+      About Us
+    </a>
+
+
+    <a href="./privacy_policy.html">
+      Privacy Policy
+    </a>
+
+
+    <a href="./disclaimer.html">
+      Terms & Conditions
+    </a>
+
+
+    <div class="dropdown">
+
+      <button class="dropbtn">
+        Tools ▾
+      </button>
+
+
+      <div class="dropdown-content">
+
+        <a href="./acr.html">
+          ACR
+        </a>
+
+        <a href="./pcr.html">
+          PCR
+        </a>
+
+        <a href="./inr.html">
+          INR
+        </a>
+
+        <a href="./esr.html">
+          ESR
+        </a>
+
+        <a href="./convertors.html">
+          Unit Converters
+        </a>
+
+        <a href="./egfr.html">
+          eGFR
+        </a>
+
+      </div>
+
+    </div>
+
+
+  </nav>
+
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+     ===================================================== -->
+
+<main>
+
+<div class="page-container">
+
+
+  <!-- ===================================================
+       TITLE
+       =================================================== -->
+
+  <section class="page-title">
+
+    <h2>
+      eGFR Calculator
+    </h2>
+
+    <p>
+      Estimate kidney filtration using race-free CKD-EPI
+      equations and understand the relationship between
+      eGFR and albuminuria.
+    </p>
+
+  </section>
+
+
+
+  <!-- ===================================================
+       CALCULATOR
+       =================================================== -->
+
+  <section class="calculator-box">
+
+    <h3>
+      Calculate Estimated Glomerular Filtration Rate
+    </h3>
+
+
+    <div class="form-grid">
+
+
+      <!-- AGE -->
+
+      <div class="form-group">
+
+        <label for="age">
+          Age
+        </label>
+
+        <input
+          type="number"
+          id="age"
+          min="18"
+          max="120"
+          placeholder="Age in years">
+
+      </div>
+
+
+      <!-- SEX -->
+
+      <div class="form-group">
+
+        <label for="sex">
+          Sex
+        </label>
+
+        <select id="sex">
+
+          <option value="">
+            Select
+          </option>
+
+          <option value="male">
+            Male
+          </option>
+
+          <option value="female">
+            Female
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- CREATININE -->
+
+      <div class="form-group">
+
+        <label for="creatinine">
+          Serum Creatinine
+        </label>
+
+        <input
+          type="number"
+          id="creatinine"
+          step="0.001"
+          min="0"
+          placeholder="Enter value">
+
+      </div>
+
+
+      <!-- CREATININE UNIT -->
+
+      <div class="form-group">
+
+        <label for="creatinineUnit">
+          Creatinine Unit
+        </label>
+
+        <select id="creatinineUnit">
+
+          <option value="mgdl">
+            mg/dL
+          </option>
+
+          <option value="umol">
+            µmol/L
+          </option>
+
+        </select>
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         CYSTATIN C
+         ================================================= -->
+
+    <div class="optional-section">
+
+      <h4>
+        Optional: Serum Cystatin C
+      </h4>
+
+      <div class="form-group">
+
+        <label for="cystatin">
+
+          Serum Cystatin C
+          <small>
+            (mg/L)
+          </small>
+
+        </label>
+
+        <input
+          type="number"
+          id="cystatin"
+          step="0.001"
+          min="0"
+          placeholder="Enter cystatin C if available">
+
+      </div>
+
+      <p>
+
+        If cystatin C is available, the calculator will also
+        calculate the 2021 CKD-EPI creatinine-cystatin C
+        equation and the 2012 cystatin C equation.
+
+      </p>
+
+    </div>
+
+
+
+    <!-- =================================================
+         ACR
+         ================================================= -->
+
+    <div class="optional-section">
+
+      <h4>
+        Optional: Urine Albumin-Creatinine Ratio
+      </h4>
+
+      <div class="form-group">
+
+        <label for="acr">
+
+          Urine ACR
+          <small>
+            (mg/g)
+          </small>
+
+        </label>
+
+        <input
+          type="number"
+          id="acr"
+          step="0.1"
+          min="0"
+          placeholder="Enter ACR if available">
+
+      </div>
+
+      <p>
+
+        ACR is not part of the eGFR equation. It is included
+        separately because eGFR and albuminuria provide
+        complementary information about kidney disease.
+
+      </p>
+
+    </div>
+
+
+
+    <!-- =================================================
+         BUTTONS
+         ================================================= -->
+
+    <div class="button-row">
+
+      <button
+        class="calculate-button"
+        onclick="calculateEGFR()">
+
+        Calculate eGFR
+
+      </button>
+
+
+      <button
+        class="clear-button"
+        onclick="clearCalculator()">
+
+        Clear
+
+      </button>
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- ===================================================
+       RESULTS
+       =================================================== -->
+
+  <section
+    class="results-box"
+    id="resultsBox">
+
+    <h3>
+      eGFR Results
+    </h3>
+
+
+    <div class="result-grid">
+
+
+      <!-- CREATININE -->
+
+      <div
+        class="result-card"
+        id="resultCrCard">
+
+        <h4>
+          CKD-EPI Creatinine
+          <br>
+          2021
+        </h4>
+
+        <div
+          class="result-value"
+          id="egfrCr">
+
+          —
+
+        </div>
+
+        <div class="result-unit">
+
+          mL/min/1.73 m²
+
+        </div>
+
+        <div class="result-description">
+
+          Creatinine-based
+
+        </div>
+
+      </div>
+
+
+
+      <!-- CREATININE + CYSTATIN -->
+
+      <div
+        class="result-card"
+        id="resultCrCysCard"
+        style="display:none;">
+
+        <h4>
+          CKD-EPI Creatinine-Cystatin C
+          <br>
+          2021
+        </h4>
+
+        <div
+          class="result-value"
+          id="egfrCrCys">
+
+          —
+
+        </div>
+
+        <div class="result-unit">
+
+          mL/min/1.73 m²
+
+        </div>
+
+        <div class="result-description">
+
+          Combined biomarker
+
+        </div>
+
+      </div>
+
+
+
+      <!-- CYSTATIN -->
+
+      <div
+        class="result-card"
+        id="resultCysCard"
+        style="display:none;">
+
+        <h4>
+          CKD-EPI Cystatin C
+          <br>
+          2012
+        </h4>
+
+        <div
+          class="result-value"
+          id="egfrCys">
+
+          —
+
+        </div>
+
+        <div class="result-unit">
+
+          mL/min/1.73 m²
+
+        </div>
+
+        <div class="result-description">
+
+          Cystatin C-based
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         CLASSIFICATION
+         ================================================= -->
+
+    <div class="classification-box">
+
+      <h4>
+        Kidney Function Classification
+      </h4>
+
+
+      <div class="classification-grid">
+
+
+        <div class="classification-card">
+
+          <strong>
+            GFR Category
+          </strong>
+
+          <span id="gfrCategory">
+            —
+          </span>
+
+        </div>
+
+
+        <div class="classification-card">
+
+          <strong>
+            Albuminuria Category
+          </strong>
+
+          <span id="acrCategory">
+            —
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+      <div
+        class="ckd-status"
+        id="ckdStatus">
+
+        <h4>
+          CKD Assessment
+        </h4>
+
+        <p id="ckdText">
+          —
+        </p>
+
+      </div>
+
+
+    </div>
+
+
+    <!-- IMPORTANT NOTE -->
+
+    <div class="info-note">
+
+      <strong>Important:</strong>
+
+      eGFR is an estimate rather than a direct measurement
+      of GFR. A single eGFR value does not by itself establish
+      chronic kidney disease. Persistence over time and other
+      markers of kidney damage, including albuminuria, are
+      important when assessing CKD.
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- ===================================================
+       ABOUT eGFR
+       =================================================== -->
+
+  <section class="info-section">
+
+    <h2>
+      What is eGFR?
+    </h2>
+
+
+    <p>
+
+      Estimated glomerular filtration rate, commonly called
+      eGFR, is an estimate of how efficiently the kidneys
+      filter blood. Glomerular filtration rate is considered
+      the best overall index of kidney function.
+
+    </p>
+
+
+    <p>
+
+      GFR cannot normally be measured directly using a routine
+      blood test. Instead, estimating equations use biomarkers
+      found in the blood, primarily serum creatinine and,
+      when available, cystatin C, together with age and sex.
+
+    </p>
+
+
+    <p>
+
+      eGFR is usually reported in
+      <strong>mL/min/1.73 m²</strong>. The 1.73 m² represents
+      a standard body-surface-area reference.
+
+    </p>
+
+
+    <div class="info-note">
+
+      The adult equations used on this page are the
+      race-free CKD-EPI equations recommended by the
+      National Kidney Foundation and American Society of
+      Nephrology Task Force.
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ===================================================
+       WHY MEASURE
+       =================================================== -->
+
+  <section class="info-section">
+
+    <h2>
+      Why is eGFR measured?
+    </h2>
+
+
+    <p>
+
+      eGFR is primarily used to assess kidney filtration
+      and to help identify and monitor chronic kidney disease.
+      It can also help clinicians understand changes in kidney
+      function over time.
+
+    </p>
+
+
+    <h3>
+      Common uses include:
+    </h3>
+
+
+    <ul>
+
+      <li>
+        Assessing kidney filtration.
+      </li>
+
+      <li>
+        Detecting and monitoring chronic kidney disease.
+      </li>
+
+      <li>
+        Monitoring changes in kidney function over time.
+      </li>
+
+      <li>
+        Supporting assessment of patients at risk of kidney disease.
+      </li>
+
+      <li>
+        Providing information that may be considered in
+        medication-related decisions.
+      </li>
+
+    </ul>
+
+
+    <p>
+
+      eGFR should be interpreted together with the clinical
+      situation, previous results and other laboratory findings
+      rather than being treated as an isolated number.
+
+    </p>
+
+  </section>
+
+
+
+  <!-- ===================================================
+       HOW CALCULATED
+       =================================================== -->
+
+  <section class="info-section">
+
+    <h2>
+      How is eGFR calculated?
+    </h2>
+
+
+    <p>
+
+      Modern adult eGFR equations were developed by comparing
+      measured GFR with filtration biomarkers and demographic
+      variables. The current race-free CKD-EPI equations use
+      serum creatinine, cystatin C, age and sex depending on
+      the equation selected.
+
+    </p>
+
+
+    <h3>
+      2021 CKD-EPI Creatinine Equation
+    </h3>
+
+
+    <div class="equation">
+
+      eGFR = 142 × min(SCr/κ,1)<sup>α</sup>
+      × max(SCr/κ,1)<sup>−1.200</sup>
+      × 0.9938<sup>Age</sup>
+      × 1.012 [if female]
+
+    </div>
+
+
+    <p>
+
+      Where SCr is standardized serum creatinine in mg/dL,
+      κ is 0.7 for females and 0.9 for males, and α is
+      −0.241 for females and −0.302 for males.
+
+    </p>
+
+
+    <h3>
+      2021 CKD-EPI Creatinine-Cystatin C Equation
+    </h3>
+
+
+    <div class="equation">
+
+      eGFR = 135 × min(SCr/κ,1)<sup>α</sup>
+      × max(SCr/κ,1)<sup>−0.544</sup>
+      × min(Scys/0.8,1)<sup>−0.323</sup>
+      × max(Scys/0.8,1)<sup>−0.778</sup>
+      × 0.9961<sup>Age</sup>
+      × 0.963 [if female]
+
+    </div>
+
+
+    <p>
+
+      Here Scys represents standardized serum cystatin C
+      in mg/L. The α value is −0.219 for females and
+      −0.144 for males.
+
+    </p>
+
+
+    <h3>
+      2012 CKD-EPI Cystatin C Equation
+    </h3>
+
+
+    <div class="equation">
+
+      eGFR = 133 × min(Scys/0.8,1)<sup>−0.499</sup>
+      × max(Scys/0.8,1)<sup>−1.328</sup>
+      × 0.996<sup>Age</sup>
+      × 0.932 [if female]
+
+    </div>
+
+
+    <p>
+
+      This equation uses age, sex and standardized serum
+      cystatin C without serum creatinine.
+
+    </p>
+
+
+    <div class="info-note">
+
+      NIDDK specifies standardized creatinine measurements
+      traceable to an IDMS reference procedure and standardized
+      cystatin C measurements traceable to the appropriate
+      IFCC reference material for these equations.
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ===================================================
+       CREATININE
+       =================================================== -->
+
+  <section class="info-section">
+
+    <h2>
+      Understanding Serum Creatinine
+    </h2>
+
+
+    <p>
+
+      Creatinine is a waste product produced primarily from
+      normal muscle metabolism. It enters the bloodstream
+      and is eliminated mainly through kidney filtration.
+
+    </p>
+
+
+    <p>
+
+      Because serum creatinine is influenced by kidney
+      filtration, it is one of the most widely used biomarkers
+      for estimating GFR.
+
+    </p>
+
+
+    <h3>
+      Why is creatinine not a perfect measure of GFR?
+    </h3>
+
+
+    <p>
+
+      Creatinine production is affected by factors such as
+      muscle mass, age and dietary intake. Consequently,
+      two people with the same GFR can potentially have
+      different serum creatinine concentrations.
+
+    </p>
+
+
+    <p>
+
+      This is why eGFR equations combine creatinine with
+      demographic variables rather than interpreting serum
+      creatinine alone.
+
+    </p>
+
+
+    <div class="info-note">
+
+      <strong>For the 2021 CKD-EPI equation:</strong>
+
+      The serum creatinine measurement should be standardized
+      to an IDMS-traceable method.
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ===================================================
+       CYSTATIN C
+       =================================================== -->
+
+  <section class="info-section">
+
+    <h2>
+      Understanding Cystatin C
+    </h2>
+
+
+    <p>
+
+      Cystatin C is a small protein produced by cells
+      throughout the body. It is freely filtered by the
+      glomerulus and is therefore useful as an endogenous
+      filtration marker.
+
+    </p>
+
+
+    <p>
+
+      Cystatin C is less dependent on muscle mass than
+      creatinine, which provides a useful alternative
+      biomarker when creatinine may be affected by
+      non-GFR-related factors.
+
+    </p>
+
+
+    <h3>
+      Why use creatinine and cystatin C together?
+    </h3>
+
+
+    <p>
+
+      Creatinine and cystatin C have different non-GFR
+      determinants. Combining the two biomarkers can
+      therefore reduce some of the limitations associated
+      with relying on either biomarker alone.
+
+    </p>
+
+
+    <p>
+
+      NIDDK states that the combined creatinine-cystatin C
+      equation generally provides greater accuracy than
+      serum creatinine alone.
+
+    </p>
+
+
+    <div class="info-note">
+
+      Cystatin C should be measured using an assay appropriate
+      for use with the standardized CKD-EPI cystatin C equation.
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ===================================================
+       ALBUMIN
+       =================================================== -->
+
+  <section class="info-section">
+
+    <h2>
+      Understanding Albumin
+    </h2>
+
+
+    <p>
+
+      Albumin is the most abundant protein in plasma.
+      It is produced primarily by the liver and has important
+      roles in maintaining plasma oncotic pressure and
+      transporting various substances through the bloodstream.
+
+    </p>
+
+
+    <p>
+
+      Under normal conditions, only a small amount of albumin
+      passes into urine because the kidney filtration barrier
+      restricts the passage of larger proteins.
+
+    </p>
+
+
+    <p>
+
+      Increased urinary albumin can therefore be an important
+      marker of kidney damage, even when eGFR is not markedly
+      reduced.
+
+    </p>
+
+
+    <h3>
+      Albumin-Creatinine Ratio (ACR)
+    </h3>
+
+
+    <p>
+
+      The urine albumin-to-creatinine ratio, or uACR,
+      relates urinary albumin concentration to urinary
+      creatinine concentration. This helps account for
+      variation in urine concentration.
+
+    </p>
+
+
+    <p>
+
+      ACR does not enter the CKD-EPI eGFR equation.
+      Instead, it provides complementary information about
+      kidney damage and is considered alongside eGFR.
+
+    </p>
+
+
+    <table class="category-table">
+
+      <tr>
+
+        <th>
+          Category
+        </th>
+
+        <th>
+          ACR
+        </th>
+
+        <th>
+          Description
+        </th>
+
+      </tr>
+
+
+      <tr>
+
+        <td>
+          A1
+        </td>
+
+        <td>
+          &lt;30 mg/g
+        </td>
+
+        <td>
+          Normal to mildly increased
+        </td>
+
+      </tr>
+
+
+      <tr>
+
+        <td>
+          A2
+        </td>
+
+        <td>
+          30–300 mg/g
+        </td>
+
+        <td>
+          Moderately increased
+        </td>
+
+      </tr>
+
+
+      <tr>
+
+        <td>
+          A3
+        </td>
+
+        <td>
+          &gt;300 mg/g
+        </td>
+
+        <td>
+          Severely increased
+        </td>
+
+      </tr>
+
+    </table>
+
+  </section>
+
+
+
+  <!-- ===================================================
+       G CATEGORIES
+       =================================================== -->
+
+  <section class="info-section">
+
+    <h2>
+      eGFR / GFR Categories
+    </h2>
+
+
+    <p>
+
+      Kidney function is commonly divided into GFR
+      categories. These categories describe the level
+      of estimated filtration.
+
+    </p>
+
+
+    <table class="category-table">
+
+      <tr>
+
+        <th>
+          Category
+        </th>
+
+        <th>
+          eGFR
+          (mL/min/1.73 m²)
+        </th>
+
+        <th>
+          Description
+        </th>
+
+      </tr>
+
+
+      <tr>
+
+        <td>
+          G1
+        </td>
+
+        <td>
+          ≥90
+        </td>
+
+        <td>
+          Normal or high
+        </td>
+
+      </tr>
+
+
+      <tr>
+
+        <td>
+          G2
+        </td>
+
+        <td>
+          60–89
+        </td>
+
+        <td>
+          Mildly decreased
+        </td>
+
+      </tr>
+
+
+      <tr>
+
+        <td>
+          G3a
+        </td>
+
+        <td>
+          45–59
+        </td>
+
+        <td>
+          Mildly to moderately decreased
+        </td>
+
+      </tr>
+
+
+      <tr>
+
+        <td>
+          G3b
+        </td>
+
+        <td>
+          30–44
+        </td>
+
+        <td>
+          Moderately to severely decreased
+        </td>
+
+      </tr>
+
+
+      <tr>
+
+        <td>
+          G4
+        </td>
+
+        <td>
+          15–29
+        </td>
+
+        <td>
+          Severely decreased
+        </td>
+
+      </tr>
+
+
+      <tr>
+
+        <td>
+          G5
+        </td>
+
+        <td>
+          &lt;15
+        </td>
+
+        <td>
+          Kidney failure
+        </td>
+
+      </tr>
+
+    </table>
+
+
+    <div class="info-note">
+
+      In the absence of evidence of kidney damage,
+      G1 and G2 alone do not fulfill the criteria for CKD.
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ===================================================
+       G + A CLASSIFICATION
+       =================================================== -->
+
+  <section class="info-section">
+
+    <h2>
+      Why eGFR and ACR Are Used Together
+    </h2>
+
+
+    <p>
+
+      Kidney disease assessment is more informative when
+      filtration and markers of kidney damage are considered
+      together.
+
+    </p>
+
+
+    <p>
+
+      eGFR describes the estimated level of kidney filtration,
+      while albuminuria provides information about damage to
+      the kidney filtration barrier.
+
+    </p>
+
+
+    <p>
+
+      This is sometimes described as the
+      <strong>CGA approach</strong>:
+
+      <strong>C</strong>ause,
+      <strong>G</strong>FR category and
+      <strong>A</strong>lbuminuria category.
+
+    </p>
+
+
+    <table class="category-table">
+
+      <tr>
+
+        <th>
+          Component
+        </th>
+
+        <th>
+          What it describes
+        </th>
+
+      </tr>
+
+
+      <tr>
+
+        <td>
+          G category
+        </td>
+
+        <td>
+          Level of kidney filtration
+        </td>
+
+      </tr>
+
+
+      <tr>
+
+        <td>
+          A category
+        </td>
+
+        <td>
+          Level of albuminuria
+        </td>
+
+      </tr>
+
+
+      <tr>
+
+        <td>
+          Cause
+        </td>
+
+        <td>
+          Underlying cause of kidney disease
+        </td>
+
+      </tr>
+
+    </table>
+
+
+    <p>
+
+      Neither eGFR nor ACR should be interpreted as a
+      diagnosis in isolation. Persistent abnormalities
+      over time and clinical context are important.
+
+    </p>
+
+  </section>
+
+
+
+  <!-- ===================================================
+       LIMITATIONS
+       =================================================== -->
+
+  <section class="info-section">
+
+    <h2>
+      Limitations of eGFR
+    </h2>
+
+
+    <p>
+
+      eGFR is an estimate and is not a direct measurement
+      of GFR. All estimating equations have limitations.
+
+    </p>
+
+
+    <ul>
+
+      <li>
+        eGFR becomes less precise at higher levels of GFR.
+      </li>
+
+      <li>
+        Serum creatinine can be affected by muscle mass,
+        diet and other non-GFR factors.
+      </li>
+
+      <li>
+        Cystatin C can also be influenced by factors
+        unrelated to filtration.
+      </li>
+
+      <li>
+        A single eGFR value may be less informative than
+        the trend over time.
+      </li>
+
+      <li>
+        Acute changes in kidney function can make estimating
+        equations less reliable because they assume relatively
+        stable biomarker concentrations.
+      </li>
+
+      <li>
+        Different equations should not automatically be
+        interpreted as equivalent measurements.
+      </li>
+
+    </ul>
+
+
+    <div class="info-note">
+
+      <strong>Educational Use Only:</strong>
+
+      This calculator is provided for educational and
+      informational purposes. It is not intended to diagnose
+      disease, replace laboratory testing, determine treatment,
+      or substitute for professional medical advice.
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ===================================================
+       REFERENCES
+       =================================================== -->
+
+  <section class="info-section">
+
+    <h2>
+      References & Further Reading
+    </h2>
+
+
+    <ul>
+
+      <li>
+        National Kidney Foundation – eGFR Calculator
+      </li>
+
+      <li>
+        NIDDK – Adult eGFR Equations
+      </li>
+
+      <li>
+        2021 CKD-EPI Creatinine Equation
+      </li>
+
+      <li>
+        2021 CKD-EPI Creatinine-Cystatin C Equation
+      </li>
+
+      <li>
+        2012 CKD-EPI Cystatin C Equation
+      </li>
+
+    </ul>
+
+
+  </section>
+
+
+</div>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer>
+
+  <ul>
+
+    <li>
+
+      <a href="./privacy_policy.html">
+        Privacy Policy
+      </a>
+
+    </li>
+
+
+    <li>
+
+      <a href="./disclaimer.html">
+        Terms & Conditions
+      </a>
+
+    </li>
+
+
+    <li>
+
+      <a href="./contact.html">
+        About Us
+      </a>
+
+    </li>
+
+  </ul>
+
+
+  <p>
+
+    <br>
+
+    Zeta Dx &copy; 2025,
+    Developed by: M. K.
+
+  </p>
+
+</footer>
+
+
+
+<script>
+
+/* =====================================================
+   CREATININE CONVERSION
+   ===================================================== */
+
+function getCreatinineMgDl() {
+
+  const value =
+    parseFloat(
+      document.getElementById("creatinine").value
+    );
+
+  const unit =
+    document.getElementById("creatinineUnit").value;
+
+  if (isNaN(value)) {
+
+    return null;
+
+  }
+
+  if (unit === "umol") {
+
+    return value / 88.4;
+
+  }
+
+  return value;
+
+}
+
+
+/* =====================================================
+   2021 CKD-EPI CREATININE
+   ===================================================== */
+
+function calculateEGFRCreatinine(
+  age,
+  sex,
+  scr
+) {
+
+  const k =
+    sex === "female"
+      ? 0.7
+      : 0.9;
+
+  const alpha =
+    sex === "female"
+      ? -0.241
+      : -0.302;
+
+  const femaleFactor =
+    sex === "female"
+      ? 1.012
+      : 1;
+
+  const minValue =
+    Math.min(
+      scr / k,
+      1
+    );
+
+  const maxValue =
+    Math.max(
+      scr / k,
+      1
+    );
+
+  return (
+
+    142 *
+
+    Math.pow(
+      minValue,
+      alpha
+    ) *
+
+    Math.pow(
+      maxValue,
+      -1.200
+    ) *
+
+    Math.pow(
+      0.9938,
+      age
+    ) *
+
+    femaleFactor
+
+  );
+
+}
+
+
+/* =====================================================
+   2021 CKD-EPI CREATININE + CYSTATIN C
+   ===================================================== */
+
+function calculateEGFRCreatinineCystatin(
+  age,
+  sex,
+  scr,
+  scys
+) {
+
+  const k =
+    sex === "female"
+      ? 0.7
+      : 0.9;
+
+  const alpha =
+    sex === "female"
+      ? -0.219
+      : -0.144;
+
+  const femaleFactor =
+    sex === "female"
+      ? 0.963
+      : 1;
+
+  const minScr =
+    Math.min(
+      scr / k,
+      1
+    );
+
+  const maxScr =
+    Math.max(
+      scr / k,
+      1
+    );
+
+  const minCys =
+    Math.min(
+      scys / 0.8,
+      1
+    );
+
+  const maxCys =
+    Math.max(
+      scys / 0.8,
+      1
+    );
+
+  return (
+
+    135 *
+
+    Math.pow(
+      minScr,
+      alpha
+    ) *
+
+    Math.pow(
+      maxScr,
+      -0.544
+    ) *
+
+    Math.pow(
+      minCys,
+      -0.323
+    ) *
+
+    Math.pow(
+      maxCys,
+      -0.778
+    ) *
+
+    Math.pow(
+      0.9961,
+      age
+    ) *
+
+    femaleFactor
+
+  );
+
+}
+
+
+/* =====================================================
+   2012 CKD-EPI CYSTATIN C
+   ===================================================== */
+
+function calculateEGFRCystatin(
+  age,
+  sex,
+  scys
+) {
+
+  const femaleFactor =
+    sex === "female"
+      ? 0.932
+      : 1;
+
+  const minValue =
+    Math.min(
+      scys / 0.8,
+      1
+    );
+
+  const maxValue =
+    Math.max(
+      scys / 0.8,
+      1
+    );
+
+  return (
+
+    133 *
+
+    Math.pow(
+      minValue,
+      -0.499
+    ) *
+
+    Math.pow(
+      maxValue,
+      -1.328
+    ) *
+
+    Math.pow(
+      0.996,
+      age
+    ) *
+
+    femaleFactor
+
+  );
+
+}
+
+
+/* =====================================================
+   GFR CATEGORY
+   ===================================================== */
+
+function getGFRCategory(egfr) {
+
+  if (egfr >= 90) {
+
+    return {
+      category: "G1",
+      description: "Normal or high"
+    };
+
+  }
+
+  if (egfr >= 60) {
+
+    return {
+      category: "G2",
+      description: "Mildly decreased"
+    };
+
+  }
+
+  if (egfr >= 45) {
+
+    return {
+      category: "G3a",
+      description:
+        "Mildly to moderately decreased"
+    };
+
+  }
+
+  if (egfr >= 30) {
+
+    return {
+      category: "G3b",
+      description:
+        "Moderately to severely decreased"
+    };
+
+  }
+
+  if (egfr >= 15) {
+
+    return {
+      category: "G4",
+      description:
+        "Severely decreased"
+    };
+
+  }
+
+  return {
+    category: "G5",
+    description: "Kidney failure"
+  };
+
+}
+
+
+/* =====================================================
+   ACR CATEGORY
+   ===================================================== */
+
+function getACRCategory(acr) {
+
+  if (acr < 30) {
+
+    return {
+      category: "A1",
+      description:
+        "Normal to mildly increased"
+    };
+
+  }
+
+  if (acr <= 300) {
+
+    return {
+      category: "A2",
+      description:
+        "Moderately increased"
+    };
+
+  }
+
+  return {
+    category: "A3",
+    description:
+      "Severely increased"
+  };
+
+}
+
+
+/* =====================================================
+   CKD ASSESSMENT
+   ===================================================== */
+
+function getCKDText(
+  egfr,
+  acrValue
+) {
+
+  const gfrCategory =
+    getGFRCategory(egfr);
+
+
+  if (egfr < 60) {
+
+    if (
+      acrValue !== null &&
+      !isNaN(acrValue)
+    ) {
+
+      return (
+
+        "The calculated eGFR falls within "
+        + gfrCategory.category
+        + " ("
+        + gfrCategory.description
+        + "). A persistently reduced eGFR below "
+        + "60 mL/min/1.73 m² for at least 3 months "
+        + "can be consistent with chronic kidney "
+        + "disease when confirmed clinically. "
+        + "The ACR category should also be considered."
+
+      );
+
+    }
+
+    return (
+
+      "The calculated eGFR falls within "
+      + gfrCategory.category
+      + " ("
+      + gfrCategory.description
+      + "). A persistently reduced eGFR below "
+      + "60 mL/min/1.73 m² for at least 3 months "
+      + "can be consistent with chronic kidney "
+      + "disease when confirmed clinically."
+
+    );
+
+  }
+
+
+  if (
+    acrValue !== null &&
+    !isNaN(acrValue) &&
+    acrValue >= 30
+  ) {
+
+    return (
+
+      "The calculated eGFR is not below "
+      + "60 mL/min/1.73 m², but the supplied "
+      + "ACR is in an increased albuminuria category. "
+      + "Persistent albuminuria can represent a marker "
+      + "of kidney damage and should be evaluated in "
+      + "the appropriate clinical context."
+
+    );
+
+  }
+
+
+  return (
+
+    "The calculated eGFR is within "
+    + gfrCategory.category
+    + " ("
+    + gfrCategory.description
+    + "). In the absence of persistent kidney damage "
+    + "markers, G1 and G2 alone do not establish CKD."
+
+  );
+
+}
+
+
+/* =====================================================
+   CALCULATE
+   ===================================================== */
+
+function calculateEGFR() {
+
+  const age =
+    parseFloat(
+      document.getElementById("age").value
+    );
+
+  const sex =
+    document.getElementById("sex").value;
+
+  const scr =
+    getCreatinineMgDl();
+
+  const cystatin =
+    parseFloat(
+      document.getElementById("cystatin").value
+    );
+
+  const acrInput =
+    document.getElementById("acr").value;
+
+  const acrValue =
+    acrInput === ""
+      ? null
+      : parseFloat(acrInput);
+
+
+  /* AGE */
+
+  if (
+    isNaN(age) ||
+    age < 18 ||
+    age > 120
+  ) {
+
+    alert(
+      "Please enter an age between 18 and 120 years."
+    );
+
+    return;
+
+  }
+
+
+  /* SEX */
+
+  if (!sex) {
+
+    alert(
+      "Please select sex."
+    );
+
+    return;
+
+  }
+
+
+  /* CREATININE */
+
+  if (
+    scr === null ||
+    scr <= 0
+  ) {
+
+    alert(
+      "Please enter a valid serum creatinine value."
+    );
+
+    return;
+
+  }
+
+
+  /* ACR */
+
+  if (
+    acrValue !== null &&
+    (
+      isNaN(acrValue) ||
+      acrValue < 0
+    )
+  ) {
+
+    alert(
+      "Please enter a valid ACR value."
+    );
+
+    return;
+
+  }
+
+
+  /* ================================================
+     CREATININE eGFR
+     ================================================ */
+
+  const egfrCr =
+    calculateEGFRCreatinine(
+      age,
+      sex,
+      scr
+    );
+
+
+  document.getElementById(
+    "egfrCr"
+  ).textContent =
+    Math.round(egfrCr);
+
+
+  /* ================================================
+     CYSTATIN RESULTS
+     ================================================ */
+
+  const hasCystatin =
+    !isNaN(cystatin) &&
+    cystatin > 0;
+
+
+  if (hasCystatin) {
+
+
+    const egfrCrCys =
+      calculateEGFRCreatinineCystatin(
+        age,
+        sex,
+        scr,
+        cystatin
+      );
+
+
+    const egfrCys =
+      calculateEGFRCystatin(
+        age,
+        sex,
+        cystatin
+      );
+
+
+    document.getElementById(
+      "egfrCrCys"
+    ).textContent =
+      Math.round(egfrCrCys);
+
+
+    document.getElementById(
+      "egfrCys"
+    ).textContent =
+      Math.round(egfrCys);
+
+
+    document.getElementById(
+      "resultCrCysCard"
+    ).style.display =
+      "block";
+
+
+    document.getElementById(
+      "resultCysCard"
+    ).style.display =
+      "block";
+
+  }
+
+  else {
+
+
+    document.getElementById(
+      "resultCrCysCard"
+    ).style.display =
+      "none";
+
+
+    document.getElementById(
+      "resultCysCard"
+    ).style.display =
+      "none";
+
+  }
+
+
+  /* ================================================
+     CLASSIFICATION
+     ================================================ */
+
+  const gfrCategory =
+    getGFRCategory(egfrCr);
+
+
+  document.getElementById(
+    "gfrCategory"
+  ).textContent =
+
+    gfrCategory.category
+    + " — "
+    + gfrCategory.description
+    + " ("
+    + Math.round(egfrCr)
+    + " mL/min/1.73 m²)";
+
+
+  /* ================================================
+     ACR
+     ================================================ */
+
+  if (
+    acrValue !== null
+  ) {
+
+    const acrCategory =
+      getACRCategory(acrValue);
+
+
+    document.getElementById(
+      "acrCategory"
+    ).textContent =
+
+      acrCategory.category
+      + " — "
+      + acrCategory.description
+      + " ("
+      + acrValue
+      + " mg/g)";
+
+  }
+
+  else {
+
+    document.getElementById(
+      "acrCategory"
+    ).textContent =
+      "Not entered";
+
+  }
+
+
+  /* ================================================
+     CKD TEXT
+     ================================================ */
+
+  document.getElementById(
+    "ckdText"
+  ).textContent =
+
+    getCKDText(
+      egfrCr,
+      acrValue
+    );
+
+
+  /* ================================================
+     SHOW RESULTS
+     ================================================ */
+
+  document.getElementById(
+    "resultsBox"
+  ).style.display =
+    "block";
+
+
+  document.getElementById(
+    "resultsBox"
+  ).scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+
+}
+
+
+/* =====================================================
+   CLEAR
+   ===================================================== */
+
+function clearCalculator() {
+
+  document.getElementById(
+    "age"
+  ).value = "";
+
+
+  document.getElementById(
+    "sex"
+  ).value = "";
+
+
+  document.getElementById(
+    "creatinine"
+  ).value = "";
+
+
+  document.getElementById(
+    "creatinineUnit"
+  ).value = "mgdl";
+
+
+  document.getElementById(
+    "cystatin"
+  ).value = "";
+
+
+  document.getElementById(
+    "acr"
+  ).value = "";
+
+
+  document.getElementById(
+    "resultsBox"
+  ).style.display =
+    "none";
+
+
+  document.getElementById(
+    "egfrCr"
+  ).textContent =
+    "—";
+
+
+  document.getElementById(
+    "egfrCrCys"
+  ).textContent =
+    "—";
+
+
+  document.getElementById(
+    "egfrCys"
+  ).textContent =
+    "—";
+
+
+  document.getElementById(
+    "gfrCategory"
+  ).textContent =
+    "—";
+
+
+  document.getElementById(
+    "acrCategory"
+  ).textContent =
+    "—";
+
+
+  document.getElementById(
+    "ckdText"
+  ).textContent =
+    "—";
+
+}
+
+</script>
+
+
+</body>
+
+</html>

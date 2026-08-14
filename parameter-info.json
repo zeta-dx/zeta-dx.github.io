@@ -1,0 +1,467 @@
+{
+  "creatinine": {
+    "name": "Serum Creatinine",
+    "description": "Creatinine is a waste product produced primarily from normal muscle metabolism. It is filtered from the blood by the kidneys and is commonly measured as part of the assessment of kidney function.",
+    "usedFor": "Assessment of kidney function and estimation of glomerular filtration.",
+    "commonUnits": [
+      "mg/dL",
+      "µmol/L"
+    ],
+    "relatedTests": [
+      "eGFR",
+      "Urea",
+      "BUN",
+      "Urine Creatinine"
+    ],
+    "educationalNote": "Blood creatinine can be influenced by factors such as muscle mass, age, diet and hydration status and should not be interpreted in isolation."
+  },
+
+  "glucose": {
+    "name": "Glucose",
+    "description": "Glucose is the primary carbohydrate used by the body as an energy source. Blood glucose measurements are commonly used to evaluate glucose metabolism.",
+    "usedFor": "Assessment of blood glucose levels and evaluation of disorders of glucose metabolism.",
+    "commonUnits": [
+      "mg/dL",
+      "mmol/L"
+    ],
+    "relatedTests": [
+      "HbA1c",
+      "Fasting Glucose",
+      "Postprandial Glucose"
+    ],
+    "educationalNote": "Glucose concentrations can vary depending on fasting status, meals, medications, stress and other physiological factors."
+  },
+
+  "urea": {
+    "name": "Urea",
+    "description": "Urea is the major nitrogen-containing waste product formed in the liver during protein metabolism and is eliminated primarily through the kidneys.",
+    "usedFor": "Assessment of renal function and evaluation of nitrogen metabolism.",
+    "commonUnits": [
+      "mg/dL",
+      "mmol/L"
+    ],
+    "relatedTests": [
+      "Creatinine",
+      "BUN",
+      "eGFR"
+    ],
+    "educationalNote": "Urea concentration can be affected by hydration, protein intake, renal function and other physiological conditions."
+  },
+
+  "bun": {
+    "name": "Blood Urea Nitrogen (BUN)",
+    "description": "Blood Urea Nitrogen represents the amount of nitrogen present in the blood in the form of urea.",
+    "usedFor": "Assessment of renal function and evaluation of nitrogen balance.",
+    "commonUnits": [
+      "mg/dL",
+      "mmol/L"
+    ],
+    "relatedTests": [
+      "Creatinine",
+      "Urea",
+      "eGFR"
+    ],
+    "educationalNote": "BUN and urea are related but are not numerically identical because BUN represents only the nitrogen component of urea."
+  },
+
+  "uric_acid": {
+    "name": "Uric Acid",
+    "description": "Uric acid is the final product of purine metabolism in humans and is primarily eliminated through the kidneys.",
+    "usedFor": "Evaluation of uric acid metabolism and conditions associated with abnormal uric acid concentrations.",
+    "commonUnits": [
+      "mg/dL",
+      "µmol/L"
+    ],
+    "relatedTests": [
+      "Creatinine",
+      "Urea"
+    ],
+    "educationalNote": "Uric acid concentration can be influenced by diet, renal excretion, medications and metabolic factors."
+  },
+
+  "total_bilirubin": {
+    "name": "Total Bilirubin",
+    "description": "Bilirubin is a yellow pigment produced during the breakdown of heme, primarily from aging red blood cells.",
+    "usedFor": "Evaluation of bilirubin metabolism and assessment of conditions affecting the liver, bile ducts or red blood cell breakdown.",
+    "commonUnits": [
+      "mg/dL",
+      "µmol/L"
+    ],
+    "relatedTests": [
+      "Direct Bilirubin",
+      "ALT",
+      "AST",
+      "ALP"
+    ],
+    "educationalNote": "Bilirubin interpretation generally considers total and direct fractions together with clinical findings and other laboratory results."
+  },
+
+  "direct_bilirubin": {
+    "name": "Direct Bilirubin",
+    "description": "Direct bilirubin primarily represents conjugated bilirubin that has been processed by the liver and is more water-soluble.",
+    "usedFor": "Evaluation of bilirubin metabolism and hepatobiliary function.",
+    "commonUnits": [
+      "mg/dL",
+      "µmol/L"
+    ],
+    "relatedTests": [
+      "Total Bilirubin",
+      "ALT",
+      "AST",
+      "ALP"
+    ],
+    "educationalNote": "Direct bilirubin is generally interpreted together with total bilirubin and other liver-related laboratory parameters."
+  },
+
+  "cholesterol": {
+    "name": "Total Cholesterol",
+    "description": "Cholesterol is a lipid required for cell membranes, steroid hormones and bile acid production.",
+    "usedFor": "Assessment of lipid status and cardiovascular risk as part of a lipid profile.",
+    "commonUnits": [
+      "mg/dL",
+      "mmol/L"
+    ],
+    "relatedTests": [
+      "HDL Cholesterol",
+      "LDL Cholesterol",
+      "Triglycerides"
+    ],
+    "educationalNote": "Total cholesterol is generally evaluated together with HDL, LDL, triglycerides and other clinical risk factors."
+  },
+
+  "hdl": {
+    "name": "HDL Cholesterol",
+    "description": "HDL cholesterol represents cholesterol carried in high-density lipoprotein particles.",
+    "usedFor": "Evaluation of lipid status and cardiovascular risk.",
+    "commonUnits": [
+      "mg/dL",
+      "mmol/L"
+    ],
+    "relatedTests": [
+      "Total Cholesterol",
+      "LDL Cholesterol",
+      "Triglycerides"
+    ],
+    "educationalNote": "HDL cholesterol is one component of a lipid profile and should be considered together with other lipid measurements and clinical risk factors."
+  },
+
+  "ldl": {
+    "name": "LDL Cholesterol",
+    "description": "LDL cholesterol represents cholesterol carried in low-density lipoprotein particles.",
+    "usedFor": "Evaluation of lipid status and cardiovascular risk.",
+    "commonUnits": [
+      "mg/dL",
+      "mmol/L"
+    ],
+    "relatedTests": [
+      "Total Cholesterol",
+      "HDL Cholesterol",
+      "Triglycerides"
+    ],
+    "educationalNote": "LDL cholesterol is commonly considered an important component of cardiovascular risk assessment."
+  },
+
+  "triglycerides": {
+    "name": "Triglycerides",
+    "description": "Triglycerides are a major form of fat stored and transported in the body and serve as an important energy source.",
+    "usedFor": "Assessment of lipid metabolism and cardiovascular and metabolic risk.",
+    "commonUnits": [
+      "mg/dL",
+      "mmol/L"
+    ],
+    "relatedTests": [
+      "Total Cholesterol",
+      "HDL Cholesterol",
+      "LDL Cholesterol"
+    ],
+    "educationalNote": "Triglyceride concentrations can be influenced by recent food intake, alcohol consumption, metabolic factors and medications."
+  },
+
+  "total_protein": {
+    "name": "Total Protein",
+    "description": "Total protein represents the combined concentration of major proteins present in a biological fluid, particularly albumin and globulins in serum.",
+    "usedFor": "Assessment of protein status and evaluation of various conditions affecting protein metabolism or distribution.",
+    "commonUnits": [
+      "g/dL",
+      "g/L",
+      "mg/dL",
+      "mg/L"
+    ],
+    "relatedTests": [
+      "Albumin",
+      "Globulin",
+      "A/G Ratio"
+    ],
+    "educationalNote": "Total protein should be interpreted together with albumin, globulin and other relevant laboratory findings."
+  },
+
+  "albumin": {
+    "name": "Albumin",
+    "description": "Albumin is the most abundant protein in plasma and is synthesized primarily by the liver. It contributes significantly to plasma oncotic pressure and transports various substances.",
+    "usedFor": "Evaluation of protein status, liver-related conditions and other clinical conditions affecting albumin concentration.",
+    "commonUnits": [
+      "g/dL",
+      "g/L",
+      "mg/dL",
+      "mg/L"
+    ],
+    "relatedTests": [
+      "Total Protein",
+      "Globulin",
+      "A/G Ratio"
+    ],
+    "educationalNote": "Albumin concentration can be affected by nutritional status, fluid balance, liver function and other physiological factors."
+  },
+
+  "calcium": {
+    "name": "Calcium",
+    "description": "Calcium is an essential mineral involved in bone structure, muscle contraction, nerve transmission and several cellular processes.",
+    "usedFor": "Evaluation of calcium metabolism and disorders affecting bone, parathyroid function and mineral balance.",
+    "commonUnits": [
+      "mg/dL",
+      "mmol/L"
+    ],
+    "relatedTests": [
+      "Albumin",
+      "Phosphate",
+      "Magnesium",
+      "Parathyroid Hormone"
+    ],
+    "educationalNote": "Total calcium concentration can be influenced by albumin concentration, and interpretation may require consideration of other related measurements."
+  },
+
+  "magnesium": {
+    "name": "Magnesium",
+    "description": "Magnesium is an essential electrolyte involved in numerous enzymatic reactions, neuromuscular function and cellular metabolism.",
+    "usedFor": "Evaluation of magnesium balance and disorders affecting electrolyte and mineral metabolism.",
+    "commonUnits": [
+      "mg/dL",
+      "mmol/L"
+    ],
+    "relatedTests": [
+      "Calcium",
+      "Potassium",
+      "Phosphate"
+    ],
+    "educationalNote": "Magnesium concentration may be affected by renal function, medications, gastrointestinal losses and other physiological factors."
+  },
+
+  "phosphate": {
+    "name": "Phosphate",
+    "description": "Phosphate is an essential mineral involved in bone structure, energy metabolism, cellular signaling and nucleic acid synthesis.",
+    "usedFor": "Evaluation of mineral metabolism and conditions affecting renal, bone and parathyroid function.",
+    "commonUnits": [
+      "mg/dL",
+      "mmol/L"
+    ],
+    "relatedTests": [
+      "Calcium",
+      "Magnesium",
+      "Parathyroid Hormone"
+    ],
+    "educationalNote": "Phosphate concentration should generally be interpreted together with calcium and other relevant mineral metabolism measurements."
+  },
+
+  "iron": {
+    "name": "Iron",
+    "description": "Iron is an essential mineral required for hemoglobin synthesis, oxygen transport and several metabolic processes.",
+    "usedFor": "Evaluation of iron status and investigation of disorders involving iron metabolism.",
+    "commonUnits": [
+      "µg/dL",
+      "µmol/L"
+    ],
+    "relatedTests": [
+      "Ferritin",
+      "TIBC",
+      "Transferrin",
+      "Hemoglobin"
+    ],
+    "educationalNote": "Serum iron varies throughout the day and is generally interpreted together with other iron studies."
+  },
+
+  "sodium": {
+    "name": "Sodium",
+    "description": "Sodium is the major extracellular cation and plays an important role in fluid balance, nerve transmission and muscle function.",
+    "usedFor": "Evaluation of electrolyte and fluid balance.",
+    "commonUnits": [
+      "mmol/L",
+      "mEq/L"
+    ],
+    "relatedTests": [
+      "Potassium",
+      "Chloride",
+      "Creatinine",
+      "Urea"
+    ],
+    "educationalNote": "Sodium concentration is influenced by water balance and should be interpreted in the context of overall electrolyte and fluid status."
+  },
+
+  "potassium": {
+    "name": "Potassium",
+    "description": "Potassium is the major intracellular cation and is essential for normal nerve and muscle function, including cardiac electrical activity.",
+    "usedFor": "Evaluation of electrolyte balance and monitoring conditions or treatments that affect potassium levels.",
+    "commonUnits": [
+      "mmol/L",
+      "mEq/L"
+    ],
+    "relatedTests": [
+      "Sodium",
+      "Chloride",
+      "Creatinine"
+    ],
+    "educationalNote": "Potassium results can be affected by sample handling and hemolysis, so unexpected results may require laboratory verification."
+  },
+
+  "chloride": {
+    "name": "Chloride",
+    "description": "Chloride is a major extracellular anion that contributes to fluid balance and acid-base regulation.",
+    "usedFor": "Evaluation of electrolyte and acid-base balance.",
+    "commonUnits": [
+      "mmol/L",
+      "mEq/L"
+    ],
+    "relatedTests": [
+      "Sodium",
+      "Potassium",
+      "Bicarbonate"
+    ],
+    "educationalNote": "Chloride is generally interpreted together with sodium and other electrolyte measurements."
+  },
+
+  "hemoglobin": {
+    "name": "Hemoglobin",
+    "description": "Hemoglobin is the oxygen-carrying protein found inside red blood cells.",
+    "usedFor": "Evaluation of oxygen-carrying capacity and assessment of anemia and other hematological conditions.",
+    "commonUnits": [
+      "g/dL",
+      "g/L"
+    ],
+    "relatedTests": [
+      "Hematocrit",
+      "RBC Count",
+      "MCV",
+      "MCH"
+    ],
+    "educationalNote": "Hemoglobin should be interpreted together with other complete blood count parameters and clinical findings."
+  },
+
+  "hematocrit": {
+    "name": "Hematocrit",
+    "description": "Hematocrit represents the proportion of blood volume occupied by red blood cells.",
+    "usedFor": "Evaluation of red blood cell volume and assessment of anemia, erythrocytosis and related conditions.",
+    "commonUnits": [
+      "%",
+      "L/L"
+    ],
+    "relatedTests": [
+      "Hemoglobin",
+      "RBC Count",
+      "MCV"
+    ],
+    "educationalNote": "Hematocrit is affected by red blood cell mass as well as plasma volume."
+  },
+
+  "rbc": {
+    "name": "RBC Count",
+    "description": "The red blood cell count represents the number of circulating red blood cells in a specified volume of blood.",
+    "usedFor": "Evaluation of red blood cell production and disorders such as anemia and erythrocytosis.",
+    "commonUnits": [
+      "10⁶/µL",
+      "10¹²/L"
+    ],
+    "relatedTests": [
+      "Hemoglobin",
+      "Hematocrit",
+      "MCV"
+    ],
+    "educationalNote": "RBC count is generally interpreted together with hemoglobin, hematocrit and red cell indices."
+  },
+
+  "wbc": {
+    "name": "WBC Count",
+    "description": "The white blood cell count represents the number of circulating leukocytes in a specified volume of blood.",
+    "usedFor": "Evaluation of immune and inflammatory responses and various hematological conditions.",
+    "commonUnits": [
+      "10³/µL",
+      "10⁹/L"
+    ],
+    "relatedTests": [
+      "Neutrophils",
+      "Lymphocytes",
+      "Monocytes"
+    ],
+    "educationalNote": "WBC count is usually interpreted together with the differential white blood cell count."
+  },
+
+  "platelets": {
+    "name": "Platelet Count",
+    "description": "Platelets are small cellular fragments that play an important role in primary hemostasis and blood clot formation.",
+    "usedFor": "Evaluation of platelet number and assessment of bleeding or clotting-related conditions.",
+    "commonUnits": [
+      "10³/µL",
+      "10⁹/L"
+    ],
+    "relatedTests": [
+      "PT",
+      "aPTT",
+      "MPV"
+    ],
+    "educationalNote": "Platelet count should be interpreted together with clinical findings and other coagulation or hematology parameters."
+  },
+
+  "urine_albumin": {
+    "name": "Urine Albumin",
+    "description": "Urine albumin measurement evaluates the amount of albumin excreted into urine and can provide information about kidney filtration barrier function.",
+    "usedFor": "Assessment of urinary albumin excretion and evaluation of kidney health.",
+    "commonUnits": [
+      "mg/L",
+      "mg/dL",
+      "g/L",
+      "g/dL"
+    ],
+    "relatedTests": [
+      "ACR",
+      "Urine Creatinine",
+      "Serum Creatinine",
+      "eGFR"
+    ],
+    "educationalNote": "Urinary albumin may vary with hydration, exercise, infection and other factors. ACR is commonly used to account for urine concentration."
+  },
+
+  "urine_protein": {
+    "name": "Urine Protein",
+    "description": "Urine protein measurement evaluates the amount of protein present in urine and can provide information about renal and urinary tract conditions.",
+    "usedFor": "Evaluation of urinary protein excretion and assessment of kidney-related conditions.",
+    "commonUnits": [
+      "mg/L",
+      "mg/dL",
+      "g/L",
+      "g/dL"
+    ],
+    "relatedTests": [
+      "PCR",
+      "Urine Creatinine",
+      "ACR",
+      "Serum Creatinine"
+    ],
+    "educationalNote": "Urine protein concentration is influenced by urine dilution. Protein-to-creatinine ratio can help account for urine concentration."
+  },
+
+  "urine_creatinine": {
+    "name": "Urine Creatinine",
+    "description": "Urine creatinine measurement represents creatinine excreted into urine and is commonly used to account for urine concentration in ratio-based measurements.",
+    "usedFor": "Calculation of urine ratios such as ACR and PCR and evaluation of urinary creatinine excretion.",
+    "commonUnits": [
+      "mg/dL",
+      "g/L",
+      "mmol/L"
+    ],
+    "relatedTests": [
+      "ACR",
+      "PCR",
+      "Urine Albumin",
+      "Urine Protein"
+    ],
+    "educationalNote": "Urine creatinine concentration varies with urine dilution and individual physiological factors."
+  }
+}

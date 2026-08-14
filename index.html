@@ -9,7 +9,7 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="description" content="Diagnostic Calculators for ACR, PCR, INR, ESR with detailed lab test explanations and educational medical guides." />
-	<meta name="keywords" content="ACR calculator, PCR calculator, INR calculator, ESR calculator, lab calculators, medical calculators, kidney test interpretation, blood test explanation
+	<meta name="keywords" content="ACR calculator, PCR calculator, INR calculator, ESR Correction, lab calculators, medical calculators, kidney test interpretation, blood test explanation
 		urine test, urine analysis, urine strips, kidney health, pathology" />
 	<title>Zeta Dx - Calculators & more</title>
 	<link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -336,30 +336,20 @@
   <div class="dropdown">
     <button class="dropbtn">Tools ▾</button>
     <div class="dropdown-content">
-      <a href="./acr.html">ACR</a>
-      <a href="./pcr.html">PCR</a>
-      <a href="./inr.html">INR</a>
-      <a href="./esr.html">ESR</a>
+		<a href="./eag.html">eAG</a>
+		<a href="./egfr.html">eGFR</a>
+      	<a href="./acr.html">ACR</a>
+      	<a href="./pcr.html">PCR</a>
+      	<a href="./inr.html">INR</a>
+      	<a href="./esr.html">ESR</a>
+	  
+	  <a href="./convertors.html">Unit Convertors</a>
     </div>
   </div>
 </nav>
 
 
 </header>
-
-
-
-
-  <!--<header style="max-width: 80%; margin: 10px auto; padding: 10px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; overflow: hidden;">
-	<img src="zeta_dx.webp" alt="Logo" style="height: 150px; margin-bottom: 5px;">
-    <h1>Zeta Dx</h1>
-	<h2>Calculators & Lab Understanding Hub</h2>
-	<p>
-      Calculators and detailed explanations to help you make understand of ACR, PCR, INR, ESR and more.
-      <br><br>For Educational purposes only
-    </p>
-  </header>-->
-
   
 <main>
 
@@ -368,6 +358,11 @@
     <h2 style="background: linear-gradient(270deg, #0f2027, #203a43, #2c5364); border-radius: 10px;  padding: 20px; color: white; 
 		box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 57%; margin: 20px auto;">Our Tools</h2>
     <div class="cards">
+		<div class="card">
+		<h3>eGFR Calculator</h3>
+		<p>Calculate estimated Glomerular Filtration Rate (eGFR) using CKD-EPI formula with interpretation.</p>
+		<a href="./egfr.html" style="color: white">Calculate eGFR →</a>
+	 </div>
       <div class="card">
         <h3>Albumin-Creatinine Ratio</h3>
         <p>Albumin-Creatinine Ratio calculator with interpretation and normal ranges.</p>
@@ -378,16 +373,26 @@
         <p>Protein-Creatinine Ratio calculator and complete result explanation.</p>
         <a href="./pcr.html" style="color: white;">Calculate PCR →</a>
       </div>
+	  <div class="card">
+		<h3>HbA1c & Estimated Average Glucose</h3>
+		<p>Convert HbA1c to estimated average glucose (eAG) and understand HbA1c, fasting glucose, postprandial glucose and diabetes.</p>
+		<a href="./hba1c.html" style="color: white;">Calculate eAG →</a>
+		</div>
       <div class="card">
         <h3>International Normalized Ratio</h3>
         <p>Calculate International Normalized Ratio from PT results, calculation tool and interpretation guide.</p>
         <a href="./inr.html" style="color: white">Calculate INR →</a>
       </div>
       <div class="card">
-        <h3>ESR Compensation</h3>
-        <p>Compensate ESR values at 18&deg C according to Manely's Nomogram </p>
-        <a href="./esr.html" style="color: white">Compensate ESR →</a>
+        <h3>ESR Correction</h3>
+        <p>Correct ESR values at 18&deg C according to Manely's Nomogram or use Fabry's formula for low HCT</p>
+        <a href="./esr.html" style="color: white">Correct ESR →</a>
       </div>
+	 <div class="card">
+		<h3>Laboratory Unit Converters</h3>
+		<p>Convert laboratory values between commonly used units for biochemistry, hematology, electrolytes and urine tests.</p>
+		<a href="./convertors.html" style="color: white;">	Open Unit Converters →</a>
+	</div>
     </div>
   </section>
 
@@ -455,6 +460,7 @@ function toggleMenu() {
 </script>
 </body>
 </html>
+
 
 
 

@@ -1,0 +1,2941 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+      content="HbA1c to estimated average glucose (eAG) calculator with detailed information about HbA1c, fasting plasma glucose, postprandial glucose, diabetes and ADA diagnostic criteria.">
+
+<meta name="keywords"
+      content="HbA1c calculator, A1C calculator, eAG calculator, estimated average glucose, HbA1c to glucose, FBS, FPG, PBS, postprandial glucose, diabetes, prediabetes, ADA">
+
+<link rel="canonical"
+      href="https://zeta-dx.github.io/hba1c.html">
+
+<title>
+Zeta Dx - HbA1c & eAG Calculator
+</title>
+
+<link rel="icon"
+      href="favicon.ico"
+      type="image/x-icon">
+
+
+<!-- Google AdSense -->
+
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1137049263274228"
+crossorigin="anonymous">
+</script>
+
+
+<!-- Open Graph -->
+
+<meta property="og:title"
+      content="Zeta Dx – HbA1c & eAG Calculator">
+
+<meta property="og:description"
+      content="Convert HbA1c to estimated average glucose and learn about HbA1c, FPG, postprandial glucose and diabetes.">
+
+<meta property="og:type"
+      content="website">
+
+<meta property="og:url"
+      content="https://zeta-dx.github.io/hba1c.html">
+
+<meta property="og:image"
+      content="https://zeta-dx.github.io/zeta_dx.webp">
+
+
+<style>
+
+/* =====================================================
+   ROOT
+   ===================================================== */
+
+:root {
+
+    --brand-gradient:
+        linear-gradient(
+            135deg,
+            #0f2027,
+            #203a43,
+            #2c5364
+        );
+
+    --brand-shadow:
+        0 2px 8px rgba(0,0,0,0.12);
+
+}
+
+
+/* =====================================================
+   GLOBAL
+   ===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+
+    background-image:
+        url('bg.png');
+
+    background-size:
+        cover;
+
+    background-repeat:
+        no-repeat;
+
+    background-position:
+        center;
+
+    background-attachment:
+        fixed;
+
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    margin: 0;
+
+    padding: 0;
+
+    color: #222;
+
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.top-header {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    background: white;
+
+    box-shadow:
+        0 2px 10px rgba(0,0,0,0.1);
+
+}
+
+
+.header-main {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    padding:
+        14px 10px;
+
+}
+
+
+.header-left {
+
+    display: flex;
+
+    align-items:
+        center;
+
+    gap: 15px;
+
+}
+
+
+.header-left img {
+
+    height: 80px;
+
+}
+
+
+.title-block h1 {
+
+    margin: 0;
+
+    font-size: 2rem;
+
+}
+
+
+.header-right {
+
+    text-align:
+        right;
+
+}
+
+
+.header-right h2 {
+
+    margin: 0;
+
+    font-size: 1.5rem;
+
+    font-weight: 600;
+
+}
+
+
+.header-right p {
+
+    margin:
+        4px 0 0;
+
+    font-size: 0.85rem;
+
+    color: #666;
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
+
+.header-nav {
+
+    max-width: 100%;
+
+    margin:
+        10px auto;
+
+    padding:
+        14px 30px;
+
+    background:
+        var(--brand-gradient);
+
+    display: flex;
+
+    justify-content:
+        space-around;
+
+    align-items:
+        center;
+
+    box-shadow:
+        var(--brand-shadow);
+
+}
+
+
+.header-nav > a {
+
+    text-decoration:
+        none;
+
+    color:
+        white;
+
+    font-size:
+        16px;
+
+}
+
+
+.dropdown {
+
+    position:
+        relative;
+
+}
+
+
+.dropbtn {
+
+    background:
+        none;
+
+    border:
+        none;
+
+    cursor:
+        pointer;
+
+    font-size:
+        16px;
+
+    color:
+        white;
+
+}
+
+
+.dropdown-content {
+
+    display:
+        none;
+
+    position:
+        absolute;
+
+    top:
+        100%;
+
+    left:
+        0;
+
+    background:
+        var(--brand-gradient);
+
+    min-width:
+        190px;
+
+    box-shadow:
+        0 6px 12px rgba(0,0,0,0.2);
+
+    z-index:
+        9999;
+
+}
+
+
+.dropdown-content a {
+
+    display:
+        block;
+
+    padding:
+        10px 14px;
+
+    color:
+        white;
+
+    text-decoration:
+        none;
+
+    white-space:
+        nowrap;
+
+}
+
+
+.dropdown-content a:hover {
+
+    background:
+        rgba(255,255,255,0.12);
+
+}
+
+
+.dropdown:hover
+.dropdown-content {
+
+    display:
+        block;
+
+}
+
+
+/* =====================================================
+   PAGE
+   ===================================================== */
+
+.page-container {
+
+    width:
+        85%;
+
+    max-width:
+        1100px;
+
+    margin:
+        30px auto;
+
+}
+
+
+/* =====================================================
+   TITLE
+   ===================================================== */
+
+.page-title {
+
+    background:
+        var(--brand-gradient);
+
+    color:
+        white;
+
+    padding:
+        30px;
+
+    border-radius:
+        14px;
+
+    text-align:
+        center;
+
+    box-shadow:
+        var(--brand-shadow);
+
+}
+
+
+.page-title h2 {
+
+    margin:
+        0 0 8px;
+
+    font-size:
+        2rem;
+
+}
+
+
+.page-title p {
+
+    margin:
+        0;
+
+    font-size:
+        1rem;
+
+}
+
+
+/* =====================================================
+   CALCULATOR
+   ===================================================== */
+
+.calculator-box {
+
+    background:
+        white;
+
+    margin-top:
+        25px;
+
+    padding:
+        30px;
+
+    border-radius:
+        14px;
+
+    box-shadow:
+        var(--brand-shadow);
+
+}
+
+
+.calculator-box h3 {
+
+    margin-top:
+        0;
+
+    text-align:
+        center;
+
+    margin-bottom:
+        25px;
+
+}
+
+
+.calculator-tabs {
+
+    display:
+        flex;
+
+    gap:
+        10px;
+
+    margin-bottom:
+        25px;
+
+}
+
+
+.calculator-tab {
+
+    flex:
+        1;
+
+    padding:
+        12px;
+
+    border:
+        none;
+
+    border-radius:
+        8px;
+
+    background:
+        #e9ecef;
+
+    cursor:
+        pointer;
+
+    font-weight:
+        600;
+
+    font-size:
+        15px;
+
+}
+
+
+.calculator-tab.active {
+
+    background:
+        var(--brand-gradient);
+
+    color:
+        white;
+
+}
+
+
+.converter-panel {
+
+    display:
+        none;
+
+}
+
+
+.converter-panel.active {
+
+    display:
+        block;
+
+}
+
+
+.form-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:
+        20px;
+
+}
+
+
+.form-group {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+}
+
+
+.form-group label {
+
+    font-weight:
+        600;
+
+    margin-bottom:
+        7px;
+
+}
+
+
+.form-group input {
+
+    width:
+        100%;
+
+    padding:
+        12px;
+
+    border:
+        1px solid #ccc;
+
+    border-radius:
+        8px;
+
+    font-size:
+        16px;
+
+}
+
+
+.form-group input:focus {
+
+    outline:
+        none;
+
+    border-color:
+        #2c5364;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(44,83,100,0.15);
+
+}
+
+
+.unit-label {
+
+    margin-top:
+        5px;
+
+    font-size:
+        0.85rem;
+
+    color:
+        #666;
+
+}
+
+
+.button-row {
+
+    display:
+        flex;
+
+    gap:
+        12px;
+
+    margin-top:
+        25px;
+
+}
+
+
+.calculate-button,
+.clear-button {
+
+    flex:
+        1;
+
+    padding:
+        14px;
+
+    border:
+        none;
+
+    border-radius:
+        8px;
+
+    font-size:
+        17px;
+
+    font-weight:
+        600;
+
+    cursor:
+        pointer;
+
+}
+
+
+.calculate-button {
+
+    background:
+        var(--brand-gradient);
+
+    color:
+        white;
+
+}
+
+
+.clear-button {
+
+    background:
+        #e9ecef;
+
+    color:
+        #333;
+
+}
+
+
+.calculate-button:hover,
+.clear-button:hover {
+
+    opacity:
+        0.9;
+
+}
+
+
+/* =====================================================
+   RESULT
+   ===================================================== */
+
+.result-box {
+
+    display:
+        none;
+
+    margin-top:
+        25px;
+
+    padding:
+        25px;
+
+    background:
+        #f5f7f8;
+
+    border-radius:
+        10px;
+
+    text-align:
+        center;
+
+}
+
+
+.result-box h3 {
+
+    margin-top:
+        0;
+
+    color:
+        #203a43;
+
+}
+
+
+.result-value {
+
+    font-size:
+        2.3rem;
+
+    font-weight:
+        700;
+
+    color:
+        #203a43;
+
+}
+
+
+.result-secondary {
+
+    margin-top:
+        8px;
+
+    font-size:
+        1rem;
+
+    color:
+        #555;
+
+}
+
+
+.result-category {
+
+    margin-top:
+        15px;
+
+    padding:
+        12px;
+
+    background:
+        white;
+
+    border-radius:
+        8px;
+
+    font-weight:
+        600;
+
+}
+
+
+/* =====================================================
+   REFERENCE TABLE
+   ===================================================== */
+
+.reference-table {
+
+    width:
+        100%;
+
+    border-collapse:
+        collapse;
+
+    margin-top:
+        20px;
+
+}
+
+
+.reference-table th,
+.reference-table td {
+
+    border:
+        1px solid #ddd;
+
+    padding:
+        11px;
+
+    text-align:
+        center;
+
+}
+
+
+.reference-table th {
+
+    background:
+        var(--brand-gradient);
+
+    color:
+        white;
+
+}
+
+
+.reference-table tr:nth-child(even) {
+
+    background:
+        #f7f7f7;
+
+}
+
+
+/* =====================================================
+   INFORMATION SECTIONS
+   ===================================================== */
+
+.info-section {
+
+    background:
+        white;
+
+    margin-top:
+        25px;
+
+    padding:
+        30px;
+
+    border-radius:
+        14px;
+
+    box-shadow:
+        var(--brand-shadow);
+
+}
+
+
+.info-section h2 {
+
+    margin-top:
+        0;
+
+    color:
+        #203a43;
+
+}
+
+
+.info-section h3 {
+
+    margin-top:
+        28px;
+
+    color:
+        #203a43;
+
+}
+
+
+.info-section p {
+
+    line-height:
+        1.7;
+
+    text-align:
+        justify;
+
+    color:
+        #444;
+
+}
+
+
+.info-section ul {
+
+    line-height:
+        1.7;
+
+    color:
+        #444;
+
+}
+
+
+.info-section li {
+
+    margin-bottom:
+        7px;
+
+}
+
+
+.info-note {
+
+    margin-top:
+        20px;
+
+    padding:
+        16px;
+
+    background:
+        #f5f7f8;
+
+    border-left:
+        4px solid #2c5364;
+
+    line-height:
+        1.6;
+
+    color:
+        #555;
+
+}
+
+
+/* =====================================================
+   FORMULA
+   ===================================================== */
+
+.formula {
+
+    padding:
+        20px;
+
+    background:
+        #f5f7f8;
+
+    border-radius:
+        10px;
+
+    text-align:
+        center;
+
+    font-family:
+        "Times New Roman",
+        serif;
+
+    font-size:
+        1.2rem;
+
+    margin:
+        15px 0;
+
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+footer {
+
+    max-width:
+        100%;
+
+    margin:
+        40px auto 0;
+
+    padding:
+        20px;
+
+    background:
+        white;
+
+    border-radius:
+        8px;
+
+    box-shadow:
+        var(--brand-shadow);
+
+    text-align:
+        center;
+
+}
+
+
+footer ul {
+
+    list-style:
+        none;
+
+    padding:
+        0;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    gap:
+        40px;
+
+    margin:
+        0;
+
+}
+
+
+footer ul li a {
+
+    color:
+        #1a73e8;
+
+    font-weight:
+        500;
+
+    text-decoration:
+        none;
+
+}
+
+
+footer ul li a:hover {
+
+    text-decoration:
+        underline;
+
+}
+
+
+footer p {
+
+    margin-top:
+        12px;
+
+    font-size:
+        0.85rem;
+
+    color:
+        #555;
+
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 700px) {
+
+    .header-left img {
+        height: 60px;
+    }
+
+    .title-block h1 {
+        font-size: 1.5rem;
+    }
+
+    .header-right {
+        display: none;
+    }
+
+    .header-nav {
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 12px;
+    }
+
+    .page-container {
+        width: 94%;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .calculator-tabs {
+        flex-direction: column;
+    }
+
+    .button-row {
+        flex-direction: column;
+    }
+
+    .reference-table {
+        font-size: 0.85rem;
+    }
+
+    footer ul {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="top-header">
+
+
+<div class="header-main">
+
+
+<div class="header-left">
+
+<img
+src="zeta_dx.webp"
+alt="Zeta Dx Logo">
+
+<div class="title-block">
+
+<h1>
+Zeta Dx
+</h1>
+
+</div>
+
+</div>
+
+
+<div class="header-right">
+
+<h2>
+Calculate. Interpret. Understand.
+</h2>
+
+<p>
+For educational purposes only
+</p>
+
+</div>
+
+
+</div>
+
+
+<nav class="header-nav">
+
+
+<a href="./index.html">
+Home
+</a>
+
+
+<a href="./contact.html">
+About Us
+</a>
+
+
+<a href="./privacy_policy.html">
+Privacy Policy
+</a>
+
+
+<a href="./disclaimer.html">
+Terms & Conditions
+</a>
+
+
+<div class="dropdown">
+
+
+<button class="dropbtn">
+Tools ▾
+</button>
+
+
+<div class="dropdown-content">
+
+<a href="./acr.html">
+ACR
+</a>
+
+<a href="./pcr.html">
+PCR
+</a>
+
+<a href="./inr.html">
+INR
+</a>
+
+<a href="./esr.html">
+ESR
+</a>
+
+<a href="./convertors.html">
+Unit Converters
+</a>
+
+<a href="./egfr.html">
+eGFR
+</a>
+
+<a href="./hba1c.html">
+HbA1c & eAG
+</a>
+
+</div>
+
+</div>
+
+
+</nav>
+
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+     ===================================================== -->
+
+<main>
+
+
+<div class="page-container">
+
+
+<!-- ===================================================
+     TITLE
+     =================================================== -->
+
+<section class="page-title">
+
+<h2>
+HbA1c & Estimated Average Glucose
+</h2>
+
+<p>
+Convert HbA1c to estimated average glucose and
+understand the relationship between long-term
+and point-in-time blood glucose measurements.
+</p>
+
+</section>
+
+
+
+<!-- ===================================================
+     CALCULATOR
+     =================================================== -->
+
+<section class="calculator-box">
+
+
+<h3>
+HbA1c / eAG Calculator
+</h3>
+
+
+<div class="calculator-tabs">
+
+
+<button
+class="calculator-tab active"
+id="a1cTab"
+onclick="showPanel('a1cPanel', this)">
+
+HbA1c → eAG
+
+</button>
+
+
+<button
+class="calculator-tab"
+onclick="showPanel('eagPanel', this)">
+
+eAG → HbA1c
+
+</button>
+
+
+</div>
+
+
+
+<!-- =================================================
+     HbA1c → eAG
+     ================================================= -->
+
+<div
+class="converter-panel active"
+id="a1cPanel">
+
+
+<div class="form-grid">
+
+
+<div class="form-group">
+
+<label for="a1cInput">
+
+HbA1c
+
+</label>
+
+<input
+type="number"
+id="a1cInput"
+step="0.1"
+min="3"
+max="20"
+placeholder="Enter HbA1c %">
+
+<span class="unit-label">
+%
+</span>
+
+</div>
+
+
+</div>
+
+
+<div class="button-row">
+
+<button
+class="calculate-button"
+onclick="calculateEAG()">
+
+Convert to eAG
+
+</button>
+
+
+<button
+class="clear-button"
+onclick="clearA1C()">
+
+Clear
+
+</button>
+
+</div>
+
+
+<div
+class="result-box"
+id="a1cResult">
+
+
+<h3>
+Estimated Average Glucose
+</h3>
+
+
+<div
+class="result-value"
+id="eagMg">
+
+—
+</div>
+
+
+<div
+class="result-secondary"
+id="eagMmol">
+
+—
+</div>
+
+
+<div
+class="result-category"
+id="a1cCategory">
+
+—
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- =================================================
+     eAG → HbA1c
+     ================================================= -->
+
+<div
+class="converter-panel"
+id="eagPanel">
+
+
+<div class="form-grid">
+
+
+<div class="form-group">
+
+<label for="eagInput">
+
+Estimated Average Glucose
+
+</label>
+
+<input
+type="number"
+id="eagInput"
+step="1"
+min="20"
+max="600"
+placeholder="Enter eAG">
+
+<span class="unit-label">
+mg/dL
+</span>
+
+</div>
+
+
+</div>
+
+
+<div class="button-row">
+
+<button
+class="calculate-button"
+onclick="calculateA1C()">
+
+Convert to HbA1c
+
+</button>
+
+
+<button
+class="clear-button"
+onclick="clearEAG()">
+
+Clear
+
+</button>
+
+</div>
+
+
+<div
+class="result-box"
+id="eagResult">
+
+
+<h3>
+Estimated HbA1c
+</h3>
+
+
+<div
+class="result-value"
+id="a1cValue">
+
+—
+
+</div>
+
+
+<div
+class="result-secondary">
+
+%
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- ===================================================
+     QUICK REFERENCE
+     =================================================== -->
+
+<section class="info-section">
+
+
+<h2>
+HbA1c to Estimated Average Glucose Reference
+</h2>
+
+
+<p>
+
+The estimated average glucose (eAG) expresses the
+HbA1c result in the same units commonly used for
+day-to-day blood glucose measurements. The relationship
+was established from the A1C-Derived Average Glucose
+(ADAG) study and is used by the ADA for patient-friendly
+interpretation of A1C results.
+
+</p>
+
+
+<table class="reference-table">
+
+
+<tr>
+
+<th>
+HbA1c
+</th>
+
+<th>
+eAG (mg/dL)
+</th>
+
+<th>
+eAG (mmol/L)
+</th>
+
+</tr>
+
+
+<tr>
+<td>5.0%</td>
+<td>97</td>
+<td>5.4</td>
+</tr>
+
+
+<tr>
+<td>5.5%</td>
+<td>111</td>
+<td>6.2</td>
+</tr>
+
+
+<tr>
+<td>6.0%</td>
+<td>126</td>
+<td>7.0</td>
+</tr>
+
+
+<tr>
+<td>6.5%</td>
+<td>140</td>
+<td>7.8</td>
+</tr>
+
+
+<tr>
+<td>7.0%</td>
+<td>154</td>
+<td>8.6</td>
+</tr>
+
+
+<tr>
+<td>7.5%</td>
+<td>169</td>
+<td>9.4</td>
+</tr>
+
+
+<tr>
+<td>8.0%</td>
+<td>183</td>
+<td>10.2</td>
+</tr>
+
+
+<tr>
+<td>8.5%</td>
+<td>197</td>
+<td>10.9</td>
+</tr>
+
+
+<tr>
+<td>9.0%</td>
+<td>212</td>
+<td>11.8</td>
+</tr>
+
+
+<tr>
+<td>9.5%</td>
+<td>226</td>
+<td>12.6</td>
+</tr>
+
+
+<tr>
+<td>10.0%</td>
+<td>240</td>
+<td>13.3</td>
+</tr>
+
+
+<tr>
+<td>11.0%</td>
+<td>269</td>
+<td>14.9</td>
+</tr>
+
+
+<tr>
+<td>12.0%</td>
+<td>298</td>
+<td>16.5</td>
+</tr>
+
+
+</table>
+
+
+<div class="info-note">
+
+The values are estimates. An individual's measured
+glucose readings may not exactly match the calculated
+eAG because HbA1c represents an average over time and
+does not describe every glucose fluctuation.
+
+</div>
+
+
+</section>
+
+
+
+<!-- ===================================================
+     WHAT IS HbA1c
+     =================================================== -->
+
+<section class="info-section">
+
+
+<h2>
+What is HbA1c?
+</h2>
+
+
+<p>
+
+HbA1c, also called A1C or glycated hemoglobin, is a
+laboratory measurement that reflects average blood
+glucose exposure over approximately the previous
+two to three months.
+
+</p>
+
+
+<p>
+
+Glucose circulating in the bloodstream can attach to
+hemoglobin within red blood cells. The higher the
+average blood glucose concentration, the greater the
+proportion of hemoglobin that becomes glycated.
+
+</p>
+
+
+<p>
+
+Because red blood cells circulate for approximately
+three months, HbA1c provides a longer-term picture of
+blood glucose than a single blood glucose measurement.
+
+</p>
+
+
+<h3>
+Why is HbA1c useful?
+</h3>
+
+
+<ul>
+
+<li>
+It can be used as one of the tests for diagnosing
+prediabetes and diabetes.
+</li>
+
+<li>
+It provides an indication of average glucose over
+the previous 2–3 months.
+</li>
+
+<li>
+It can be used to monitor diabetes management.
+</li>
+
+<li>
+It provides a longer-term perspective than an isolated
+finger-stick glucose measurement.
+</li>
+
+</ul>
+
+
+<p>
+
+The ADA notes that A1C does not require fasting, which
+is one of its practical advantages as a test.
+
+</p>
+
+
+</section>
+
+
+
+<!-- ===================================================
+     eAG
+     =================================================== -->
+
+<section class="info-section">
+
+
+<h2>
+What is Estimated Average Glucose (eAG)?
+</h2>
+
+
+<p>
+
+Estimated average glucose, or eAG, converts an HbA1c
+percentage into an approximate average glucose
+concentration expressed in familiar glucose units such
+as mg/dL or mmol/L.
+
+</p>
+
+
+<p>
+
+For example, an HbA1c of 7.0% corresponds to an eAG
+of approximately <strong>154 mg/dL</strong>, or
+approximately <strong>8.6 mmol/L</strong>.
+
+</p>
+
+
+<h3>
+How is eAG calculated?
+</h3>
+
+
+<div class="formula">
+
+eAG (mg/dL) =
+28.7 × HbA1c (%) − 46.7
+
+</div>
+
+
+<p>
+
+For conversion to mmol/L:
+
+</p>
+
+
+<div class="formula">
+
+eAG (mmol/L) =
+eAG (mg/dL) ÷ 18
+
+</div>
+
+
+<p>
+
+The reverse relationship can be written as:
+
+</p>
+
+
+<div class="formula">
+
+HbA1c (%) =
+[eAG (mg/dL) + 46.7] ÷ 28.7
+
+</div>
+
+
+<div class="info-note">
+
+The eAG equation describes a population-derived
+relationship between HbA1c and average glucose. It is
+an estimate and should not be interpreted as an exact
+prediction of an individual's glucose readings.
+
+</div>
+
+
+</section>
+
+
+
+<!-- ===================================================
+     HbA1c AND eAG
+     =================================================== -->
+
+<section class="info-section">
+
+
+<h2>
+HbA1c vs eAG
+</h2>
+
+
+<table class="reference-table">
+
+
+<tr>
+
+<th>
+HbA1c
+</th>
+
+<th>
+eAG
+</th>
+
+<th>
+What it represents
+</th>
+
+</tr>
+
+
+<tr>
+
+<td>
+HbA1c
+</td>
+
+<td>
+%
+</td>
+
+<td>
+Percentage of hemoglobin that is glycated
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+eAG
+</td>
+
+<td>
+mg/dL or mmol/L
+</td>
+
+<td>
+Estimated average glucose corresponding
+to the HbA1c
+</td>
+
+</tr>
+
+
+</table>
+
+
+<p>
+
+The two values describe related information in different
+ways. HbA1c is the laboratory measurement, while eAG
+expresses that result using glucose units that are more
+familiar from blood glucose meters.
+
+</p>
+
+
+</section>
+
+
+
+<!-- ===================================================
+     FBS / FPG
+     =================================================== -->
+
+<section class="info-section">
+
+
+<h2>
+What is FBS / FPG?
+</h2>
+
+
+<p>
+
+FBS is commonly used to mean <strong>fasting blood sugar</strong>.
+In laboratory and ADA terminology, the corresponding
+term is usually <strong>fasting plasma glucose (FPG)</strong>.
+
+</p>
+
+
+<p>
+
+Fasting means that the person has had no caloric intake
+for at least <strong>8 hours</strong>. Water is generally
+permitted during the fasting period.
+
+</p>
+
+
+<h3>
+Why is fasting glucose measured?
+</h3>
+
+
+<p>
+
+Fasting glucose provides a measurement of blood glucose
+under standardized fasting conditions. It is one of the
+tests that can be used to identify prediabetes and
+diabetes.
+
+</p>
+
+
+<table class="reference-table">
+
+
+<tr>
+
+<th>
+Fasting Plasma Glucose
+</th>
+
+<th>
+ADA category
+</th>
+
+</tr>
+
+
+<tr>
+
+<td>
+&lt;100 mg/dL
+</td>
+
+<td>
+Normal
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+100–125 mg/dL
+</td>
+
+<td>
+Prediabetes
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+≥126 mg/dL
+</td>
+
+<td>
+Diabetes range
+</td>
+
+</tr>
+
+
+</table>
+
+
+<p>
+
+An abnormal diagnostic result generally requires
+appropriate confirmation unless there is unequivocal
+hyperglycemia or another qualifying clinical situation.
+
+</p>
+
+
+</section>
+
+
+
+<!-- ===================================================
+     PBS / PPG
+     =================================================== -->
+
+<section class="info-section">
+
+
+<h2>
+What is PBS / Postprandial Blood Glucose?
+</h2>
+
+
+<p>
+
+PBS is commonly used to describe <strong>postprandial
+blood sugar</strong>. The ADA terminology is
+<strong>postprandial blood glucose (PPG)</strong>.
+
+</p>
+
+
+<p>
+
+Postprandial glucose refers to the blood glucose
+measurement taken after eating. For diabetes management,
+the ADA commonly discusses postprandial glucose
+measurement at <strong>1–2 hours after the beginning
+of a meal</strong>.
+
+</p>
+
+
+<h3>
+Why is postprandial glucose useful?
+</h3>
+
+
+<p>
+
+Postprandial glucose helps show how blood glucose
+responds to food and other factors around meals. It can
+provide information that may not be apparent from a
+fasting measurement alone.
+
+</p>
+
+
+<h3>
+ADA target for many nonpregnant adults with diabetes
+</h3>
+
+
+<div class="formula">
+
+1–2 hours after beginning a meal:
+<br>
+<strong>&lt;180 mg/dL</strong>
+
+</div>
+
+
+<p>
+
+Glucose targets are individualized. The ADA notes that
+different targets may be appropriate depending on factors
+such as age, duration of diabetes, comorbidities,
+cardiovascular disease, complications and risk of
+hypoglycemia.
+
+</p>
+
+
+</section>
+
+
+
+<!-- ===================================================
+     COMPARISON
+     =================================================== -->
+
+<section class="info-section">
+
+
+<h2>
+HbA1c, FPG and Postprandial Glucose: What is the Difference?
+</h2>
+
+
+<table class="reference-table">
+
+
+<tr>
+
+<th>
+Test
+</th>
+
+<th>
+Time represented
+</th>
+
+<th>
+Main purpose
+</th>
+
+</tr>
+
+
+<tr>
+
+<td>
+HbA1c
+</td>
+
+<td>
+Approximately 2–3 months
+</td>
+
+<td>
+Long-term glycemic exposure
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+FPG / FBS
+</td>
+
+<td>
+Current fasting state
+</td>
+
+<td>
+Fasting glucose assessment
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+PPG / PBS
+</td>
+
+<td>
+1–2 hours after beginning a meal
+</td>
+
+<td>
+Post-meal glucose response
+</td>
+
+</tr>
+
+
+</table>
+
+
+<p>
+
+These measurements should not be expected to give
+identical information. HbA1c provides a long-term
+average, while FPG and PPG represent glucose at
+specific points in time.
+
+</p>
+
+
+</section>
+
+
+
+<!-- ===================================================
+     DIABETES
+     =================================================== -->
+
+<section class="info-section">
+
+
+<h2>
+What is Diabetes?
+</h2>
+
+
+<p>
+
+Diabetes is a group of conditions characterized by
+elevated blood glucose levels. Glucose is an important
+source of energy, and insulin plays a major role in
+helping glucose move from the bloodstream into cells.
+
+</p>
+
+
+<p>
+
+In diabetes, the body may not produce enough insulin,
+may not use insulin effectively, or both. The resulting
+elevation in blood glucose can persist over time.
+
+</p>
+
+
+<h3>
+Major types of diabetes
+</h3>
+
+
+<ul>
+
+<li>
+
+<strong>Type 1 diabetes:</strong>
+an autoimmune condition in which the body's immune
+system attacks insulin-producing beta cells.
+
+</li>
+
+
+<li>
+
+<strong>Type 2 diabetes:</strong>
+the most common form, generally involving insulin
+resistance together with progressive impairment of
+insulin secretion.
+
+</li>
+
+
+<li>
+
+<strong>Gestational diabetes:</strong>
+diabetes diagnosed during pregnancy.
+
+</li>
+
+</ul>
+
+
+<p>
+
+Diabetes can affect multiple organs over time.
+Persistent hyperglycemia is associated with complications
+involving the eyes, kidneys, nerves, cardiovascular
+system and other tissues.
+
+</p>
+
+
+</section>
+
+
+
+<!-- ===================================================
+     ADA DIAGNOSIS
+     =================================================== -->
+
+<section class="info-section">
+
+
+<h2>
+ADA Criteria for Diabetes and Prediabetes
+</h2>
+
+
+<p>
+
+The ADA recognizes several laboratory approaches for
+diagnosing diabetes. The appropriate test depends on
+the clinical situation.
+
+</p>
+
+
+<table class="reference-table">
+
+
+<tr>
+
+<th>
+Test
+</th>
+
+<th>
+Normal
+</th>
+
+<th>
+Prediabetes
+</th>
+
+<th>
+Diabetes
+</th>
+
+</tr>
+
+
+<tr>
+
+<td>
+HbA1c
+</td>
+
+<td>
+&lt;5.7%
+</td>
+
+<td>
+5.7–6.4%
+</td>
+
+<td>
+≥6.5%
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+Fasting Plasma Glucose
+</td>
+
+<td>
+&lt;100 mg/dL
+</td>
+
+<td>
+100–125 mg/dL
+</td>
+
+<td>
+≥126 mg/dL
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+2-hour OGTT
+</td>
+
+<td>
+&lt;140 mg/dL
+</td>
+
+<td>
+140–199 mg/dL
+</td>
+
+<td>
+≥200 mg/dL
+</td>
+
+</tr>
+
+
+</table>
+
+
+<h3>
+Random Plasma Glucose
+</h3>
+
+
+<p>
+
+A random plasma glucose of <strong>≥200 mg/dL</strong>
+can be diagnostic of diabetes when accompanied by
+classic symptoms of hyperglycemia or hyperglycemic
+crisis.
+
+</p>
+
+
+<div class="info-note">
+
+A diagnostic threshold should not be interpreted as
+a standalone self-diagnosis. ADA notes that, in the
+absence of unequivocal hyperglycemia, abnormal diagnostic
+testing generally requires confirmation.
+
+</div>
+
+
+</section>
+
+
+
+<!-- ===================================================
+     A1C TARGET
+     =================================================== -->
+
+<section class="info-section">
+
+
+<h2>
+HbA1c Targets in Diabetes
+</h2>
+
+
+<p>
+
+For many nonpregnant adults with diabetes, the ADA
+lists an HbA1c target of <strong>&lt;7%</strong>.
+However, the appropriate target is individualized.
+
+</p>
+
+
+<p>
+
+The ADA emphasizes that more or less stringent goals
+may be appropriate depending on factors such as age,
+life expectancy, duration of diabetes, comorbidities,
+cardiovascular disease, complications and risk of
+hypoglycemia.
+
+</p>
+
+
+<div class="formula">
+
+A1C target for many nonpregnant adults:
+<br>
+<strong>&lt;7%</strong>
+
+<br><br>
+
+Corresponding eAG:
+<br>
+<strong>&lt;154 mg/dL</strong>
+
+</div>
+
+
+<p>
+
+A target should therefore not be interpreted as a
+universal value for every person with diabetes.
+
+</p>
+
+
+</section>
+
+
+
+<!-- ===================================================
+     WHY HbA1c AND GLUCOSE MAY DIFFER
+     =================================================== -->
+
+<section class="info-section">
+
+
+<h2>
+Why Might HbA1c and Glucose Readings Not Match?
+</h2>
+
+
+<p>
+
+The eAG derived from HbA1c is a statistical estimate.
+A person's actual glucose measurements can vary
+considerably around that average.
+
+</p>
+
+
+<p>
+
+For example, two people can have the same HbA1c but
+different patterns of fasting glucose, post-meal
+glucose and glucose variability.
+
+</p>
+
+
+<h3>
+Factors that can affect HbA1c interpretation
+</h3>
+
+
+<ul>
+
+<li>
+Conditions that alter red blood cell lifespan.
+</li>
+
+<li>
+Some forms of anemia.
+</li>
+
+<li>
+Recent blood loss or transfusion.
+</li>
+
+<li>
+Hemoglobin variants.
+</li>
+
+<li>
+Certain medical conditions or treatments that affect
+red blood cell turnover.
+</li>
+
+</ul>
+
+
+<p>
+
+When HbA1c appears inconsistent with measured glucose,
+the result should be evaluated in the appropriate
+clinical and laboratory context.
+
+</p>
+
+
+</section>
+
+
+
+<!-- ===================================================
+     IMPORTANT
+     =================================================== -->
+
+<section class="info-section">
+
+
+<h2>
+Important Information
+</h2>
+
+
+<div class="info-note">
+
+<strong>Educational use only.</strong>
+
+This calculator provides an estimated relationship
+between HbA1c and average glucose. It is not intended
+to diagnose diabetes or determine an individual's
+treatment.
+
+</div>
+
+
+<p>
+
+Blood glucose results can vary because of meals,
+physical activity, illness, stress, medications and
+many other factors. A single glucose measurement should
+therefore not automatically be interpreted as a person's
+long-term average glucose.
+
+</p>
+
+
+<p>
+
+For diagnosis or treatment decisions, laboratory results
+should be interpreted by an appropriately qualified
+healthcare professional.
+
+</p>
+
+
+</section>
+
+
+
+<!-- ===================================================
+     REFERENCES
+     =================================================== -->
+
+<section class="info-section">
+
+
+<h2>
+References & Further Reading
+</h2>
+
+
+<ul>
+
+<li>
+American Diabetes Association – Understanding A1C
+</li>
+
+<li>
+American Diabetes Association – Diabetes Diagnosis & Tests
+</li>
+
+<li>
+American Diabetes Association – Diabetes Testing &
+Monitoring
+</li>
+
+<li>
+American Diabetes Association – Standards of Care
+in Diabetes
+</li>
+
+<li>
+A1C-Derived Average Glucose (ADAG) Study
+</li>
+
+</ul>
+
+
+</section>
+
+
+</div>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer>
+
+
+<ul>
+
+<li>
+
+<a href="./privacy_policy.html">
+Privacy Policy
+</a>
+
+</li>
+
+
+<li>
+
+<a href="./disclaimer.html">
+Terms & Conditions
+</a>
+
+</li>
+
+
+<li>
+
+<a href="./contact.html">
+About Us
+</a>
+
+</li>
+
+</ul>
+
+
+<p>
+
+<br>
+
+Zeta Dx &copy; 2025,
+Developed by: M. K.
+
+</p>
+
+
+</footer>
+
+
+
+<script>
+
+/* =====================================================
+   PANEL SWITCHING
+   ===================================================== */
+
+function showPanel(
+    panelId,
+    button
+) {
+
+    document
+        .querySelectorAll(
+            ".converter-panel"
+        )
+        .forEach(
+            panel => {
+
+                panel.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    document
+        .querySelectorAll(
+            ".calculator-tab"
+        )
+        .forEach(
+            tab => {
+
+                tab.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    document
+        .getElementById(
+            panelId
+        )
+        .classList.add(
+            "active"
+        );
+
+
+    button.classList.add(
+        "active"
+    );
+
+}
+
+
+/* =====================================================
+   HbA1c → eAG
+   ===================================================== */
+
+function calculateEAG() {
+
+    const a1c =
+        parseFloat(
+            document.getElementById(
+                "a1cInput"
+            ).value
+        );
+
+
+    if (
+        isNaN(a1c) ||
+        a1c < 3 ||
+        a1c > 20
+    ) {
+
+        alert(
+            "Please enter an HbA1c value between 3% and 20%."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       ADAG / ADA relationship
+
+       eAG (mg/dL)
+       = 28.7 × A1C − 46.7
+    */
+
+    const eag =
+        (28.7 * a1c) - 46.7;
+
+
+    const eagMmol =
+        eag / 18;
+
+
+    document.getElementById(
+        "eagMg"
+    ).textContent =
+
+        Math.round(
+            eag
+        ) + " mg/dL";
+
+
+    document.getElementById(
+        "eagMmol"
+    ).textContent =
+
+        eagMmol.toFixed(1)
+        + " mmol/L";
+
+
+    let category;
+
+
+    if (a1c < 5.7) {
+
+        category =
+            "ADA range: Normal";
+
+
+    } else if (a1c < 6.5) {
+
+        category =
+            "ADA range: Prediabetes";
+
+
+    } else {
+
+        category =
+            "ADA range: Diabetes range";
+
+    }
+
+
+    document.getElementById(
+        "a1cCategory"
+    ).textContent =
+        category;
+
+
+    document.getElementById(
+        "a1cResult"
+    ).style.display =
+        "block";
+
+}
+
+
+/* =====================================================
+   eAG → HbA1c
+   ===================================================== */
+
+function calculateA1C() {
+
+    const eag =
+        parseFloat(
+            document.getElementById(
+                "eagInput"
+            ).value
+        );
+
+
+    if (
+        isNaN(eag) ||
+        eag < 20 ||
+        eag > 600
+    ) {
+
+        alert(
+            "Please enter an eAG between 20 and 600 mg/dL."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Reverse relationship
+
+       A1C
+       = (eAG + 46.7) / 28.7
+    */
+
+    const a1c =
+        (eag + 46.7) / 28.7;
+
+
+    document.getElementById(
+        "a1cValue"
+    ).textContent =
+
+        a1c.toFixed(1);
+
+
+    document.getElementById(
+        "eagResult"
+    ).style.display =
+        "block";
+
+}
+
+
+/* =====================================================
+   CLEAR A1C
+   ===================================================== */
+
+function clearA1C() {
+
+    document.getElementById(
+        "a1cInput"
+    ).value = "";
+
+
+    document.getElementById(
+        "a1cResult"
+    ).style.display =
+        "none";
+
+}
+
+
+/* =====================================================
+   CLEAR eAG
+   ===================================================== */
+
+function clearEAG() {
+
+    document.getElementById(
+        "eagInput"
+    ).value = "";
+
+
+    document.getElementById(
+        "eagResult"
+    ).style.display =
+        "none";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
