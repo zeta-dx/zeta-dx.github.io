@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Dx AI by Zeta Dx - Educational laboratory report analysis tool for understanding laboratory results, calculations and related parameters.">
+
+    <meta name="keywords"
+          content="Dx AI, laboratory report analyzer, lab report analysis, medical laboratory AI, Zeta Dx">
+
+    <link rel="canonical" href="https://zeta-dx.github.io/dx-ai.html">
+
+    <title>Dx AI - Zeta Dx</title>
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Google AdSense -->
+    <script async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1137049263274228"
+        crossorigin="anonymous"></script>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Dx AI - Zeta Dx">
+    <meta property="og:description"
+          content="Educational laboratory report analysis by Zeta Dx.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zeta-dx.github.io/dx-ai.html">
+    <meta property="og:image"
+          content="https://zeta-dx.github.io/zeta_dx.webp">
+
+    <style>
+
+        :root {
+            --brand-gradient:
+                linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+
+            --brand-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.12);
+
+            --warning-bg: #fff8e6;
+            --warning-border: #e0a800;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url('bg.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+
+            font-family:
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            margin: 0;
+            padding: 0;
+            color: #222;
+        }
+
+        /* ================= HEADER ================= */
+
+        .top-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 10px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-left img {
+            height: 80px;
+        }
+
+        .title-block h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .header-right {
+            text-align: right;
+        }
+
+        .header-right h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .header-right p {
+            margin: 4px 0 0;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        /* ================= NAVIGATION ================= */
+
+        .header-nav {
+            max-width: 100%;
+            margin: 10px auto;
+            padding: 14px 30px;
+
+            background: var(--brand-gradient);
+
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            box-shadow: var(--brand-shadow);
+        }
+
+        .header-nav > a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropbtn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: white;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+
+            background: var(--brand-gradient);
+
+            min-width: 190px;
+
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+
+            z-index: 9999;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px 14px;
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(255,255,255,0.12);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* ================= PAGE ================= */
+
+        .page-container {
+            width: 82%;
+            max-width: 1100px;
+            margin: 30px auto;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            background: var(--brand-gradient);
+            color: white;
+
+            padding: 35px 30px;
+            border-radius: 14px;
+
+            text-align: center;
+
+            box-shadow: var(--brand-shadow);
+        }
+
+        .hero h2 {
+            margin: 0 0 10px;
+            font-size: 2.2rem;
+        }
+
+        .hero p {
+            margin: 0;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 7px 14px;
+
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 20px;
+
+            font-size: 0.85rem;
+        }
+
+        /* ================= INFORMATION CARDS ================= */
+
+        .info-section {
+            background: white;
+
+            margin-top: 25px;
+            padding: 30px;
+
+            border-radius: 14px;
+
+            box-shadow: var(--brand-shadow);
+        }
+
+        .info-section h2 {
+            margin-top: 0;
+            color: #203a43;
+        }
+
+        .info-section p {
+            line-height: 1.7;
+            text-align: justify;
+            color: #444;
+        }
+
+        .info-section ul {
+            line-height: 1.7;
+            color: #444;
+            padding-left: 22px;
+        }
+
+        .info-section li {
+            margin-bottom: 8px;
+        }
+
+        /* ================= WARNING ================= */
+
+        .warning-section {
+            background: var(--warning-bg);
+
+            margin-top: 25px;
+            padding: 28px 30px;
+
+            border-radius: 14px;
+
+            border-left: 5px solid var(--warning-border);
+
+            box-shadow: var(--brand-shadow);
+        }
+
+        .warning-section h2 {
+            margin-top: 0;
+            color: #765600;
+        }
+
+        .warning-section p {
+            line-height: 1.7;
+            color: #4d4327;
+            text-align: justify;
+        }
+
+        /* ================= USER FORM ================= */
+
+        .form-section {
+            background: white;
+
+            margin-top: 25px;
+            padding: 30px;
+
+            border-radius: 14px;
+
+            box-shadow: var(--brand-shadow);
+        }
+
+        .form-section h2 {
+            margin-top: 0;
+            color: #203a43;
+        }
+
+        .form-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+
+            border: 1px solid #ccc;
+            border-radius: 8px;
+
+            font-size: 16px;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+
+            border-color: #2c5364;
+
+            box-shadow:
+                0 0 0 2px rgba(44,83,100,0.15);
+        }
+
+        .optional {
+            color: #777;
+            font-size: 0.8rem;
+            font-weight: normal;
+        }
+
+        /* ================= UPLOAD ================= */
+
+        .upload-section {
+            margin-top: 30px;
+        }
+
+        .upload-box {
+            border: 2px dashed #9aa7ad;
+
+            border-radius: 12px;
+
+            padding: 35px 20px;
+
+            text-align: center;
+
+            background: #fafbfc;
+
+            cursor: pointer;
+
+            transition:
+                border-color 0.2s ease,
+                background 0.2s ease;
+        }
+
+        .upload-box:hover {
+            border-color: #2c5364;
+            background: #f5f7f8;
+        }
+
+        .upload-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .upload-box h3 {
+            margin: 5px 0;
+            color: #203a43;
+        }
+
+        .upload-box p {
+            margin: 8px 0;
+            color: #666;
+        }
+
+        .upload-box input[type="file"] {
+            display: none;
+        }
+
+        .file-name {
+            display: none;
+
+            margin-top: 15px;
+
+            padding: 12px;
+
+            background: white;
+
+            border-radius: 8px;
+
+            color: #203a43;
+
+            font-weight: 600;
+        }
+
+        /* ================= BUTTON ================= */
+
+        .analyze-container {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .analyze-button {
+            border: none;
+
+            padding: 14px 35px;
+
+            border-radius: 9px;
+
+            background: var(--brand-gradient);
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            opacity: 0.55;
+
+            transition:
+                opacity 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .analyze-button.enabled {
+            opacity: 1;
+        }
+
+        .analyze-button.enabled:hover {
+            transform: translateY(-2px);
+        }
+
+        .analyze-note {
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        /* ================= PRIVACY ================= */
+
+        .privacy-note {
+            background: #f5f7f8;
+
+            margin-top: 25px;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            line-height: 1.6;
+
+            color: #555;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            max-width: 100%;
+
+            margin: 40px auto 0;
+
+            padding: 20px;
+
+            background: white;
+
+            border-radius: 8px;
+
+            box-shadow:
+                0 2px 10px rgba(0,0,0,0.1);
+
+            text-align: center;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+
+            display: flex;
+            justify-content: center;
+
+            gap: 40px;
+
+            margin: 0;
+        }
+
+        footer ul li a {
+            color: #1a73e8;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        footer ul li a:hover {
+            text-decoration: underline;
+        }
+
+        footer p {
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 700px) {
+
+            .header-left img {
+                height: 60px;
+            }
+
+            .title-block h1 {
+                font-size: 1.5rem;
+            }
+
+            .header-right {
+                display: none;
+            }
+
+            .header-nav {
+                flex-wrap: wrap;
+                gap: 15px;
+                padding: 12px;
+            }
+
+            .page-container {
+                width: 94%;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-section,
+            .warning-section,
+            .form-section {
+                padding: 24px 20px;
+            }
+
+            .info-section p,
+            .warning-section p {
+                text-align: left;
+            }
+
+            footer ul {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="top-header">
+
+    <div class="header-main">
+
+        <div class="header-left">
+
+            <img src="zeta_dx.webp" alt="Zeta Dx Logo">
+
+            <div class="title-block">
+                <h1>Zeta Dx</h1>
+            </div>
+
+        </div>
+
+        <div class="header-right">
+
+            <h2>Calculate. Interpret. Understand.</h2>
+
+            <p>For educational purposes only</p>
+
+        </div>
+
+    </div>
+
+
+    <nav class="header-nav">
+
+        <a href="./index.html">Home</a>
+
+        <a href="./contact.html">About Us</a>
+
+        <a href="./privacy_policy.html">Privacy Policy</a>
+
+        <a href="./disclaimer.html">Terms & Conditions</a>
+
+
+        <div class="dropdown">
+
+            <button class="dropbtn">
+                Tools ▾
+            </button>
+
+            <div class="dropdown-content">
+
+                <a href="./acr.html">ACR</a>
+                <a href="./pcr.html">PCR</a>
+                <a href="./inr.html">INR</a>
+                <a href="./esr.html">ESR</a>
+                <a href="./convertors.html">Unit Converters</a>
+                <a href="./egfr.html">eGFR</a>
+                <a href="./hba1c.html">HbA1c & eAG</a>
+                <a href="./dx-ai.html">Dx AI</a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+    <div class="page-container">
+
+
+        <!-- ================= HERO ================= -->
+
+        <section class="hero">
+
+            <h2>Dx AI</h2>
+
+            <p>
+                Laboratory Report Analyzer
+            </p>
+
+            <p style="margin-top: 10px;">
+                Understand your laboratory results with
+                structured analysis, calculations, unit
+                conversions and educational explanations.
+            </p>
+
+            <div class="hero-badge">
+                Educational tool • Not a diagnostic service
+            </div>
+
+        </section>
+
+
+        <!-- ================= INTRODUCTION ================= -->
+
+        <section class="info-section">
+
+            <h2>About Dx AI</h2>
+
+            <p>
+                Dx AI is an educational laboratory report
+                analysis tool developed by Zeta Dx to help
+                users better understand the information
+                contained in their laboratory reports.
+            </p>
+
+            <p>
+                The tool is designed to identify results
+                that are outside the reference intervals
+                provided by the laboratory. Where sufficient
+                information is available, Dx AI may also
+                perform relevant calculations, unit
+                conversions and analysis of relationships
+                between related laboratory parameters.
+            </p>
+
+            <p>
+                Dx AI may provide explanations of laboratory
+                parameters, possible factors associated with
+                abnormal results and information about tests
+                that may be relevant for further discussion
+                with a qualified healthcare professional.
+            </p>
+
+            <p>
+                The reference ranges printed on the uploaded
+                laboratory report will be used as the primary
+                reference for identifying results outside the
+                laboratory's stated interval.
+            </p>
+
+        </section>
+
+
+        <!-- ================= WHAT IT CAN DO ================= -->
+
+        <section class="info-section">
+
+            <h2>What Dx AI Can Do</h2>
+
+            <ul>
+
+                <li>
+                    Identify laboratory results that are
+                    outside the reference interval supplied
+                    by the laboratory.
+                </li>
+
+                <li>
+                    Explain what individual laboratory
+                    parameters represent.
+                </li>
+
+                <li>
+                    Convert laboratory values between
+                    commonly used units where applicable.
+                </li>
+
+                <li>
+                    Perform relevant calculations when the
+                    required information is available.
+                </li>
+
+                <li>
+                    Examine relationships between related
+                    laboratory parameters.
+                </li>
+
+                <li>
+                    Provide educational information about
+                    possible explanations for abnormal
+                    findings.
+                </li>
+
+                <li>
+                    Highlight information that may be useful
+                    to discuss with a healthcare professional.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- ================= WARNING ================= -->
+
+        <section class="warning-section">
+
+            <h2>⚠ Important Warning</h2>
+
+            <p>
+                <strong>
+                    Dx AI is intended for educational and
+                    informational purposes only.
+                </strong>
+            </p>
+
+            <p>
+                Dx AI does not provide a medical diagnosis
+                and should not be used as a substitute for
+                examination, diagnosis or treatment by a
+                qualified healthcare professional.
+            </p>
+
+            <p>
+                Laboratory results can be affected by many
+                factors, including age, sex, medical history,
+                medications, fasting status, sample collection
+                conditions, laboratory methods and other
+                clinical circumstances.
+            </p>
+
+            <p>
+                Do not start, stop or change any medication,
+                supplement or treatment based solely on
+                information provided by this tool.
+            </p>
+
+            <p>
+                If you have concerning symptoms or have
+                received a result that may require urgent
+                medical attention, seek appropriate medical
+                care.
+            </p>
+
+        </section>
+
+
+        <!-- ================= USER INFORMATION ================= -->
+
+        <section class="form-section">
+
+            <h2>Your Information</h2>
+
+            <p class="form-description">
+                Enter the information below to help Dx AI
+                perform calculations that may depend on
+                patient-specific information. Weight is
+                optional and may only be used where relevant.
+            </p>
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label for="age">
+                        Age
+                    </label>
+
+                    <input
+                        type="number"
+                        id="age"
+                        name="age"
+                        min="0"
+                        max="120"
+                        placeholder="Enter age">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="sex">
+                        Sex
+                    </label>
+
+                    <select id="sex" name="sex">
+
+                        <option value="">
+                            Select
+                        </option>
+
+                        <option value="male">
+                            Male
+                        </option>
+
+                        <option value="female">
+                            Female
+                        </option>
+
+                        <option value="not_specified">
+                            Not specified
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="weight">
+
+                        Weight
+                        <span class="optional">
+                            (Optional)
+                        </span>
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="weight"
+                        name="weight"
+                        min="1"
+                        max="500"
+                        step="0.1"
+                        placeholder="kg">
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ================= UPLOAD ================= -->
+
+            <div class="upload-section">
+
+                <h2>
+                    Upload Laboratory Report
+                </h2>
+
+                <div
+                    class="upload-box"
+                    id="uploadBox"
+                    onclick="document.getElementById('reportFile').click()"
+                >
+
+                    <div class="upload-icon">
+                        📄
+                    </div>
+
+                    <h3>
+                        Upload your laboratory report
+                    </h3>
+
+                    <p>
+                        Click here to select a PDF or image
+                        of your report.
+                    </p>
+
+                    <p>
+                        Supported formats:
+                        PDF, JPG, JPEG, PNG
+                    </p>
+
+                    <input
+                        type="file"
+                        id="reportFile"
+                        accept=".pdf,.jpg,.jpeg,.png"
+                        onchange="handleFile(this)">
+
+                    <div
+                        class="file-name"
+                        id="fileName">
+                    </div>
+
+                </div>
+
+
+                <div class="analyze-container">
+
+                    <button
+                        type="button"
+                        class="analyze-button"
+                        id="analyzeButton"
+                        disabled
+                        onclick="startAnalysis()">
+
+                        Analyze Report
+
+                    </button>
+
+                    <div class="analyze-note">
+                        Analysis functionality will be
+                        connected in the next stage.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= PRIVACY ================= -->
+
+            <div class="privacy-note">
+
+                <strong>
+                    🔒 Privacy reminder
+                </strong>
+
+                <br><br>
+
+                Laboratory reports may contain sensitive
+                personal and health information. Only upload
+                a report when you are comfortable providing
+                it for analysis. Avoid including information
+                that is not necessary for the intended
+                analysis.
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CURRENT LIMITATION ================= -->
+
+        <section class="info-section">
+
+            <h2>How the Analysis Will Work</h2>
+
+            <p>
+                Dx AI is being designed to preserve the
+                information reported by the laboratory rather
+                than replacing laboratory-specific reference
+                intervals with a generic reference range.
+            </p>
+
+            <p>
+                Reported values will be separated from values
+                calculated or converted by Zeta Dx. For
+                example, an eGFR, ACR, eAG or converted unit
+                may be presented as a calculated value rather
+                than as a result directly reported by the
+                laboratory.
+            </p>
+
+            <p>
+                Where required information is unavailable,
+                Dx AI will indicate that a calculation or
+                interpretation cannot be reliably performed
+                instead of inventing missing information.
+            </p>
+
+        </section>
+
+
+    </div>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <ul>
+
+        <li>
+            <a href="./privacy_policy.html">
+                Privacy Policy
+            </a>
+        </li>
+
+        <li>
+            <a href="./disclaimer.html">
+                Terms & Conditions
+            </a>
+        </li>
+
+        <li>
+            <a href="./contact.html">
+                About Us
+            </a>
+        </li>
+
+    </ul>
+
+    <p>
+        <br>
+        Zeta Dx &copy; 2025, Developed by: M. K.
+    </p>
+
+</footer>
+
+
+<script>
+
+    let selectedFile = null;
+
+
+    function handleFile(input) {
+
+        const fileName =
+            document.getElementById("fileName");
+
+        const analyzeButton =
+            document.getElementById("analyzeButton");
+
+
+        if (!input.files || input.files.length === 0) {
+
+            selectedFile = null;
+
+            fileName.style.display = "none";
+
+            analyzeButton.disabled = true;
+
+            analyzeButton.classList.remove("enabled");
+
+            return;
+
+        }
+
+
+        selectedFile = input.files[0];
+
+
+        fileName.textContent =
+            "📄 " + selectedFile.name +
+            "  ✓ File selected";
+
+
+        fileName.style.display = "block";
+
+
+        analyzeButton.disabled = false;
+
+        analyzeButton.classList.add("enabled");
+
+    }
+
+
+    function startAnalysis() {
+
+        if (!selectedFile) {
+
+            alert(
+                "Please select a laboratory report first."
+            );
+
+            return;
+
+        }
+
+
+        alert(
+            "The report analysis engine will be connected in the next stage."
+        );
+
+    }
+
+</script>
+
+</body>
+</html>
