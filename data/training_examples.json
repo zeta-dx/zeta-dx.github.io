@@ -1,0 +1,3194 @@
+[
+  {
+    "text": "SERUM PLATELET COUNT: 85 X 10³/µL 150 - 410 Impedance",
+    "tokens": [
+      "SERUM:",
+      "PLATELET",
+      "COUNT",
+      "85",
+      "X",
+      "10³/µL",
+      "150",
+      "-",
+      "410",
+      "Impedance"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "AST: 48 U/L 10 - 40 IFCC",
+    "tokens": [
+      "AST:",
+      "48",
+      "U/L",
+      "10",
+      "-",
+      "40",
+      "IFCC"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Creatinine 1.08 mg/dL 0.70 - 1.30",
+    "tokens": [
+      "Creatinine",
+      "1.08",
+      "mg/dL",
+      "0.70",
+      "-",
+      "1.30"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE"
+    ]
+  },
+  {
+    "text": "Creatinine 0.82 mg/dL 0.70 - 1.30",
+    "tokens": [
+      "Creatinine",
+      "0.82",
+      "mg/dL",
+      "0.70",
+      "-",
+      "1.30"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE"
+    ]
+  },
+  {
+    "text": "Blood Urea 35 mg/dL 19 - 43 Enzymatic",
+    "tokens": [
+      "Blood",
+      "Urea",
+      "35",
+      "mg/dL",
+      "19",
+      "-",
+      "43",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Total Cholesterol 220 mg/dL <200 Enzymatic",
+    "tokens": [
+      "Total",
+      "Cholesterol",
+      "220",
+      "mg/dL",
+      "<200",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Vitamin B12 520 pg/mL 200-900 ECLIA",
+    "tokens": [
+      "Vitamin",
+      "B12",
+      "520",
+      "pg/mL",
+      "200-900",
+      "ECLIA"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum Vitamin B12: 890 pg/mL 200 - 900 ECLIA",
+    "tokens": [
+      "Serum:",
+      "Vitamin",
+      "B12",
+      "890",
+      "pg/mL",
+      "200",
+      "-",
+      "900",
+      "ECLIA"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Vitamin D 76.1 ng/mL 30 - 100 ECLIA",
+    "tokens": [
+      "Vitamin",
+      "D",
+      "76.1",
+      "ng/mL",
+      "30",
+      "-",
+      "100",
+      "ECLIA"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "PLATELET COUNT 85 X 10³/µL 150 - 450 Impedance",
+    "tokens": [
+      "PLATELET",
+      "COUNT",
+      "85",
+      "X",
+      "10³/µL",
+      "150",
+      "-",
+      "450",
+      "Impedance"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum  Vitamin  D  76.1  ng/mL  30  -  100  ECLIA",
+    "tokens": [
+      "Serum",
+      "Vitamin",
+      "D",
+      "76.1",
+      "ng/mL",
+      "30",
+      "-",
+      "100",
+      "ECLIA"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "TSH 0.25 µIU/mL 0.5-5.0 ECLIA",
+    "tokens": [
+      "TSH",
+      "0.25",
+      "µIU/mL",
+      "0.5-5.0",
+      "ECLIA"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Hemoglobin  12.8  g/dL  12.0  -  15.0",
+    "tokens": [
+      "Hemoglobin",
+      "12.8",
+      "g/dL",
+      "12.0",
+      "-",
+      "15.0"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE"
+    ]
+  },
+  {
+    "text": "GLUCOSE 72 mg/dL 70-100 Hexokinase",
+    "tokens": [
+      "GLUCOSE",
+      "72",
+      "mg/dL",
+      "70-100",
+      "Hexokinase"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "PLATELET COUNT: 175 X 10³/µL 150 - 450",
+    "tokens": [
+      "PLATELET:",
+      "COUNT",
+      "175",
+      "X",
+      "10³/µL",
+      "150",
+      "-",
+      "450"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE"
+    ]
+  },
+  {
+    "text": "Hemoglobin 15.2 g/dL 13.0-17.0 Photometry",
+    "tokens": [
+      "Hemoglobin",
+      "15.2",
+      "g/dL",
+      "13.0-17.0",
+      "Photometry"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum Albumin: 3.2 g/dL 3.5 - 5.0",
+    "tokens": [
+      "Serum:",
+      "Albumin",
+      "3.2",
+      "g/dL",
+      "3.5",
+      "-",
+      "5.0"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE"
+    ]
+  },
+  {
+    "text": "ALBUMIN  4.8  g/dL  3.5  -  5.0  BCG",
+    "tokens": [
+      "ALBUMIN",
+      "4.8",
+      "g/dL",
+      "3.5",
+      "-",
+      "5.0",
+      "BCG"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "SERUM HEMOGLOBIN: 12.8 g/dL 13.0 - 17.0 Photometry",
+    "tokens": [
+      "SERUM:",
+      "HEMOGLOBIN",
+      "12.8",
+      "g/dL",
+      "13.0",
+      "-",
+      "17.0",
+      "Photometry"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "WBC 3.2 X 10³/µL 4.0 - 11.0 Flow Cytometry",
+    "tokens": [
+      "WBC",
+      "3.2",
+      "X",
+      "10³/µL",
+      "4.0",
+      "-",
+      "11.0",
+      "Flow",
+      "Cytometry"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD",
+      "I-METHOD"
+    ]
+  },
+  {
+    "text": "CREATININE  1.32  mg/dL  0.60  -  1.25",
+    "tokens": [
+      "CREATININE",
+      "1.32",
+      "mg/dL",
+      "0.60",
+      "-",
+      "1.25"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE"
+    ]
+  },
+  {
+    "text": "Blood  Urea  53  mg/dL  15  -  45  Enzymatic",
+    "tokens": [
+      "Blood",
+      "Urea",
+      "53",
+      "mg/dL",
+      "15",
+      "-",
+      "45",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "SERUM GLUCOSE 96 mg/dL 70-110 GOD-POD",
+    "tokens": [
+      "SERUM",
+      "GLUCOSE",
+      "96",
+      "mg/dL",
+      "70-110",
+      "GOD-POD"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Total Cholesterol: 265 mg/dL <200 Enzymatic",
+    "tokens": [
+      "Total:",
+      "Cholesterol",
+      "265",
+      "mg/dL",
+      "<200",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Vitamin B12 312 pg/mL 200-900 ECLIA",
+    "tokens": [
+      "Vitamin",
+      "B12",
+      "312",
+      "pg/mL",
+      "200-900",
+      "ECLIA"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "GLUCOSE  86  mg/dL  70  -  100  Hexokinase",
+    "tokens": [
+      "GLUCOSE",
+      "86",
+      "mg/dL",
+      "70",
+      "-",
+      "100",
+      "Hexokinase"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "GLUCOSE  118  mg/dL  70  -  100",
+    "tokens": [
+      "GLUCOSE",
+      "118",
+      "mg/dL",
+      "70",
+      "-",
+      "100"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE"
+    ]
+  },
+  {
+    "text": "Serum  Hemoglobin  15.2  g/dL  12.0  -  15.0  Photometry",
+    "tokens": [
+      "Serum",
+      "Hemoglobin",
+      "15.2",
+      "g/dL",
+      "12.0",
+      "-",
+      "15.0",
+      "Photometry"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "AST  20  U/L  10  -  40",
+    "tokens": [
+      "AST",
+      "20",
+      "U/L",
+      "10",
+      "-",
+      "40"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE"
+    ]
+  },
+  {
+    "text": "WBC 9.5 X 10³/µL 4.0 - 11.0 Flow Cytometry",
+    "tokens": [
+      "WBC",
+      "9.5",
+      "X",
+      "10³/µL",
+      "4.0",
+      "-",
+      "11.0",
+      "Flow",
+      "Cytometry"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD",
+      "I-METHOD"
+    ]
+  },
+  {
+    "text": "Serum  Vitamin  D  18.2  ng/mL  30  -  100  ECLIA",
+    "tokens": [
+      "Serum",
+      "Vitamin",
+      "D",
+      "18.2",
+      "ng/mL",
+      "30",
+      "-",
+      "100",
+      "ECLIA"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "AST 20 U/L 10-40 IFCC",
+    "tokens": [
+      "AST",
+      "20",
+      "U/L",
+      "10-40",
+      "IFCC"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "SERUM  VITAMIN  B12  890  pg/mL  200  -  900  ECLIA",
+    "tokens": [
+      "SERUM",
+      "VITAMIN",
+      "B12",
+      "890",
+      "pg/mL",
+      "200",
+      "-",
+      "900",
+      "ECLIA"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum  AST  48  U/L  10  -  40",
+    "tokens": [
+      "Serum",
+      "AST",
+      "48",
+      "U/L",
+      "10",
+      "-",
+      "40"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE"
+    ]
+  },
+  {
+    "text": "Serum Blood Urea 43 mg/dL 15 - 45 Enzymatic",
+    "tokens": [
+      "Serum",
+      "Blood",
+      "Urea",
+      "43",
+      "mg/dL",
+      "15",
+      "-",
+      "45",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Glucose  96  mg/dL  70  -  100  GOD-POD",
+    "tokens": [
+      "Glucose",
+      "96",
+      "mg/dL",
+      "70",
+      "-",
+      "100",
+      "GOD-POD"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "SERUM ALT 85 U/L 7 - 56 IFCC",
+    "tokens": [
+      "SERUM",
+      "ALT",
+      "85",
+      "U/L",
+      "7",
+      "-",
+      "56",
+      "IFCC"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Platelet Count 410 X 10³/µL 150 - 410 Impedance",
+    "tokens": [
+      "Platelet",
+      "Count",
+      "410",
+      "X",
+      "10³/µL",
+      "150",
+      "-",
+      "410",
+      "Impedance"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "SERUM AST: 48 U/L 10 - 40 IFCC",
+    "tokens": [
+      "SERUM:",
+      "AST",
+      "48",
+      "U/L",
+      "10",
+      "-",
+      "40",
+      "IFCC"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "ALT  18  U/L  7  -  56  IFCC",
+    "tokens": [
+      "ALT",
+      "18",
+      "U/L",
+      "7",
+      "-",
+      "56",
+      "IFCC"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum ALT 32 U/L 7 - 56 IFCC",
+    "tokens": [
+      "Serum",
+      "ALT",
+      "32",
+      "U/L",
+      "7",
+      "-",
+      "56",
+      "IFCC"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum Glucose 72 mg/dL 70 - 110 GOD-POD",
+    "tokens": [
+      "Serum",
+      "Glucose",
+      "72",
+      "mg/dL",
+      "70",
+      "-",
+      "110",
+      "GOD-POD"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "AST  76  U/L  10  -  40  IFCC",
+    "tokens": [
+      "AST",
+      "76",
+      "U/L",
+      "10",
+      "-",
+      "40",
+      "IFCC"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "SERUM WBC: 9.5 X 10³/µL 4.0 - 11.0 Flow Cytometry",
+    "tokens": [
+      "SERUM:",
+      "WBC",
+      "9.5",
+      "X",
+      "10³/µL",
+      "4.0",
+      "-",
+      "11.0",
+      "Flow",
+      "Cytometry"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD",
+      "I-METHOD"
+    ]
+  },
+  {
+    "text": "Serum HDL Cholesterol: 56 mg/dL >40 Enzymatic",
+    "tokens": [
+      "Serum:",
+      "HDL",
+      "Cholesterol",
+      "56",
+      "mg/dL",
+      ">40",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "HDL Cholesterol: 48 mg/dL >40 Enzymatic",
+    "tokens": [
+      "HDL:",
+      "Cholesterol",
+      "48",
+      "mg/dL",
+      ">40",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Blood Urea 43 mg/dL 19 - 43 Enzymatic",
+    "tokens": [
+      "Blood",
+      "Urea",
+      "43",
+      "mg/dL",
+      "19",
+      "-",
+      "43",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "PLATELET COUNT 275 X 10³/µL 150 - 450 Impedance",
+    "tokens": [
+      "PLATELET",
+      "COUNT",
+      "275",
+      "X",
+      "10³/µL",
+      "150",
+      "-",
+      "450",
+      "Impedance"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Vitamin  D  28.4  ng/mL  30  -  100  ECLIA",
+    "tokens": [
+      "Vitamin",
+      "D",
+      "28.4",
+      "ng/mL",
+      "30",
+      "-",
+      "100",
+      "ECLIA"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "SERUM TRIGLYCERIDES 95 mg/dL <150 Enzymatic",
+    "tokens": [
+      "SERUM",
+      "TRIGLYCERIDES",
+      "95",
+      "mg/dL",
+      "<150",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "AST  20  U/L  10  -  40  IFCC",
+    "tokens": [
+      "AST",
+      "20",
+      "U/L",
+      "10",
+      "-",
+      "40",
+      "IFCC"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum Creatinine: 0.82 mg/dL 0.60 - 1.25 Jaffe",
+    "tokens": [
+      "Serum:",
+      "Creatinine",
+      "0.82",
+      "mg/dL",
+      "0.60",
+      "-",
+      "1.25",
+      "Jaffe"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Platelet Count: 410 X 10³/µL 150 - 450 Impedance",
+    "tokens": [
+      "Platelet:",
+      "Count",
+      "410",
+      "X",
+      "10³/µL",
+      "150",
+      "-",
+      "450",
+      "Impedance"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "ALT 48 U/L 7 - 56 IFCC",
+    "tokens": [
+      "ALT",
+      "48",
+      "U/L",
+      "7",
+      "-",
+      "56",
+      "IFCC"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum TSH 0.25 µIU/mL 0.4-4.5 ECLIA",
+    "tokens": [
+      "Serum",
+      "TSH",
+      "0.25",
+      "µIU/mL",
+      "0.4-4.5",
+      "ECLIA"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "GLUCOSE  118  mg/dL  70  -  110  Hexokinase",
+    "tokens": [
+      "GLUCOSE",
+      "118",
+      "mg/dL",
+      "70",
+      "-",
+      "110",
+      "Hexokinase"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "SERUM TOTAL CHOLESTEROL 220 mg/dL <200 Enzymatic",
+    "tokens": [
+      "SERUM",
+      "TOTAL",
+      "CHOLESTEROL",
+      "220",
+      "mg/dL",
+      "<200",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum  AST  48  U/L  10  -  40  IFCC",
+    "tokens": [
+      "Serum",
+      "AST",
+      "48",
+      "U/L",
+      "10",
+      "-",
+      "40",
+      "IFCC"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "SERUM HDL CHOLESTEROL: 48 mg/dL >40 Enzymatic",
+    "tokens": [
+      "SERUM:",
+      "HDL",
+      "CHOLESTEROL",
+      "48",
+      "mg/dL",
+      ">40",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "SERUM ALBUMIN 3.8 g/dL 3.5-5.0 BCG",
+    "tokens": [
+      "SERUM",
+      "ALBUMIN",
+      "3.8",
+      "g/dL",
+      "3.5-5.0",
+      "BCG"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum Vitamin D: 42.5 ng/mL 30 - 100 ECLIA",
+    "tokens": [
+      "Serum:",
+      "Vitamin",
+      "D",
+      "42.5",
+      "ng/mL",
+      "30",
+      "-",
+      "100",
+      "ECLIA"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum Total Cholesterol 220 mg/dL <200",
+    "tokens": [
+      "Serum",
+      "Total",
+      "Cholesterol",
+      "220",
+      "mg/dL",
+      "<200"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE"
+    ]
+  },
+  {
+    "text": "Serum  HDL  Cholesterol  72  mg/dL  >40  Enzymatic",
+    "tokens": [
+      "Serum",
+      "HDL",
+      "Cholesterol",
+      "72",
+      "mg/dL",
+      ">40",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "VITAMIN B12 520 pg/mL 200 - 900 ECLIA",
+    "tokens": [
+      "VITAMIN",
+      "B12",
+      "520",
+      "pg/mL",
+      "200",
+      "-",
+      "900",
+      "ECLIA"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Albumin 3.2 g/dL 3.5 - 5.0 BCG",
+    "tokens": [
+      "Albumin",
+      "3.2",
+      "g/dL",
+      "3.5",
+      "-",
+      "5.0",
+      "BCG"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum WBC: 12.4 X 10³/µL 4.0 - 10.0",
+    "tokens": [
+      "Serum:",
+      "WBC",
+      "12.4",
+      "X",
+      "10³/µL",
+      "4.0",
+      "-",
+      "10.0"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE"
+    ]
+  },
+  {
+    "text": "SERUM TOTAL CHOLESTEROL 145 mg/dL <200 Enzymatic",
+    "tokens": [
+      "SERUM",
+      "TOTAL",
+      "CHOLESTEROL",
+      "145",
+      "mg/dL",
+      "<200",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Triglycerides  168  mg/dL  <150  Enzymatic",
+    "tokens": [
+      "Triglycerides",
+      "168",
+      "mg/dL",
+      "<150",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "SERUM WBC 7.09 X 10³/µL 4.0 - 11.0 Flow Cytometry",
+    "tokens": [
+      "SERUM",
+      "WBC",
+      "7.09",
+      "X",
+      "10³/µL",
+      "4.0",
+      "-",
+      "11.0",
+      "Flow",
+      "Cytometry"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD",
+      "I-METHOD"
+    ]
+  },
+  {
+    "text": "Serum Hemoglobin 12.8 g/dL 12.0 - 15.0 Photometry",
+    "tokens": [
+      "Serum",
+      "Hemoglobin",
+      "12.8",
+      "g/dL",
+      "12.0",
+      "-",
+      "15.0",
+      "Photometry"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "TSH 4.8 µIU/mL 0.4 - 4.5 ECLIA",
+    "tokens": [
+      "TSH",
+      "4.8",
+      "µIU/mL",
+      "0.4",
+      "-",
+      "4.5",
+      "ECLIA"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "HEMOGLOBIN 14.1 g/dL 12.0 - 15.0 Photometry",
+    "tokens": [
+      "HEMOGLOBIN",
+      "14.1",
+      "g/dL",
+      "12.0",
+      "-",
+      "15.0",
+      "Photometry"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Vitamin D 18.2 ng/mL 30-100 ECLIA",
+    "tokens": [
+      "Vitamin",
+      "D",
+      "18.2",
+      "ng/mL",
+      "30-100",
+      "ECLIA"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum WBC 12.4 X 10³/µL 4.0 - 11.0 Flow Cytometry",
+    "tokens": [
+      "Serum",
+      "WBC",
+      "12.4",
+      "X",
+      "10³/µL",
+      "4.0",
+      "-",
+      "11.0",
+      "Flow",
+      "Cytometry"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD",
+      "I-METHOD"
+    ]
+  },
+  {
+    "text": "SERUM VITAMIN B12 890 pg/mL 200 - 900 ECLIA",
+    "tokens": [
+      "SERUM",
+      "VITAMIN",
+      "B12",
+      "890",
+      "pg/mL",
+      "200",
+      "-",
+      "900",
+      "ECLIA"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Creatinine  1.08  mg/dL  0.60  -  1.25  Jaffe",
+    "tokens": [
+      "Creatinine",
+      "1.08",
+      "mg/dL",
+      "0.60",
+      "-",
+      "1.25",
+      "Jaffe"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum ALT 85 U/L 7-56 IFCC",
+    "tokens": [
+      "Serum",
+      "ALT",
+      "85",
+      "U/L",
+      "7-56",
+      "IFCC"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum WBC 9.5 X 10³/µL 4.0-11.0 Flow Cytometry",
+    "tokens": [
+      "Serum",
+      "WBC",
+      "9.5",
+      "X",
+      "10³/µL",
+      "4.0-11.0",
+      "Flow",
+      "Cytometry"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "B-METHOD",
+      "I-METHOD"
+    ]
+  },
+  {
+    "text": "Serum Albumin 4.8 g/dL 3.5 - 5.0",
+    "tokens": [
+      "Serum",
+      "Albumin",
+      "4.8",
+      "g/dL",
+      "3.5",
+      "-",
+      "5.0"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE"
+    ]
+  },
+  {
+    "text": "ALT  48  U/L  7  -  56  IFCC",
+    "tokens": [
+      "ALT",
+      "48",
+      "U/L",
+      "7",
+      "-",
+      "56",
+      "IFCC"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "AST 76 U/L 10 - 40 IFCC",
+    "tokens": [
+      "AST",
+      "76",
+      "U/L",
+      "10",
+      "-",
+      "40",
+      "IFCC"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum Platelet Count: 85 X 10³/µL 150 - 450 Impedance",
+    "tokens": [
+      "Serum:",
+      "Platelet",
+      "Count",
+      "85",
+      "X",
+      "10³/µL",
+      "150",
+      "-",
+      "450",
+      "Impedance"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum HDL Cholesterol 56 mg/dL >40 Enzymatic",
+    "tokens": [
+      "Serum",
+      "HDL",
+      "Cholesterol",
+      "56",
+      "mg/dL",
+      ">40",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "WBC 9.5 X 10³/µL 4.0-11.0 Flow Cytometry",
+    "tokens": [
+      "WBC",
+      "9.5",
+      "X",
+      "10³/µL",
+      "4.0-11.0",
+      "Flow",
+      "Cytometry"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "B-METHOD",
+      "I-METHOD"
+    ]
+  },
+  {
+    "text": "TSH  0.25  µIU/mL  0.5  -  5.0  ECLIA",
+    "tokens": [
+      "TSH",
+      "0.25",
+      "µIU/mL",
+      "0.5",
+      "-",
+      "5.0",
+      "ECLIA"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Albumin: 3.8 g/dL 3.5 - 5.0 BCG",
+    "tokens": [
+      "Albumin:",
+      "3.8",
+      "g/dL",
+      "3.5",
+      "-",
+      "5.0",
+      "BCG"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Blood Urea 43 mg/dL 15-45 Enzymatic",
+    "tokens": [
+      "Blood",
+      "Urea",
+      "43",
+      "mg/dL",
+      "15-45",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "AST 31 U/L 10 - 40 IFCC",
+    "tokens": [
+      "AST",
+      "31",
+      "U/L",
+      "10",
+      "-",
+      "40",
+      "IFCC"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Vitamin D 76.1 ng/mL 30-100",
+    "tokens": [
+      "Vitamin",
+      "D",
+      "76.1",
+      "ng/mL",
+      "30-100"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE"
+    ]
+  },
+  {
+    "text": "CREATININE 0.82 mg/dL 0.60-1.25 Jaffe",
+    "tokens": [
+      "CREATININE",
+      "0.82",
+      "mg/dL",
+      "0.60-1.25",
+      "Jaffe"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Albumin 4.8 g/dL 3.5-5.0 BCG",
+    "tokens": [
+      "Albumin",
+      "4.8",
+      "g/dL",
+      "3.5-5.0",
+      "BCG"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "ALT 18 U/L 7-56 IFCC",
+    "tokens": [
+      "ALT",
+      "18",
+      "U/L",
+      "7-56",
+      "IFCC"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "SERUM CREATININE: 0.82 mg/dL 0.70 - 1.30 Enzymatic",
+    "tokens": [
+      "SERUM:",
+      "CREATININE",
+      "0.82",
+      "mg/dL",
+      "0.70",
+      "-",
+      "1.30",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "GLUCOSE: 96 mg/dL 70 - 110 GOD-POD",
+    "tokens": [
+      "GLUCOSE:",
+      "96",
+      "mg/dL",
+      "70",
+      "-",
+      "110",
+      "GOD-POD"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "WBC: 9.5 X 10³/µL 4.0 - 10.0 Flow Cytometry",
+    "tokens": [
+      "WBC:",
+      "9.5",
+      "X",
+      "10³/µL",
+      "4.0",
+      "-",
+      "10.0",
+      "Flow",
+      "Cytometry"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD",
+      "I-METHOD"
+    ]
+  },
+  {
+    "text": "Albumin 3.8 g/dL 3.5 - 5.0",
+    "tokens": [
+      "Albumin",
+      "3.8",
+      "g/dL",
+      "3.5",
+      "-",
+      "5.0"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE"
+    ]
+  },
+  {
+    "text": "Platelet Count 85 X 10³/µL 150 - 410 Impedance",
+    "tokens": [
+      "Platelet",
+      "Count",
+      "85",
+      "X",
+      "10³/µL",
+      "150",
+      "-",
+      "410",
+      "Impedance"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "AST 20 U/L 10 - 40 IFCC",
+    "tokens": [
+      "AST",
+      "20",
+      "U/L",
+      "10",
+      "-",
+      "40",
+      "IFCC"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "AST 48 U/L 10-40 IFCC",
+    "tokens": [
+      "AST",
+      "48",
+      "U/L",
+      "10-40",
+      "IFCC"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "AST  76  U/L  10  -  40",
+    "tokens": [
+      "AST",
+      "76",
+      "U/L",
+      "10",
+      "-",
+      "40"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE"
+    ]
+  },
+  {
+    "text": "ALBUMIN 3.8 g/dL 3.5 - 5.0 BCG",
+    "tokens": [
+      "ALBUMIN",
+      "3.8",
+      "g/dL",
+      "3.5",
+      "-",
+      "5.0",
+      "BCG"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "SERUM TSH 1.8 µIU/mL 0.4 - 4.5 ECLIA",
+    "tokens": [
+      "SERUM",
+      "TSH",
+      "1.8",
+      "µIU/mL",
+      "0.4",
+      "-",
+      "4.5",
+      "ECLIA"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum  Triglycerides  168  mg/dL  <150  Enzymatic",
+    "tokens": [
+      "Serum",
+      "Triglycerides",
+      "168",
+      "mg/dL",
+      "<150",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum Glucose 72 mg/dL 70 - 110 Hexokinase",
+    "tokens": [
+      "Serum",
+      "Glucose",
+      "72",
+      "mg/dL",
+      "70",
+      "-",
+      "110",
+      "Hexokinase"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum  Blood  Urea  35  mg/dL  15  -  45",
+    "tokens": [
+      "Serum",
+      "Blood",
+      "Urea",
+      "35",
+      "mg/dL",
+      "15",
+      "-",
+      "45"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE"
+    ]
+  },
+  {
+    "text": "Triglycerides 128 mg/dL <150 Enzymatic",
+    "tokens": [
+      "Triglycerides",
+      "128",
+      "mg/dL",
+      "<150",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "AST 31 U/L 10-40 IFCC",
+    "tokens": [
+      "AST",
+      "31",
+      "U/L",
+      "10-40",
+      "IFCC"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum Vitamin D 28.4 ng/mL 30-100",
+    "tokens": [
+      "Serum",
+      "Vitamin",
+      "D",
+      "28.4",
+      "ng/mL",
+      "30-100"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE"
+    ]
+  },
+  {
+    "text": "Serum Platelet Count 410 X 10³/µL 150 - 450 Impedance",
+    "tokens": [
+      "Serum",
+      "Platelet",
+      "Count",
+      "410",
+      "X",
+      "10³/µL",
+      "150",
+      "-",
+      "450",
+      "Impedance"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Glucose 96 mg/dL 70-110",
+    "tokens": [
+      "Glucose",
+      "96",
+      "mg/dL",
+      "70-110"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE"
+    ]
+  },
+  {
+    "text": "SERUM HDL CHOLESTEROL 72 mg/dL >40 Enzymatic",
+    "tokens": [
+      "SERUM",
+      "HDL",
+      "CHOLESTEROL",
+      "72",
+      "mg/dL",
+      ">40",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Platelet  Count  410  X  10³/µL  150  -  410  Impedance",
+    "tokens": [
+      "Platelet",
+      "Count",
+      "410",
+      "X",
+      "10³/µL",
+      "150",
+      "-",
+      "410",
+      "Impedance"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Glucose 96 mg/dL 70 - 100 Hexokinase",
+    "tokens": [
+      "Glucose",
+      "96",
+      "mg/dL",
+      "70",
+      "-",
+      "100",
+      "Hexokinase"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "TSH 4.8 µIU/mL 0.5 - 5.0 ECLIA",
+    "tokens": [
+      "TSH",
+      "4.8",
+      "µIU/mL",
+      "0.5",
+      "-",
+      "5.0",
+      "ECLIA"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Creatinine 0.82 mg/dL 0.70 - 1.30 Enzymatic",
+    "tokens": [
+      "Creatinine",
+      "0.82",
+      "mg/dL",
+      "0.70",
+      "-",
+      "1.30",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Vitamin B12: 520 pg/mL 200 - 900 ECLIA",
+    "tokens": [
+      "Vitamin:",
+      "B12",
+      "520",
+      "pg/mL",
+      "200",
+      "-",
+      "900",
+      "ECLIA"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum Albumin 4.2 g/dL 3.5-5.0 BCG",
+    "tokens": [
+      "Serum",
+      "Albumin",
+      "4.2",
+      "g/dL",
+      "3.5-5.0",
+      "BCG"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Vitamin B12 145 pg/mL 200 - 900 ECLIA",
+    "tokens": [
+      "Vitamin",
+      "B12",
+      "145",
+      "pg/mL",
+      "200",
+      "-",
+      "900",
+      "ECLIA"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Hemoglobin 12.8 g/dL 12.0 - 15.0 Photometry",
+    "tokens": [
+      "Hemoglobin",
+      "12.8",
+      "g/dL",
+      "12.0",
+      "-",
+      "15.0",
+      "Photometry"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "SERUM TSH 2.85 µIU/mL 0.5 - 5.0",
+    "tokens": [
+      "SERUM",
+      "TSH",
+      "2.85",
+      "µIU/mL",
+      "0.5",
+      "-",
+      "5.0"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE"
+    ]
+  },
+  {
+    "text": "Serum WBC 9.5 X 10³/µL 4.0 - 10.0 Flow Cytometry",
+    "tokens": [
+      "Serum",
+      "WBC",
+      "9.5",
+      "X",
+      "10³/µL",
+      "4.0",
+      "-",
+      "10.0",
+      "Flow",
+      "Cytometry"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD",
+      "I-METHOD"
+    ]
+  },
+  {
+    "text": "Platelet Count 410 X 10³/µL 150-410 Impedance",
+    "tokens": [
+      "Platelet",
+      "Count",
+      "410",
+      "X",
+      "10³/µL",
+      "150-410",
+      "Impedance"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum Creatinine: 1.41 mg/dL 0.60 - 1.25 Enzymatic",
+    "tokens": [
+      "Serum:",
+      "Creatinine",
+      "1.41",
+      "mg/dL",
+      "0.60",
+      "-",
+      "1.25",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "SERUM VITAMIN D 42.5 ng/mL 30 - 100 ECLIA",
+    "tokens": [
+      "SERUM",
+      "VITAMIN",
+      "D",
+      "42.5",
+      "ng/mL",
+      "30",
+      "-",
+      "100",
+      "ECLIA"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "TSH 1.8 µIU/mL 0.4-4.5 ECLIA",
+    "tokens": [
+      "TSH",
+      "1.8",
+      "µIU/mL",
+      "0.4-4.5",
+      "ECLIA"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "ALT  85  U/L  7  -  56  IFCC",
+    "tokens": [
+      "ALT",
+      "85",
+      "U/L",
+      "7",
+      "-",
+      "56",
+      "IFCC"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum  Hemoglobin  15.2  g/dL  13.0  -  17.0  Photometry",
+    "tokens": [
+      "Serum",
+      "Hemoglobin",
+      "15.2",
+      "g/dL",
+      "13.0",
+      "-",
+      "17.0",
+      "Photometry"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "AST: 76 U/L 10 - 40 IFCC",
+    "tokens": [
+      "AST:",
+      "76",
+      "U/L",
+      "10",
+      "-",
+      "40",
+      "IFCC"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "HDL Cholesterol 56 mg/dL >40 Enzymatic",
+    "tokens": [
+      "HDL",
+      "Cholesterol",
+      "56",
+      "mg/dL",
+      ">40",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Triglycerides: 95 mg/dL <150 Enzymatic",
+    "tokens": [
+      "Triglycerides:",
+      "95",
+      "mg/dL",
+      "<150",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "TRIGLYCERIDES: 128 mg/dL <150 Enzymatic",
+    "tokens": [
+      "TRIGLYCERIDES:",
+      "128",
+      "mg/dL",
+      "<150",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "WBC 3.2 X 10³/µL 4.0-10.0 Flow Cytometry",
+    "tokens": [
+      "WBC",
+      "3.2",
+      "X",
+      "10³/µL",
+      "4.0-10.0",
+      "Flow",
+      "Cytometry"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "B-METHOD",
+      "I-METHOD"
+    ]
+  },
+  {
+    "text": "SERUM  ALT  32  U/L  7  -  56",
+    "tokens": [
+      "SERUM",
+      "ALT",
+      "32",
+      "U/L",
+      "7",
+      "-",
+      "56"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE"
+    ]
+  },
+  {
+    "text": "SERUM  ALBUMIN  3.8  g/dL  3.5  -  5.0  BCG",
+    "tokens": [
+      "SERUM",
+      "ALBUMIN",
+      "3.8",
+      "g/dL",
+      "3.5",
+      "-",
+      "5.0",
+      "BCG"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Hemoglobin 12.8 g/dL 13.0 - 17.0 Photometry",
+    "tokens": [
+      "Hemoglobin",
+      "12.8",
+      "g/dL",
+      "13.0",
+      "-",
+      "17.0",
+      "Photometry"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "SERUM GLUCOSE: 96 mg/dL 70 - 110",
+    "tokens": [
+      "SERUM:",
+      "GLUCOSE",
+      "96",
+      "mg/dL",
+      "70",
+      "-",
+      "110"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE"
+    ]
+  },
+  {
+    "text": "Serum  HDL  Cholesterol  56  mg/dL  >40  Enzymatic",
+    "tokens": [
+      "Serum",
+      "HDL",
+      "Cholesterol",
+      "56",
+      "mg/dL",
+      ">40",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "ALT: 48 U/L 7 - 56 IFCC",
+    "tokens": [
+      "ALT:",
+      "48",
+      "U/L",
+      "7",
+      "-",
+      "56",
+      "IFCC"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Albumin 3.8 g/dL 3.5-5.0 BCG",
+    "tokens": [
+      "Albumin",
+      "3.8",
+      "g/dL",
+      "3.5-5.0",
+      "BCG"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Glucose: 86 mg/dL 70 - 110 Hexokinase",
+    "tokens": [
+      "Glucose:",
+      "86",
+      "mg/dL",
+      "70",
+      "-",
+      "110",
+      "Hexokinase"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "SERUM TSH 4.8 µIU/mL 0.4 - 4.5 ECLIA",
+    "tokens": [
+      "SERUM",
+      "TSH",
+      "4.8",
+      "µIU/mL",
+      "0.4",
+      "-",
+      "4.5",
+      "ECLIA"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "SERUM PLATELET COUNT 410 X 10³/µL 150-450 Impedance",
+    "tokens": [
+      "SERUM",
+      "PLATELET",
+      "COUNT",
+      "410",
+      "X",
+      "10³/µL",
+      "150-450",
+      "Impedance"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "SERUM  PLATELET  COUNT  410  X  10³/µL  150  -  450  Impedance",
+    "tokens": [
+      "SERUM",
+      "PLATELET",
+      "COUNT",
+      "410",
+      "X",
+      "10³/µL",
+      "150",
+      "-",
+      "450",
+      "Impedance"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "I-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "SERUM AST: 76 U/L 10 - 40",
+    "tokens": [
+      "SERUM:",
+      "AST",
+      "76",
+      "U/L",
+      "10",
+      "-",
+      "40"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE"
+    ]
+  },
+  {
+    "text": "HEMOGLOBIN  14.1  g/dL  12.0  -  15.0  Photometry",
+    "tokens": [
+      "HEMOGLOBIN",
+      "14.1",
+      "g/dL",
+      "12.0",
+      "-",
+      "15.0",
+      "Photometry"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "I-REFERENCE",
+      "I-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "BLOOD UREA 35 mg/dL 19-43 Enzymatic",
+    "tokens": [
+      "BLOOD",
+      "UREA",
+      "35",
+      "mg/dL",
+      "19-43",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Total Cholesterol 265 mg/dL <200 Enzymatic",
+    "tokens": [
+      "Total",
+      "Cholesterol",
+      "265",
+      "mg/dL",
+      "<200",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Hemoglobin 11.2 g/dL 12.0-15.0 Photometry",
+    "tokens": [
+      "Hemoglobin",
+      "11.2",
+      "g/dL",
+      "12.0-15.0",
+      "Photometry"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Total Cholesterol: 185 mg/dL <200 Enzymatic",
+    "tokens": [
+      "Total:",
+      "Cholesterol",
+      "185",
+      "mg/dL",
+      "<200",
+      "Enzymatic"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  },
+  {
+    "text": "Serum ALT 18 U/L 7-56 IFCC",
+    "tokens": [
+      "Serum",
+      "ALT",
+      "18",
+      "U/L",
+      "7-56",
+      "IFCC"
+    ],
+    "labels": [
+      "B-PARAMETER",
+      "I-PARAMETER",
+      "B-VALUE",
+      "B-UNIT",
+      "B-REFERENCE",
+      "B-METHOD"
+    ]
+  }
+]
