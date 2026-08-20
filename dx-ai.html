@@ -351,7 +351,93 @@
             font-size: 0.8rem;
             font-weight: normal;
         }
+        /* ================= DX AI PROCESSING ================= */
 
+        #dx-ai-processing {
+            width: 100%;
+            margin: 25px 0;
+        }
+
+        .dx-ai-processing-card {
+            width: 90%;
+            margin: 0 auto;
+
+            padding: 25px;
+
+            background: white;
+
+            border-radius: 14px;
+
+            box-shadow: var(--brand-shadow);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 20px;
+        }
+
+
+        /* Processing ring */
+
+        .dx-ai-ring {
+
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            border: 4px solid #e5e5e5;
+
+            border-top-color: #203a43;
+
+            border-right-color: #2c5364;
+
+            animation: dx-ai-spin 0.9s linear infinite;
+
+            flex-shrink: 0;
+        }
+
+
+        @keyframes dx-ai-spin {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+
+        .dx-ai-processing-text {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 5px;
+
+            color: #203a43;
+        }
+
+
+        .dx-ai-processing-text strong {
+
+            font-size: 1.05rem;
+
+        }
+
+
+        .dx-ai-processing-text span {
+
+            font-size: 0.9rem;
+
+            color: #666;
+
+        }
         /* ================= UPLOAD ================= */
 
         .upload-section {
@@ -1483,7 +1569,7 @@
 
         <!-- ================= INTRODUCTION ================= -->
 
-        <section class="info-section">
+        <!--section class="info-section">
 
             <h2>About Dx AI</h2>
 
@@ -1519,7 +1605,7 @@
                 laboratory's stated interval.
             </p>
 
-        </section>
+        </section-->
 
 
         <!-- ================= WHAT IT CAN DO ================= -->
@@ -1583,27 +1669,6 @@
                     Dx AI is intended for educational and
                     informational purposes only.
                 </strong>
-            </p>
-
-            <p>
-                Dx AI does not provide a medical diagnosis
-                and should not be used as a substitute for
-                examination, diagnosis or treatment by a
-                qualified healthcare professional.
-            </p>
-
-            <p>
-                Laboratory results can be affected by many
-                factors, including age, sex, medical history,
-                medications, fasting status, sample collection
-                conditions, laboratory methods and other
-                clinical circumstances.
-            </p>
-
-            <p>
-                Do not start, stop or change any medication,
-                supplement or treatment based solely on
-                information provided by this tool.
             </p>
 
             <p>
@@ -1797,8 +1862,8 @@
 
 
         <!-- ================= CURRENT LIMITATION ================= -->
-
-        <section class="info-section">
+        
+        <!--section class="info-section">
 
             <h2>How the Analysis Will Work</h2>
 
@@ -1825,7 +1890,7 @@
                 instead of inventing missing information.
             </p>
 
-        </section>
+        </section-->
         <section id="dxAiResults"></section>
     </div>
 
@@ -1871,7 +1936,7 @@
     pdfjsLib.GlobalWorkerOptions.workerSrc =
         "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
 </script>
-
+<script src="dx-ai-results.js"></script>
 <script src="dx-ai-extractor.js"></script>
 
 <script>

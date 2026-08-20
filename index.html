@@ -51,6 +51,7 @@
 	  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 	  margin: 0;
 	  padding: 0;
+	  
 	}
 
 	/* ================= HEADER ================= */
@@ -163,9 +164,9 @@
 
 	.intro-section {
 
-	width: 70%;
+	width: 60%;
 
-	margin: 10px auto 30px;
+	margin: 20px auto 30px;
 
 	padding: 35px 20px;
 
@@ -180,20 +181,18 @@
 
 	.intro-content {
 
-	max-width: 950px;
+	max-width: 90%;
 
-	margin: 0 auto;
+	margin: 10px auto;
 
 	}
 
-
 	.intro-content h2 {
 
-	margin-top: 0;
+	margin-top: 5px;
 
 	margin-bottom: 20px;
-	margin-left: 10px;
-	margin-right: 10px;
+	
 
 	color: #203a43;
 
@@ -253,7 +252,7 @@
 
 	.intro-highlight span {
 
-	font-size: 0.9rem;
+	font-size: 1.2rem;
 
 	opacity: 0.9;
 
@@ -262,9 +261,9 @@
 
 	.intro-disclaimer {
 
-	font-size: 0.85rem !important;
+	font-size: 1rem !important;
 
-	color: #666 !important;
+	color: #ff0000 !important;
 
 	margin-bottom: 0 !important;
 
@@ -354,7 +353,7 @@
 	  width: 60%;
 	  margin: 0 auto;
 	  display: grid;
-	  grid-template-columns: repeat(2, minmax(250px, 1fr));
+	  grid-template-columns: repeat(3, minmax(250px, 1fr));
 	  gap: 20px;
 	}
 
@@ -576,10 +575,16 @@
 		box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 57%; margin: 20px auto;">Our Tools</h2>
     <div class="cards">
 		<div class="card">
+		<h3>Dx AI</h3>
+		<p>Analyze laboratory reports and automatically extracts test results, units, reference ranges and 
+				result status.</p>
+		<a href="./dx-ai.html" style="color: white">Open Dx AI →</a>
+	 	</div>
+		<div class="card">
 		<h3>eGFR Calculator</h3>
 		<p>Calculate estimated Glomerular Filtration Rate (eGFR) using CKD-EPI formula with interpretation.</p>
 		<a href="./egfr.html" style="color: white">Calculate eGFR →</a>
-	 </div>
+	 	</div>
       <div class="card">
         <h3>Albumin-Creatinine Ratio</h3>
         <p>Albumin-Creatinine Ratio calculator with interpretation and normal ranges.</p>

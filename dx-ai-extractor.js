@@ -2588,7 +2588,7 @@ function dxParseResultLine(
    EXTRACT PATIENT INFORMATION
    ============================================================ */
 
-function dxExtractPatient(lines) {
+function dxExtractPatient() {
 
     const patient = {
 
@@ -2596,60 +2596,74 @@ function dxExtractPatient(lines) {
 
         age: null,
 
-        sex: ""
+        sex: "",
+
+        weight: null
 
     };
 
 
-    if (!lines) {
-        return patient;
+    const ageInput =
+        document.getElementById("age");
+
+    const sexInput =
+        document.getElementById("sex");
+
+    const weightInput =
+        document.getElementById("weight");
+
+
+    /* =====================================================
+       AGE
+       ===================================================== */
+
+    if (
+        ageInput &&
+        ageInput.value !== ""
+    ) {
+
+        patient.age =
+            Number(
+                ageInput.value
+            );
+
     }
 
 
-    for (const line of lines) {
+    /* =====================================================
+       SEX
+       ===================================================== */
+
+    if (
+        sexInput &&
+        sexInput.value !== ""
+    ) {
+
+        patient.sex =
+            sexInput.value;
+
+    }
 
 
-        /* Patient name */
+    /* =====================================================
+       WEIGHT
+       ===================================================== */
 
-        let match =
-            line.match(
-                /Patient Name\s*:\s*(.+?)(?:\s+Lab No|\s*$)/i
+    if (
+        weightInput &&
+        weightInput.value !== ""
+    ) {
+
+        patient.weight =
+            Number(
+                weightInput.value
             );
 
-
-        if (match) {
-
-            patient.name =
-                match[1].trim();
-        }
-
-
-        /* Age / Sex */
-
-        match =
-            line.match(
-                /Age\s*\/\s*Sex\s*:\s*(\d+)\s*Y\s*\/\s*([MF])/i
-            );
-
-
-        if (match) {
-
-            patient.age =
-                Number(match[1]);
-
-
-            patient.sex =
-                match[2]
-                    .toUpperCase() === "M"
-
-                    ? "male"
-
-                    : "female";
-        }
     }
 
 
     return patient;
+
 }
 
 function dxLooksLikeLabCandidate(row) {
@@ -2887,23 +2901,23 @@ function dxParsePages(pages) {
 
             if (result) {
 
-                console.log(
+                /*console.log(
                     "STRUCTURED RESULT:",
                     result.parameter,
                     result.original ||
                     result.original_text ||
                     result.text
-                );
+                );*/
 
                 if (dxLooksLikeNarrativeText(result)) {
 
-                    console.log(
+                    /*console.log(
                         "NARRATIVE DISCARDED (STRUCTURED):",
                         result.parameter,
                         result.original ||
                         result.original_text ||
                         result.text
-                    );
+                    );*/
 
                     continue;
                 }
@@ -2930,24 +2944,24 @@ function dxParsePages(pages) {
 
             if (fallback) {
 
-                console.log(
+                /*console.log(
                     "FALLBACK RESULT:",
                     fallback.parameter,
                     fallback.original ||
                     fallback.original_text ||
                     fallback.text
-                );
+                );*/
 
 
                 if (dxLooksLikeNarrativeText(fallback)) {
 
-                    console.log(
+                    /*console.log(
                         "NARRATIVE DISCARDED (FALLBACK):",
                         fallback.parameter,
                         fallback.original ||
                         fallback.original_text ||
                         fallback.text
-                    );
+                    );*/
 
                     continue;
                 }
@@ -3349,22 +3363,22 @@ function dxDisplayResults(report) {
             r =>
                 r.status === "UNKNOWN"
         );
-    console.log(
+    /*console.log(
             "========== UNKNOWN REFERENCE DEBUG =========="
-        );
+        );*/
 
         results
             .filter(r => r.status === "UNKNOWN")
             .forEach((r, index) => {
 
-                console.log(
+                /*console.log(
                     `UNKNOWN #${index + 1}\n` +
                     `PARAMETER: ${r.parameter}\n` +
                     `VALUE: ${r.value}\n` +
                     `UNIT: ${r.unit}\n` +
                     `REFERENCE: ${JSON.stringify(r.reference, null, 2)}\n` +
                     `ORIGINAL: ${r.original_text}\n`
-                );
+                );*/
 
             });
 
@@ -3598,8 +3612,8 @@ function dxDisplayResults(report) {
 
             </div>
 
-
         </div>
+        
 
     `;
 
@@ -3618,11 +3632,11 @@ function dxDisplayResults(report) {
 
         return `
 
-            <div
+            <details
                 class="result-category ${className}"
             >
 
-                <div class="category-header">
+                <summary class="category-header">
 
                     <div>
 
@@ -3643,7 +3657,7 @@ function dxDisplayResults(report) {
 
                     </span>
 
-                </div>
+                </summary>
 
 
                 <div class="results-table-wrapper">
@@ -3693,7 +3707,7 @@ function dxDisplayResults(report) {
 
                 </div>
 
-            </div>
+            </details>
 
         `;
     }
@@ -3751,7 +3765,7 @@ function dxDisplayResults(report) {
         );
 
 
-    const allHTML =
+    /*const allHTML =
         createCategory(
 
             "All Extracted Results",
@@ -3764,9 +3778,9 @@ function dxDisplayResults(report) {
 
             results
 
-        );
+        );*/
 
-
+    
     /* =====================================================
        FINAL OUTPUT
        ===================================================== */
@@ -3801,22 +3815,12 @@ function dxDisplayResults(report) {
 
             </p>
 
-
             ${summaryHTML}
-
-
+            <div id="dx-ai-summary"></div>
             ${abnormalHTML}
-
-
             ${normalHTML}
-
-
             ${unknownHTML}
-
-
-            ${allHTML}
-
-
+            <!-- {allHTML} -->
             <p class="calculation-note">
 
                 Dx AI uses the reference intervals
@@ -3832,6 +3836,7 @@ function dxDisplayResults(report) {
         </section>
 
     `;
+    
 }
 
 /* ============================================================
@@ -4030,7 +4035,13 @@ async function analyzeUploadedLaboratoryReport(file) {
         );
     }
 
+    const info =
+        document.getElementById("form-section");
 
+    if (info) {
+        info.style.display = "none";
+    }
+    
     const report =
         await buildDxAIReport(
             file
@@ -4049,7 +4060,7 @@ async function analyzeUploadedLaboratoryReport(file) {
             report
         );
     }
-
+    
 
     /* Recalculate all statuses after extraction / AI enrichment. */
     for (const result of report.results || []) {
@@ -4069,7 +4080,21 @@ async function analyzeUploadedLaboratoryReport(file) {
     dxDisplayResults(
         report
     );
+    dxShowAIProcessing();
 
+
+    const processingInterval =
+        dxStartAIProcessingMessages();
+
+    const aiAnalysis = await analyzeReportWithAI(report);
+
+    if (aiAnalysis) {
+
+        dxRenderAIAnalysis(
+            aiAnalysis
+        );
+
+    }
 
     return report;
 }
@@ -4136,4 +4161,542 @@ function dxLooksLikeNarrativeText(result) {
 
 
     return false;
+}
+
+/* ============================================================
+   BUILD AI INPUT
+   ============================================================ */
+
+function dxBuildAIInput(reportData) {
+
+    const results =
+        reportData.results || [];
+
+
+    /*
+     * Only send results that have been classified
+     * as abnormal by our own status engine.
+     */
+
+    const abnormalResults =
+        results
+            .filter(result => {
+
+                const status =
+                    getResultStatus(result);
+
+                return (
+                    status === "HIGH" ||
+                    status === "LOW" ||
+                    status === "ABNORMAL"
+                );
+
+            })
+            .map(result => {
+
+                return {
+
+                    parameter:
+                        result.parameter || "",
+
+                    value:
+                        result.value ?? null,
+
+                    unit:
+                        result.unit || "",
+
+                    reference:
+                        result.reference?.text || "",
+
+                    status:
+                        getResultStatus(result),
+
+                    method:
+                        result.method || ""
+
+                };
+
+            });
+
+
+    /*
+     * Send all valid laboratory results as context.
+     *
+     * This allows the AI to understand relationships
+     * between abnormal and related normal results.
+     */
+
+    const allResults =
+        results
+            .map(result => {
+
+                return {
+
+                    parameter:
+                        result.parameter || "",
+
+                    value:
+                        result.value ?? null,
+
+                    unit:
+                        result.unit || "",
+
+                    reference:
+                        result.reference?.text || "",
+
+                    status:
+                        getResultStatus(result)
+
+                };
+
+            });
+
+    console.log("========== REPORT DATA FOR PATIENT INFO ==========");
+
+    console.log(reportData);
+
+    return {
+
+        report: {
+
+            laboratory:
+                reportData.report
+                    ?.laboratory_name || null
+
+        },
+        patient: {
+
+            age:
+                reportData.patient
+                    ?.age ?? null,
+
+            gender:
+                reportData.patient
+                    ?.sex || null,
+
+            weight:
+                reportData.patient
+                    ?.weight ?? null
+
+        },
+
+        abnormal_results:
+            abnormalResults,
+
+        all_results:
+            allResults
+
+    };
+
+}
+
+/* ============================================================
+   SEND REPORT TO DX AI
+   ============================================================ */
+
+async function analyzeReportWithAI(reportData) {
+
+    const aiInput =
+        dxBuildAIInput(reportData);
+
+
+    console.log(
+        "========== DX AI INPUT =========="
+    );
+
+    console.log(
+        aiInput
+    );
+
+
+    /*
+     * Nothing abnormal to interpret.
+     */
+
+    if (
+        aiInput.abnormal_results.length === 0
+    ) {
+
+        console.log(
+            "Dx AI: No abnormal results."
+        );
+
+        return null;
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+                "http://127.0.0.1:8000/analyze-report",
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body:
+                        JSON.stringify(
+                            aiInput
+                        )
+
+                }
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                `Dx AI server returned ${response.status}`
+            );
+
+        }
+
+
+        const aiResult =
+            await response.json();
+
+
+        /*console.log(
+            "========== DX AI RESPONSE =========="
+        );
+
+        console.log(
+            aiResult
+        );*/
+
+
+        return aiResult;
+
+
+    } catch (error) {
+
+        console.error(
+            "Dx AI report analysis error:",
+            error
+        );
+
+
+        return null;
+    }
+
+}
+
+/* ============================================================
+   RENDER DX AI SUMMARY
+   ============================================================ */
+
+function dxRenderAIAnalysis(aiAnalysis) {
+
+    if (!aiAnalysis) {
+        return;
+    }
+
+
+    const container =
+        document.getElementById("dx-ai-summary");
+
+
+    if (!container) {
+
+        console.error(
+            "Dx AI summary container not found."
+        );
+
+        return;
+    }
+
+
+    let html = "";
+
+
+    /* ---------------------------------------------------------
+       OVERALL SUMMARY
+       --------------------------------------------------------- */
+
+    if (aiAnalysis.overall_summary) {
+
+        html += `
+            <div class="dx-ai-summary-card">
+
+                <h2>\nDx AI Summary</h2>
+
+                <p>
+                    ${aiAnalysis.overall_summary}
+                </p>
+
+            </div>
+        `;
+    }
+
+
+    /* ---------------------------------------------------------
+       FINDINGS
+       --------------------------------------------------------- */
+
+    if (
+        Array.isArray(aiAnalysis.findings) &&
+        aiAnalysis.findings.length > 0
+    ) {
+
+        html += `
+            <div class="dx-ai-findings">
+
+                <h2>Abnormal Findings</h2>
+        `;
+
+
+        for (
+            const finding
+            of aiAnalysis.findings
+        ) {
+
+            html += `
+                <div class="dx-ai-finding-card">
+
+                    <div class="dx-ai-finding-header">
+
+                        <h3>
+                            ${finding.parameter || ""}
+                        </h3>
+
+                        <span class="dx-ai-separator">|</span>
+
+                        <span class="dx-ai-status">
+                            ${finding.status || ""}
+                        </span>
+
+                        ${
+                            finding.category
+                            ?
+                            `
+                            <span class="dx-ai-separator">|</span>
+
+                            <span class="dx-ai-category">
+                                ${finding.category}
+                            </span>
+                            `
+                            :
+                            ""
+                        }
+
+                    </div>
+
+
+                    ${
+                        finding.what_does_it_indicate
+                        ?
+                        `
+                        <div class="dx-ai-section">
+
+                            <h4>What does it indicate?</h4>
+
+                            <p>
+                                ${finding.what_does_it_indicate}
+                            </p>
+
+                        </div>
+                        `
+                        :
+                        ""
+                    }
+
+
+                    ${
+                        finding.interpretation
+                        ?
+                        `
+                        <div class="dx-ai-section">
+
+                            <h4>Your result</h4>
+
+                            <p>
+                                ${finding.interpretation}
+                            </p>
+
+                        </div>
+                        `
+                        :
+                        ""
+                    }
+
+                </div>
+            `;
+        }
+
+
+        html += `
+            </div>
+        `;
+    }
+
+
+    /* ---------------------------------------------------------
+       SYSTEM SUMMARIES
+       --------------------------------------------------------- */
+
+    if (
+        Array.isArray(aiAnalysis.system_summaries) &&
+        aiAnalysis.system_summaries.length > 0
+    ) {
+
+        html += `
+            <div class="dx-ai-systems">
+
+                <h2>Related Systems</h2>
+        `;
+
+
+        for (
+            const system
+            of aiAnalysis.system_summaries
+        ) {
+
+            html += `
+                <div class="dx-ai-system-card">
+
+                    <h3>
+                        ${system.system || ""}
+                    </h3>
+
+                    <p>
+                        ${system.summary || ""}
+                    </p>
+
+                </div>
+            `;
+        }
+
+
+        html += `
+            </div>
+        `;
+    }
+
+
+    /* ---------------------------------------------------------
+       DISCLAIMER
+       --------------------------------------------------------- */
+
+    if (aiAnalysis.disclaimer) {
+
+        html += `
+            <div class="dx-ai-disclaimer">
+
+                ${aiAnalysis.disclaimer}
+
+            </div>
+        `;
+    }
+
+
+    container.innerHTML =
+        html;
+}
+
+function dxShowAIProcessing() {
+
+    const container =
+        document.getElementById(
+            "dx-ai-summary"
+        );
+
+    if (!container) {
+
+        console.error(
+            "dx-ai-summary container not found."
+        );
+
+        return;
+    }
+
+
+    container.innerHTML = `
+
+        <div id="dx-ai-processing">
+
+            <div class="dx-ai-processing-card">
+
+                <div class="dx-ai-ring"></div>
+
+                <div class="dx-ai-processing-text">
+
+                    <strong>
+                        Dx AI is analyzing your report...
+                    </strong>
+
+                    <span id="dx-ai-processing-status">
+                        Reviewing abnormal results
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+}
+
+
+function dxStartAIProcessingMessages() {
+
+    const messages = [
+
+        "Reviewing abnormal results",
+
+        "Checking related laboratory parameters",
+
+        "Interpreting laboratory findings",
+
+        "Grouping related results",
+
+        "Preparing your explanation",
+
+        "Dx AI might take a few minutes to analyze your report.",
+
+        "Dx can make mistakes. Please consult your healthcare provider for medical advice"
+
+    ];
+
+
+    let index = 0;
+
+
+    const interval =
+        setInterval(() => {
+
+            const element =
+                document.getElementById(
+                    "dx-ai-processing-status"
+                );
+
+
+            if (!element) {
+
+                clearInterval(interval);
+
+                return;
+            }
+
+
+            index =
+                (index + 1) %
+                messages.length;
+
+
+            element.textContent =
+                messages[index];
+
+
+        }, 2200);
+
+
+    return interval;
 }
