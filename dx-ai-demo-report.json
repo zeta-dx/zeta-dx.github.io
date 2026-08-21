@@ -1,0 +1,154 @@
+{
+  "report": {
+    "laboratory_name": "Example Diagnostic Laboratory",
+    "report_date": "2026-08-17",
+    "report_id": "DEMO-001",
+    "source_type": "demo"
+  },
+  "patient": {
+    "age": 52,
+    "sex": "female",
+    "weight_kg": 72
+  },
+  "results": [
+    {
+      "parameter": "Hemoglobin",
+      "value": 10.2,
+      "unit": "g/dL",
+      "reference": {
+        "type": "range",
+        "low": 12.0,
+        "high": 16.0,
+        "unit": "g/dL",
+        "text": "12.0 - 16.0"
+      },
+      "status": "LOW",
+      "original_text": "Hemoglobin 10.2 g/dL L",
+      "reported": true,
+      "calculated": false,
+      "extraction": {
+        "confidence": 0.99,
+        "method": "demo"
+      },
+      "conversions": []
+    },
+    {
+      "parameter": "MCV",
+      "value": 72,
+      "unit": "fL",
+      "reference": {
+        "type": "range",
+        "low": 80,
+        "high": 100,
+        "unit": "fL",
+        "text": "80 - 100"
+      },
+      "status": "LOW",
+      "original_text": "MCV 72 fL L",
+      "reported": true,
+      "calculated": false,
+      "extraction": {
+        "confidence": 0.99,
+        "method": "demo"
+      },
+      "conversions": []
+    },
+    {
+      "parameter": "Ferritin",
+      "value": 8,
+      "unit": "ng/mL",
+      "reference": {
+        "type": "range",
+        "low": 15,
+        "high": 150,
+        "unit": "ng/mL",
+        "text": "15 - 150"
+      },
+      "status": "LOW",
+      "original_text": "Ferritin 8 ng/mL L",
+      "reported": true,
+      "calculated": false,
+      "extraction": {
+        "confidence": 0.98,
+        "method": "demo"
+      },
+      "conversions": []
+    },
+    {
+      "parameter": "Creatinine",
+      "value": 1.42,
+      "unit": "mg/dL",
+      "reference": {
+        "type": "range",
+        "low": 0.6,
+        "high": 1.2,
+        "unit": "mg/dL",
+        "text": "0.60 - 1.20"
+      },
+      "status": "HIGH",
+      "original_text": "Creatinine 1.42 mg/dL H",
+      "reported": true,
+      "calculated": false,
+      "extraction": {
+        "confidence": 0.99,
+        "method": "demo"
+      },
+      "conversions": [
+        {
+          "value": 125.53,
+          "unit": "µmol/L"
+        }
+      ]
+    },
+    {
+      "parameter": "Glucose",
+      "value": 108,
+      "unit": "mg/dL",
+      "reference": {
+        "type": "range",
+        "low": 70,
+        "high": 110,
+        "unit": "mg/dL",
+        "text": "70 - 110"
+      },
+      "status": "NORMAL",
+      "original_text": "Glucose 108 mg/dL",
+      "reported": true,
+      "calculated": false,
+      "extraction": {
+        "confidence": 0.99,
+        "method": "demo"
+      },
+      "conversions": [
+        {
+          "value": 5.995,
+          "unit": "mmol/L"
+        }
+      ]
+    }
+  ],
+  "calculated_results": [
+    {
+      "parameter": "eGFR",
+      "value": null,
+      "unit": "mL/min/1.73 m²",
+      "reported": false,
+      "calculated": true,
+      "calculation": {
+        "method": "CKD-EPI",
+        "inputs": [
+          "age",
+          "sex",
+          "serum_creatinine"
+        ],
+        "status": "pending"
+      }
+    }
+  ],
+  "interpretation": {
+    "abnormal_findings": [],
+    "patterns": [],
+    "possible_causes": [],
+    "follow_up": []
+  }
+}

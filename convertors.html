@@ -1067,63 +1067,26 @@
 
 
   <nav class="header-nav">
+  <a href="./index.html">Home</a>
+  <a href="./contact.html">About Us</a>
+  <a href="./dx-ai.html">Dx AI</a>
+  <a href="./medical-tests.html">Know Your Tests</a>
+  <a href="./privacy_policy.html">Privacy Policy</a>
+  <a href="./disclaimer.html">Terms & Conditions</a>
 
-
-    <a href="./index.html">
-      Home
-    </a>
-
-
-    <a href="./contact.html">
-      About Us
-    </a>
-
-
-    <a href="./privacy_policy.html">
-      Privacy Policy
-    </a>
-
-
-    <a href="./disclaimer.html">
-      Terms & Conditions
-    </a>
-
-
-    <div class="dropdown">
-
-      <button class="dropbtn">
-        Tools ▾
-      </button>
-
-
-      <div class="dropdown-content">
-
-        <a href="./acr.html">
-          ACR
-        </a>
-
-        <a href="./pcr.html">
-          PCR
-        </a>
-
-        <a href="./inr.html">
-          INR
-        </a>
-
-        <a href="./esr.html">
-          ESR
-        </a>
-
-        <a href="./convertors.html">
-          Unit Converters
-        </a>
-
-      </div>
-
+  <div class="dropdown">
+    <button class="dropbtn">Tools ▾</button>
+    <div class="dropdown-content">
+		<a href="./eag.html">eAG</a>
+		<a href="./egfr.html">eGFR</a>
+      	<a href="./acr.html">ACR</a>
+      	<a href="./pcr.html">PCR</a>
+      	<a href="./inr.html">INR</a>
+      	<a href="./esr.html">ESR</a>
+	  	<a href="./convertors.html">Unit Convertors</a>
     </div>
-
-
-  </nav>
+  </div>
+</nav>
 
 
 </header>
@@ -1703,7 +1666,7 @@ const converters = {
 
       "mg/dL": 1,
 
-      "µmol/L": 59.48
+      "µmol/L": 1 / 59.48
 
     }
 
@@ -1720,7 +1683,7 @@ const converters = {
 
       "mg/dL": 1,
 
-      "µmol/L": 17.104
+      "µmol/L": 1 / 17.104
 
     }
 
@@ -1737,7 +1700,7 @@ const converters = {
 
       "mg/dL": 1,
 
-      "µmol/L": 17.104
+      "µmol/L": 1 / 17.104
 
     }
 
@@ -1819,10 +1782,15 @@ const converters = {
     category: "Biochemistry",
 
     units: {
-    "g/dL": 1,
-    "g/L": 10,
-    "mg/dL": 1000,
-    "mg/L": 10000
+
+      "g/dL": 1,
+
+      "g/L": 0.1,
+
+      "mg/dL": 0.001,
+
+      "mg/L": 0.0001
+
     }
 
   },
@@ -1835,10 +1803,15 @@ const converters = {
     category: "Biochemistry",
 
     units: {
-    "mg/L": 1,
-    "mg/dL": 100,
-    "g/L": 0.001,
-    "g/dL": 0.0001
+
+      "mg/L": 1,
+
+      "mg/dL": 100,
+
+      "g/L": 0.001,
+
+      "g/dL": 0.0001
+
     }
 
   },
@@ -2077,7 +2050,7 @@ const converters = {
 
       "g/L": 0.001,
 
-      "g/dL": 0.1
+      "g/dL": 0.0001
 
     }
 
@@ -2098,7 +2071,7 @@ const converters = {
 
       "g/L": 0.001,
 
-      "g/dL": 0.1
+      "g/dL": 0.0001
 
     }
 
@@ -2112,16 +2085,18 @@ const converters = {
     category: "Urine",
 
     units: {
-    "mg/dL": 1,
-    "g/L": 0.1,
-    "mmol/L": 0.0884
+
+      "mg/dL": 1,
+
+      "g/L": 0.01,
+
+      "mmol/L": 11.312
+
     }
 
   }
 
 };
-
-
 
 /* ==================================================
    ELEMENTS

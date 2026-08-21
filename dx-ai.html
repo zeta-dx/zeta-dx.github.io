@@ -1,0 +1,2071 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Dx AI by Zeta Dx - Educational laboratory report analysis tool for understanding laboratory results, calculations and related parameters.">
+
+    <meta name="keywords"
+          content="Dx AI, laboratory report analyzer, lab report analysis, medical laboratory AI, Zeta Dx">
+
+    <link rel="canonical" href="https://zeta-dx.github.io/dx-ai.html">
+
+    <title>Dx AI - Zeta Dx</title>
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Google AdSense -->
+    
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Dx AI - Zeta Dx">
+    <meta property="og:description"
+          content="Educational laboratory report analysis by Zeta Dx.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zeta-dx.github.io/dx-ai.html">
+    <meta property="og:image"
+          content="https://zeta-dx.github.io/zeta_dx.webp">
+
+    <style>
+
+        :root {
+            --brand-gradient:
+                linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+
+            --brand-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.12);
+
+            --warning-bg: #fff8e6;
+            --warning-border: #e0a800;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url('bg.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+
+            font-family:
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            margin: 0;
+            padding: 0;
+            color: #222;
+        }
+
+        /* ================= HEADER ================= */
+
+        .top-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 10px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-left img {
+            height: 80px;
+        }
+
+        .title-block h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .header-right {
+            text-align: right;
+        }
+
+        .header-right h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .header-right p {
+            margin: 4px 0 0;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        /* ================= NAVIGATION ================= */
+
+        .header-nav {
+            max-width: 100%;
+            margin: 10px auto;
+            padding: 14px 30px;
+
+            background: var(--brand-gradient);
+
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            box-shadow: var(--brand-shadow);
+        }
+
+        .header-nav > a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropbtn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: white;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+
+            background: var(--brand-gradient);
+
+            min-width: 190px;
+
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+
+            z-index: 9999;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px 14px;
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(255,255,255,0.12);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* ================= PAGE ================= */
+
+        .page-container {
+            width: 82%;
+            max-width: 1100px;
+            margin: 30px auto;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            background: var(--brand-gradient);
+            color: white;
+
+            padding: 35px 30px;
+            border-radius: 14px;
+
+            text-align: center;
+
+            box-shadow: var(--brand-shadow);
+        }
+
+        .hero h2 {
+            margin: 0 0 10px;
+            font-size: 2.2rem;
+        }
+
+        .hero p {
+            margin: 0;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 7px 14px;
+
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 20px;
+
+            font-size: 0.85rem;
+        }
+
+        /* ================= INFORMATION CARDS ================= */
+
+        .info-section {
+            background: white;
+
+            margin-top: 25px;
+            padding: 30px;
+
+            border-radius: 14px;
+
+            box-shadow: var(--brand-shadow);
+        }
+
+        .info-section h2 {
+            margin-top: 0;
+            color: #203a43;
+        }
+
+        .info-section p {
+            line-height: 1.7;
+            text-align: justify;
+            color: #444;
+        }
+
+        .info-section ul {
+            line-height: 1.7;
+            color: #444;
+            padding-left: 22px;
+        }
+
+        .info-section li {
+            margin-bottom: 8px;
+        }
+
+        /* ================= WARNING ================= */
+
+        .warning-section {
+            background: var(--warning-bg);
+
+            margin-top: 25px;
+            padding: 28px 30px;
+
+            border-radius: 14px;
+
+            border-left: 5px solid var(--warning-border);
+
+            box-shadow: var(--brand-shadow);
+        }
+
+        .warning-section h2 {
+            margin-top: 0;
+            color: #765600;
+        }
+
+        .warning-section p {
+            line-height: 1.7;
+            color: #4d4327;
+            text-align: justify;
+        }
+
+        /* ================= USER FORM ================= */
+
+        .form-section {
+            background: white;
+
+            margin-top: 25px;
+            padding: 30px;
+
+            border-radius: 14px;
+
+            box-shadow: var(--brand-shadow);
+        }
+
+        .form-section h2 {
+            margin-top: 0;
+            color: #203a43;
+        }
+
+        .form-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+
+            border: 1px solid #ccc;
+            border-radius: 8px;
+
+            font-size: 16px;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+
+            border-color: #2c5364;
+
+            box-shadow:
+                0 0 0 2px rgba(44,83,100,0.15);
+        }
+
+        .optional {
+            color: #777;
+            font-size: 0.8rem;
+            font-weight: normal;
+        }
+        /* ================= DX AI PROCESSING ================= */
+
+        #dx-ai-processing {
+            width: 100%;
+            margin: 25px 0;
+        }
+
+        .dx-ai-processing-card {
+            width: 90%;
+            margin: 0 auto;
+
+            padding: 25px;
+
+            background: white;
+
+            border-radius: 14px;
+
+            box-shadow: var(--brand-shadow);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 20px;
+        }
+
+
+        /* Processing ring */
+
+        .dx-ai-ring {
+
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            border: 4px solid #e5e5e5;
+
+            border-top-color: #203a43;
+
+            border-right-color: #2c5364;
+
+            animation: dx-ai-spin 0.9s linear infinite;
+
+            flex-shrink: 0;
+        }
+
+
+        @keyframes dx-ai-spin {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+
+        .dx-ai-processing-text {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 5px;
+
+            color: #203a43;
+        }
+
+
+        .dx-ai-processing-text strong {
+
+            font-size: 1.05rem;
+
+        }
+
+
+        .dx-ai-processing-text span {
+
+            font-size: 0.9rem;
+
+            color: #666;
+
+        }
+        /* ================= UPLOAD ================= */
+
+        .upload-section {
+            margin-top: 30px;
+        }
+
+        .upload-box {
+            border: 2px dashed #9aa7ad;
+
+            border-radius: 12px;
+
+            padding: 35px 20px;
+
+            text-align: center;
+
+            background: #fafbfc;
+
+            cursor: pointer;
+
+            transition:
+                border-color 0.2s ease,
+                background 0.2s ease;
+        }
+
+        .upload-box:hover {
+            border-color: #2c5364;
+            background: #f5f7f8;
+        }
+
+        .upload-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .upload-box h3 {
+            margin: 5px 0;
+            color: #203a43;
+        }
+
+        .upload-box p {
+            margin: 8px 0;
+            color: #666;
+        }
+
+        .upload-box input[type="file"] {
+            display: none;
+        }
+
+        .file-name {
+            display: none;
+
+            margin-top: 15px;
+
+            padding: 12px;
+
+            background: white;
+
+            border-radius: 8px;
+
+            color: #203a43;
+
+            font-weight: 600;
+        }
+
+        /* ================= BUTTON ================= */
+
+        .analyze-container {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .analyze-button {
+            border: none;
+
+            padding: 14px 35px;
+
+            border-radius: 9px;
+
+            background: var(--brand-gradient);
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            opacity: 0.55;
+
+            transition:
+                opacity 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .analyze-button.enabled {
+            opacity: 1;
+        }
+
+        .analyze-button.enabled:hover {
+            transform: translateY(-2px);
+        }
+
+        .analyze-note {
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        /* ================= PRIVACY ================= */
+
+        .privacy-note {
+            background: #f5f7f8;
+
+            margin-top: 25px;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            line-height: 1.6;
+
+            color: #555;
+        }
+
+        .card-icon-1 {
+            width: 100%;
+            height: 100px;
+
+            margin-bottom: 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-icon-1 img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            display: block;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            max-width: 100%;
+
+            margin: 40px auto 0;
+
+            padding: 20px;
+
+            background: white;
+
+            border-radius: 8px;
+
+            box-shadow:
+                0 2px 10px rgba(0,0,0,0.1);
+
+            text-align: center;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+
+            display: flex;
+            justify-content: center;
+
+            gap: 40px;
+
+            margin: 0;
+        }
+
+        footer ul li a {
+            color: #1a73e8;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        footer ul li a:hover {
+            text-decoration: underline;
+        }
+
+        footer p {
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: #555;
+        }
+        /* ============================================================
+        DX AI ANALYSIS SECTION
+        ============================================================ */
+
+        #dxAiResults {
+            width: 100%;
+            margin: 25px auto 0;
+        }
+
+
+        /* Main analysis card */
+
+        .dx-results-section {
+            width: 100%;
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 14px;
+
+            box-shadow: var(--brand-shadow);
+
+            color: #222;
+        }
+
+
+        /* Main heading */
+
+        .dx-results-section h2 {
+            margin: 0 0 8px;
+
+            color: #203a43;
+
+            font-size: 1.7rem;
+        }
+
+
+        /* Laboratory name */
+
+        .report-source {
+            margin: 0 0 25px;
+
+            color: #666;
+
+            font-size: 0.95rem;
+        }
+
+
+        /* Section headings */
+
+        .dx-results-section h3 {
+            margin: 30px 0 15px;
+
+            padding-bottom: 8px;
+
+            color: #203a43;
+
+            font-size: 1.2rem;
+
+            border-bottom: 2px solid #e6eaec;
+        }
+
+
+        /* ============================================================
+        SUMMARY CARDS
+        ============================================================ */
+
+        .analysis-summary {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 15px;
+
+            margin: 20px 0 30px;
+        }
+
+
+        .summary-card {
+
+            background: #f7f9fa;
+
+            border-radius: 10px;
+
+            padding: 18px 12px;
+
+            text-align: center;
+
+            border: 1px solid #e5e9eb;
+
+            box-shadow:
+                0 1px 4px rgba(0,0,0,0.05);
+        }
+
+
+        .summary-card strong {
+
+            display: block;
+
+            font-size: 1.8rem;
+
+            color: #203a43;
+
+            line-height: 1.2;
+        }
+
+
+        .summary-card span {
+
+            display: block;
+
+            margin-top: 6px;
+
+            color: #666;
+
+            font-size: 0.85rem;
+        }
+
+
+        /* Normal */
+
+        .summary-normal {
+
+            border-top: 4px solid #4caf50;
+        }
+
+
+        /* Abnormal */
+
+        .summary-abnormal {
+
+            border-top: 4px solid #d32f2f;
+        }
+
+
+        /* ============================================================
+        TABLE CONTAINER
+        ============================================================ */
+
+        .results-table-wrapper {
+
+            width: 100%;
+
+            overflow-x: auto;
+
+            border: 1px solid #e1e5e7;
+
+            border-radius: 10px;
+
+            background: white;
+        }
+
+
+        /* ============================================================
+        RESULTS TABLE
+        ============================================================ */
+
+        .results-table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            font-size: 0.93rem;
+        }
+
+
+        .results-table th {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0f2027,
+                    #203a43,
+                    #2c5364
+                );
+
+            color: white;
+
+            padding: 13px 12px;
+
+            text-align: left;
+
+            white-space: nowrap;
+        }
+
+
+        .results-table td {
+
+            padding: 13px 12px;
+
+            border-bottom: 1px solid #e8ebed;
+
+            color: #333;
+
+            vertical-align: middle;
+        }
+
+
+        /* Remove bottom border from last row */
+
+        .results-table tbody tr:last-child td {
+
+            border-bottom: none;
+        }
+
+
+        /* Hover */
+
+        .results-table tbody tr:hover {
+
+            background: #f7f9fa;
+        }
+
+
+        /* ============================================================
+        STATUS BADGES
+        ============================================================ */
+
+        .result-status {
+
+            display: inline-block;
+
+            padding: 5px 11px;
+
+            border-radius: 20px;
+
+            font-size: 0.75rem;
+
+            font-weight: 700;
+
+            letter-spacing: 0.3px;
+
+            white-space: nowrap;
+        }
+
+
+        /* Normal */
+
+        .status-normal {
+
+            background: #e8f5e9;
+
+            color: #2e7d32;
+        }
+
+
+        /* Low */
+
+        .status-low {
+
+            background: #fff3e0;
+
+            color: #e65100;
+        }
+
+
+        /* High */
+
+        .status-high {
+
+            background: #ffebee;
+
+            color: #c62828;
+        }
+
+
+        /* Abnormal qualitative */
+
+        .status-abnormal {
+
+            background: #ffebee;
+
+            color: #c62828;
+        }
+
+
+        /* Unknown */
+
+        .status-unknown {
+
+            background: #eeeeee;
+
+            color: #616161;
+        }
+
+
+        /* ============================================================
+        CALCULATED RESULT BADGE
+        ============================================================ */
+
+        .calculated-badge {
+
+            display: inline-block;
+
+            padding: 5px 11px;
+
+            border-radius: 20px;
+
+            background: #e3f2fd;
+
+            color: #1565c0;
+
+            font-size: 0.75rem;
+
+            font-weight: 600;
+
+            white-space: nowrap;
+        }
+
+
+        /* ============================================================
+        CALCULATION NOTE
+        ============================================================ */
+
+        .calculation-note {
+
+            margin-top: 20px;
+
+            padding: 15px 18px;
+
+            background: #f5f7f8;
+
+            border-left: 4px solid #2c5364;
+
+            border-radius: 8px;
+
+            color: #666;
+
+            font-size: 0.85rem;
+
+            line-height: 1.6;
+        }
+
+
+        .empty-results {
+
+            padding: 15px;
+
+            color: #777;
+
+            font-style: italic;
+        }
+
+
+        /* ============================================================
+        MOBILE
+        ============================================================ */
+
+        @media (max-width: 700px) {
+
+            #dxAiResults {
+
+                width: 100%;
+
+                margin-top: 20px;
+            }
+
+
+            .dx-results-section {
+
+                padding: 22px 15px;
+
+                border-radius: 12px;
+            }
+
+
+            .analysis-summary {
+
+                grid-template-columns: repeat(2, 1fr);
+
+                gap: 10px;
+            }
+
+
+            .summary-card {
+
+                padding: 15px 8px;
+            }
+
+
+            .summary-card strong {
+
+                font-size: 1.5rem;
+            }
+
+
+            .results-table {
+
+                font-size: 0.82rem;
+            }
+
+
+            .results-table th,
+            .results-table td {
+
+                padding: 10px 8px;
+            }
+
+        }
+        /* =========================================================
+            DX AI RESULTS
+            ========================================================= */
+
+        .dx-results-section {
+
+            background: white;
+
+            margin-top: 30px;
+
+            padding: 30px;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,0.12);
+
+        }
+
+
+        .dx-results-section h2 {
+
+            margin-top: 0;
+
+            color: #203a43;
+
+        }
+
+
+        /* ================= SUMMARY ================= */
+
+        .analysis-summary {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 15px;
+
+            margin: 25px 0 30px;
+
+        }
+
+
+        .summary-card {
+
+            background: #f5f7f8;
+
+            border-radius: 10px;
+
+            padding: 18px;
+
+            text-align: center;
+
+            border: 1px solid #e1e5e7;
+
+        }
+
+
+        .summary-card strong {
+
+            display: block;
+
+            font-size: 1.8rem;
+
+            color: #203a43;
+
+        }
+
+
+        .summary-card span {
+
+            display: block;
+
+            margin-top: 5px;
+
+            font-size: 0.9rem;
+
+            color: #666;
+
+        }
+
+
+        .summary-abnormal {
+
+            background: #fff1f1;
+
+            border-color: #e5b5b5;
+
+        }
+
+
+        .summary-abnormal strong {
+
+            color: #b42318;
+
+        }
+
+
+        .summary-normal {
+
+            background: #f0faf3;
+
+            border-color: #b9ddc4;
+
+        }
+
+
+        .summary-normal strong {
+
+            color: #217a3b;
+
+        }
+
+
+        .summary-unknown {
+
+            background: #f5f5f5;
+
+            border-color: #d5d5d5;
+
+        }
+
+
+        .summary-unknown strong {
+
+            color: #666;
+
+        }
+
+
+        /* ================= RESULT CATEGORY ================= */
+
+        .result-category {
+
+            margin-top: 25px;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            border: 1px solid #e1e5e7;
+
+        }
+
+
+        .category-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 18px 20px;
+
+        }
+
+
+        .category-header h3 {
+
+            margin: 0;
+
+        }
+
+
+        .category-header p {
+
+            margin: 5px 0 0;
+
+            color: #666;
+
+            font-size: 0.9rem;
+
+        }
+
+
+        .category-count {
+
+            min-width: 36px;
+
+            height: 36px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            font-weight: 700;
+
+        }
+
+
+        /* ================= ABNORMAL ================= */
+
+        .abnormal-category {
+
+            border-color: #e2b5b5;
+
+        }
+
+
+        .abnormal-category .category-header {
+
+            background: #fff3f3;
+
+        }
+
+
+        .abnormal-category .category-header h3 {
+
+            color: #a61b1b;
+
+        }
+
+
+        .abnormal-category .category-count {
+
+            background: #d93025;
+
+            color: white;
+
+        }
+
+
+        /* ================= NORMAL ================= */
+
+        .normal-category {
+
+            border-color: #b9d8c1;
+
+        }
+
+
+        .normal-category .category-header {
+
+            background: #f2faf4;
+
+        }
+
+
+        .normal-category .category-header h3 {
+
+            color: #23753a;
+
+        }
+
+
+        .normal-category .category-count {
+
+            background: #2e7d46;
+
+            color: white;
+
+        }
+
+
+        /* ================= UNKNOWN ================= */
+
+        .unknown-category {
+
+            border-color: #d5d5d5;
+
+        }
+
+
+        .unknown-category .category-header {
+
+            background: #f5f5f5;
+
+        }
+
+
+        .unknown-category .category-header h3 {
+
+            color: #666;
+
+        }
+
+
+        .unknown-category .category-count {
+
+            background: #777;
+
+            color: white;
+
+        }
+
+
+        /* ================= ALL RESULTS ================= */
+
+        .all-category {
+
+            border-color: #cbd4d8;
+
+        }
+
+
+        .all-category .category-header {
+
+            background: #f5f7f8;
+
+        }
+
+
+        .all-category .category-count {
+
+            background: #203a43;
+
+            color: white;
+
+        }
+
+
+        /* ================= TABLE ================= */
+
+        .results-table-wrapper {
+
+            overflow-x: auto;
+
+        }
+
+
+        .results-table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+        }
+
+
+        .results-table th {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0f2027,
+                    #203a43,
+                    #2c5364
+                );
+
+            color: white;
+
+            padding: 12px;
+
+            text-align: left;
+
+            font-size: 0.9rem;
+
+        }
+
+
+        .results-table td {
+
+            padding: 12px;
+
+            border-bottom:
+                1px solid #e3e7e9;
+
+            color: #333;
+
+        }
+
+
+        .results-table tr:last-child td {
+
+            border-bottom: none;
+
+        }
+
+
+        /* ================= STATUS ================= */
+
+        .result-status {
+
+            display: inline-block;
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+
+            font-size: 0.78rem;
+
+            font-weight: 700;
+
+        }
+
+
+        .status-normal {
+
+            background: #e7f5eb;
+
+            color: #217a3b;
+
+        }
+
+
+        .status-high,
+        .status-low,
+        .status-abnormal {
+
+            background: #fde8e8;
+
+            color: #b42318;
+
+        }
+
+
+        .status-unknown {
+
+            background: #eeeeee;
+
+            color: #666;
+
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 700px) {
+
+            .header-left img {
+                height: 60px;
+            }
+
+            .title-block h1 {
+                font-size: 1.5rem;
+            }
+
+            .header-right {
+                display: none;
+            }
+
+            .header-nav {
+                flex-wrap: wrap;
+                gap: 15px;
+                padding: 12px;
+            }
+
+            .page-container {
+                width: 94%;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-section,
+            .warning-section,
+            .form-section {
+                padding: 24px 20px;
+            }
+
+            .info-section p,
+            .warning-section p {
+                text-align: left;
+            }
+
+            footer ul {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="top-header">
+
+    <div class="header-main">
+
+        <div class="header-left">
+
+            <img src="zeta_dx.webp" alt="Zeta Dx Logo">
+
+            <div class="title-block">
+                <h1>Zeta Dx</h1>
+            </div>
+
+        </div>
+
+        <div class="header-right">
+
+            <h2>Calculate. Interpret. Understand.</h2>
+
+            <p>For educational purposes only</p>
+
+        </div>
+
+    </div>
+
+
+    <nav class="header-nav">
+    <a href="./index.html">Home</a>
+    <a href="./contact.html">About Us</a>
+    <a href="./dx-ai.html">Dx AI</a>
+    <a href="./medical-tests.html">Know Your Tests</a>
+    <a href="./privacy_policy.html">Privacy Policy</a>
+    <a href="./disclaimer.html">Terms & Conditions</a>
+
+    <div class="dropdown">
+        <button class="dropbtn">Tools ▾</button>
+        <div class="dropdown-content">
+            <a href="./eag.html">eAG</a>
+            <a href="./egfr.html">eGFR</a>
+            <a href="./acr.html">ACR</a>
+            <a href="./pcr.html">PCR</a>
+            <a href="./inr.html">INR</a>
+            <a href="./esr.html">ESR</a>
+            <a href="./convertors.html">Unit Convertors</a>
+        </div>
+    </div>
+    </nav>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+    <div class="page-container">
+
+
+        <!-- ================= HERO ================= -->
+
+        <section class="hero">
+
+            <div class="card-icon-1">
+                <img src="dx_ai.png" alt="Dx AI Icon">
+            </div>
+            <h2>Dx AI</h2>
+            
+            <p>
+                Laboratory Report Analyzer
+            </p>
+
+            <p style="margin-top: 10px;">
+                Understand your laboratory results with
+                structured analysis, calculations, unit
+                conversions and educational explanations.
+            </p>
+
+            <div class="hero-badge">
+                Educational tool • Not a diagnostic service
+            </div>
+
+        </section>
+
+
+        <!-- ================= INTRODUCTION ================= -->
+
+        <!--section class="info-section">
+
+            <h2>About Dx AI</h2>
+
+            <p>
+                Dx AI is an educational laboratory report
+                analysis tool developed by Zeta Dx to help
+                users better understand the information
+                contained in their laboratory reports.
+            </p>
+
+            <p>
+                The tool is designed to identify results
+                that are outside the reference intervals
+                provided by the laboratory. Where sufficient
+                information is available, Dx AI may also
+                perform relevant calculations, unit
+                conversions and analysis of relationships
+                between related laboratory parameters.
+            </p>
+
+            <p>
+                Dx AI may provide explanations of laboratory
+                parameters, possible factors associated with
+                abnormal results and information about tests
+                that may be relevant for further discussion
+                with a qualified healthcare professional.
+            </p>
+
+            <p>
+                The reference ranges printed on the uploaded
+                laboratory report will be used as the primary
+                reference for identifying results outside the
+                laboratory's stated interval.
+            </p>
+
+        </section-->
+
+
+        <!-- ================= WHAT IT CAN DO ================= -->
+
+        <section class="info-section">
+
+            <h2>What Dx AI Can Do</h2>
+
+            <ul>
+
+                <li>
+                    Identify laboratory results that are
+                    outside the reference interval supplied
+                    by the laboratory.
+                </li>
+
+                <li>
+                    Explain what individual laboratory
+                    parameters represent.
+                </li>
+
+                <li>
+                    Convert laboratory values between
+                    commonly used units where applicable.
+                </li>
+
+                <li>
+                    Perform relevant calculations when the
+                    required information is available.
+                </li>
+
+                <li>
+                    Examine relationships between related
+                    laboratory parameters.
+                </li>
+
+                <li>
+                    Provide educational information about
+                    possible explanations for abnormal
+                    findings.
+                </li>
+
+                <li>
+                    Highlight information that may be useful
+                    to discuss with a healthcare professional.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- ================= WARNING ================= -->
+
+        <section class="warning-section">
+
+            <h2>⚠ Important Warning</h2>
+
+            <p>
+                <strong>
+                    Dx AI is intended for educational and
+                    informational purposes only.
+                </strong>
+            </p>
+
+            <p>
+                If you have concerning symptoms or have
+                received a result that may require urgent
+                medical attention, seek appropriate medical
+                care.
+            </p>
+
+        </section>
+
+
+        <!-- ================= USER INFORMATION ================= -->
+
+        <section class="form-section">
+
+            <h2>Your Information</h2>
+
+            <p class="form-description">
+                Enter the information below to help Dx AI
+                perform calculations that may depend on
+                patient-specific information. Weight is
+                optional and may only be used where relevant.
+            </p>
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label for="age">
+                        Age
+                    </label>
+
+                    <input
+                        type="number"
+                        id="age"
+                        name="age"
+                        min="0"
+                        max="120"
+                        placeholder="Enter age">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="sex">
+                        Sex
+                    </label>
+
+                    <select id="sex" name="sex">
+
+                        <option value="">
+                            Select
+                        </option>
+
+                        <option value="male">
+                            Male
+                        </option>
+
+                        <option value="female">
+                            Female
+                        </option>
+
+                        <option value="not_specified">
+                            Not specified
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="weight">
+
+                        Weight
+                        <span class="optional">
+                            (Optional)
+                        </span>
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="weight"
+                        name="weight"
+                        min="1"
+                        max="500"
+                        step="0.1"
+                        placeholder="kg">
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ================= UPLOAD ================= -->
+
+            <div class="upload-section">
+
+                <h2>
+                    Upload Laboratory Report
+                </h2>
+
+                <div
+                    class="upload-box"
+                    id="uploadBox"
+                    onclick="document.getElementById('reportFile').click()"
+                >
+
+                    <div class="upload-icon">
+                        📄
+                    </div>
+
+                    <h3>
+                        Upload your laboratory report
+                    </h3>
+
+                    <p>
+                        Click here to select a PDF or image
+                        of your report.
+                    </p>
+
+                    <p>
+                        Supported formats:
+                        PDF, JPG, JPEG, PNG
+                    </p>
+
+                    <input
+                        type="file"
+                        id="reportFile"
+                        accept=".pdf,.jpg,.jpeg,.png"
+                        onchange="handleFile(this)">
+
+                    <div
+                        class="file-name"
+                        id="fileName">
+                    </div>
+
+                </div>
+
+
+                <div class="analyze-container">
+
+                    <button
+                        type="button"
+                        class="analyze-button"
+                        id="analyzeButton"
+                        disabled
+                        onclick="startAnalysis()">
+
+                        Analyze Report
+
+                    </button>
+
+                    <div class="analyze-note">
+                        Analysis functionality will be
+                        connected in the next stage.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= PRIVACY ================= -->
+
+            <div class="privacy-note">
+
+                <strong>
+                    🔒 Privacy reminder
+                </strong>
+
+                <br><br>
+
+                Laboratory reports may contain sensitive
+                personal and health information. Only upload
+                a report when you are comfortable providing
+                it for analysis. Avoid including information
+                that is not necessary for the intended
+                analysis.
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CURRENT LIMITATION ================= -->
+        
+        <!--section class="info-section">
+
+            <h2>How the Analysis Will Work</h2>
+
+            <p>
+                Dx AI is being designed to preserve the
+                information reported by the laboratory rather
+                than replacing laboratory-specific reference
+                intervals with a generic reference range.
+            </p>
+
+            <p>
+                Reported values will be separated from values
+                calculated or converted by Zeta Dx. For
+                example, an eGFR, ACR, eAG or converted unit
+                may be presented as a calculated value rather
+                than as a result directly reported by the
+                laboratory.
+            </p>
+
+            <p>
+                Where required information is unavailable,
+                Dx AI will indicate that a calculation or
+                interpretation cannot be reliably performed
+                instead of inventing missing information.
+            </p>
+
+        </section-->
+        <section id="dxAiResults"></section>
+    </div>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <ul>
+
+        <li>
+            <a href="./privacy_policy.html">
+                Privacy Policy
+            </a>
+        </li>
+
+        <li>
+            <a href="./disclaimer.html">
+                Terms & Conditions
+            </a>
+        </li>
+
+        <li>
+            <a href="./contact.html">
+                About Us
+            </a>
+        </li>
+
+    </ul>
+
+    <p>
+        <br>
+        Zeta Dx &copy; 2025, Developed by: M. K.
+    </p>
+
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+</script>
+<script src="dx-ai-results.js"></script>
+<script src="dx-ai-extractor.js"></script>
+
+<script>
+
+    let selectedFile = null;
+
+
+    function handleFile(input) {
+
+        const fileName =
+            document.getElementById("fileName");
+
+        const analyzeButton =
+            document.getElementById("analyzeButton");
+
+
+        if (!input.files || input.files.length === 0) {
+
+            selectedFile = null;
+
+            fileName.style.display = "none";
+
+            analyzeButton.disabled = true;
+
+            analyzeButton.classList.remove("enabled");
+
+            return;
+
+        }
+
+
+        selectedFile = input.files[0];
+
+
+        fileName.textContent =
+            "📄 " + selectedFile.name +
+            "  ✓ File selected";
+
+
+        fileName.style.display = "block";
+
+
+        analyzeButton.disabled = false;
+
+        analyzeButton.classList.add("enabled");
+
+    }
+
+
+    async function startAnalysis() {
+
+        if (!selectedFile) {
+
+            alert("Please select a laboratory report first.");
+
+            return;
+        }
+
+
+        const button =
+            document.getElementById("analyzeButton");
+
+
+        button.disabled = true;
+
+        button.classList.remove("enabled");
+
+        button.textContent =
+            "Extracting Report...";
+
+
+        try {
+
+            await analyzeUploadedLaboratoryReport(
+                selectedFile
+            );
+
+
+            button.textContent =
+                "Analysis Complete";
+
+
+        } catch (error) {
+
+            console.error(
+                "Dx AI error:",
+                error
+            );
+
+
+            alert(
+                "Unable to analyze the report.\n\n" +
+                error.message
+            );
+
+
+            button.disabled = false;
+
+            button.classList.add("enabled");
+
+            button.textContent =
+                "Analyze Report";
+        }
+    }
+    
+</script>
+</body>
+</html>
