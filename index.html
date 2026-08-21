@@ -366,6 +366,46 @@
 	  transition: transform 0.2s ease, box-shadow 0.2s ease;
 	}
 
+	.card-icon {
+		width: 100%;
+		height: 90px;
+
+		margin-bottom: 18px;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.card-icon img {
+		width: 100%;
+		height: 100%;
+
+		object-fit: contain;
+
+		display: block;
+	}
+
+	.card-icon-1 {
+		width: 100%;
+		height: 100px;
+
+		margin-bottom: 18px;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.card-icon-1 img {
+		width: 100%;
+		height: 100%;
+
+		object-fit: contain;
+
+		display: block;
+	}
+
 	.card:hover {
 	  transform: translateY(-4px);
 	  box-shadow: 0 6px 16px rgba(0,0,0,0.18);
@@ -462,6 +502,7 @@
   <a href="./index.html">Home</a>
   <a href="./contact.html">About Us</a>
   <a href="./dx-ai.html">Dx AI</a>
+  <a href="./medical-tests.html">Know Your Tests</a>
   <a href="./privacy_policy.html">Privacy Policy</a>
   <a href="./disclaimer.html">Terms & Conditions</a>
 
@@ -485,19 +526,20 @@
 	<section class="intro-section">
 		<div class="intro-content">
 			<h2>Welcome to Zeta Dx</h2>
+			<div class="intro-highlight">
+			<strong>
+				Calculate. Interpret. Understand.
+			</strong>
+			<span>
+				Simple tools for understanding laboratory results.
+			</span>
+			</div>
 			<p>
 			Zeta Dx is an educational platform designed to make
 			laboratory medicine and diagnostic parameters easier
 			to understand. The website provides simple calculators,
 			unit converters, reference information, and educational
 			explanations for commonly encountered laboratory tests.
-			</p>
-			<p>
-			From calculating ACR, PCR, INR, ESR corrections and eGFR
-			to understanding HbA1c, estimated average glucose,
-			creatinine, cystatin C and other laboratory parameters,
-			Zeta Dx brings commonly used information together in
-			one place.
 			</p>
 			<p>
 			Our goal is to present technical and clinical concepts
@@ -507,14 +549,7 @@
 			established clinical guidelines, published literature
 			and recognized laboratory references.
 			</p>
-			<div class="intro-highlight">
-			<strong>
-				Calculate. Interpret. Understand.
-			</strong>
-			<span>
-				Simple tools for understanding laboratory results.
-			</span>
-			</div>
+			
 			<p class="intro-disclaimer">
 			⚠ Zeta Dx is intended for educational and informational
 			purposes only. The calculators and information provided
@@ -530,7 +565,9 @@
 	<section class="intro-section">
 
 		<div class="intro-content">
-			
+			<div class="card-icon-1">
+				<img src="dx_ai_2.png" alt="Dx AI big Icon">
+			</div>
 			<h2>Dx AI</h2>
 			
 			<p>
@@ -569,48 +606,111 @@
 		</div>
 
 	</section>
+
+	<section class="intro-section">
+
+		<div class="intro-content">
+			<div class="card-icon-1">
+				<img src="medical-test-1.png" alt="Medical Test Icon">
+			</div>
+			<h2>Know Your Tests</h2>
+			
+			<p>
+				Learn about common laboratory tests, medical screenings,
+                and diagnostic procedures with information from trusted sources such as
+                MedlinePlus.gov.
+			</p>
+
+			<a
+			href="medical-tests.html"
+			style="
+				display: block;
+				font-size: 18px;
+				width: fit-content;
+				margin: 15px auto 0;
+				padding: 10px 20px;
+				background: #203a43;
+				color: white;
+				border-radius: 8px;
+				text-decoration: none;
+				font-weight: 600;
+			"
+		>
+			Know More About Your Tests →
+		</a>
+
+		
+
+		</div>
+
+	</section>
+
   <section class="section">
 	<!-- <h2>Understand Your Lab Results With Simple Tools</h2> -->
     <h2 style="background: linear-gradient(270deg, #0f2027, #203a43, #2c5364); border-radius: 10px;  padding: 20px; color: white; 
 		box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 57%; margin: 20px auto;">Our Tools</h2>
     <div class="cards">
 		<div class="card">
+			<div class="card-icon">
+				<img src="dx_ai.png" alt="Dx AI Icon">
+			</div>
 		<h3>Dx AI</h3>
 		<p>Analyze laboratory reports and automatically extracts test results, units, reference ranges and 
 				result status.</p>
 		<a href="./dx-ai.html" style="color: white">Open Dx AI →</a>
 	 	</div>
 		<div class="card">
+			<div class="card-icon">
+				<img src="egfr.png" alt="eGFR Calculator Icon">
+			</div>
 		<h3>eGFR Calculator</h3>
 		<p>Calculate estimated Glomerular Filtration Rate (eGFR) using CKD-EPI formula with interpretation.</p>
 		<a href="./egfr.html" style="color: white">Calculate eGFR →</a>
 	 	</div>
       <div class="card">
+	  	<div class="card-icon">
+			<img src="acr.png" alt="ACR Calculator Icon">
+	  	</div>
         <h3>Albumin-Creatinine Ratio</h3>
         <p>Albumin-Creatinine Ratio calculator with interpretation and normal ranges.</p>
         <a href="./acr.html" style="color: white;">Calculate ACR →</a>
       </div>
       <div class="card">
+		<div class="card-icon">
+			<img src="pcr.png" alt="PCR Calculator Icon">
+		</div>
         <h3>Protein-Creatinine Ratio</h3>
         <p>Protein-Creatinine Ratio calculator and complete result explanation.</p>
         <a href="./pcr.html" style="color: white;">Calculate PCR →</a>
       </div>
 	  <div class="card">
+	  	<div class="card-icon">
+			<img src="glucose.png" alt="eAG Calculator Icon">
+	  	</div>
 		<h3>HbA1c & Estimated Average Glucose</h3>
 		<p>Convert HbA1c to estimated average glucose (eAG) and understand HbA1c, fasting glucose, postprandial glucose and diabetes.</p>
 		<a href="./eag.html" style="color: white;">Calculate eAG →</a>
 		</div>
       <div class="card">
+		<div class="card-icon">
+			<img src="inr.png" alt="INR Calculator Icon">	
+		</div>
         <h3>International Normalized Ratio</h3>
         <p>Calculate International Normalized Ratio from PT results, calculation tool and interpretation guide.</p>
         <a href="./inr.html" style="color: white">Calculate INR →</a>
       </div>
       <div class="card">
+		<div class="card-icon">
+			<img src="esr.png" alt="ESR Correction Icon">
+		</div>
         <h3>ESR Correction</h3>
         <p>Correct ESR values at 18&deg C according to Manely's Nomogram or use Fabry's formula for low HCT</p>
         <a href="./esr.html" style="color: white">Correct ESR →</a>
       </div>
 	 <div class="card">
+		<div class="card-icon">
+			<img src="conversion.png" alt="Unit Converters Icon">
+		</div>
 		<h3>Laboratory Unit Converters</h3>
 		<p>Convert laboratory values between commonly used units for biochemistry, hematology, electrolytes and urine tests.</p>
 		<a href="./convertors.html" style="color: white;">	Open Unit Converters →</a>

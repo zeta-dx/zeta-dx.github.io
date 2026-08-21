@@ -1,0 +1,889 @@
+
+:root {
+    --brand-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    --brand-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+body {
+    background-image: url('bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    
+}
+
+/* ================= HEADER ================= */
+
+.top-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Top row layout */
+.header-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 10px;
+}
+
+/* Navigation row */
+.header-nav {
+    max-width: 100%;
+    margin: 10px auto;
+    padding: 14px 30px;
+    background: var(--brand-gradient);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    box-shadow: var(--brand-shadow);
+    border-radius: 1px;
+}
+
+.header-nav a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-left img {
+    height: 80px;
+}
+
+.title-block h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.header-right {
+    text-align: right;
+}
+
+.header-right h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.header-right p {
+    margin: 4px 0 0;
+    font-size: 0.85rem;
+    color: #666;
+}
+.dropdown {
+    position: relative;
+}
+
+/* Button */
+.dropbtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color:white;
+}
+
+/* Dropdown menu */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    font: system-ui;
+    top: 100%;
+    left: 0;
+    background: var(--brand-gradient);
+    min-width: 140px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    z-index: 9999;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px 14px;
+    white-space: nowrap;
+}
+
+/* Show on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* ================= INTRODUCTION ================= */
+
+.intro-section {
+
+width: 60%;
+
+margin: 20px auto 30px;
+
+padding: 35px 20px;
+
+background: white;
+
+border-radius: 14px;
+
+box-shadow: var(--brand-shadow);
+
+}
+
+
+.intro-content {
+
+max-width: 90%;
+
+margin: 10px auto;
+
+}
+
+.intro-content h2 {
+
+margin-top: 5px;
+
+margin-bottom: 20px;
+
+
+color: #203a43;
+
+font-size: 1.8rem;
+
+text-align: center;
+
+}
+
+
+.intro-content p {
+
+color: #444;
+
+font-size: 1rem;
+
+line-height: 1.7;
+
+text-align: justify;
+
+margin-bottom: 16px;
+
+}
+
+
+.intro-highlight {
+
+display: flex;
+
+flex-direction: column;
+
+align-items: center;
+
+gap: 5px;
+
+margin: 25px 0;
+
+padding: 18px;
+
+background: var(--brand-gradient);
+
+color: white;
+
+border-radius: 10px;
+
+text-align: center;
+
+}
+
+
+.intro-highlight strong {
+
+font-size: 1.2rem;
+
+}
+
+
+.intro-highlight span {
+
+font-size: 1.2rem;
+
+opacity: 0.9;
+
+}
+
+
+.intro-disclaimer {
+
+font-size: 1rem !important;
+
+color: #ff0000 !important;
+
+margin-bottom: 0 !important;
+
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 500px) {
+
+.intro-section {
+
+    width: 70%;
+
+    padding: 15px 20px;
+
+}
+
+.intro-content p {
+
+    text-align: left;
+
+}
+
+}
+
+/* ================= NAV ================= */
+
+nav {
+    background: #fff;
+    max-width: 65%;
+    margin: 10px auto;
+    padding: 14px 30px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    box-shadow: var(--brand-shadow);
+    border-radius: 12px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+    background: var(--brand-gradient);
+    width: 80%;
+    margin: 20px auto;
+    padding: 30px 25px;
+    text-align: center;
+    color: white;
+    border-radius: 14px;
+    box-shadow: var(--brand-shadow);
+}
+
+.hero h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+/* ================= SECTIONS ================= */
+
+.section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.section-title {
+    background: var(--brand-gradient);
+    color: white;
+    padding: 16px 30px;
+    border-radius: 12px;
+    width: fit-content;
+    margin: 0 auto 30px;
+    box-shadow: var(--brand-shadow);
+}
+
+/* ================= CARDS ================= */
+
+.cards {
+    width: 60%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: var(--brand-gradient);
+    border-radius: 14px;
+    padding: 24px;
+    color: white;
+    box-shadow: var(--brand-shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-icon {
+    width: 100%;
+    height: 70px;
+
+    margin-bottom: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-icon img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+.card-icon-1 {
+    width: 100%;
+    height: 100px;
+
+    margin-bottom: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-icon-1 img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+}
+
+.card h3 {
+    margin-top: 0;
+    font-size: 1.15rem;
+}
+
+.card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    max-width: 100%;
+    margin: 40px auto 0;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: var(--brand-shadow);
+    text-align: center;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 0;
+}
+
+footer ul li a {
+    color: #1a73e8;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+footer ul li a:hover {
+    text-decoration: underline;
+}
+
+footer p {
+    margin-top: 12px;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 700px) {
+    nav {
+    max-width: 90%;
+    flex-direction: column;
+    gap: 10px;
+    }
+
+    .cards {
+    width: 90%;
+    grid-template-columns: 1fr;
+    }
+
+    .header-right {
+    display: none;
+    }
+}
+
+
+:root {
+    --brand-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    --brand-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+body {
+    background-image: url('bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* ================= HEADER ================= */
+
+.top-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Top row layout */
+.header-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 10px;
+}
+
+/* Navigation row */
+.header-nav {
+    max-width: 100%;
+    margin: 10px auto;
+    padding: 0px 20px;
+    background: var(--brand-gradient);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: var(--brand-shadow);
+    border-radius: 1px;
+}
+
+.header-nav a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-left img {
+    height: 80px;
+}
+
+.title-block h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.header-right {
+    text-align: right;
+}
+
+.header-right h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.header-right p {
+    margin: 4px 0 0;
+    font-size: 0.85rem;
+    color: #666;
+}
+.dropdown {
+    position: relative;
+}
+
+/* Button */
+.dropbtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color:white;
+}
+
+/* Dropdown menu */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    font: system-ui;
+    top: 100%;
+    left: 0;
+    background: var(--brand-gradient);
+    min-width: 140px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    z-index: 9999;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px 14px;
+    white-space: nowrap;
+}
+
+/* Show on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.header-og {
+    max-width: 75%;
+    margin: 20px auto;
+    padding: 40px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+/* ================= NAV ================= */
+
+nav {
+    background: #fff;
+    max-width: 65%;
+    margin: 10px auto;
+    padding: 14px 30px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    box-shadow: var(--brand-shadow);
+    border-radius: 12px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+}
+.hero {
+    background: var(--brand-gradient);
+    width: 80%;
+    margin: 20px auto;
+    padding: 30px 25px;
+    text-align: center;
+    color: white;
+    border-radius: 14px;
+    box-shadow: var(--brand-shadow);
+}
+
+.hero h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.section {
+    max-width: 75%;
+    margin: 30px auto;
+    padding: 40px 60px;
+    color: white;
+    text-align: justify;
+}
+
+.white-section {
+    background: white;
+    color: black;
+    border-radius: 10px;
+    padding: 40px;
+}
+
+.calculator {
+    background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    border-radius: 10px;
+    max-width: 50%;
+    margin: auto;
+    padding: 35px 45px;
+    text-align: left;
+}
+
+input { 
+    margin: 10px 0; 
+    padding: 10px 15px; 
+    width: 100%; 
+    font-size: 16px; 
+    text-align: left;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+    select { 
+    margin: 10px 0; 
+    padding: 10px 12px; 
+    width: 100%;
+    font-size: 16px; 
+    text-align: left;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+button {
+    background: #1a73e8;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+}
+
+.result {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #fafafa;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+
+    :root {
+	  --brand-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+	  --brand-shadow: 0 2px 8px rgba(0,0,0,0.12);
+	}
+
+	body {
+	  background-image: url('bg.png');
+	  background-size: cover;
+	  background-repeat: no-repeat;
+	  background-position: center;
+	  background-attachment: fixed;
+	  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+	  margin: 0;
+	  padding: 0;
+	}
+
+	/* ================= HEADER ================= */
+
+	.top-header {
+	  position: sticky;
+	  top: 0;
+	  z-index: 1000;
+
+	  background: white;
+	  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+	}
+
+	/* Top row layout */
+	.header-main {
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: center;
+	  padding: 14px 10px;
+	}
+
+	/* Navigation row */
+	.header-nav {
+	  max-width: 100%;
+	  margin: 10px auto;
+	  padding: 15px 10px;
+	  background: var(--brand-gradient);
+	  display: flex;
+	  justify-content: space-around;
+	  align-items: center;
+	  box-shadow: var(--brand-shadow);
+	  border-radius: 1px;
+	}
+
+	.header-nav a {
+	  text-decoration: none;
+	  color: #fff;
+	  font-size: 16px;
+	}
+	
+	.header-left {
+	  display: flex;
+	  align-items: center;
+	  gap: 15px;
+	}
+
+	.header-left img {
+	  height: 80px;
+	}
+
+	.title-block h1 {
+	  margin: 0;
+	  font-size: 2rem;
+	}
+
+	.header-right {
+	  text-align: right;
+	}
+
+	.header-right h2 {
+	  margin: 0;
+	  font-size: 1.5rem;
+	  font-weight: 600;
+	}
+
+	.header-right p {
+	  margin: 4px 0 0;
+	  font-size: 0.85rem;
+	  color: #666;
+	}
+	.dropdown {
+	  position: relative;
+	}
+
+	/* Button */
+	.dropbtn {
+	  background: none;
+	  border: none;
+	  cursor: pointer;
+	  font-size: 16px;
+	  color:white;
+	}
+
+	/* Dropdown menu */
+	.dropdown-content {
+	  display: none;
+	  position: absolute;
+	  font: system-ui;
+	  top: 100%;
+	  left: 0;
+	  background: var(--brand-gradient);
+	  min-width: 140px;
+	  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+	  z-index: 9999;
+	}
+
+	.dropdown-content a {
+	  display: block;
+	  padding: 10px 14px;
+	  white-space: nowrap;
+	}
+
+	/* Show on hover */
+	.dropdown:hover .dropdown-content {
+	  display: block;
+	}
+	.header-og {
+      max-width: 75%;
+      margin: 20px auto;
+      padding: 40px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+	
+    /* ================= NAV ================= */
+
+	nav {
+	  background: #fff;
+	  max-width: 65%;
+	  margin: 10px auto;
+	  padding: 14px 30px;
+
+	  display: flex;
+	  justify-content: space-around;
+	  align-items: center;
+
+	  box-shadow: var(--brand-shadow);
+	  border-radius: 12px;
+	}
+
+	nav a {
+	  text-decoration: none;
+	  color: #000;
+	  font-weight: 600;
+	}
+
+    .hero {
+	  background: var(--brand-gradient);
+	  width: 80%;
+	  margin: 20px auto;
+	  padding: 30px 25px;
+	  text-align: center;
+	  color: white;
+	  border-radius: 14px;
+	  box-shadow: var(--brand-shadow);
+	}
+
+	.hero h1 {
+	  font-size: 2rem;
+	  margin-bottom: 10px;
+	}
+
+    .section {
+      max-width: 75%;
+      margin: 30px auto;
+      padding: 40px 60px;
+      background: white;
+      color: black;
+      border-radius: 10px;
+      text-align: justify;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    p {
+      line-height: 1.7;
+      margin-top: 15px;
+    }
+
+    a {
+      color: #1a73e8;
+      font-weight: 500;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #fafafa;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+

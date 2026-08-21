@@ -1,0 +1,2826 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Medical Tests | Zeta Dx</title>
+
+
+    <style>
+
+        :root {
+            --brand-gradient:
+                linear-gradient(
+                    135deg,
+                    #0f2027,
+                    #203a43,
+                    #2c5364
+                );
+
+            --brand-shadow:
+                0 2px 8px rgba(0,0,0,0.12);
+        }
+
+
+        /* ================= BODY ================= */
+
+        body {
+
+            background-image:
+                url('bg.png');
+
+            background-size: cover;
+
+            background-repeat: no-repeat;
+
+            background-position: center;
+
+            background-attachment: fixed;
+
+            font-family:
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            margin: 0;
+
+            padding: 0;
+
+        }
+
+
+        /* ================= HEADER ================= */
+
+        .top-header {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            background: white;
+
+            box-shadow:
+                0 2px 10px rgba(0,0,0,0.1);
+
+        }
+
+
+        .header-main {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            padding: 14px 10px;
+
+        }
+
+
+        .header-left {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+        }
+
+
+        .header-left img {
+
+            height: 80px;
+
+        }
+
+
+        .title-block h1 {
+
+            margin: 0;
+
+            font-size: 2rem;
+
+        }
+
+
+        .header-right {
+
+            text-align: right;
+
+        }
+
+
+        .header-right h2 {
+
+            margin: 0;
+
+            font-size: 1.5rem;
+
+            font-weight: 600;
+
+        }
+
+
+        .header-right p {
+
+            margin: 4px 0 0;
+
+            font-size: 0.85rem;
+
+            color: #666;
+
+        }
+
+
+        /* ================= NAVIGATION ================= */
+
+        .header-nav {
+
+            max-width: 100%;
+
+            margin: 10px auto;
+
+            padding: 14px 30px;
+
+            background:
+                var(--brand-gradient);
+
+            display: flex;
+
+            justify-content:
+                space-around;
+
+            align-items: center;
+
+            box-shadow:
+                var(--brand-shadow);
+
+            border-radius: 1px;
+
+        }
+
+
+        .header-nav a {
+
+            text-decoration: none;
+
+            color: #fff;
+
+            font-size: 16px;
+
+        }
+
+
+        .dropdown {
+
+            position: relative;
+
+        }
+
+
+        .dropbtn {
+
+            background: none;
+
+            border: none;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+            color: white;
+
+        }
+
+
+        .dropdown-content {
+
+            display: none;
+
+            position: absolute;
+
+            font: system-ui;
+
+            top: 100%;
+
+            left: 0;
+
+            background:
+                var(--brand-gradient);
+
+            min-width: 140px;
+
+            box-shadow:
+                0 6px 12px rgba(0,0,0,0.2);
+
+            z-index: 9999;
+
+        }
+
+
+        .dropdown-content a {
+
+            display: block;
+
+            padding: 10px 14px;
+
+            white-space: nowrap;
+
+        }
+
+
+        .dropdown:hover
+        .dropdown-content {
+
+            display: block;
+
+        }
+
+
+        /* =====================================================
+           MEDICAL TESTS HERO
+           ===================================================== */
+
+        .medical-tests-hero {
+
+            width: 70%;
+
+            margin: 25px auto 30px;
+
+            padding: 40px 25px;
+
+            background:
+                var(--brand-gradient);
+
+            color: white;
+
+            text-align: center;
+
+            border-radius: 14px;
+
+            box-shadow:
+                var(--brand-shadow);
+
+        }
+
+
+        .medical-tests-hero-icon {
+
+            width: 85px;
+
+            height: 85px;
+
+            margin: 0 auto 18px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .medical-tests-hero-icon img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: contain;
+
+        }
+
+
+        .medical-tests-hero h1 {
+
+            margin: 0 0 12px;
+
+            font-size: 2rem;
+
+        }
+
+
+        .medical-tests-hero p {
+
+            max-width: 700px;
+
+            margin: 0 auto 25px;
+
+            font-size: 1rem;
+
+            line-height: 1.6;
+
+            opacity: 0.92;
+
+        }
+
+
+        /* ================= SEARCH ================= */
+
+        .medical-tests-search {
+
+            position: relative;
+
+            width: 70%;
+
+            max-width: 650px;
+
+            margin: 0 auto;
+
+        }
+
+
+        .medical-tests-search input {
+
+            width: 100%;
+
+            box-sizing: border-box;
+
+            padding: 15px 20px 15px 48px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            outline: none;
+
+            background: white;
+
+            color: #333;
+
+            font-size: 1rem;
+
+            box-shadow:
+                0 2px 8px rgba(
+                    0,
+                    0,
+                    0,
+                    0.15
+                );
+
+        }
+
+
+        .search-icon {
+
+            position: absolute;
+
+            left: 17px;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            color: #666;
+
+            font-size: 18px;
+
+        }
+
+
+        /* =====================================================
+           TEST LIST
+           ===================================================== */
+
+        .medical-tests-list {
+
+            width: 75%;
+
+            margin: 35px auto 0;
+
+        }
+
+
+        .medical-test-group {
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .medical-test-letter {
+
+            width: 45px;
+
+            height: 45px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-bottom: 15px;
+
+            background:
+                var(--brand-gradient);
+
+            color: white;
+
+            border-radius: 10px;
+
+            font-size: 1.15rem;
+
+            font-weight: 700;
+
+            box-shadow:
+                var(--brand-shadow);
+
+        }
+
+
+        .medical-test-cards {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    minmax(
+                        0,
+                        1fr
+                    )
+                );
+
+            gap: 16px;
+
+        }
+
+
+        /* =====================================================
+           TEST CARD
+           ===================================================== */
+
+        .medical-test-card {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+
+            gap: 15px;
+
+            padding: 18px 20px;
+
+            background: white;
+
+            border-radius: 12px;
+
+            text-decoration: none;
+
+            color: inherit;
+
+            box-shadow:
+                var(--brand-shadow);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+
+        }
+
+
+        .medical-test-card:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 6px 16px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.15
+                );
+
+        }
+
+
+        .medical-test-card h3 {
+
+            margin: 0 0 6px;
+
+            color: #203a43;
+
+            font-size: 1.25rem;
+
+        }
+
+
+        .medical-test-card span {
+
+            font-size: 0.78rem;
+
+            color: #777;
+
+        }
+
+
+        .medical-test-arrow {
+
+            flex-shrink: 0;
+
+            width: 34px;
+
+            height: 34px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(
+                    32,
+                    58,
+                    67,
+                    0.08
+                );
+
+            color: #203a43;
+
+            transition:
+                transform 0.2s ease;
+
+        }
+
+
+        .medical-test-card:hover
+        .medical-test-arrow {
+
+            transform:
+                translate(
+                    2px,
+                    -2px
+                );
+
+        }
+
+
+        /* ================= EMPTY ================= */
+
+        .medical-tests-empty {
+
+            text-align: center;
+
+            padding: 60px 20px;
+
+            background: white;
+
+            border-radius: 14px;
+
+            box-shadow:
+                var(--brand-shadow);
+
+        }
+
+
+        .medical-tests-empty h3 {
+
+            margin:
+                10px 0 6px;
+
+            color: #203a43;
+
+        }
+
+
+        .medical-tests-empty p {
+
+            margin: 0;
+
+            color: #777;
+
+        }
+
+
+        /* ================= SOURCE ================= */
+
+        .medical-tests-source {
+
+            width: 75%;
+
+            margin:
+                45px auto 35px;
+
+            padding: 18px;
+
+            background: white;
+
+            border-radius: 12px;
+
+            box-shadow:
+                var(--brand-shadow);
+
+            text-align: center;
+
+            font-size: 0.85rem;
+
+            color: #666;
+
+        }
+
+
+        .medical-tests-source a {
+
+            color: #203a43;
+
+            font-weight: 600;
+
+            text-decoration: none;
+
+        }
+
+
+        .medical-tests-source a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+
+            max-width: 100%;
+
+            margin: 40px auto 0;
+
+            padding: 20px;
+
+            background: white;
+
+            border-radius: 8px;
+
+            box-shadow:
+                var(--brand-shadow);
+
+            text-align: center;
+
+        }
+
+
+        footer ul {
+
+            list-style: none;
+
+            padding: 0;
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 40px;
+
+            margin: 0;
+
+        }
+
+
+        footer ul li a {
+
+            color: #1a73e8;
+
+            font-weight: 500;
+
+            text-decoration: none;
+
+        }
+
+
+        footer ul li a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        footer p {
+
+            margin-top: 12px;
+
+            font-size: 0.85rem;
+
+            color: #555;
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+           ===================================================== */
+
+        @media (max-width: 850px) {
+
+            .medical-tests-list {
+
+                width: 90%;
+
+            }
+
+
+            .medical-tests-source {
+
+                width: 90%;
+
+            }
+
+
+            .medical-test-cards {
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(
+                            0,
+                            1fr
+                        )
+                    );
+
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .header-right {
+
+                display: none;
+
+            }
+
+
+            .header-nav {
+
+                padding:
+                    12px 10px;
+
+            }
+
+
+            .medical-tests-hero {
+
+                width: 85%;
+
+                padding:
+                    30px 20px;
+
+            }
+
+
+            .medical-tests-search {
+
+                width: 90%;
+
+            }
+
+
+            .medical-test-cards {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .header-left img {
+
+                height: 60px;
+
+            }
+
+
+            .title-block h1 {
+
+                font-size: 1.4rem;
+
+            }
+
+
+            .medical-tests-hero h1 {
+
+                font-size: 1.8rem;
+
+            }
+
+
+            .medical-tests-list {
+
+                width: 90%;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+
+    <header class="top-header">
+
+
+        <div class="header-main">
+
+
+            <div class="header-left">
+
+                <img src="zeta_dx.webp" alt="Zeta Dx Logo">
+
+
+                <div class="title-block">
+
+                    <h1>
+                        Zeta Dx
+                    </h1>
+
+                </div>
+
+            </div>
+
+
+            <div class="header-right">
+                <h2>Calculate. Interpret. Understand.</h2>
+                <p>For educational purposes only</p>
+            </div>
+        </div>
+        
+
+
+    <!-- Navigation row -->
+    <nav class="header-nav">
+    <a href="./index.html">Home</a>
+    <a href="./contact.html">About Us</a>
+    <a href="./dx-ai.html">Dx AI</a>
+    <a href="./medical-tests.html">Know Your Tests</a>
+    <a href="./privacy_policy.html">Privacy Policy</a>
+    <a href="./disclaimer.html">Terms & Conditions</a>
+
+    <div class="dropdown">
+        <button class="dropbtn">Tools ▾</button>
+            <div class="dropdown-content">
+                <a href="./eag.html">eAG</a>
+                <a href="./egfr.html">eGFR</a>
+                <a href="./acr.html">ACR</a>
+                <a href="./pcr.html">PCR</a>
+                <a href="./inr.html">INR</a>
+                <a href="./esr.html">ESR</a>
+                <a href="./convertors.html">Unit Convertors</a>
+            </div>
+        </div>
+    </nav>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MEDICAL TESTS HERO
+         ===================================================== -->
+
+    <main>
+
+
+        <section class="medical-tests-hero">
+
+
+            <div class="medical-tests-hero-icon">
+
+                <img
+                    src="medical-test.png"
+                    alt="Medical Tests"
+                >
+
+            </div>
+
+
+            <h1>
+                Know Your Tests
+            </h1>
+
+
+            <p>
+                Explore common laboratory and medical tests
+                and access detailed information from MedlinePlus.
+            </p>
+
+
+            <div class="medical-tests-search">
+
+                <span class="search-icon">
+                    🔍
+                </span>
+
+
+                <input
+                    type="text"
+                    id="testSearch"
+                    placeholder="Search for a test..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             TEST LIST
+             ================================================= -->
+
+        <section
+            id="medicalTestsList"
+            class="medical-tests-list"
+        ></section>
+
+
+
+        <!-- =================================================
+             SOURCE
+             ================================================= -->
+
+        <section class="medical-tests-source">
+
+            Detailed information about these tests is provided
+            by
+
+            <a
+                href="https://medlineplus.gov/lab-tests/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                MedlinePlus Medical Tests.
+            </a>
+            
+            Medical test information and links:
+            <a href="medlineplus.gov"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                MedlinePlus 
+            </a>        
+            
+            <p>MedlinePlus brings together authoritative health
+            information from the National Library of Medicine (NLM), the National
+            Institutes of Health (NIH), and other government agencies and
+            health-related organizations.
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+    <footer>
+    <ul>
+        <li><a href="./privacy_policy.html">Privacy Policy</a></li>
+        <li><a href="./disclaimer.html">Terms & Conditions</a></li>
+        <li><a href="./contact.html">About Us</a></li>
+    </ul>
+    <p><br>Zeta Dx &copy; 2025, Developed by: M. K.</p>
+    </footer>
+
+
+
+    <script>
+
+        /* =====================================================
+           MEDICAL TEST DATABASE
+           ===================================================== */
+
+        const medicalTests = [
+
+    /* ================= 0-9 ================= */
+
+    {
+        name: "17-Hydroxyprogesterone",
+        url: "https://medlineplus.gov/lab-tests/17-hydroxyprogesterone/"
+    },
+
+
+    /* ================= A ================= */
+
+    {
+        name: "Acetaminophen Level",
+        url: "https://medlineplus.gov/lab-tests/acetaminophen-level/"
+    },
+
+    {
+        name: "Acid-Fast Bacillus (AFB) Tests",
+        url: "https://medlineplus.gov/lab-tests/acid-fast-bacillus-afb-tests/"
+    },
+
+    {
+        name: "ADHD Screening",
+        url: "https://medlineplus.gov/lab-tests/adhd-screening/"
+    },
+
+    {
+        name: "Adrenocorticotropic Hormone (ACTH)",
+        url: "https://medlineplus.gov/lab-tests/adrenocorticotropic-hormone-acth/"
+    },
+
+    {
+        name: "Albumin Blood Test",
+        url: "https://medlineplus.gov/lab-tests/albumin-blood-test/"
+    },
+
+    {
+        name: "Alcohol Use Screening Tests",
+        url: "https://medlineplus.gov/lab-tests/alcohol-use-screening-tests/"
+    },
+
+    {
+        name: "Aldosterone Test",
+        url: "https://medlineplus.gov/lab-tests/aldosterone-test/"
+    },
+
+    {
+        name: "Alkaline Phosphatase",
+        url: "https://medlineplus.gov/lab-tests/alkaline-phosphatase/"
+    },
+
+    {
+        name: "Allergy Blood Test",
+        url: "https://medlineplus.gov/lab-tests/allergy-blood-test/"
+    },
+
+    {
+        name: "Allergy Skin Test",
+        url: "https://medlineplus.gov/lab-tests/allergy-skin-test/"
+    },
+
+    {
+        name: "Alpha Fetoprotein (AFP) Tumor Marker Test",
+        url: "https://medlineplus.gov/lab-tests/alpha-fetoprotein-afp-tumor-marker-test/"
+    },
+
+    {
+        name: "Alpha-1 Antitrypsin Testing",
+        url: "https://medlineplus.gov/lab-tests/alpha-1-antitrypsin-testing/"
+    },
+
+    {
+        name: "Alpha-Fetoprotein (AFP) Test",
+        url: "https://medlineplus.gov/lab-tests/alpha-fetoprotein-afp-test/"
+    },
+
+    {
+        name: "ALT Blood Test",
+        url: "https://medlineplus.gov/lab-tests/alt-blood-test/"
+    },
+
+    {
+        name: "Ammonia Levels",
+        url: "https://medlineplus.gov/lab-tests/ammonia-levels/"
+    },
+
+    {
+        name: "Amniocentesis (amniotic fluid test)",
+        url: "https://medlineplus.gov/lab-tests/amniocentesis-amniotic-fluid-test/"
+    },
+
+    {
+        name: "Amylase Test",
+        url: "https://medlineplus.gov/lab-tests/amylase-test/"
+    },
+
+    {
+        name: "ANA (Antinuclear Antibody) Test",
+        url: "https://medlineplus.gov/lab-tests/ana-antinuclear-antibody-test/"
+    },
+
+    {
+        name: "Anion Gap Blood Test",
+        url: "https://medlineplus.gov/lab-tests/anion-gap-blood-test/"
+    },
+
+    {
+        name: "Anoscopy",
+        url: "https://medlineplus.gov/lab-tests/anoscopy/"
+    },
+
+    {
+        name: "Anti-Müllerian Hormone Test",
+        url: "https://medlineplus.gov/lab-tests/anti-mullerian-hormone-test/"
+    },
+
+    {
+        name: "Antibiotic Sensitivity Test",
+        url: "https://medlineplus.gov/lab-tests/antibiotic-sensitivity-test/"
+    },
+
+    {
+        name: "Antibody Serology Tests",
+        url: "https://medlineplus.gov/lab-tests/antibody-serology-tests/"
+    },
+
+    {
+        name: "Antineutrophil Cytoplasmic Antibodies (ANCA) Test",
+        url: "https://medlineplus.gov/lab-tests/antineutrophil-cytoplasmic-antibodies-anca-test/"
+    },
+
+    {
+        name: "Appendicitis Tests",
+        url: "https://medlineplus.gov/lab-tests/appendicitis-tests/"
+    },
+
+    {
+        name: "Arterial Blood Gas (ABG) Test",
+        url: "https://medlineplus.gov/lab-tests/arterial-blood-gas-abg-test/"
+    },
+
+    {
+        name: "AST Test",
+        url: "https://medlineplus.gov/lab-tests/ast-test/"
+    },
+
+    {
+        name: "At-Home Medical Tests",
+        url: "https://medlineplus.gov/lab-tests/at-home-medical-tests/"
+    },
+
+    {
+        name: "Autism Spectrum Disorder (ASD) Screening",
+        url: "https://medlineplus.gov/lab-tests/autism-spectrum-disorder-asd-screening/"
+    },
+
+    {
+        name: "Autoantibody Testing",
+        url: "https://medlineplus.gov/lab-tests/autoantibody-testing/"
+    },
+
+    {
+        name: "Autonomic Testing",
+        url: "https://medlineplus.gov/lab-tests/autonomic-testing/"
+    },
+
+
+    /* ================= B ================= */
+
+    {
+        name: "Bacteria Culture Test",
+        url: "https://medlineplus.gov/lab-tests/bacteria-culture-test/"
+    },
+
+    {
+        name: "Bacterial Vaginosis Test",
+        url: "https://medlineplus.gov/lab-tests/bacterial-vaginosis-test/"
+    },
+
+    {
+        name: "Balance Tests",
+        url: "https://medlineplus.gov/lab-tests/balance-tests/"
+    },
+
+    {
+        name: "Barium Swallow",
+        url: "https://medlineplus.gov/lab-tests/barium-swallow/"
+    },
+
+    {
+        name: "Basic Metabolic Panel (BMP)",
+        url: "https://medlineplus.gov/lab-tests/basic-metabolic-panel-bmp/"
+    },
+
+    {
+        name: "BCR-ABL1 Genetic Test",
+        url: "https://medlineplus.gov/lab-tests/bcr-abl1-genetic-test/"
+    },
+
+    {
+        name: "Beta 2 Microglobulin (B2M) Tumor Marker Test",
+        url: "https://medlineplus.gov/lab-tests/beta-2-microglobulin-b2m-tumor-marker-test/"
+    },
+
+    {
+        name: "Bilirubin Blood Test",
+        url: "https://medlineplus.gov/lab-tests/bilirubin-blood-test/"
+    },
+
+    {
+        name: "Bilirubin in Urine",
+        url: "https://medlineplus.gov/lab-tests/bilirubin-in-urine/"
+    },
+
+    {
+        name: "Blood Alcohol Level",
+        url: "https://medlineplus.gov/lab-tests/blood-alcohol-level/"
+    },
+
+    {
+        name: "Blood Differential",
+        url: "https://medlineplus.gov/lab-tests/blood-differential/"
+    },
+
+    {
+        name: "Blood Glucose Test",
+        url: "https://medlineplus.gov/lab-tests/blood-glucose-test/"
+    },
+
+    {
+        name: "Blood in Urine",
+        url: "https://medlineplus.gov/lab-tests/blood-in-urine/"
+    },
+
+    {
+        name: "Blood Smear",
+        url: "https://medlineplus.gov/lab-tests/blood-smear/"
+    },
+
+    {
+        name: "Bone Density Scan",
+        url: "https://medlineplus.gov/lab-tests/bone-density-scan/"
+    },
+
+    {
+        name: "Bone Marrow Tests",
+        url: "https://medlineplus.gov/lab-tests/bone-marrow-tests/"
+    },
+
+    {
+        name: "BRAF Genetic Test",
+        url: "https://medlineplus.gov/lab-tests/braf-genetic-test/"
+    },
+
+    {
+        name: "BRCA Genetic Test",
+        url: "https://medlineplus.gov/lab-tests/brca-test/"
+    },
+
+    {
+        name: "Breast Biopsy",
+        url: "https://medlineplus.gov/lab-tests/breast-biopsy/"
+    },
+
+    {
+        name: "Bronchoscopy and Bronchoalveolar Lavage (BAL)",
+        url: "https://medlineplus.gov/lab-tests/bronchoscopy-and-bronchoalveolar-lavage-bal/"
+    },
+
+    {
+        name: "BUN (Blood Urea Nitrogen)",
+        url: "https://medlineplus.gov/lab-tests/bun-blood-urea-nitrogen/"
+    },
+
+    {
+        name: "Burn Evaluation",
+        url: "https://medlineplus.gov/lab-tests/burn-evaluation/"
+    },
+
+
+    /* ================= C ================= */
+
+    {
+        name: "C-Peptide Test",
+        url: "https://medlineplus.gov/lab-tests/c-peptide-test/"
+    },
+
+    {
+        name: "C-Reactive Protein (CRP) Test",
+        url: "https://medlineplus.gov/lab-tests/c-reactive-protein-crp-test/"
+    },
+
+    {
+        name: "C. diff Testing",
+        url: "https://medlineplus.gov/lab-tests/c-diff-testing/"
+    },
+
+    {
+        name: "CA 19-9 Blood Test (Pancreatic Cancer)",
+        url: "https://medlineplus.gov/lab-tests/ca-19-9-blood-test-pancreatic-cancer/"
+    },
+
+    {
+        name: "CA-125 Blood Test (Ovarian Cancer)",
+        url: "https://medlineplus.gov/lab-tests/ca-125-blood-test-ovarian-cancer/"
+    },
+
+    {
+        name: "Calcitonin Test",
+        url: "https://medlineplus.gov/lab-tests/calcitonin-test/"
+    },
+
+    {
+        name: "Calcium Blood Test",
+        url: "https://medlineplus.gov/lab-tests/calcium-blood-test/"
+    },
+
+    {
+        name: "Calcium in Urine Test",
+        url: "https://medlineplus.gov/lab-tests/calcium-in-urine-test/"
+    },
+
+    {
+        name: "Calprotectin Stool Test",
+        url: "https://medlineplus.gov/lab-tests/calprotectin-stool-test/"
+    },
+
+    {
+        name: "Carbon Dioxide (CO2) in Blood",
+        url: "https://medlineplus.gov/lab-tests/carbon-dioxide-co2-in-blood/"
+    },
+
+    {
+        name: "Catecholamine Tests",
+        url: "https://medlineplus.gov/lab-tests/catecholamine-tests/"
+    },
+
+    {
+        name: "CCP Antibody Test",
+        url: "https://medlineplus.gov/lab-tests/ccp-antibody-test/"
+    },
+
+    {
+        name: "CD4 Lymphocyte Count",
+        url: "https://medlineplus.gov/lab-tests/cd4-lymphocyte-count/"
+    },
+
+    {
+        name: "CEA Test",
+        url: "https://medlineplus.gov/lab-tests/cea-test/"
+    },
+
+    {
+        name: "Celiac Disease Screening",
+        url: "https://medlineplus.gov/lab-tests/celiac-disease-screening/"
+    },
+
+    {
+        name: "Cerebrospinal Fluid (CSF) Analysis",
+        url: "https://medlineplus.gov/lab-tests/cerebrospinal-fluid-csf-analysis/"
+    },
+
+    {
+        name: "Ceruloplasmin Test",
+        url: "https://medlineplus.gov/lab-tests/ceruloplasmin-test/"
+    },
+
+    {
+        name: "Chickenpox and Shingles Tests",
+        url: "https://medlineplus.gov/lab-tests/chickenpox-and-shingles-tests/"
+    },
+
+    {
+        name: "Chlamydia Test",
+        url: "https://medlineplus.gov/lab-tests/chlamydia-test/"
+    },
+
+    {
+        name: "Chloride Blood Test",
+        url: "https://medlineplus.gov/lab-tests/chloride-blood-test/"
+    },
+
+    {
+        name: "Cholesterol Levels",
+        url: "https://medlineplus.gov/lab-tests/cholesterol-levels/"
+    },
+
+    {
+        name: "Chorionic Villus Sampling (CVS)",
+        url: "https://medlineplus.gov/lab-tests/chorionic-villus-sampling-cvs/"
+    },
+
+    {
+        name: "Chymotrypsin in Stool",
+        url: "https://medlineplus.gov/lab-tests/chymotrypsin-in-stool/"
+    },
+
+    {
+        name: "Coagulation Factor Tests",
+        url: "https://medlineplus.gov/lab-tests/coagulation-factor-tests/"
+    },
+
+    {
+        name: "Cognitive Testing",
+        url: "https://medlineplus.gov/lab-tests/cognitive-testing/"
+    },
+
+    {
+        name: "Cold Stimulation Test",
+        url: "https://medlineplus.gov/lab-tests/cold-stimulation-test/"
+    },
+
+    {
+        name: "Colorectal Cancer Screening Tests",
+        url: "https://medlineplus.gov/lab-tests/colorectal-cancer-screening-tests/"
+    },
+
+    {
+        name: "Colposcopy",
+        url: "https://medlineplus.gov/lab-tests/colposcopy/"
+    },
+
+    {
+        name: "Complement Blood Test",
+        url: "https://medlineplus.gov/lab-tests/complement-blood-test/"
+    },
+
+    {
+        name: "Complete Blood Count (CBC)",
+        url: "https://medlineplus.gov/lab-tests/complete-blood-count-cbc/"
+    },
+
+    {
+        name: "Comprehensive Metabolic Panel (CMP)",
+        url: "https://medlineplus.gov/lab-tests/comprehensive-metabolic-panel-cmp/"
+    },
+
+    {
+        name: "Concussion Tests",
+        url: "https://medlineplus.gov/lab-tests/concussion-tests/"
+    },
+
+    {
+        name: "Cord Blood Testing and Banking",
+        url: "https://medlineplus.gov/lab-tests/cord-blood-testing-and-banking/"
+    },
+
+    {
+        name: "Cortisol Test",
+        url: "https://medlineplus.gov/lab-tests/cortisol-test/"
+    },
+
+    {
+        name: "Creatine Kinase",
+        url: "https://medlineplus.gov/lab-tests/creatine-kinase/"
+    },
+
+    {
+        name: "Creatinine Test",
+        url: "https://medlineplus.gov/lab-tests/creatinine-test/"
+    },
+
+    {
+        name: "Crystals in Urine",
+        url: "https://medlineplus.gov/lab-tests/crystals-in-urine/"
+    },
+
+    {
+        name: "CSF Immunoglobulin G (IgG) Index",
+        url: "https://medlineplus.gov/lab-tests/csf-immunoglobulin-g-igg-index/"
+    },
+
+    {
+        name: "Cytomegalovirus (CMV) Tests",
+        url: "https://medlineplus.gov/lab-tests/cytomegalovirus-cmv-tests/"
+    },
+
+
+    /* ================= D ================= */
+
+    {
+        name: "D-Dimer Test",
+        url: "https://medlineplus.gov/lab-tests/d-dimer-test/"
+    },
+
+    {
+        name: "Dengue Fever Test",
+        url: "https://medlineplus.gov/lab-tests/dengue-fever-test/"
+    },
+
+    {
+        name: "Dental Exam",
+        url: "https://medlineplus.gov/lab-tests/dental-exam/"
+    },
+
+    {
+        name: "Depression Screening",
+        url: "https://medlineplus.gov/lab-tests/depression-screening/"
+    },
+
+    {
+        name: "Developmental and Behavioral Screening Tests",
+        url: "https://medlineplus.gov/lab-tests/developmental-and-behavioral-screening-tests/"
+    },
+
+    {
+        name: "DHEA Sulfate Test",
+        url: "https://medlineplus.gov/lab-tests/dhea-sulfate-test/"
+    },
+
+    {
+        name: "Diabetes Tests",
+        url: "https://medlineplus.gov/lab-tests/diabetes-tests/"
+    },
+
+    {
+        name: "Diabetic Foot Exam",
+        url: "https://medlineplus.gov/lab-tests/diabetic-foot-exam/"
+    },
+
+    {
+        name: "Differential Diagnosis",
+        url: "https://medlineplus.gov/lab-tests/differential-diagnosis/"
+    },
+
+    {
+        name: "Doppler Ultrasound",
+        url: "https://medlineplus.gov/lab-tests/doppler-ultrasound/"
+    },
+
+    {
+        name: "Down Syndrome Tests",
+        url: "https://medlineplus.gov/lab-tests/down-syndrome-tests/"
+    },
+
+    {
+        name: "Drug Testing",
+        url: "https://medlineplus.gov/lab-tests/drug-testing/"
+    },
+
+    {
+        name: "Drug Use Screening Tests",
+        url: "https://medlineplus.gov/lab-tests/drug-use-screening-tests/"
+    },
+
+    {
+        name: "Dysphagia Tests",
+        url: "https://medlineplus.gov/lab-tests/dysphagia-tests/"
+    },
+
+
+    /* ================= E ================= */
+
+    {
+        name: "Echocardiography",
+        url: "https://medlineplus.gov/lab-tests/echocardiography/"
+    },
+
+    {
+        name: "Elastography",
+        url: "https://medlineplus.gov/lab-tests/elastography/"
+    },
+
+    {
+        name: "Electrocardiogram",
+        url: "https://medlineplus.gov/lab-tests/electrocardiogram/"
+    },
+
+    {
+        name: "Electrolyte Panel",
+        url: "https://medlineplus.gov/lab-tests/electrolyte-panel/"
+    },
+
+    {
+        name: "Electromyography (EMG) and Nerve Conduction Studies",
+        url: "https://medlineplus.gov/lab-tests/electromyography-emg-and-nerve-conduction-studies/"
+    },
+
+    {
+        name: "Epithelial Cells in Urine",
+        url: "https://medlineplus.gov/lab-tests/epithelial-cells-in-urine/"
+    },
+
+    {
+        name: "Erythrocyte Sedimentation Rate (ESR)",
+        url: "https://medlineplus.gov/lab-tests/erythrocyte-sedimentation-rate-esr/"
+    },
+
+    {
+        name: "Esophageal pH Test",
+        url: "https://medlineplus.gov/lab-tests/esophageal-ph-test/"
+    },
+
+    {
+        name: "Estrogen Levels Test",
+        url: "https://medlineplus.gov/lab-tests/estrogen-levels-test/"
+    },
+
+    {
+        name: "Estrogen Receptor, Progesterone Receptor Tests",
+        url: "https://medlineplus.gov/lab-tests/estrogen-receptor-progesterone-receptor-tests/"
+    },
+
+
+    /* ================= F ================= */
+
+    {
+        name: "Fall Risk Assessment",
+        url: "https://medlineplus.gov/lab-tests/fall-risk-assessment/"
+    },
+
+    {
+        name: "Fasting for a Blood Test",
+        url: "https://medlineplus.gov/lab-tests/fasting-for-a-blood-test/"
+    },
+
+    {
+        name: "Fecal Occult Blood Test (FOBT)",
+        url: "https://medlineplus.gov/lab-tests/fecal-occult-blood-test-fobt/"
+    },
+
+    {
+        name: "Ferritin Blood Test",
+        url: "https://medlineplus.gov/lab-tests/ferritin-blood-test/"
+    },
+
+    {
+        name: "Fetal Alcohol Spectrum Disorders (FASD) Screening",
+        url: "https://medlineplus.gov/lab-tests/fetal-alcohol-spectrum-disorders-fasd-screening/"
+    },
+
+    {
+        name: "Flu (Influenza) Test",
+        url: "https://medlineplus.gov/lab-tests/flu-influenza-test/"
+    },
+
+    {
+        name: "Fluoroscopy",
+        url: "https://medlineplus.gov/lab-tests/fluoroscopy/"
+    },
+
+    {
+        name: "Follicle-Stimulating Hormone (FSH) Levels Test",
+        url: "https://medlineplus.gov/lab-tests/follicle-stimulating-hormone-fsh-levels-test/"
+    },
+
+    {
+        name: "Food Allergy Testing",
+        url: "https://medlineplus.gov/lab-tests/food-allergy-testing/"
+    },
+
+    {
+        name: "Free Light Chains",
+        url: "https://medlineplus.gov/lab-tests/free-light-chains/"
+    },
+
+    {
+        name: "Fungal Culture Test",
+        url: "https://medlineplus.gov/lab-tests/fungal-culture-test/"
+    },
+
+
+    /* ================= G ================= */
+
+    {
+        name: "G6PD Test",
+        url: "https://medlineplus.gov/lab-tests/g6pd-test/"
+    },
+
+    {
+        name: "Galactosemia Tests",
+        url: "https://medlineplus.gov/lab-tests/galactosemia-tests/"
+    },
+
+    {
+        name: "Gamma-glutamyl Transferase (GGT) Test",
+        url: "https://medlineplus.gov/lab-tests/gamma-glutamyl-transferase-ggt-test/"
+    },
+
+    {
+        name: "Gastric Emptying Tests",
+        url: "https://medlineplus.gov/lab-tests/gastric-emptying-tests/"
+    },
+
+    {
+        name: "Glaucoma Tests",
+        url: "https://medlineplus.gov/lab-tests/glaucoma-tests/"
+    },
+
+    {
+        name: "Globulin Test",
+        url: "https://medlineplus.gov/lab-tests/globulin-test/"
+    },
+
+    {
+        name: "Glomerular Filtration Rate (GFR) Test",
+        url: "https://medlineplus.gov/lab-tests/glomerular-filtration-rate-gfr-test/"
+    },
+
+    {
+        name: "Glucagon Blood Test",
+        url: "https://medlineplus.gov/lab-tests/glucagon-blood-test/"
+    },
+
+    {
+        name: "Glucose in Urine Test",
+        url: "https://medlineplus.gov/lab-tests/glucose-in-urine-test/"
+    },
+
+    {
+        name: "Gonorrhea Test",
+        url: "https://medlineplus.gov/lab-tests/gonorrhea-test/"
+    },
+
+    {
+        name: "Gram Stain",
+        url: "https://medlineplus.gov/lab-tests/gram-stain/"
+    },
+
+    {
+        name: "Growth Hormone Tests",
+        url: "https://medlineplus.gov/lab-tests/growth-hormone-tests/"
+    },
+
+
+    /* ================= H ================= */
+
+    {
+        name: "Haptoglobin (HP) Test",
+        url: "https://medlineplus.gov/lab-tests/haptoglobin-hp-test/"
+    },
+
+    {
+        name: "Hearing Tests for Adults",
+        url: "https://medlineplus.gov/lab-tests/hearing-tests-for-adults/"
+    },
+
+    {
+        name: "Hearing Tests for Children",
+        url: "https://medlineplus.gov/lab-tests/hearing-tests-for-children/"
+    },
+
+    {
+        name: "Heart Disease Risk Assessment",
+        url: "https://medlineplus.gov/lab-tests/heart-disease-risk-assessment/"
+    },
+
+    {
+        name: "Heavy Metal Blood Test",
+        url: "https://medlineplus.gov/lab-tests/heavy-metal-blood-test/"
+    },
+
+    {
+        name: "Helicobacter pylori (H. pylori) Tests",
+        url: "https://medlineplus.gov/lab-tests/helicobacter-pylori-h-pylori-tests/"
+    },
+
+    {
+        name: "Hematocrit Test",
+        url: "https://medlineplus.gov/lab-tests/hematocrit-test/"
+    },
+
+    {
+        name: "Hemoglobin A1C (HbA1c) Test",
+        url: "https://medlineplus.gov/lab-tests/hemoglobin-a1c-hba1c-test/"
+    },
+
+    {
+        name: "Hemoglobin Electrophoresis",
+        url: "https://medlineplus.gov/lab-tests/hemoglobin-electrophoresis/"
+    },
+
+    {
+        name: "Hemoglobin Test",
+        url: "https://medlineplus.gov/lab-tests/hemoglobin-test/"
+    },
+
+    {
+        name: "Hepatitis Testing",
+        url: "https://medlineplus.gov/lab-tests/hepatitis-testing/"
+    },
+
+    {
+        name: "HER2 Tumor Marker Test",
+        url: "https://medlineplus.gov/lab-tests/her2-tumor-marker-test/"
+    },
+
+    {
+        name: "Herpes (HSV) Test",
+        url: "https://medlineplus.gov/lab-tests/herpes-hsv-test/"
+    },
+
+    {
+        name: "HIV Screening Test",
+        url: "https://medlineplus.gov/lab-tests/hiv-screening-test/"
+    },
+
+    {
+        name: "HIV Viral Load",
+        url: "https://medlineplus.gov/lab-tests/hiv-viral-load/"
+    },
+
+    {
+        name: "Homocysteine Test",
+        url: "https://medlineplus.gov/lab-tests/homocysteine-test/"
+    },
+
+    {
+        name: "How to Cope with Medical Test Anxiety",
+        url: "https://medlineplus.gov/lab-tests/how-to-cope-with-medical-test-anxiety/"
+    },
+
+    {
+        name: "How to Prepare for a Lab Test",
+        url: "https://medlineplus.gov/lab-tests/how-to-prepare-for-a-lab-test/"
+    },
+
+    {
+        name: "How to Prepare Your Child for a Lab Test",
+        url: "https://medlineplus.gov/lab-tests/how-to-prepare-your-child-for-a-lab-test/"
+    },
+
+    {
+        name: "How to Understand Your Lab Results",
+        url: "https://medlineplus.gov/lab-tests/how-to-understand-your-lab-results/"
+    },
+
+    {
+        name: "Human Papillomavirus (HPV) Test",
+        url: "https://medlineplus.gov/lab-tests/human-papillomavirus-hpv-test/"
+    },
+
+    {
+        name: "Hysteroscopy",
+        url: "https://medlineplus.gov/lab-tests/hysteroscopy/"
+    },
+
+
+    /* ================= I ================= */
+
+    {
+        name: "IGF-1 (Insulin-like Growth Factor 1) Test",
+        url: "https://medlineplus.gov/lab-tests/igf-1-insulin-like-growth-factor-1-test/"
+    },
+
+    {
+        name: "Immunoglobulins Blood Test",
+        url: "https://medlineplus.gov/lab-tests/immunoglobulins-blood-test/"
+    },
+
+    {
+        name: "Insulin in Blood",
+        url: "https://medlineplus.gov/lab-tests/insulin-in-blood/"
+    },
+
+    {
+        name: "Intravenous Pyelogram (IVP)",
+        url: "https://medlineplus.gov/lab-tests/intravenous-pyelogram-ivp/"
+    },
+
+    {
+        name: "Iron Tests",
+        url: "https://medlineplus.gov/lab-tests/iron-tests/"
+    },
+
+
+    /* ================= K ================= */
+
+    {
+        name: "Karyotype Genetic Test",
+        url: "https://medlineplus.gov/lab-tests/karyotype-genetic-test/"
+    },
+
+    {
+        name: "Ketones in Blood",
+        url: "https://medlineplus.gov/lab-tests/ketones-in-blood/"
+    },
+
+    {
+        name: "Ketones in Urine",
+        url: "https://medlineplus.gov/lab-tests/ketones-in-urine/"
+    },
+
+    {
+        name: "Kidney Stone Analysis",
+        url: "https://medlineplus.gov/lab-tests/kidney-stone-analysis/"
+    },
+
+
+    /* ================= L ================= */
+
+    {
+        name: "Lactate Dehydrogenase (LDH) Isoenzymes Test",
+        url: "https://medlineplus.gov/lab-tests/lactate-dehydrogenase-ldh-isoenzymes-test/"
+    },
+
+    {
+        name: "Lactate Dehydrogenase (LDH) Test",
+        url: "https://medlineplus.gov/lab-tests/lactate-dehydrogenase-ldh-test/"
+    },
+
+    {
+        name: "Lactate Test",
+        url: "https://medlineplus.gov/lab-tests/lactate-test/"
+    },
+
+    {
+        name: "Lactose Tolerance Tests",
+        url: "https://medlineplus.gov/lab-tests/lactose-tolerance-tests/"
+    },
+
+    {
+        name: "Laparoscopy",
+        url: "https://medlineplus.gov/lab-tests/laparoscopy/"
+    },
+
+    {
+        name: "Legionella Tests",
+        url: "https://medlineplus.gov/lab-tests/legionella-tests/"
+    },
+
+    {
+        name: "Lipase Tests",
+        url: "https://medlineplus.gov/lab-tests/lipase-tests/"
+    },
+
+    {
+        name: "Lipoprotein (a) Blood Test",
+        url: "https://medlineplus.gov/lab-tests/lipoprotein-a-blood-test/"
+    },
+
+    {
+        name: "Liver Function Tests",
+        url: "https://medlineplus.gov/lab-tests/liver-function-tests/"
+    },
+
+    {
+        name: "Lung Cancer Genetic Tests",
+        url: "https://medlineplus.gov/lab-tests/lung-cancer-genetic-tests/"
+    },
+
+    {
+        name: "Lung Function Tests",
+        url: "https://medlineplus.gov/lab-tests/lung-function-tests/"
+    },
+
+    {
+        name: "Luteinizing Hormone (LH) Levels Test",
+        url: "https://medlineplus.gov/lab-tests/luteinizing-hormone-lh-levels-test/"
+    },
+
+    {
+        name: "Lyme Disease Tests",
+        url: "https://medlineplus.gov/lab-tests/lyme-disease-tests/"
+    },
+
+
+    /* ================= M ================= */
+
+    {
+        name: "Magnesium Blood Test",
+        url: "https://medlineplus.gov/lab-tests/magnesium-blood-test/"
+    },
+
+    {
+        name: "Malaria Tests",
+        url: "https://medlineplus.gov/lab-tests/malaria-tests/"
+    },
+
+    {
+        name: "MCV (Mean Corpuscular Volume)",
+        url: "https://medlineplus.gov/lab-tests/mcv-mean-corpuscular-volume/"
+    },
+
+    {
+        name: "Measles and Mumps Tests",
+        url: "https://medlineplus.gov/lab-tests/measles-and-mumps-tests/"
+    },
+
+    {
+        name: "Measuring Blood Pressure",
+        url: "https://medlineplus.gov/lab-tests/measuring-blood-pressure/"
+    },
+
+    {
+        name: "Meningococcal Disease Tests",
+        url: "https://medlineplus.gov/lab-tests/meningococcal-disease-tests/"
+    },
+
+    {
+        name: "Mental Health Screening",
+        url: "https://medlineplus.gov/lab-tests/mental-health-screening/"
+    },
+
+    {
+        name: "Methylmalonic Acid (MMA) Test",
+        url: "https://medlineplus.gov/lab-tests/methylmalonic-acid-mma-test/"
+    },
+
+    {
+        name: "Microalbumin Creatinine Ratio",
+        url: "https://medlineplus.gov/lab-tests/microalbumin-creatinine-ratio/"
+    },
+
+    {
+        name: "Mononucleosis (Mono) Tests",
+        url: "https://medlineplus.gov/lab-tests/mononucleosis-mono-tests/"
+    },
+
+    {
+        name: "MPV Blood Test",
+        url: "https://medlineplus.gov/lab-tests/mpv-blood-test/"
+    },
+
+    {
+        name: "MRSA Tests",
+        url: "https://medlineplus.gov/lab-tests/mrsa-tests/"
+    },
+
+    {
+        name: "MTHFR Gene Test",
+        url: "https://medlineplus.gov/lab-tests/mthfr-gene-test/"
+    },
+
+    {
+        name: "Mucus in Urine",
+        url: "https://medlineplus.gov/lab-tests/mucus-in-urine/"
+    },
+
+    {
+        name: "Myasthenia Gravis Tests",
+        url: "https://medlineplus.gov/lab-tests/myasthenia-gravis-tests/"
+    },
+
+    {
+        name: "Myelography",
+        url: "https://medlineplus.gov/lab-tests/myelography/"
+    },
+
+
+    /* ================= N ================= */
+
+    {
+        name: "Nasal Swab",
+        url: "https://medlineplus.gov/lab-tests/nasal-swab/"
+    },
+
+    {
+        name: "Natriuretic Peptide Tests (BNP, NT-proBNP)",
+        url: "https://medlineplus.gov/lab-tests/natriuretic-peptide-tests-bnp-nt-probnp/"
+    },
+
+    {
+        name: "Neurological Exam",
+        url: "https://medlineplus.gov/lab-tests/neurological-exam/"
+    },
+
+    {
+        name: "Nitrites in Urine",
+        url: "https://medlineplus.gov/lab-tests/nitrites-in-urine/"
+    },
+
+    {
+        name: "Nonstress Test",
+        url: "https://medlineplus.gov/lab-tests/nonstress-test/"
+    },
+
+
+    /* ================= O ================= */
+
+    {
+        name: "Obesity Screening",
+        url: "https://medlineplus.gov/lab-tests/obesity-screening/"
+    },
+
+    {
+        name: "Obsessive Compulsive Disorder (OCD) Test",
+        url: "https://medlineplus.gov/lab-tests/obsessive-compulsive-disorder-ocd-test/"
+    },
+
+    {
+        name: "Opioid Testing",
+        url: "https://medlineplus.gov/lab-tests/opioid-testing/"
+    },
+
+    {
+        name: "Osmolality Tests",
+        url: "https://medlineplus.gov/lab-tests/osmolality-tests/"
+    },
+
+    {
+        name: "Ova and Parasite Test",
+        url: "https://medlineplus.gov/lab-tests/ova-and-parasite-test/"
+    },
+
+
+    /* ================= P ================= */
+
+    {
+        name: "Panic Disorder Test",
+        url: "https://medlineplus.gov/lab-tests/panic-disorder-test/"
+    },
+
+    {
+        name: "Pap Smear",
+        url: "https://medlineplus.gov/lab-tests/pap-smear/"
+    },
+
+    {
+        name: "Parainfluenza Tests",
+        url: "https://medlineplus.gov/lab-tests/parainfluenza-tests/"
+    },
+
+    {
+        name: "Parathyroid Hormone (PTH) Test",
+        url: "https://medlineplus.gov/lab-tests/parathyroid-hormone-pth-test/"
+    },
+
+    {
+        name: "Partial Thromboplastin Time (PTT) Test",
+        url: "https://medlineplus.gov/lab-tests/partial-thromboplastin-time-ptt-test/"
+    },
+
+    {
+        name: "PCR Tests",
+        url: "https://medlineplus.gov/lab-tests/pcr-tests/"
+    },
+
+    {
+        name: "PDL1 (Immunotherapy) Tests",
+        url: "https://medlineplus.gov/lab-tests/pdl1-immunotherapy-tests/"
+    },
+
+    {
+        name: "PET Scan",
+        url: "https://medlineplus.gov/lab-tests/pet-scan/"
+    },
+
+    {
+        name: "Pharmacogenetic Tests",
+        url: "https://medlineplus.gov/lab-tests/pharmacogenetic-tests/"
+    },
+
+    {
+        name: "Phenylketonuria (PKU) Screening",
+        url: "https://medlineplus.gov/lab-tests/phenylketonuria-pku-screening/"
+    },
+
+    {
+        name: "Phosphate in Blood",
+        url: "https://medlineplus.gov/lab-tests/phosphate-in-blood/"
+    },
+
+    {
+        name: "Phosphate in Urine",
+        url: "https://medlineplus.gov/lab-tests/phosphate-in-urine/"
+    },
+
+    {
+        name: "Platelet Tests",
+        url: "https://medlineplus.gov/lab-tests/platelet-tests/"
+    },
+
+    {
+        name: "Pleural Fluid Analysis",
+        url: "https://medlineplus.gov/lab-tests/pleural-fluid-analysis/"
+    },
+
+    {
+        name: "Pneumococcal Disease Tests",
+        url: "https://medlineplus.gov/lab-tests/pneumococcal-disease-tests/"
+    },
+
+    {
+        name: "Porphyrin Tests",
+        url: "https://medlineplus.gov/lab-tests/porphyrin-tests/"
+    },
+
+    {
+        name: "Postpartum Depression Screening",
+        url: "https://medlineplus.gov/lab-tests/postpartum-depression-screening/"
+    },
+
+    {
+        name: "Potassium Blood Test",
+        url: "https://medlineplus.gov/lab-tests/potassium-blood-test/"
+    },
+
+    {
+        name: "Prealbumin Blood Test",
+        url: "https://medlineplus.gov/lab-tests/prealbumin-blood-test/"
+    },
+
+    {
+        name: "Pregnancy Test",
+        url: "https://medlineplus.gov/lab-tests/pregnancy-test/"
+    },
+
+    {
+        name: "Prenatal Cell-Free DNA Screening",
+        url: "https://medlineplus.gov/lab-tests/prenatal-cell-free-dna-screening/"
+    },
+
+    {
+        name: "Prenatal Panel",
+        url: "https://medlineplus.gov/lab-tests/prenatal-panel/"
+    },
+
+    {
+        name: "Procalcitonin Test",
+        url: "https://medlineplus.gov/lab-tests/procalcitonin-test/"
+    },
+
+    {
+        name: "Progesterone Test",
+        url: "https://medlineplus.gov/lab-tests/progesterone-test/"
+    },
+
+    {
+        name: "Prolactin Levels",
+        url: "https://medlineplus.gov/lab-tests/prolactin-levels/"
+    },
+
+    {
+        name: "Prostate-Specific Antigen (PSA) Test",
+        url: "https://medlineplus.gov/lab-tests/prostate-specific-antigen-psa-test/"
+    },
+
+    {
+        name: "Protein C and Protein S Tests",
+        url: "https://medlineplus.gov/lab-tests/protein-c-and-protein-s-tests/"
+    },
+
+    {
+        name: "Protein Electrophoresis by Immunofixation Blood Test",
+        url: "https://medlineplus.gov/lab-tests/protein-electrophoresis-by-immunofixation-blood-test/"
+    },
+
+    {
+        name: "Protein in Urine",
+        url: "https://medlineplus.gov/lab-tests/protein-in-urine/"
+    },
+
+    {
+        name: "Prothrombin Time Test and INR (PT/INR)",
+        url: "https://medlineplus.gov/lab-tests/prothrombin-time-test-and-inr-ptinr/"
+    },
+
+    {
+        name: "PTEN Genetic Test",
+        url: "https://medlineplus.gov/lab-tests/pten-genetic-test/"
+    },
+
+    {
+        name: "Pulse Oximetry",
+        url: "https://medlineplus.gov/lab-tests/pulse-oximetry/"
+    },
+
+
+    /* ================= R ================= */
+
+    {
+        name: "Rapid Tests",
+        url: "https://medlineplus.gov/lab-tests/rapid-tests/"
+    },
+
+    {
+        name: "Rash Evaluation",
+        url: "https://medlineplus.gov/lab-tests/rash-evaluation/"
+    },
+
+    {
+        name: "RDW (Red Cell Distribution Width)",
+        url: "https://medlineplus.gov/lab-tests/rdw-red-cell-distribution-width/"
+    },
+
+    {
+        name: "Red Blood Cell (RBC) Count",
+        url: "https://medlineplus.gov/lab-tests/red-blood-cell-rbc-count/"
+    },
+
+    {
+        name: "Red Blood Cell (RBC) Indices",
+        url: "https://medlineplus.gov/lab-tests/red-blood-cell-rbc-indices/"
+    },
+
+    {
+        name: "Red Blood Cell Antibody Screen",
+        url: "https://medlineplus.gov/lab-tests/red-blood-cell-antibody-screen/"
+    },
+
+    {
+        name: "Renin Test",
+        url: "https://medlineplus.gov/lab-tests/renin-test/"
+    },
+
+    {
+        name: "Respiratory Pathogens Panel",
+        url: "https://medlineplus.gov/lab-tests/respiratory-pathogens-panel/"
+    },
+
+    {
+        name: "Respiratory Syncytial Virus (RSV) Tests",
+        url: "https://medlineplus.gov/lab-tests/respiratory-syncytial-virus-rsv-tests/"
+    },
+
+    {
+        name: "Reticulocyte Count",
+        url: "https://medlineplus.gov/lab-tests/reticulocyte-count/"
+    },
+
+    {
+        name: "Rheumatoid Factor (RF) Test",
+        url: "https://medlineplus.gov/lab-tests/rheumatoid-factor-rf-test/"
+    },
+
+
+    /* ================= S ================= */
+
+    {
+        name: "Salicylates Level",
+        url: "https://medlineplus.gov/lab-tests/salicylates-level/"
+    },
+
+    {
+        name: "Semen Analysis",
+        url: "https://medlineplus.gov/lab-tests/semen-analysis/"
+    },
+
+    {
+        name: "Sentinel Lymph Node Biopsy",
+        url: "https://medlineplus.gov/lab-tests/sentinel-lymph-node-biopsy/"
+    },
+
+    {
+        name: "Sexually Transmitted Infection (STI) Tests",
+        url: "https://medlineplus.gov/lab-tests/sexually-transmitted-infection-sti-tests/"
+    },
+
+    {
+        name: "SHBG Blood Test",
+        url: "https://medlineplus.gov/lab-tests/shbg-blood-test/"
+    },
+
+    {
+        name: "Skin Biopsy",
+        url: "https://medlineplus.gov/lab-tests/skin-biopsy/"
+    },
+
+    {
+        name: "Skin Cancer Screening",
+        url: "https://medlineplus.gov/lab-tests/skin-cancer-screening/"
+    },
+
+    {
+        name: "Sleep Study",
+        url: "https://medlineplus.gov/lab-tests/sleep-study/"
+    },
+
+    {
+        name: "Smooth Muscle Antibody (SMA) Test",
+        url: "https://medlineplus.gov/lab-tests/smooth-muscle-antibody-sma-test/"
+    },
+
+    {
+        name: "Sodium Blood Test",
+        url: "https://medlineplus.gov/lab-tests/sodium-blood-test/"
+    },
+
+    {
+        name: "Sputum Culture",
+        url: "https://medlineplus.gov/lab-tests/sputum-culture/"
+    },
+
+    {
+        name: "Stool Elastase",
+        url: "https://medlineplus.gov/lab-tests/stool-elastase/"
+    },
+
+    {
+        name: "Strep A Test",
+        url: "https://medlineplus.gov/lab-tests/strep-a-test/"
+    },
+
+    {
+        name: "Strep B Test",
+        url: "https://medlineplus.gov/lab-tests/strep-b-test/"
+    },
+
+    {
+        name: "Stress Tests",
+        url: "https://medlineplus.gov/lab-tests/stress-tests/"
+    },
+
+    {
+        name: "Suicide Risk Screening",
+        url: "https://medlineplus.gov/lab-tests/suicide-risk-screening/"
+    },
+
+    {
+        name: "Sweat Test for Cystic Fibrosis",
+        url: "https://medlineplus.gov/lab-tests/sweat-test-for-cystic-fibrosis/"
+    },
+
+    {
+        name: "Synovial Fluid Analysis",
+        url: "https://medlineplus.gov/lab-tests/synovial-fluid-analysis/"
+    },
+
+    {
+        name: "Syphilis Tests",
+        url: "https://medlineplus.gov/lab-tests/syphilis-tests/"
+    },
+
+
+    /* ================= T ================= */
+
+    {
+        name: "Testosterone Levels Test",
+        url: "https://medlineplus.gov/lab-tests/testosterone-levels-test/"
+    },
+
+    {
+        name: "Therapeutic Drug Monitoring",
+        url: "https://medlineplus.gov/lab-tests/therapeutic-drug-monitoring/"
+    },
+
+    {
+        name: "Thyroglobulin",
+        url: "https://medlineplus.gov/lab-tests/thyroglobulin/"
+    },
+
+    {
+        name: "Thyroid Antibodies",
+        url: "https://medlineplus.gov/lab-tests/thyroid-antibodies/"
+    },
+
+    {
+        name: "Thyroxine (T4) Test",
+        url: "https://medlineplus.gov/lab-tests/thyroxine-t4-test/"
+    },
+
+    {
+        name: "Total Protein and Albumin/Globulin (A/G) Ratio",
+        url: "https://medlineplus.gov/lab-tests/total-protein-and-albumin-globulin-a-g-ratio/"
+    },
+
+    {
+        name: "TP53 Genetic Test",
+        url: "https://medlineplus.gov/lab-tests/tp53-genetic-test/"
+    },
+
+    {
+        name: "Trichomoniasis Test",
+        url: "https://medlineplus.gov/lab-tests/trichomoniasis-test/"
+    },
+
+    {
+        name: "Tricyclic Antidepressant (TCA) Screen",
+        url: "https://medlineplus.gov/lab-tests/tricyclic-antidepressant-tca-screen/"
+    },
+
+    {
+        name: "Triglycerides Test",
+        url: "https://medlineplus.gov/lab-tests/triglycerides-test/"
+    },
+
+    {
+        name: "Triiodothyronine (T3) Tests",
+        url: "https://medlineplus.gov/lab-tests/triiodothyronine-t3-tests/"
+    },
+
+    {
+        name: "Troponin Test",
+        url: "https://medlineplus.gov/lab-tests/troponin-test/"
+    },
+
+    {
+        name: "TSH (Thyroid-stimulating hormone) Test",
+        url: "https://medlineplus.gov/lab-tests/tsh-thyroid-stimulating-hormone-test/"
+    },
+
+    {
+        name: "Tuberculosis Screening",
+        url: "https://medlineplus.gov/lab-tests/tuberculosis-screening/"
+    },
+
+    {
+        name: "Tumor Marker Tests",
+        url: "https://medlineplus.gov/lab-tests/tumor-marker-tests/"
+    },
+
+
+    /* ================= U ================= */
+
+    {
+        name: "Ultrasound",
+        url: "https://medlineplus.gov/lab-tests/sonogram/"
+    },
+
+    {
+        name: "Uric Acid Test",
+        url: "https://medlineplus.gov/lab-tests/uric-acid-test/"
+    },
+
+    {
+        name: "Urobilinogen in Urine",
+        url: "https://medlineplus.gov/lab-tests/urobilinogen-in-urine/"
+    },
+
+
+    /* ================= V ================= */
+
+    {
+        name: "V/Q Scan",
+        url: "https://medlineplus.gov/lab-tests/vq-scan/"
+    },
+
+    {
+        name: "Videonystagmography (VNG)",
+        url: "https://medlineplus.gov/lab-tests/videonystagmography-vng/"
+    },
+
+    {
+        name: "Vision Screening",
+        url: "https://medlineplus.gov/lab-tests/vision-screening/"
+    },
+
+    {
+        name: "Vitamin B Test",
+        url: "https://medlineplus.gov/lab-tests/vitamin-b-test/"
+    },
+
+    {
+        name: "Vitamin D Test",
+        url: "https://medlineplus.gov/lab-tests/vitamin-d-test/"
+    },
+
+    {
+        name: "Vitamin E (Tocopherol) Test",
+        url: "https://medlineplus.gov/lab-tests/vitamin-e-tocopherol-test/"
+    },
+
+
+    /* ================= W ================= */
+
+    {
+        name: "What You Need to Know About Blood Testing",
+        url: "https://medlineplus.gov/lab-tests/what-you-need-to-know-about-blood-testing/"
+    },
+
+    {
+        name: "White Blood Cell (WBC) in Stool",
+        url: "https://medlineplus.gov/lab-tests/white-blood-cell-wbc-in-stool/"
+    },
+
+    {
+        name: "White Blood Count (WBC)",
+        url: "https://medlineplus.gov/lab-tests/white-blood-count-wbc/"
+    },
+
+    {
+        name: "Whooping Cough Tests",
+        url: "https://medlineplus.gov/lab-tests/whooping-cough-diagnosis/"
+    },
+
+
+    /* ================= X ================= */
+
+    {
+        name: "Xylose Testing",
+        url: "https://medlineplus.gov/lab-tests/xylose-testing/"
+    },
+
+
+    /* ================= Y ================= */
+
+    {
+        name: "Yeast Infection Tests",
+        url: "https://medlineplus.gov/lab-tests/yeast-infection-tests/"
+    },
+
+
+    /* ================= Z ================= */
+
+    {
+        name: "Zika Virus Test",
+        url: "https://medlineplus.gov/lab-tests/zika-virus-test/"
+    }
+
+];
+
+
+        /* =====================================================
+           DISPLAY TESTS
+           ===================================================== */
+
+        function displayMedicalTests(
+            searchTerm = ""
+        ) {
+
+            const container =
+                document.getElementById(
+                    "medicalTestsList"
+                );
+
+
+            const term =
+                searchTerm
+                    .toLowerCase()
+                    .trim();
+
+
+            const filtered =
+                medicalTests.filter(
+                    test =>
+                        test.name
+                            .toLowerCase()
+                            .includes(term)
+                );
+
+
+            if (
+                filtered.length === 0
+            ) {
+
+                container.innerHTML = `
+
+                    <div class="medical-tests-empty">
+
+                        <div
+                            style="
+                                font-size:32px;
+                            "
+                        >
+                            🔍
+                        </div>
+
+                        <h3>
+                            No tests found
+                        </h3>
+
+                        <p>
+                            Try searching for another
+                            medical test.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            const groups = {};
+
+
+            filtered.forEach(
+                test => {
+
+                    const letter =
+                        test.name
+                            .charAt(0)
+                            .toUpperCase();
+
+
+                    if (
+                        !groups[letter]
+                    ) {
+
+                        groups[letter] = [];
+
+                    }
+
+
+                    groups[letter].push(
+                        test
+                    );
+
+                }
+            );
+
+
+            container.innerHTML =
+
+                Object.keys(groups)
+
+                    .sort()
+
+                    .map(
+                        letter => `
+
+                            <section
+                                class="medical-test-group"
+                            >
+
+                                <div
+                                    class="medical-test-letter"
+                                >
+                                    ${letter}
+                                </div>
+
+
+                                <div
+                                    class="medical-test-cards"
+                                >
+
+                                    ${
+                                        groups[letter]
+
+                                            .map(
+                                                test => `
+
+                                                    <a
+                                                        href="${test.url}"
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        class="medical-test-card"
+                                                    >
+
+                                                        <div>
+
+                                                            <h3>
+                                                                ${test.name}
+                                                            </h3>
+
+                                                            
+
+                                                        </div>
+
+
+                                                        <div
+                                                            class="medical-test-arrow"
+                                                        >
+                                                            ↗
+                                                        </div>
+
+                                                    </a>
+
+                                                `
+                                            )
+
+                                            .join("")
+                                    }
+
+                                </div>
+
+                            </section>
+
+                        `
+                    )
+
+                    .join("");
+
+        }
+
+
+
+        /* =====================================================
+           SEARCH
+           ===================================================== */
+
+        document
+            .getElementById(
+                "testSearch"
+            )
+            .addEventListener(
+                "input",
+                function () {
+
+                    displayMedicalTests(
+                        this.value
+                    );
+
+                }
+            );
+
+
+        /* =====================================================
+           INITIAL DISPLAY
+           ===================================================== */
+
+        displayMedicalTests();
+
+    </script>
+
+
+</body>
+
+</html>
