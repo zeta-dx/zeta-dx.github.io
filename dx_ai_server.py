@@ -316,21 +316,21 @@ async def analyze_report(data: dict):
 
     Return ONLY JSON using exactly this structure:
 
-    {
+    {{
         "overall_summary": "...",
 
         "findings": [
-            {
+            {{
                 "parameter": "...",
                 "status": "...",
                 "category": "...",
                 "what_is_it": "...",
                 "interpretation": "..."
-            }
+            }}
         ],
 
         "disclaimer": "..."
-    }
+    }}
 
     """
 
