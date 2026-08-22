@@ -379,7 +379,7 @@ async def analyze_report(data: dict):
 
             ],
 
-            temperature=0.2
+            temperature=0.2,
             response_format={"type": "json_object"}
 
         )
