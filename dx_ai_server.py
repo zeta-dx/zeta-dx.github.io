@@ -256,7 +256,17 @@ async def analyze_report(data: dict):
     27. Do not use medical terminology without briefly explaining it
         when necessary.
 
-    28. Return ONLY valid JSON.
+    28. Return ONLY a valid JSON object.
+
+    29. Every string value must follow valid JSON syntax.
+    
+    30. Never place unescaped double quotation marks inside a JSON string.
+    
+    31. Do not use markdown code fences.
+    
+    32. Do not write any explanation before or after the JSON object.
+    
+    33. Ensure the complete response can be parsed directly using a standard JSON parser.
 
     """
 
@@ -370,6 +380,7 @@ async def analyze_report(data: dict):
             ],
 
             temperature=0.2
+            response_format={"type": "json_object"}
 
         )
 
