@@ -210,6 +210,8 @@ function dxNormalizeUnit(unit) {
 
         .replace(/iu\/l/gi, "IU/L")
 
+        .replace(/u\/l/gi, "U/L")
+
         .replace(/miu\/l/gi, "mIU/L")
 
         .replace(/ng\/ml/gi, "ng/mL")
@@ -319,6 +321,32 @@ function dxParseReference(text) {
 
 
     /* ========================================================
+       NO REFERENCE
+
+       Examples:
+
+       -
+       --
+       —
+       ---
+       ======================================================== */
+
+    if (
+        /^[-–—]+$/.test(raw)
+    ) {
+
+        return {
+
+            type:
+                "No Reference",
+
+            text:
+                ""
+        };
+    }
+
+
+    /* ========================================================
        NORMALIZE DECIMAL SPACING
 
        Examples:
@@ -369,22 +397,30 @@ function dxParseReference(text) {
 
     let match =
         raw.match(
-            /^<=\s*(-?\d+(?:\.\d+)?)/ 
+            /^<=\s*(-?\d+(?:\.\d+)?)/
         );
 
 
     if (match) {
 
-        return {
+        const high =
+            Number(match[1]);
 
-            type: "less_than_equal",
 
-            high:
-                Number(match[1]),
+        if (Number.isFinite(high)) {
 
-            text:
-                `<=${match[1]}`
-        };
+            return {
+
+                type:
+                    "less_than_equal",
+
+                high:
+                    high,
+
+                text:
+                    `<=${high}`
+            };
+        }
     }
 
 
@@ -399,22 +435,30 @@ function dxParseReference(text) {
 
     match =
         raw.match(
-            /^<\s*(-?\d+(?:\.\d+)?)/ 
+            /^<\s*(-?\d+(?:\.\d+)?)/
         );
 
 
     if (match) {
 
-        return {
+        const high =
+            Number(match[1]);
 
-            type: "less_than",
 
-            high:
-                Number(match[1]),
+        if (Number.isFinite(high)) {
 
-            text:
-                `<${match[1]}`
-        };
+            return {
+
+                type:
+                    "less_than",
+
+                high:
+                    high,
+
+                text:
+                    `<${high}`
+            };
+        }
     }
 
 
@@ -429,22 +473,30 @@ function dxParseReference(text) {
 
     match =
         raw.match(
-            /^>=\s*(-?\d+(?:\.\d+)?)/ 
+            /^>=\s*(-?\d+(?:\.\d+)?)/
         );
 
 
     if (match) {
 
-        return {
+        const low =
+            Number(match[1]);
 
-            type: "greater_than_equal",
 
-            low:
-                Number(match[1]),
+        if (Number.isFinite(low)) {
 
-            text:
-                `>=${match[1]}`
-        };
+            return {
+
+                type:
+                    "greater_than_equal",
+
+                low:
+                    low,
+
+                text:
+                    `>=${low}`
+            };
+        }
     }
 
 
@@ -459,57 +511,7 @@ function dxParseReference(text) {
 
     match =
         raw.match(
-            /^>\s*(-?\d+(?:\.\d+)?)/ 
-        );
-
-
-    if (match) {
-
-        return {
-
-            type: "greater_than",
-
-            low:
-                Number(match[1]),
-
-            text:
-                `>${match[1]}`
-        };
-    }
-
-
-    /* ========================================================
-       NORMAL NUMERIC RANGE
-
-       IMPORTANT:
-
-       We intentionally DO NOT require the entire string
-       to be the reference.
-
-       Therefore these all work:
-
-       19 - 43 Urease, Colorimetric
-       3.5 - 8.5 Uricase, Colorimetric
-       150 - 410 x 10³/μL
-       98 - 107 ISE Direct
-       261 - 462 Chromazurol B
-       pg/mL 2.77 - 5.27
-       ng/dL 0.78 - 2.19
-       ======================================================== */
-
-    raw = raw.replace(
-        /(\d)-(\d)\s*-\s*(\d+(?:\.\d+)?)/g,
-        "$1.$2 - $3"
-    );
-
-    raw = raw.replace(
-        /\bCalculated\b.*$/i,
-        ""
-    ).trim();
-
-    match =
-        raw.match(
-            /(-?\d+(?:\.\d+)?)\s*[-–—]\s*(-?\d+(?:\.\d+)?)/ 
+            /^>\s*(-?\d+(?:\.\d+)?)/
         );
 
 
@@ -519,19 +521,97 @@ function dxParseReference(text) {
             Number(match[1]);
 
 
+        if (Number.isFinite(low)) {
+
+            return {
+
+                type:
+                    "greater_than",
+
+                low:
+                    low,
+
+                text:
+                    `>${low}`
+            };
+        }
+    }
+
+
+    /* ========================================================
+       REMOVE CALCULATION TEXT
+
+       Example:
+
+       20 - 40 Calculated
+       20 - 40 Calculated By CKD-EPI
+
+       becomes:
+
+       20 - 40
+       ======================================================== */
+
+    raw =
+        raw.replace(
+            /\bCalculated\b.*$/i,
+            ""
+        )
+        .trim();
+
+
+    /* ========================================================
+       NUMERIC RANGE
+
+       Supports:
+
+       20 - 40
+       20 – 40
+       20 — 40
+       20 to 40
+
+       Also:
+
+       3.5 - 8.5
+       -5 - 10
+       0 to 55 U/L
+
+       IMPORTANT:
+       The regex does not require the whole string to be
+       the range. Therefore:
+
+       "0 to 55 U/L"
+
+       correctly returns:
+
+       low  = 0
+       high = 55
+       ======================================================== */
+
+    const rangeMatch =
+        raw.match(
+            /(-?\d+(?:\.\d+)?)\s*(?:[-–—]|\bto\b)\s*(-?\d+(?:\.\d+)?)/i
+        );
+
+
+    if (rangeMatch) {
+
+        const low =
+            Number(rangeMatch[1]);
+
+
         const high =
-            Number(match[2]);
+            Number(rangeMatch[2]);
 
 
         if (
             Number.isFinite(low) &&
-            Number.isFinite(high) &&
-            low < high
+            Number.isFinite(high)
         ) {
 
             return {
 
-                type: "range",
+                type:
+                    "range",
 
                 low:
                     low,
@@ -557,6 +637,7 @@ function dxParseReference(text) {
        Normal
        Absent
        Present
+       Clear
        ======================================================== */
 
     if (
@@ -566,7 +647,8 @@ function dxParseReference(text) {
 
         return {
 
-            type: "qualitative",
+            type:
+                "qualitative",
 
             expected:
                 raw.toLowerCase(),
@@ -580,8 +662,6 @@ function dxParseReference(text) {
     /* ========================================================
        NO REFERENCE / METHOD TEXT
 
-       These are NOT reference ranges.
-
        Examples:
 
        Calculated
@@ -592,36 +672,37 @@ function dxParseReference(text) {
        ISE Direct
        ======================================================== */
 
-    /*if (
-        /^(calculated|calculated\s+by\b|enzymatic|colorimetric|impedance|eclia|clia|ise\s+direct|ise\b|ifcc|jaffe|urease|uricase|bcg|chromazurol\s+b|pyridylazo\s+dye)/i
+    if (
+        /^(calculated|calculated\s+by\b|enzymatic|colorimetric|impedance|eclia|clia|ise\s+direct|ise\b|ifcc|jaffe|urease|uricase|bcg|chromazurol\s+b|pyridylazo\s+dye|photometry)$/i
             .test(raw)
     ) {
 
         return {
 
-            type: "none",
+            type:
+                "none",
 
             text:
-                raw
+                ""
         };
-    }*/
+    }
 
 
     /* ========================================================
        OTHER NON-NUMERIC TEXT
 
-       Preserve it, but mark it as text.
+       Preserve it as text.
 
-       This allows us to distinguish:
+       Example:
 
-       NO REFERENCE
-       from
-       INVALID / UNKNOWN REFERENCE
+       Refer Table Below
+       Not available
        ======================================================== */
 
     return {
 
-        type: "text",
+        type:
+            "text",
 
         text:
             raw
@@ -631,14 +712,19 @@ function dxParseReference(text) {
 
 function dxExtractReferenceFromText(text) {
 
-    if (!text) {
+    if (
+        text === null ||
+        text === undefined
+    ) {
         return null;
     }
+
 
     let raw =
         String(text)
             .replace(/\s+/g, " ")
             .trim();
+
 
     if (!raw) {
         return null;
@@ -647,96 +733,169 @@ function dxExtractReferenceFromText(text) {
 
     /* ========================================================
        STEP 1
-       REMOVE METHOD / CALCULATION TEXT
+       NO REFERENCE
+
+       Examples:
+
+       -
+       --
+       ---
+       —
        ======================================================== */
 
-    raw = raw.replace(
-        /(Enzymatic|Impedance|Photometry|ECLIA|CLIA|IFCC|Jaffe|Urease|Uricase|ISE\s+Direct|Calculated|BCG|Bromothymol\s+Blue|Chromazurol\s+B|Pyridylazo\s+Dye|Colorimetric|Arsenazo\s+III|Phosphomolybdate\s+Reduction|CKD-EPI\s*\(\s*2021\s*\)).*$/i,
-        ""
-    ).trim();
+    if (
+        /^[-–—]+$/.test(raw)
+    ) {
 
+        return {
 
-    /* ========================================================
-       STEP 2
-       IF NOTHING REMAINS → NO REFERENCE
-       ======================================================== */
+            type:
+                "none",
 
-    if (!raw) {
-        return null;
+            text:
+                ""
+        };
     }
 
 
     /* ========================================================
+       STEP 2
+       REMOVE METHOD / CALCULATION TEXT
+       ======================================================== */
+
+    raw =
+        raw.replace(
+            /(Enzymatic|Impedance|Photometry|ECLIA|CLIA|IFCC|Jaffe|Urease|Uricase|ISE\s+Direct|Calculated|BCG|Bromothymol\s+Blue|Chromazurol\s+B|Pyridylazo\s+Dye|Colorimetric|Arsenazo\s+III|Phosphomolybdate\s+Reduction|CKD-EPI\s*\(?\s*2021\s*\)?).*$/i,
+            ""
+        )
+        .trim();
+
+
+    /* ========================================================
        STEP 3
-       NORMAL RANGE
+       IF NOTHING REMAINS
+       ======================================================== */
+
+    if (!raw) {
+
+        return {
+
+            type:
+                "none",
+
+            text:
+                ""
+        };
+    }
+
+
+    /* ========================================================
+       STEP 4
+       NORMALIZE DECIMAL SPACING
 
        Examples:
+
+       6 .0
+       0 .60
+       1 .25
+
+       becomes:
+
+       6.0
+       0.60
+       1.25
+       ======================================================== */
+
+    raw =
+        raw.replace(
+            /(\d)\s*\.\s*(\d)/g,
+            "$1.$2"
+        );
+
+
+    /* ========================================================
+       STEP 5
+       OCR DECIMAL CORRECTION
+
+       Example:
+
+       7-5 - 12.0
+
+       becomes:
+
+       7.5 - 12.0
+       ======================================================== */
+
+    raw =
+        raw.replace(
+            /^(\d+)-(\d+)\s*[-–—]\s*(\d+(?:\.\d+)?)/,
+            "$1.$2 - $3"
+        );
+
+
+    /* ========================================================
+       STEP 6
+       NORMAL NUMERIC RANGE
+
+       Supports:
+
+       0 - 55
+       0 – 55
+       0 — 55
+       0 to 55
 
        0.60 - 1.25
        19 - 43
        137-145
-       6 .0 - 8.0
-       7-5 - 12.0
+       6.0 - 8.0
+       0 to 55 U/L
+
+       IMPORTANT:
+
+       The unit after the range is allowed.
+
+       Example:
+
+       0 to 55 U/L
+
+       becomes:
+
+       low  = 0
+       high = 55
        ======================================================== */
 
     let match =
         raw.match(
-            /(-?\d+(?:\s*\.\s*\d+)?)\s*[-–—]\s*(-?\d+(?:\s*\.\s*\d+)?)/
+            /(-?\d+(?:\.\d+)?)\s*(?:[-–—]|\bto\b)\s*(-?\d+(?:\.\d+)?)/i
         );
 
 
     if (match) {
 
-        let lowText =
-            match[1].replace(/\s/g, "");
-
-        let highText =
-            match[2].replace(/\s/g, "");
-
-
-        /*
-         * OCR correction:
-         *
-         * 7-5 - 12.0
-         * becomes
-         * 7.5 - 12.0
-         *
-         * This is handled only when the first number
-         * looks like an OCR decimal.
-         */
-
-        if (
-            /^\d-\d$/.test(lowText)
-        ) {
-
-            lowText =
-                lowText.replace(
-                    /^(\d)-(\d)$/,
-                    "$1.$2"
-                );
-        }
-
-
         const low =
-            Number(lowText);
+            Number(match[1]);
+
 
         const high =
-            Number(highText);
+            Number(match[2]);
 
 
         if (
             Number.isFinite(low) &&
             Number.isFinite(high) &&
-            low < high
+            low <= high
         ) {
 
             return {
 
-                type: "range",
+                type:
+                    "range",
 
-                low: low,
+                low:
+                    low,
 
-                high: high,
+                high:
+                    high,
 
                 text:
                     `${low} - ${high}`
@@ -746,36 +905,114 @@ function dxExtractReferenceFromText(text) {
 
 
     /* ========================================================
-       STEP 4
-       LESS THAN
+       STEP 7
+       LESS THAN OR EQUAL
 
-       Example:
+       Examples:
 
-       <200
+       <=200
+       <= 200
        ======================================================== */
 
     match =
         raw.match(
-            /<\s*(-?\d+(?:\s*\.\s*\d+)?)/
+            /<=\s*(-?\d+(?:\.\d+)?)/ 
         );
 
 
     if (match) {
 
         const high =
-            Number(
-                match[1]
-                    .replace(/\s/g, "")
-            );
+            Number(match[1]);
 
 
         if (Number.isFinite(high)) {
 
             return {
 
-                type: "less_than",
+                type:
+                    "less_than_equal",
 
-                high: high,
+                high:
+                    high,
+
+                text:
+                    `<=${high}`
+            };
+        }
+    }
+
+
+    /* ========================================================
+       STEP 8
+       GREATER THAN OR EQUAL
+
+       Examples:
+
+       >=40
+       >= 40
+       ======================================================== */
+
+    match =
+        raw.match(
+            />=\s*(-?\d+(?:\.\d+)?)/ 
+        );
+
+
+    if (match) {
+
+        const low =
+            Number(match[1]);
+
+
+        if (Number.isFinite(low)) {
+
+            return {
+
+                type:
+                    "greater_than_equal",
+
+                low:
+                    low,
+
+                text:
+                    `>=${low}`
+            };
+        }
+    }
+
+
+    /* ========================================================
+       STEP 9
+       LESS THAN
+
+       Examples:
+
+       <200
+       < 200
+       ======================================================== */
+
+    match =
+        raw.match(
+            /<\s*(-?\d+(?:\.\d+)?)/ 
+        );
+
+
+    if (match) {
+
+        const high =
+            Number(match[1]);
+
+
+        if (Number.isFinite(high)) {
+
+            return {
+
+                type:
+                    "less_than",
+
+                high:
+                    high,
 
                 text:
                     `<${high}`
@@ -785,36 +1022,36 @@ function dxExtractReferenceFromText(text) {
 
 
     /* ========================================================
-       STEP 5
+       STEP 10
        GREATER THAN
 
-       Example:
+       Examples:
 
        >40
+       > 40
        ======================================================== */
 
     match =
         raw.match(
-            />\s*(-?\d+(?:\s*\.\s*\d+)?)/
+            />\s*(-?\d+(?:\.\d+)?)/ 
         );
 
 
     if (match) {
 
         const low =
-            Number(
-                match[1]
-                    .replace(/\s/g, "")
-            );
+            Number(match[1]);
 
 
         if (Number.isFinite(low)) {
 
             return {
 
-                type: "greater_than",
+                type:
+                    "greater_than",
 
-                low: low,
+                low:
+                    low,
 
                 text:
                     `>${low}`
@@ -824,19 +1061,83 @@ function dxExtractReferenceFromText(text) {
 
 
     /* ========================================================
-       STEP 6
-       DO NOT STORE LONG / TEXTUAL REFERENCES
+       STEP 11
+       QUALITATIVE REFERENCE
 
        Examples:
 
-       Calculated
-       Calculated By CKD-EPI(2021)
-       fasting.
-       are associated with increased risk...
-       explanatory laboratory notes
+       Negative
+       Positive
+       Normal
+       Absent
+       Present
+       Nil
        ======================================================== */
 
-    return null;
+    if (
+        /^(negative|positive|normal|absent|present|nil|clear)$/i
+            .test(raw)
+    ) {
+
+        return {
+
+            type:
+                "qualitative",
+
+            expected:
+                raw.toLowerCase(),
+
+            text:
+                raw
+        };
+    }
+
+
+    /* ========================================================
+       STEP 12
+       NO USABLE REFERENCE
+
+       Method / explanatory text should not become a
+       laboratory reference.
+       ======================================================== */
+
+    if (
+        /^(calculated|calculated\s+by\b|enzymatic|impedance|photometry|eclia|clia|ifcc|jaffe|urease|uricase|ise\b|ise\s+direct|bcg|colorimetric|chromazurol\s+b|pyridylazo\s+dye|bromothymol\s+blue|arsenazo\s+iii)$/i
+            .test(raw)
+    ) {
+
+        return {
+
+            type:
+                "none",
+
+            text:
+                ""
+        };
+    }
+
+
+    /* ========================================================
+       STEP 13
+       OTHER TEXT
+
+       Examples:
+
+       Refer Table Below
+       Not available
+
+       Keep these as text because they may contain useful
+       information for the rest of the parser.
+       ======================================================== */
+
+    return {
+
+        type:
+            "text",
+
+        text:
+            raw
+    };
 }
 
 /* ============================================================
@@ -1775,9 +2076,9 @@ function dxParseStructuredResult(row) {
 
 
     /*
-     * ----------------------------------------------------------
+     * ==========================================================
      * GET ORIGINAL TEXT
-     * ----------------------------------------------------------
+     * ==========================================================
      */
 
     const originalText =
@@ -1787,6 +2088,7 @@ function dxParseStructuredResult(row) {
             row.text ||
             ""
         )
+        .replace(/\u00A0/g, " ")
         .replace(/\s+/g, " ")
         .trim();
 
@@ -1797,40 +2099,70 @@ function dxParseStructuredResult(row) {
 
 
     /*
-     * ----------------------------------------------------------
+     * ==========================================================
      * IGNORE OBVIOUS NON-LABORATORY TEXT
-     * ----------------------------------------------------------
+     * ==========================================================
      */
 
     const ignoredPatterns = [
 
         /^reports?\s+of\b/i,
-
         /^above\s+\d/i,
-
         /^below\s+\d/i,
 
         /^are\s+associated\s+with\b/i,
-
         /^associated\s+with\b/i,
 
         /^this\s+is\s+a\s+sample\s+report\b/i,
-
         /^sample\s+report\b/i,
 
         /^scan\s+to\s+validate\b/i,
 
         /^clinical\s+significance\b/i,
-
         /^clinical\s+notes?\b/i,
-
         /^interpretation\b/i,
-
         /^note\s+for\b/i,
+
+        /^out\s+of\s+range\s+for\b/i,
 
         /^microscopy\b/i,
 
-        /^in\s+case\s+of\b/i
+        /^in\s+case\s+of\b/i,
+
+        /^patient\s+id\b/i,
+        /^patient\s+id\s*\/\s*uhid\b/i,
+
+        /^barcode\s*(no|number)?\b/i,
+
+        /^gender\s*:/i,
+        /^dob\s*\/\s*age\s*\/\s*gender\b/i,
+
+        /^risk\s+category\b/i,
+        /^extreme\s+risk\b/i,
+        /^very\s+high\s+risk\b/i,
+        /^high\s+risk\b/i,
+        /^moderate\s+risk\b/i,
+        /^low\s+risk\b/i,
+
+        /^normal\s+\d/i,
+
+        /^above\s+optimal\b/i,
+        /^borderline\s+high\b/i,
+
+        /^diabetes\s*[<>]/i,
+        /^diagnosing\s+diabetes\b/i,
+
+        /^goal\s+of\s+therapy\b/i,
+
+        /^age\s*[<>]/i,
+
+        /^kidney\s+failure\b/i,
+
+        /^pregnancy\b/i,
+        /^\d+(st|nd|rd|th)\s+trimester\b/i,
+
+        /^₹/,
+        /^mrp\b/i
     ];
 
 
@@ -1840,45 +2172,174 @@ function dxParseStructuredResult(row) {
                 pattern.test(originalText)
         )
     ) {
-
         return null;
     }
 
 
     /*
-     * ----------------------------------------------------------
-     * CLEAN TEXT
-     * ----------------------------------------------------------
+     * ==========================================================
+     * CLEAN WORKING TEXT
+     * ==========================================================
      */
 
     let text =
         originalText
-            .replace(/\u00a0/g, " ")
+            .replace(/\u00A0/g, " ")
             .replace(/\s+/g, " ")
             .trim();
 
 
     /*
-     * ----------------------------------------------------------
-     * SPECIAL CASE:
+     * ==========================================================
+     * SPECIAL CASE 1:
+     * MICROSCOPY / HPF
+     *
+     * Examples:
+     *
+     * Epithelial Cells 1-2 /hpf 0 - 4
+     *
+     * Pus Cells (WBCs) 1-2 /hpf 0 - 5
+     *
+     * Red blood Cells Absent /hpf 0 - 2
+     *
+     * Desired:
+     *
+     * parameter = Epithelial Cells
+     * value     = 0
+     * unit      = /hpf
+     * reference = 0 - 4
+     * ==========================================================
+     */
+
+    const absentHpfMatch =
+        text.match(
+            /^(.+?)\s+(Absent|Present)\s*(\/hpf)\s+(-?\d+(?:\.\d+)?)\s*(?:-\s*(-?\d+(?:\.\d+)?))?$/i
+        );
+
+    if (absentHpfMatch) {
+
+        const parameter =
+            absentHpfMatch[1]
+                .trim()
+                .replace(/\s*\*+\s*$/g, "")
+                .replace(/\s+/g, " ");
+
+
+        const value =
+            Number(absentHpfMatch[4]);
+
+
+        return {
+
+            parameter:
+                parameter,
+
+            value:
+                value,
+
+            unit:
+                "/hpf",
+
+            reference: {
+
+                type:
+                    absentHpfMatch[5]
+                        ? "range"
+                        : "none",
+
+                text:
+                    absentHpfMatch[5]
+                        ? `${absentHpfMatch[4]} - ${absentHpfMatch[5]}`
+                        : absentHpfMatch[4]
+            },
+
+            method:
+                "",
+
+            original:
+                originalText,
+
+            original_text:
+                originalText
+        };
+    }
+
+    const hpfMatch =
+        text.match(
+            /^(.+?)\s+(?:(\d+(?:\.\d+)?)\s*-\s*(\d+(?:\.\d+)?)|(Absent|Present))\s*(\/hpf)\s+(-?\d+(?:\.\d+)?)\s*(?:-\s*(-?\d+(?:\.\d+)?))?$/i
+        );
+
+
+    if (hpfMatch) {
+
+        const hpfParameter =
+            hpfMatch[1]
+                .trim()
+                .replace(/\s*\*+\s*$/g, "")
+                .replace(/\s+/g, " ")
+                .trim();
+
+
+        const hpfValue =
+            Number(hpfMatch[5]);
+
+
+        if (
+            hpfParameter &&
+            Number.isFinite(hpfValue)
+        ) {
+
+            let hpfReference =
+                hpfMatch[7] !== undefined
+                    ? `${hpfMatch[5]} - ${hpfMatch[7]}`
+                    : hpfMatch[5];
+
+
+            return {
+
+                parameter:
+                    hpfParameter,
+
+                value:
+                    hpfValue,
+
+                unit:
+                    "/hpf",
+
+                reference: {
+
+                    type:
+                        hpfMatch[7] !== undefined
+                            ? "range"
+                            : "none",
+
+                    text:
+                        hpfReference
+                },
+
+                method:
+                    "",
+
+                original:
+                    originalText,
+
+                original_text:
+                    originalText
+            };
+        }
+    }
+
+
+    /*
+     * ==========================================================
+     * SPECIAL CASE 2:
      * ESTIMATED GFR
-     *
-     * Original:
-     *
-     * Estimated GFR 57.10 mL/min/1.73m2
-     * Calculated By CKD-EPI(2021)
-     *
-     * Correct:
-     *
-     * parameter = Estimated GFR
-     * value     = 57.10
-     * unit      = mL/min/1.73m2
-     * ----------------------------------------------------------
+     * ==========================================================
      */
 
     const egfrMatch =
         text.match(
-            /^estimated\s+gfr\s+(-?\d+(?:\.\d+)?)\s*(mL\/min\/1\.73\s*m2|mL\/min\/1\.73m2)/i
+            /^estimated\s+gfr\s+(-?\d+(?:\.\d+)?)\s*(mL\/min\/1\.73\s*m2|mL\/min\/1\.73m2)\b/i
         );
 
 
@@ -1889,6 +2350,14 @@ function dxParseStructuredResult(row) {
 
 
         if (Number.isFinite(egfrValue)) {
+
+            const remaining =
+                text
+                    .substring(
+                        egfrMatch[0].length
+                    )
+                    .trim();
+
 
             return {
 
@@ -1902,22 +2371,21 @@ function dxParseStructuredResult(row) {
                     "mL/min/1.73m2",
 
                 reference: {
-                    type: "none",
+
+                    type:
+                        "none",
+
                     text:
-                        text
-                            .substring(
-                                egfrMatch[0].length
-                            )
-                            .trim()
-                            .replace(
-                                /^Calculated\s+By\s*/i,
-                                "Calculated By "
-                            ) ||
-                        "Calculated"
+                        remaining ||
+                        "Not available"
                 },
 
                 method:
-                    "Calculated By CKD-EPI(2021)",
+                    /calculated\s+by\s+ckd[-\s]?epi/i.test(
+                        remaining
+                    )
+                        ? "Calculated By CKD-EPI"
+                        : "",
 
                 original:
                     originalText,
@@ -1930,45 +2398,181 @@ function dxParseStructuredResult(row) {
 
 
     /*
-     * ----------------------------------------------------------
-     * EXTRACT PARAMETER
+     * ==========================================================
+     * SPECIAL CASE 3:
+     * PARAMETER + CLINICAL LIMIT
      *
-     * We first try to identify the numeric result.
-     * Everything before that is the parameter.
-     * ----------------------------------------------------------
+     * Examples:
+     *
+     * Diabetes >= 126
+     * Diabetes < 126
+     * Goal of therapy < 7
+     *
+     * These are NOT measured results.
+     *
+     * Therefore reject obvious reference-table lines.
+     * ==========================================================
      */
 
-
-    let valueMatch =
+    const clinicalLimitOnly =
         text.match(
-            /(^|[\s])(-?\d+(?:\.\d+)?)(?=\s|$)/
+            /^(.+?)\s+(<=|>=|<|>)\s*(-?\d+(?:\.\d+)?)\s*(%|mg\/dL|g\/dL|mmol\/L)?$/i
         );
 
 
-    if (!valueMatch) {
+    if (clinicalLimitOnly) {
+
+        const limitParameter =
+            clinicalLimitOnly[1].trim();
+
 
         /*
-         * No numeric result.
-         * This is probably a heading or explanatory text.
+         * These are generally decision/reference descriptions.
          */
 
-        return null;
+        if (
+            /^(diabetes|diagnosing diabetes|goal of therapy|age|kidney failure|hypervitaminosis)/i.test(
+                limitParameter
+            )
+        ) {
+            return null;
+        }
     }
 
 
     /*
-     * Position of the numeric value
+     * ==========================================================
+     * FIND NUMERIC VALUE
+     *
+     * We deliberately ignore numbers that are clearly part of
+     * the parameter name.
+     *
+     * Examples:
+     *
+     * Vitamin B12 83 pg/mL
+     * Vitamin B12 < 83 pg/mL
+     * Lymphocytes 43.8 %
+     *
+     * ==========================================================
      */
 
-    const valueIndex =
-        valueMatch.index +
-        valueMatch[0].lastIndexOf(
-            valueMatch[2]
+
+    let valueMatch = null;
+
+
+    /*
+     * First try a number followed by a known unit.
+     *
+     * This prevents things like:
+     *
+     * "Vitamin B12 83 pg/mL"
+     *
+     * from incorrectly selecting 12.
+     */
+
+    const valueWithUnitMatch =
+        text.match(
+            /(-?\d+(?:\.\d+)?)\s*(?=(?:X\s*10[³3]\s*\/\s*[µμu]L|10\^?3\s*\/\s*[µμu]L|mL\/min\/1\.73m2|mL\/min\/1\.73\s*m2|mg\/dL|mg\/L|g\/dL|g\/L|mmol\/L|mIU\/L|mlU\/L|µIU\/mL|μIU\/mL|IU\/L|U\/L|pg\/mL|ng\/mL|ng\/dL|[µμu]g\/dL|fL|pH|Ratio|%|mm\/hr|mL|days?|years?|\/hpf)\b)/i
         );
 
 
+    if (valueWithUnitMatch) {
+
+        valueMatch =
+            valueWithUnitMatch;
+    }
+
+
+    /*
+     * If no value + unit pattern was found, find the first
+     * numeric token that is NOT obviously part of the parameter.
+     */
+
+    if (!valueMatch) {
+
+        const numberRegex =
+            /(-?\d+(?:\.\d+)?)/g;
+
+
+        let match;
+
+
+        while (
+            (match = numberRegex.exec(text)) !== null
+        ) {
+
+            const before =
+                text.substring(
+                    0,
+                    match.index
+                );
+
+
+            const after =
+                text.substring(
+                    match.index +
+                    match[0].length
+                );
+
+
+            /*
+             * Ignore numbers inside:
+             *
+             * B12
+             * 1-2 /hpf
+             * 1.73m2
+             */
+
+            if (
+                /[A-Za-z]$/.test(before) &&
+                !/\s$/.test(before)
+            ) {
+                continue;
+            }
+
+
+            if (
+                /^\s*m2\b/i.test(after)
+            ) {
+                continue;
+            }
+
+
+            /*
+             * Ignore the "1" in:
+             *
+             * 1-2 /hpf
+             */
+
+            if (
+                /^\s*-\s*\d+(?:\.\d+)?\s*\/hpf\b/i.test(
+                    after
+                )
+            ) {
+                continue;
+            }
+
+
+            valueMatch =
+                match;
+
+            break;
+        }
+    }
+
+
+    /*
+     * No usable numeric result.
+     */
+
+    if (!valueMatch) {
+        return null;
+    }
+
+
     const valueText =
-        valueMatch[2];
+        valueMatch[1] ||
+        valueMatch[0];
 
 
     const value =
@@ -1981,9 +2585,19 @@ function dxParseStructuredResult(row) {
 
 
     /*
-     * ----------------------------------------------------------
+     * ==========================================================
+     * VALUE POSITION
+     * ==========================================================
+     */
+
+    const valueIndex =
+        valueMatch.index;
+
+
+    /*
+     * ==========================================================
      * PARAMETER
-     * ----------------------------------------------------------
+     * ==========================================================
      */
 
     let parameter =
@@ -1996,60 +2610,124 @@ function dxParseStructuredResult(row) {
 
 
     /*
-     * Remove accidental separators
+     * ==========================================================
+     * REMOVE TRAILING RESULT MARKERS
+     *
+     * Examples:
+     *
+     * LDL Cholesterol *
+     * HDL Cholesterol H
+     * Vitamin B12 <
+     *
+     * Do NOT remove normal letters from names.
+     * ==========================================================
      */
 
     parameter =
         parameter
-            .replace(/^[|:;,]+/, "")
-            .replace(/\s+/g, " ")
+            .replace(
+                /\s*[*]+\s*$/g,
+                ""
+            )
+            .replace(
+                /\s+(?:H|L)\s*$/i,
+                ""
+            )
+            .replace(
+                /\s*[:;,|]+\s*$/g,
+                ""
+            )
             .trim();
 
 
     /*
-     * ----------------------------------------------------------
-     * SPECIAL CASE:
-     *
-     * If parameter ends with < or >, it is usually a clinical
-     * decision-limit description and NOT part of the parameter.
+     * ==========================================================
+     * HANDLE PARAMETER-SIDE LIMIT
      *
      * Example:
      *
-     * Total Cholesterol <200
+     * Cholesterol < 200
      *
-     * should become:
+     * Here the numeric value itself is the reference limit,
+     * not a patient result.
      *
-     * Total Cholesterol
-     *
-     * with a reference of <200
-     * ----------------------------------------------------------
+     * Therefore these known reference-style parameters are
+     * rejected.
+     * ==========================================================
      */
 
-    let parameterLimit = null;
+    let parameterLimit =
+        null;
 
 
     const parameterLimitMatch =
         parameter.match(
-            /^(.*?)(?:\s*)(<=|>=|<|>)(\d+(?:\.\d+)?)$/
+            /^(.*?)\s*(?:\*)?\s*(<=|>=|<|>|absent|present)\s*(\d+(?:\.\d+)?)?\s*$/i
         );
 
 
     if (parameterLimitMatch) {
 
-        parameter =
+        const possibleParameter =
             parameterLimitMatch[1]
                 .trim();
 
-        parameterLimit =
-            parameterLimitMatch[2] +
+
+        const operator =
+            parameterLimitMatch[2];
+
+
+        const limitValue =
             parameterLimitMatch[3];
+
+
+        /*
+         * If the operator is immediately before the measured
+         * value, it is a clinical limit/reference rather than
+         * part of the parameter.
+         */
+
+        if (
+            operator &&
+            limitValue
+        ) {
+
+            parameter =
+                possibleParameter;
+
+            parameterLimit =
+                `${operator}${limitValue}`;
+        }
     }
 
 
     /*
-     * ----------------------------------------------------------
-     * TEXT AFTER RESULT
-     * ----------------------------------------------------------
+     * ==========================================================
+     * CLEAN PARAMETER
+     * ==========================================================
+     */
+
+    parameter =
+        parameter
+            .replace(
+                /^[|:;,]+/,
+                ""
+            )
+            .replace(
+                /\s+/g,
+                " "
+            )
+            .replace(
+                /[,:;]+$/,
+                ""
+            )
+            .trim();
+
+
+    /*
+     * ==========================================================
+     * TEXT AFTER VALUE
+     * ==========================================================
      */
 
     let remainingText =
@@ -2062,21 +2740,20 @@ function dxParseStructuredResult(row) {
 
 
     /*
-     * ----------------------------------------------------------
-     * UNIT
-     * ----------------------------------------------------------
-     *
-     * We only recognize known laboratory units.
-     *
-     * IMPORTANT:
-     *
-     * Unit extraction is completely independent from reference
-     * extraction.
-     * ----------------------------------------------------------
+     * ==========================================================
+     * UNIT EXTRACTION
+     * ==========================================================
      */
 
-    let unit = "";
+    let unit =
+        "";
 
+
+    /*
+     * IMPORTANT:
+     *
+     * Longer units must come before shorter units.
+     */
 
     const unitPatterns = [
 
@@ -2089,61 +2766,64 @@ function dxParseStructuredResult(row) {
         /^mL\/min\/1\.73m2\b/i,
 
         /^mg\/dL\b/i,
-
         /^mg\/L\b/i,
 
         /^g\/dL\b/i,
-
         /^g\/L\b/i,
 
         /^mmol\/L\b/i,
 
         /^mIU\/L\b/i,
-
         /^mlU\/L\b/i,
 
         /^µIU\/mL\b/i,
-
         /^μIU\/mL\b/i,
 
         /^IU\/L\b/i,
-
         /^U\/L\b/i,
 
         /^pg\/mL\b/i,
 
         /^ng\/mL\b/i,
-
         /^ng\/dL\b/i,
 
         /^[µμu]g\/dL\b/i,
 
+        /^mm\/hr\b/i,
+
+        /^mL\b/i,
+
         /^fL\b/i,
+
+        /^\/hpf\b/i,
 
         /^pH\b/i,
 
         /^Ratio\b/i,
 
         /^%\b/i,
+        /^%/i,
 
         /^days?\b/i,
-
-        /^years?\b/i,
-
-        /^Calculated?\b/i,
+        /^years?\b/i
     ];
 
 
-    for (const pattern of unitPatterns) {
+    for (
+        const pattern of unitPatterns
+    ) {
 
         const match =
-            remainingText.match(pattern);
+            remainingText.match(
+                pattern
+            );
 
 
         if (match) {
 
             unit =
                 match[0].trim();
+
 
             remainingText =
                 remainingText
@@ -2152,15 +2832,16 @@ function dxParseStructuredResult(row) {
                     )
                     .trim();
 
+
             break;
         }
     }
 
 
     /*
-     * ----------------------------------------------------------
-     * SPECIAL UNIT NORMALIZATION
-     * ----------------------------------------------------------
+     * ==========================================================
+     * UNIT NORMALIZATION
+     * ==========================================================
      */
 
     if (
@@ -2169,6 +2850,15 @@ function dxParseStructuredResult(row) {
 
         unit =
             "X 10³ / µL";
+    }
+
+
+    if (
+        /^10\^?3/i.test(unit)
+    ) {
+
+        unit =
+            "10³ / µL";
     }
 
 
@@ -2182,15 +2872,9 @@ function dxParseStructuredResult(row) {
 
 
     /*
-     * ----------------------------------------------------------
+     * ==========================================================
      * REFERENCE
-     *
-     * IMPORTANT:
-     *
-     * Reference is extracted from remaining text.
-     *
-     * We DO NOT try to match the unit.
-     * ----------------------------------------------------------
+     * ==========================================================
      */
 
     let reference =
@@ -2198,11 +2882,7 @@ function dxParseStructuredResult(row) {
 
 
     /*
-     * First use parameter clinical limit.
-     *
-     * Example:
-     *
-     * Total Cholesterol <200
+     * Parameter-side clinical reference.
      */
 
     if (parameterLimit) {
@@ -2215,7 +2895,7 @@ function dxParseStructuredResult(row) {
 
 
     /*
-     * Otherwise extract numerical range from remaining text.
+     * Otherwise inspect remaining text.
      */
 
     if (!reference) {
@@ -2228,87 +2908,18 @@ function dxParseStructuredResult(row) {
 
 
     /*
-     * ----------------------------------------------------------
-     * IF REFERENCE WAS NOT NUMERIC
-     * ----------------------------------------------------------
-     */
-
-    if (!reference) {
-
-        /*
-         * Check whether the remaining text contains a known
-         * calculation/method description.
-         */
-
-       const methodMatch =
-        remainingText.match(
-            /\b(Calculated|Enzymatic|Impedance|Photometry|ECLIA|CLIA|IFCC|Jaffe|Urease|Uricase|ISE\s+Direct|Calculated|BCG|Chromazurol\s+B|Pyridylazo\s+Dye|Colorimetric|Bromothymol\s+Blue|Arsenazo\s+III|Phosphomolybdate\s+Reduction)\b/i
-        );
-
-
-        /*
-         * JavaScript does not support /x.
-         *
-         * Therefore repeat with a normal regex.
-         */
-
-        const methodMatchClean =
-            remainingText.match(
-                /\b(Calculated|Enzymatic|Impedance|Photometry|ECLIA|CLIA|IFCC|Jaffe|Urease|Uricase|ISE\s+Direct|Calculated|BCG|Chromazurol\s+B|Pyridylazo\s+Dye|Colorimetric|Bromothymol\s+Blue|Arsenazo\s+III|Phosphomolybdate\s+Reduction)\b/i
-            );
-
-
-        if (
-            methodMatchClean
-        ) {
-
-            /*
-             * No reference.
-             */
-
-            reference = {
-
-                type:
-                    "none",
-
-                text:
-                    remainingText
-                        .trim()
-            };
-        }
-
-        else {
-
-            /*
-             * No usable reference.
-             */
-
-            reference = {
-
-                type:
-                    "none",
-
-                text:
-                    remainingText
-                        .trim() ||
-                    "Not available"
-            };
-        }
-    }
-
-
-    /*
-     * ----------------------------------------------------------
+     * ==========================================================
      * METHOD
-     * ----------------------------------------------------------
+     * ==========================================================
      */
 
-    let method = "";
+    let method =
+        "";
 
 
     const methodMatch =
         remainingText.match(
-            /\b(Calculated|Enzymatic|Impedance|Photometry|ECLIA|CLIA|IFCC|Jaffe|Urease|Uricase|ISE\s+Direct|Calculated|BCG|Chromazurol\s+B|Pyridylazo\s+Dye|Colorimetric|Bromothymol\s+Blue|Arsenazo\s+III|Phosphomolybdate\s+Reduction)\b/i
+            /\b(Calculated|Enzymatic|Impedance|Photometry|ECLIA|CLIA|IFCC|Jaffe|Urease|Uricase|ISE\s+Direct|BCG|Chromazurol\s+B|Pyridylazo\s+Dye|Colorimetric|Bromothymol\s+Blue|Arsenazo\s+III|Phosphomolybdate\s+Reduction)\b/i
         );
 
 
@@ -2320,63 +2931,73 @@ function dxParseStructuredResult(row) {
 
 
     /*
-     * ----------------------------------------------------------
-     * CALCULATED RESULTS WITHOUT REFERENCE
-     * ----------------------------------------------------------
-     *
-     * These are legitimate laboratory results.
-     *
-     * Example:
-     *
-     * BUN/Creatinine Ratio 17.57 Ratio Calculated
-     *
-     * They should NOT be UNKNOWN.
-     * ----------------------------------------------------------
+     * ==========================================================
+     * REFERENCE FALLBACK
+     * ==========================================================
      */
 
-    /*if (
-        !reference ||
-        !reference.type
-    ) {
+    if (!reference) {
 
-        reference = {
+        const fallbackReference =
+            remainingText
+                .trim();
 
-            type:
-                "none",
 
-            text:
-                method ||
-                "Not available"
-        };
-    }*/
+        if (
+            fallbackReference === "" ||
+            /^[-–—]+$/.test(fallbackReference)
+        ) {
+
+            reference = {
+
+                type:
+                    "none",
+
+                text:
+                    ""
+            };
+
+        } else {
+
+            reference = {
+
+                type:
+                    "text",
+
+                text:
+                    fallbackReference
+            };
+        }
+    }
 
 
     /*
-     * ----------------------------------------------------------
+     * ==========================================================
      * FINAL PARAMETER CLEANUP
-     * ----------------------------------------------------------
+     * ==========================================================
      */
 
     parameter =
         parameter
-            .replace(/\s+/g, " ")
+            .replace(
+                /\s+/g,
+                " "
+            )
+            .replace(
+                /^[|:;,]+/,
+                ""
+            )
+            .replace(
+                /[,:;]+$/,
+                ""
+            )
             .trim();
 
 
     /*
-     * Remove accidental trailing punctuation
-     */
-
-    parameter =
-        parameter
-            .replace(/[,:;]+$/, "")
-            .trim();
-
-
-    /*
-     * ----------------------------------------------------------
-     * FINAL SAFETY CHECK
-     * ----------------------------------------------------------
+     * ==========================================================
+     * FINAL INVALID PARAMETER CHECK
+     * ==========================================================
      */
 
     if (!parameter) {
@@ -2384,28 +3005,52 @@ function dxParseStructuredResult(row) {
     }
 
 
-    /*
-     * Reject obvious explanatory sentences that happened to
-     * contain a number.
-     */
-
     const invalidParameterPatterns = [
 
         /^reports?\s+of\b/i,
-
         /^above\b/i,
-
         /^below\b/i,
 
         /^hence\b/i,
-
         /^therefore\b/i,
 
         /^this\s+is\b/i,
+        /^this\s+marker\b/i,
 
         /^in\s+case\b/i,
 
-        /^note\b/i
+        /^note\b/i,
+
+        /^your\s+/i,
+
+        /^consider\s+/i,
+
+        /^individuals?\s+/i,
+
+        /^lipid\s+level\s+assessments\b/i,
+
+        /^ncep\s+recommends\b/i,
+
+        /^risk\s+factor\b/i,
+
+        /^moderate\s+risk\b/i,
+        /^high\s+risk\b/i,
+        /^very\s+high\s+risk\b/i,
+        /^extreme\s+risk\b/i,
+
+        /^normal\b/i,
+
+        /^borderline\b/i,
+
+        /^at\s+risk\b/i,
+
+        /^diagnosing\b/i,
+
+        /^goal\s+of\s+therapy\b/i,
+
+        /^kidney\s+failure\b/i,
+
+        /^age\b/i
     ];
 
 
@@ -2421,9 +3066,27 @@ function dxParseStructuredResult(row) {
 
 
     /*
-     * ----------------------------------------------------------
+     * ==========================================================
+     * REJECT OBVIOUS TABLE / CLASSIFICATION ROWS
+     * ==========================================================
+     */
+
+    if (
+        /\brisk\s+group\b/i.test(parameter) ||
+        /\brisk\s+category\b/i.test(parameter) ||
+        /\bclassification\b/i.test(parameter) ||
+        /\bseverity\b/i.test(parameter) ||
+        /\btrimester\b/i.test(parameter)
+    ) {
+
+        return null;
+    }
+
+
+    /*
+     * ==========================================================
      * RETURN STRUCTURED RESULT
-     * ----------------------------------------------------------
+     * ==========================================================
      */
 
     return {
@@ -2745,7 +3408,7 @@ function dxLooksLikeLabCandidate(row) {
      */
 
     const hasUnit =
-        /\b(?:mg\/dL|g\/dL|g\/L|mg\/L|mmol\/L|µIU\/mL|mIU\/L|IU\/L|U\/L|fL|pg\/mL|ng\/mL|µg\/dL|%|ratio|index)\b/i.test(text)
+        /\b(?:mg\/dL|g\/dL|g\/L|mg\/L|mmol\/L|µIU\/mL|mIU\/L|IU\/L|U\/L|fL|pg\/mL|ng\/mL|µg\/dL|%|ratio|index|\/hpf)\b/i.test(text)
         ||
         /X\s*10[³3]/i.test(text);
 
@@ -3371,14 +4034,14 @@ function dxDisplayResults(report) {
             .filter(r => r.status === "UNKNOWN")
             .forEach((r, index) => {
 
-                /*console.log(
+                console.log(
                     `UNKNOWN #${index + 1}\n` +
                     `PARAMETER: ${r.parameter}\n` +
                     `VALUE: ${r.value}\n` +
                     `UNIT: ${r.unit}\n` +
                     `REFERENCE: ${JSON.stringify(r.reference, null, 2)}\n` +
                     `ORIGINAL: ${r.original_text}\n`
-                );*/
+                );
 
             });
 
@@ -3993,7 +4656,9 @@ function parseAIReference(referenceText) {
 
     if (
         /^negative$/i.test(text) ||
-        /^positive$/i.test(text)
+        /^positive$/i.test(text) ||
+        /^absent$/i.test(text) ||
+        /^present$/i.test(text)
     ) {
 
         return {
@@ -4133,8 +4798,16 @@ function dxLooksLikeNarrativeText(result) {
         parameter === "below" ||
         parameter === "than" ||
         parameter.startsWith("in case") ||
+        parameter.startsWith() ||
+        parameter.startsWith("<") ||
+        parameter.startsWith(">") ||
+        parameter.startsWith("/") ||
+        parameter.startsWith("in case") ||
         parameter.startsWith("- ldl -") ||
-        parameter.startsWith("hence")
+        parameter.startsWith("dob") ||
+        parameter.startsWith("sample") ||
+        parameter.startsWith("hence") ||
+        parameter.startsWith("gender")
     ) {
         return true;
     }
@@ -4146,6 +4819,23 @@ function dxLooksLikeNarrativeText(result) {
 
     if (
         original.includes("are best obtained with") ||
+        original.includes("out of range") ||
+        original.includes("body") ||
+        original.includes("month") ||
+        original.includes("expert") ||
+        original.includes("doctor") ||
+        original.includes("life") ||
+        original.includes("more") ||
+        original.includes("the") ||
+        original.includes("optimal") ||
+        original.includes("of") ||
+        original.includes("in") ||
+        original.includes("years") ||
+        original.includes("above") ||
+        original.includes("damage") ||
+        original.includes("sufficient") ||
+        original.includes("inflammation") ||
+        original.includes("DOB/Age/Gender:") ||
         original.includes("are associated with increased risk") ||
         original.includes("regardless of hdl") ||
         original.includes("regardless of ldl") ||
@@ -4154,6 +4844,19 @@ function dxLooksLikeNarrativeText(result) {
         original.includes("obesity medication") ||
         original.includes("alcohol intake") ||
         original.includes("diabetes mellitus") ||
+        original.includes("levels") ||
+        original.includes("diabetes") ||
+        original.includes("volume") ||
+        original.includes("trimester") ||
+        original.includes("patient") ||
+        original.includes("risk") ||
+        original.includes("high") ||
+        original.includes("normal") ||
+        original.includes("diet") ||
+        original.includes("person") ||
+        original.includes("decrease") ||
+        original.includes("increase") ||
+        original.includes("all  ") ||
         original.includes("pancreatitis")
     ) {
         return true;
@@ -4177,46 +4880,250 @@ function dxBuildAIInput(reportData) {
      * Only send results that have been classified
      * as abnormal by our own status engine.
      */
+    function isValidAIParameter(result) {
+
+        const parameter =
+            String(
+                result.parameter || ""
+            ).trim();
+
+
+        if (!parameter) {
+            return false;
+        }
+
+
+        const invalidPatterns = [
+
+            // Reference / interpretation text
+            /reference/i,
+            /reference range/i,
+            /normal range/i,
+            /interpretation/i,
+            /desirable/i,
+            /optimal/i,
+            /target/i,
+            /recommended/i,
+
+
+            // Risk categories / classifications
+            /risk group/i,
+            /very high risk/i,
+            /high risk/i,
+            /moderate risk/i,
+            /above optimal/i,
+            /risk category/i,
+            /category\s*[A-Z]/i,
+            /extreme risk/i,
+            /high risk/i,
+            /low risk/i,
+            /out of range/i,
+            /inflammation/i,
+            /volume/i,
+            /raised/i,
+            /age/i,
+            /kidney/i,
+
+            // Disease / staging / outcome descriptions
+            /end organ damage/i,
+            /\bstage\s*\d/i,
+            /\bclass\s*[I-V]+/i,
+
+            // Pregnancy reference ranges
+            /2nd trimester\b/i,
+            /3rd trimester\b/i,
+            /\btrimester\b/i,
+            /pregnant/i,
+
+            // Reference table comparison text
+            /\bgreater than\b/i,
+            /\bless than\b/i,
+            /\bgreater than or equal/i,
+            /\bless than or equal/i,
+
+            />\s*OR\s*=/i,
+            /<\s*OR\s*=/i,
+
+            // Common reference-table wording
+            /\bcategory\b/i,
+            /\bseverity\b/i,
+            /\bclassification\b/i,
+
+            // Obvious fragments
+            /^of\s+/i,
+            /^and\s+/i,
+            /^or\s+/i,
+            /^for\s+/i
+        ];
+
+
+        if (
+            invalidPatterns.some(
+                pattern =>
+                    pattern.test(parameter)
+            )
+        ) {
+
+            return false;
+
+        }
+
+
+        return true;
+
+    }
 
     const abnormalResults =
-        results
-            .filter(result => {
+    results
+        .filter(result => {
 
-                const status =
-                    getResultStatus(result);
+            if (
+                !isValidAIParameter(result)
+            ) {
+                return false;
+            }
 
-                return (
-                    status === "HIGH" ||
-                    status === "LOW" ||
-                    status === "ABNORMAL"
+            const status =
+                getResultStatus(result);
+
+            return (
+                status === "HIGH" ||
+                status === "LOW" ||
+                status === "ABNORMAL"
+            );
+
+        })
+        .map(result => {
+
+            return {
+
+                parameter:
+                    result.parameter || "",
+
+                value:
+                    result.value ?? null,
+
+                unit:
+                    result.unit || "",
+
+                reference:
+                    result.reference?.text || "",
+
+                status:
+                    getResultStatus(result),
+
+                method:
+                    result.method || ""
+
+            };
+
+        });
+    
+    const uniqueAbnormalResults = [];
+
+    const seenResults = new Map();
+
+
+    for (const result of abnormalResults) {
+
+        const normalizedParameter =
+            String(
+                result.parameter || ""
+            )
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/gi, " ")
+            .replace(/\s+/g, " ")
+            .trim();
+
+
+        const normalizedValue =
+            String(
+                result.value ?? ""
+            )
+            .trim();
+
+
+        const normalizedUnit =
+            String(
+                result.unit || ""
+            )
+            .toLowerCase()
+            .trim();
+
+
+        /*
+        * Parameter + value identify the same measurement.
+        */
+
+        const key =
+            `${normalizedParameter}|${normalizedValue}`;
+
+
+        const existing =
+            seenResults.get(key);
+
+
+        /*
+        * No duplicate yet.
+        */
+
+        if (!existing) {
+
+            seenResults.set(
+                key,
+                result
+            );
+
+            uniqueAbnormalResults.push(
+                result
+            );
+
+            continue;
+
+        }
+
+
+        /*
+        * Duplicate found.
+        *
+        * Keep the result that contains
+        * a unit if the other one doesn't.
+        */
+
+        const existingUnit =
+            String(
+                existing.unit || ""
+            )
+            .trim();
+
+
+        if (
+            !existingUnit &&
+            normalizedUnit
+        ) {
+
+            const index =
+                uniqueAbnormalResults.indexOf(
+                    existing
                 );
 
-            })
-            .map(result => {
 
-                return {
+            if (index !== -1) {
 
-                    parameter:
-                        result.parameter || "",
+                uniqueAbnormalResults[index] =
+                    result;
 
-                    value:
-                        result.value ?? null,
+            }
 
-                    unit:
-                        result.unit || "",
 
-                    reference:
-                        result.reference?.text || "",
+            seenResults.set(
+                key,
+                result
+            );
 
-                    status:
-                        getResultStatus(result),
+        }
 
-                    method:
-                        result.method || ""
-
-                };
-
-            });
+    }
 
 
     /*
@@ -4251,9 +5158,27 @@ function dxBuildAIInput(reportData) {
 
             });
 
-    console.log("========== REPORT DATA FOR PATIENT INFO ==========");
+    /*console.log(
+        "========== REPORT DATA FOR PATIENT INFO =========="
+    );
 
-    console.log(reportData);
+    console.log(
+        reportData
+    );
+
+
+    console.log(
+        "========== UNIQUE ABNORMAL RESULTS =========="
+    );
+
+    console.log(
+        uniqueAbnormalResults
+    );
+
+    console.log(
+        "UNIQUE ABNORMAL COUNT:",
+        uniqueAbnormalResults.length
+    );*/
 
     return {
 
@@ -4281,7 +5206,7 @@ function dxBuildAIInput(reportData) {
         },
 
         abnormal_results:
-            abnormalResults,
+            uniqueAbnormalResults,
 
         all_results:
             allResults
