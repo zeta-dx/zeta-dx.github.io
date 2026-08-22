@@ -4329,7 +4329,7 @@ async function analyzeReportWithAI(reportData) {
 
         const response =
             await fetch(
-                "http://127.0.0.1:8000/analyze-report",
+                "https://zeta-dx-ai.onrender.com/analyze-report",
                 {
 
                     method: "POST",
